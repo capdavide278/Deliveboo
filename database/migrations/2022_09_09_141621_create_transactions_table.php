@@ -17,8 +17,10 @@ class CreateTransactionsTable extends Migration
             $table->id();
             $table->foreignId('restaurant_id')->constrained();
             $table->string('name', 50);
+            //da aggiungere cognome?
             $table->string('address');
             $table->string('email');
+            $table->bigInteger('phonenumber');
             $table->float('total');
             $table->timestamps();
         });

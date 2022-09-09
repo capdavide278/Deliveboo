@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Category;
 use Illuminate\Database\Seeder;
 
 class CategorySeeder extends Seeder
@@ -11,6 +12,48 @@ class CategorySeeder extends Seeder
      */
     public function run()
     {
-        //
+        $categories = [
+            [
+                'name'          => 'Pizzeria',
+                'description'   => 'lorem ipsum',
+            ],
+            [
+                'name'          => 'Ristorante',
+                'description'   => 'lorem ipsum',
+            ],
+            [
+                'name'          => 'Pesce',
+                'description'   => 'lorem ipsum',
+            ],
+            [
+                'name'          => 'Vegetariano',
+                'description'   => 'lorem ipsum',
+            ],
+            [
+                'name'          => 'Vegano o detti anche S****i',
+                'description'   => 'lorem ipsum',
+            ],
+            [
+                'name'          => 'Bergamasco',
+                'description'   => 'lorem ipsum',
+            ],
+            [
+                'name'          => 'Etnico',
+                'description'   => 'lorem ipsum',
+            ],
+            [
+                'name'          => 'Asiatico',
+                'description'   => 'lorem ipsum',
+            ],
+            [
+                'name'          => 'Messicano',
+                'description'   => 'lorem ipsum',
+            ],
+        ];
+
+        foreach ($categories as $category) {
+            Category::create($category);
+        }
+
     }
 }

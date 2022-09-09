@@ -1,5 +1,8 @@
 <?php
 
+use App\Models\Dish;
+use App\Models\Restaurant;
+use Faker\Generator as Faker;
 use Illuminate\Database\Seeder;
 
 class DishSeeder extends Seeder
@@ -9,8 +12,19 @@ class DishSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+    public function run(Faker $faker)
     {
-        //
+        $restaurant_ids = Restaurant::all()->pluck('id');
+
+
+        for($i=0; $i<10; $i++){
+            $dish = new Dish;
+            $dish->restaurant_id = $faker->randomElement($restaurant_ids);
+            $dish->name= $faker->name();
+            $dish->description= $faker->paragraph();
+            $dish->price= $faker->randomFloat(2,1,50); //randomFloat(decimal, minAbs, maxAbs)
+            $dish->save();
+            //missing $boolean because why???
+        }
     }
 }
