@@ -4,15 +4,15 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Dish extends Model
+class Transaction extends Model
 {
-    // relazione piatti ristoranti
+    // relazione transazioni ristoranti
     public function restaurant(){
         return $this->belongsTo('App\Models\Restaurant');
     }
 
     // relazione piatti transazioni
-    public function transaction(){
-        return $this->belongsToMany('App\Models\Transaction');
+    public function dish(){
+        return $this->belongsToMany('App\Models\Dish');
     }
 }

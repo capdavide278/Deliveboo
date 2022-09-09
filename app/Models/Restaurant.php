@@ -16,4 +16,14 @@ class Restaurant extends Model
         return $this->hasMany('App\Models\Dish');
     }
 
+    // relazione transazione ristoranti
+    public function transaction(){
+        return $this->hasMany('App\Models\Transaction');
+    }
+
+    // relazione categorie ristoranti
+    public function category(){
+        return $this->belongsToMany('App\Models\Category');
+    }
+
 }
