@@ -15,4 +15,9 @@ class Dish extends Model
     public function transaction(){
         return $this->belongsToMany('App\Models\Transaction');
     }
+
+    // fillable
+    protected $fillable = [
+        'name', 'description', 'restaurant_id', 'price', 'is_visible'
+    ];
 }

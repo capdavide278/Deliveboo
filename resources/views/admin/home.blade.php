@@ -15,7 +15,8 @@
                     @endif
 
                     {{ __('You are logged in!') }}
-                    <a href="">i tuoi ristoranti</a>
+                    <a href="{{asset('admin/restaurant')}}">i tuoi ristoranti</a>
+                    <a href="{{asset('admin/restaurant')}}">piatti</a>
                 </div>
             </div>
         </div>

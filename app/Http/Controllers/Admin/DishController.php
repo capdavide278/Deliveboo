@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Dish;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class DishController extends Controller
 {
@@ -15,7 +16,9 @@ class DishController extends Controller
      */
     public function index()
     {
-        //
+        $dishes = Dish::all();
+
+        return view('admin.dish.index', compact('dishes'));
     }
 
     /**
@@ -25,7 +28,7 @@ class DishController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.dish.create');
     }
 
     /**
@@ -36,7 +39,26 @@ class DishController extends Controller
      */
     public function store(Request $request)
     {
-        //
+         // validazione dati
+         $request->validate([
+            'name'              => 'required|string|max:50',
+            'description'       => 'nullable|string|max:100',
+            'price'             => 'required|numeric',
+            // TODO cambiare nullable in required
+            'is_visible'        => 'nullable|boolean',          
+        ]);
+        // richiesta dati al db
+        $form_data = $request->all();
+        $data = $form_data + [
+            'restaurant_id' => Auth::id(),
+        ];
+        // creazione dati
+        $dish = Dish::create($data);
+
+        // ti mando alla pagina
+        return redirect()->route('admin.dish.show', [
+            'dish'    => $dish
+        ]);
     }
 
     /**
@@ -47,7 +69,7 @@ class DishController extends Controller
      */
     public function show(Dish $dish)
     {
-        //
+        return view('admin.dish.show', compact('dish'));
     }
 
     /**
@@ -58,7 +80,7 @@ class DishController extends Controller
      */
     public function edit(Dish $dish)
     {
-        //
+        return view('admin.dish.edit', compact('dish'));
     }
 
     /**
@@ -70,7 +92,24 @@ class DishController extends Controller
      */
     public function update(Request $request, Dish $dish)
     {
-        //
+         // validazione dati
+         $request->validate([
+            'name'              => 'required|string|max:50',
+            'description'       => 'nullable|string|max:100',
+            'price'             => 'required|numeric',
+            // TODO cambiare nullable in required
+            'is_visible'        => 'nullable|boolean',          
+        ]);
+        // richiesta dati al db
+        $data = $request->all();
+        
+        // creazione dati
+        $dish = Dish::create($data);
+
+        // ti mando alla pagina
+        return redirect()->route('admin.dish.show', [
+            'dish'    => $dish
+        ]);
     }
 
     /**
@@ -81,6 +120,8 @@ class DishController extends Controller
      */
     public function destroy(Dish $dish)
     {
-        //
+        $dish->delete();
+
+        return redirect()->route('admin.dish.index');
     }
 }
