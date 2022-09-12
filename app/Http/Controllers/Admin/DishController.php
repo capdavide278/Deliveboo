@@ -39,14 +39,20 @@ class DishController extends Controller
      */
     public function store(Request $request)
     {
+        $is_visible = $request->boolean('is_visible');
+        
+
          // validazione dati
          $request->validate([
             'name'              => 'required|string|max:50',
             'description'       => 'nullable|string|max:100',
             'price'             => 'required|numeric',
             // TODO cambiare nullable in required
-            'is_visible'        => 'nullable|boolean',          
+            'is_visible'        => 'boolean'        
         ]);
+        
+        
+        
         // richiesta dati al db
         $form_data = $request->all();
         $data = $form_data + [

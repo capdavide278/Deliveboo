@@ -12,7 +12,7 @@
                 phone
             </th>
         </thead>
-        <tbody>  
+        <tbody> 
                 @foreach ($dishes as $dish)
                     <tr>
                         <td>
@@ -42,8 +42,7 @@
                             @endif
                         </td>
                     </tr>    
-                @endforeach
-                    
+                @endforeach        
         </tbody>
     </table>
 @endsection
