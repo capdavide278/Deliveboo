@@ -13,11 +13,19 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
-                    {{ __('You are logged in!') }}
-                    <a href="{{asset('admin/restaurant')}}">i tuoi ristoranti</a>
-                    <a href="{{asset('admin/restaurant')}}">piatti</a>
-                    <a href="{{route('admin.restaurant.create')}}">Crea il tuo ristorante</a>
+                    {{-- bottoni un po' più belli --}}
+                    <div class="row justify-content-center">
+                        <a class="col-3" href="{{route('admin.restaurant.index')}}">
+                            <button class="btn btn-primary"  type="submit">Your Restaurants</button>
+                        </a>
+                        <a class="col-3" href="{{route('admin.dish.index')}}">
+                            <button class="btn btn-warning"  type="submit">Your Dishes</button> 
+                        </a>
+                        <a class="col-3" href="{{route('admin.restaurant.create')}}">
+                            <button class="btn btn-success"  type="submit">Add Restaurant</button> 
+                        </a>
+                    </div>
+                    
                 </div>
             </div>
         </div>
