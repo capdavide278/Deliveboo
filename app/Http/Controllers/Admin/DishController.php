@@ -48,7 +48,7 @@ class DishController extends Controller
             'description'       => 'nullable|string|max:100',
             'price'             => 'required|numeric',
             // TODO cambiare nullable in required
-            'is_visible'        => 'boolean'        
+            'is_visible'        => 'nullable|boolean'        
         ]);
         
         
