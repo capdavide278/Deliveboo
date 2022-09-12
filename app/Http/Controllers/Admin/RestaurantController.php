@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Restaurant;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class RestaurantController extends Controller
 {
@@ -15,7 +16,9 @@ class RestaurantController extends Controller
      */
     public function index()
     {
-        //
+        $restaurants = Restaurant::all();
+
+        return view('admin.restaurant.index', compact('restaurants'));
     }
 
     /**
@@ -25,7 +28,7 @@ class RestaurantController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.restaurant.create');
     }
 
     /**
@@ -36,7 +39,26 @@ class RestaurantController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // validazione dati
+        $request->validate([
+            'name_restaurant'   => 'required|string|max:255',
+            'address'           => 'required|string|max:255',
+            'rest_phonenumber'  => 'nullable|numeric',
+            'rest_email'        => 'required|email|max:255',          
+        ]);
+        // richiesta dati al db
+        $form_data = $request->all();
+        $data = $form_data + [
+            'user_id' => Auth::id(),
+        ];
+        // creazione dati
+        $restaurant = Restaurant::create($data);
+
+        // ti mando alla pagina
+        return redirect()->route('admin.restaurant.show', [
+            'restaurant'    => $restaurant
+        ]);
+        
     }
 
     /**
@@ -47,7 +69,7 @@ class RestaurantController extends Controller
      */
     public function show(Restaurant $restaurant)
     {
-        //
+        return view('admin.restaurant.show', compact('restaurant'));
     }
 
     /**
@@ -58,7 +80,7 @@ class RestaurantController extends Controller
      */
     public function edit(Restaurant $restaurant)
     {
-        //
+        return view('admin.restaurant.edit', compact('restaurant'));
     }
 
     /**
@@ -70,7 +92,22 @@ class RestaurantController extends Controller
      */
     public function update(Request $request, Restaurant $restaurant)
     {
-        //
+        // validazione dati
+        $request->validate([
+            'name_restaurant'   => 'required|string|max:255',
+            'address'           => 'required|string|max:255',
+            'rest_phonenumber'  => 'nullable|numeric',
+            'rest_email'        => 'required|email|max:255',          
+        ]);
+        // richiesta dati al db
+        $data = $request->all();
+        // aggiornamento dati nel db
+        $restaurant->update($data);
+
+        // renderizzazione alla pagina
+        return redirect()->route('admin.restaurant.show', [
+            'restaurant'    => $restaurant
+        ]);
     }
 
     /**
@@ -81,6 +118,8 @@ class RestaurantController extends Controller
      */
     public function destroy(Restaurant $restaurant)
     {
-        //
+        $restaurant->delete();
+
+        return redirect()->route('admin.restaurant.index');
     }
 }
