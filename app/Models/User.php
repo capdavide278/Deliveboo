@@ -39,6 +39,6 @@ class User extends Authenticatable
 
     // relazione user ristorante
     public function restaurant(){
-        return $this->hasOne('App\Models\Restaurant');
+        return $this->hasMany('App\Models\Restaurant');
     }
 }

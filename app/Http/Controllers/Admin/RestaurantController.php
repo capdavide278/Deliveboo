@@ -14,9 +14,12 @@ class RestaurantController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    protected $perPage= 10;
     public function index()
     {
-        $restaurants = Restaurant::all();
+        /* $restaurants = Restaurant::all(); */
+        //TODO Sistemare metodo all
+        $restaurants = Auth::user()->restaurant()->paginate($this->perPage);
 
         return view('admin.restaurant.index', compact('restaurants'));
     }

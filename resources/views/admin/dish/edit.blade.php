@@ -5,7 +5,7 @@
     @dump(Auth::user()->name) --}}
     {{-- @dd($errors->get('tags.*')) --}}
 
-    <h1>Create new post</h1>
+    <h1>Create dish</h1>
     <form action="{{ route('admin.dish.store') }}" method="post" novalidate enctype="multipart/form-data">
         
         @csrf

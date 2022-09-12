@@ -1,4 +1,4 @@
-@extends('admin.layout.app');
+@extends('admin.layout.app')
 @section('content')
     <table class="table table-striped">
         <thead>

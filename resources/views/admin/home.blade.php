@@ -17,6 +17,7 @@
                     {{ __('You are logged in!') }}
                     <a href="{{asset('admin/restaurant')}}">i tuoi ristoranti</a>
                     <a href="{{asset('admin/restaurant')}}">piatti</a>
+                    <a href="{{route('admin.restaurant.create')}}">Crea il tuo ristorante</a>
                 </div>
             </div>
         </div>
