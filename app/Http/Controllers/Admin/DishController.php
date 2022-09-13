@@ -40,7 +40,7 @@ class DishController extends Controller
     public function store(Request $request)
     {
         $is_visible = $request->boolean('is_visible');
-        
+
 
          // validazione dati
          $request->validate([
@@ -48,11 +48,11 @@ class DishController extends Controller
             'description'       => 'nullable|string|max:100',
             'price'             => 'required|numeric',
             // TODO cambiare nullable in required
-            'is_visible'        => 'nullable|boolean'        
+            'is_visible'        => 'nullable|boolean'
         ]);
-        
-        
-        
+
+
+
         // richiesta dati al db
         $form_data = $request->all();
         $data = $form_data + [
@@ -104,11 +104,11 @@ class DishController extends Controller
             'description'       => 'nullable|string|max:100',
             'price'             => 'required|numeric',
             // TODO cambiare nullable in required
-            'is_visible'        => 'nullable|boolean',          
+            'is_visible'        => 'nullable|boolean',
         ]);
         // richiesta dati al db
         $data = $request->all();
-        
+
         // creazione dati
         $dish = Dish::create($data);
 
