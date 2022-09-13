@@ -1,7 +1,7 @@
 @extends('admin.layout.app')
 @section('content')
 
-    @dump($dishes)
+    {{-- @dump($dishes) --}}
     <table class="table table-striped">
         <thead>
             <th>
