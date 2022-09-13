@@ -3,12 +3,15 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Dish;
+use App\Models\Restaurant;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
 class DishController extends Controller
 {
+
+    protected $perPage= 10;
     /**
      * Display a listing of the resource.
      *
@@ -16,7 +19,21 @@ class DishController extends Controller
      */
     public function index()
     {
-        $dishes = Dish::all();
+        $user_id =  Auth::id();
+        $rest_id =  Restaurant::all()->where('user_id', '=', $user_id )->pluck('id');
+
+        $dishes = Dish::all()->where('restaurant_id', '=', $rest_id);
+        dump('user id = ' . $user_id);
+        dump('rest id = ' . $rest_id);
+        dump('dishes  = ' . $dishes);
+
+
+
+
+
+        // return view('admin.restaurant.index', compact('restaurants'));
+
+        // $dishes = Dish::all();
 
         return view('admin.dish.index', compact('dishes'));
     }
@@ -40,7 +57,7 @@ class DishController extends Controller
     public function store(Request $request)
     {
         $is_visible = $request->boolean('is_visible');
-        
+
 
          // validazione dati
          $request->validate([
@@ -48,11 +65,11 @@ class DishController extends Controller
             'description'       => 'nullable|string|max:100',
             'price'             => 'required|numeric',
             // TODO cambiare nullable in required
-            'is_visible'        => 'nullable|boolean'        
+            'is_visible'        => 'nullable|boolean'
         ]);
-        
-        
-        
+
+
+
         // richiesta dati al db
         $form_data = $request->all();
         $data = $form_data + [
@@ -104,11 +121,11 @@ class DishController extends Controller
             'description'       => 'nullable|string|max:100',
             'price'             => 'required|numeric',
             // TODO cambiare nullable in required
-            'is_visible'        => 'nullable|boolean',          
+            'is_visible'        => 'nullable|boolean',
         ]);
         // richiesta dati al db
         $data = $request->all();
-        
+
         // creazione dati
         $dish = Dish::create($data);
 

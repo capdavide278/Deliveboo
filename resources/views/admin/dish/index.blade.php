@@ -1,5 +1,7 @@
 @extends('admin.layout.app')
 @section('content')
+
+    @dump($dishes)
     <table class="table table-striped">
         <thead>
             <th>
@@ -12,7 +14,7 @@
                 phone
             </th>
         </thead>
-        <tbody> 
+        <tbody>
                 @foreach ($dishes as $dish)
                     <tr>
                         <td>
@@ -29,20 +31,20 @@
                         </td>
                         <td class="actions">
                             <a href="{{ route('admin.dish.show', ['dish' => $dish]) }}" class="btn btn-primary">View</a>
-                            
+
                             @if(Auth::id() == $dish->restaurant_id)
                                 <a href="{{ route('admin.dish.edit', ['dish' => $dish]) }}" class="btn btn-warning">Edit</a>
                                 {{-- DESTROY FORM --}}
                                 <form action="{{ route('admin.dish.destroy', ['dish' => $dish]) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
-        
+
                                     <button class="btn btn-danger"  type="submit">Delete</button>
                                 </form>
                             @endif
                         </td>
-                    </tr>    
-                @endforeach        
+                    </tr>
+                @endforeach
         </tbody>
     </table>
 @endsection

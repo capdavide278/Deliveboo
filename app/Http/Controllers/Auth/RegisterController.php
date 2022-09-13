@@ -29,7 +29,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    protected $redirectTo = RouteServiceProvider::CREATE_REST; //At the firs Register create a restaurant
 
     /**
      * Create a new controller instance.
@@ -55,7 +55,7 @@ class RegisterController extends Controller
             'phonenumber' => ['nullable','numeric'],
             'p_iva' => ['required','numeric','unique:users'],
             'date_of_birth' => ['required','date'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],        
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
         ]);
     }
 
@@ -75,7 +75,7 @@ class RegisterController extends Controller
             'p_iva' => $data['p_iva'],
             'date_of_birth' => $data['date_of_birth'],
             'email' => $data['email'],
-            'password' => Hash::make($data['password']),       
+            'password' => Hash::make($data['password']),
         ]);
     }
 }

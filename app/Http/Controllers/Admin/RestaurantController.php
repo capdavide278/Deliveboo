@@ -15,13 +15,14 @@ class RestaurantController extends Controller
      * @return \Illuminate\Http\Response
      */
     protected $perPage= 10;
+
     public function index()
     {
         /* $restaurants = Restaurant::all(); */
         //TODO Sistemare metodo all
-        $restaurants = Auth::user()->restaurant()->paginate($this->perPage);
+        $restaurants = Auth::user()->restaurant()->paginate($this->perPage);//restaurants to restaurant
 
-        return view('admin.restaurant.index', compact('restaurants'));
+        return view('admin.restaurant.index', compact('restaurants')); //restaurants to restaurant
     }
 
     /**
@@ -47,7 +48,7 @@ class RestaurantController extends Controller
             'name_restaurant'   => 'required|string|max:255',
             'address'           => 'required|string|max:255',
             'rest_phonenumber'  => 'nullable|numeric',
-            'rest_email'        => 'required|email|max:255',          
+            'rest_email'        => 'required|email|max:255',
         ]);
         // richiesta dati al db
         $form_data = $request->all();
@@ -57,11 +58,12 @@ class RestaurantController extends Controller
         // creazione dati
         $restaurant = Restaurant::create($data);
 
+
         // ti mando alla pagina
-        return redirect()->route('admin.restaurant.show', [
-            'restaurant'    => $restaurant
+        return redirect()->route('admin.restaurant.index', [
+            'restaurant'    => $restaurant,
         ]);
-        
+
     }
 
     /**
@@ -72,7 +74,7 @@ class RestaurantController extends Controller
      */
     public function show(Restaurant $restaurant)
     {
-        return view('admin.restaurant.show', compact('restaurant'));
+        // return view('admin.restaurant.show', compact('restaurant'));
     }
 
     /**
@@ -100,7 +102,7 @@ class RestaurantController extends Controller
             'name_restaurant'   => 'required|string|max:255',
             'address'           => 'required|string|max:255',
             'rest_phonenumber'  => 'nullable|numeric',
-            'rest_email'        => 'required|email|max:255',          
+            'rest_email'        => 'required|email|max:255',
         ]);
         // richiesta dati al db
         $data = $request->all();
@@ -108,7 +110,7 @@ class RestaurantController extends Controller
         $restaurant->update($data);
 
         // renderizzazione alla pagina
-        return redirect()->route('admin.restaurant.show', [
+        return redirect()->route('admin.restaurant.index', [
             'restaurant'    => $restaurant
         ]);
     }
@@ -125,5 +127,7 @@ class RestaurantController extends Controller
         $restaurant->delete();
 
         return redirect()->route('admin.restaurant.index');
+
+        // no destruction for you today! Pinko!
     }
 }

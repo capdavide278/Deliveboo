@@ -19,13 +19,13 @@
                             <button class="btn btn-primary"  type="submit">Your Restaurants</button>
                         </a>
                         <a class="col-3" href="{{route('admin.dish.index')}}">
-                            <button class="btn btn-warning"  type="submit">Your Dishes</button> 
+                            <button class="btn btn-warning"  type="submit">Your Dishes</button>
                         </a>
-                        <a class="col-3" href="{{route('admin.restaurant.create')}}">
-                            <button class="btn btn-success"  type="submit">Add Restaurant</button> 
-                        </a>
+                        {{-- <a class="col-3" href="{{route('admin.restaurant.edit')}}">
+                            <button class="btn btn-success"  type="submit">Edit Restaurant</button>
+                        </a> --}}
                     </div>
-                    
+
                 </div>
             </div>
         </div>
