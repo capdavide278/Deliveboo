@@ -7,9 +7,8 @@
 
     <h1>Create restaurant</h1>
     <form action="{{ route('admin.restaurant.update', ['restaurant' => $restaurant])}}" method="post" novalidate enctype="multipart/form-data">
-        
-        @csrf
 
+        @csrf
         @method('PUT')
 
         <div class="mb-3">
@@ -53,7 +52,7 @@
         </div>
 
 
-        
+
 
         <button type="submit" class="btn btn-primary">Save</button>
     </form>

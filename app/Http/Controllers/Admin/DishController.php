@@ -20,20 +20,10 @@ class DishController extends Controller
     public function index()
     {
         $user_id =  Auth::id();
-        $rest_id =  Restaurant::all()->where('user_id', '=', $user_id )->pluck('id');
+        $rest_id =  Restaurant::all()->where('user_id', '=', $user_id )->pluck('id')->toArray();
 
-        $dishes = Dish::all()->where('restaurant_id', '=', $rest_id);
-        dump('user id = ' . $user_id);
-        dump('rest id = ' . $rest_id);
-        dump('dishes  = ' . $dishes);
-
-
-
-
-
-        // return view('admin.restaurant.index', compact('restaurants'));
-
-        // $dishes = Dish::all();
+        $dishes = Dish::all()->where('restaurant_id', '=', $rest_id[0]);
+        //$rest_id[0] indica il primo elemento del toArray dalla collection di Restaurant
 
         return view('admin.dish.index', compact('dishes'));
     }
@@ -69,11 +59,14 @@ class DishController extends Controller
         ]);
 
 
-
+        $user_id =  Auth::id();
         // richiesta dati al db
         $form_data = $request->all();
+        $var_temp = Restaurant::all()->where('user_id', '=', $user_id )->pluck('id')->toArray();
+
         $data = $form_data + [
-            'restaurant_id' => Auth::id(),
+            // 'restaurant_id' => Auth::id()
+            'restaurant_id' =>  $var_temp[0]
         ];
         // creazione dati
         $dish = Dish::create($data);
@@ -120,14 +113,15 @@ class DishController extends Controller
             'name'              => 'required|string|max:50',
             'description'       => 'nullable|string|max:100',
             'price'             => 'required|numeric',
-            // TODO cambiare nullable in required
+            // TODO cambiare nullable in required ???
             'is_visible'        => 'nullable|boolean',
         ]);
+
         // richiesta dati al db
-        $data = $request->all();
+        $form_data = $request->all();
 
         // creazione dati
-        $dish = Dish::create($data);
+        $dish->update($form_data);
 
         // ti mando alla pagina
         return redirect()->route('admin.dish.show', [

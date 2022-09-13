@@ -32,7 +32,7 @@
                         <td class="actions">
                             <a href="{{ route('admin.dish.show', ['dish' => $dish]) }}" class="btn btn-primary">View</a>
 
-                            @if(Auth::id() == $dish->restaurant_id)
+                            {{-- @if(Auth::id() == $dish->restaurant_id) --}}
                                 <a href="{{ route('admin.dish.edit', ['dish' => $dish]) }}" class="btn btn-warning">Edit</a>
                                 {{-- DESTROY FORM --}}
                                 <form action="{{ route('admin.dish.destroy', ['dish' => $dish]) }}" method="POST">
@@ -41,7 +41,7 @@
 
                                     <button class="btn btn-danger"  type="submit">Delete</button>
                                 </form>
-                            @endif
+                            {{-- @endif --}}
                         </td>
                     </tr>
                 @endforeach

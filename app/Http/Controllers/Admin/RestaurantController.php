@@ -32,7 +32,14 @@ class RestaurantController extends Controller
      */
     public function create()
     {
-        return view('admin.restaurant.create');
+        $user_id =  Auth::id();
+        $rest_id =  Restaurant::all()->where('user_id', '=', $user_id )->pluck('id')->toArray();
+
+        if($rest_id == []){
+            return view('admin.restaurant.create');
+        } else {
+            abort(401);
+        }
     }
 
     /**
