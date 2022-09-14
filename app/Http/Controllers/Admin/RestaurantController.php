@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use App\Models\Category;
 
 class RestaurantController extends Controller
 {
@@ -34,11 +35,12 @@ class RestaurantController extends Controller
      */
     public function create()
     {
+        $categories = Category::all();
         $user_id =  Auth::id();
         $rest_id =  Restaurant::all()->where('user_id', '=', $user_id )->pluck('id')->toArray();
 
         if($rest_id == []){
-            return view('admin.restaurant.create');
+            return view('admin.restaurant.create', compact('categories'));
         } else {
             abort(401);
         }
@@ -70,7 +72,7 @@ class RestaurantController extends Controller
 
         // creazione dati
         $restaurant = Restaurant::create($data);
-
+        $restaurant->category()->sync($data['categories']);
 
         // ti mando alla pagina
         return redirect()->route('admin.restaurant.index', [
