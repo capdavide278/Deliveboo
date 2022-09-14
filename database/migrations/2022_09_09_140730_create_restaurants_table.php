@@ -18,6 +18,7 @@ class CreateRestaurantsTable extends Migration
             $table->foreignId('user_id')->constrained();
             $table->bigInteger('rest_phonenumber');
             $table->string('rest_email')->unique();
+            $table->string('image')->nullable();
             $table->string('name_restaurant');
             $table->string('address');
             $table->timestamps();

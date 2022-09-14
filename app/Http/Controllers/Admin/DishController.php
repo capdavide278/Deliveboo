@@ -58,13 +58,15 @@ class DishController extends Controller
         $data = $request->all();
         $var_temp = Restaurant::all()->where('user_id', '=', $user_id )->pluck('id')->toArray();
         // salvataggio dell'immagine inserita nel db
-        $img_path = Storage::put('uploads', $data['image']);
-        $data['image'] = $img_path;
+        $img_path = '';
+        if(key_exists('image', $data)){
 
-        // $data = $form_data + [
-        //     // 'restaurant_id' => Auth::id()
-        //     'restaurant_id' =>  $var_temp[0]
-        // ];
+            $img_path = Storage::put('uploads', $data['image']);
+
+            //aggiorniamo il valore della chiave image con il nome dell'img creata
+            $data['image'] = $img_path;
+        }
+
         // creazione dati
         $dish = new Dish();
         $dish->restaurant_id = $var_temp[0];
@@ -118,6 +120,18 @@ class DishController extends Controller
         // richiesta dati al db
         $form_data = $request->all();
 
+        if(key_exists('image', $form_data)){
+            //elimina il file precedente se esiste
+            if($dish->image){
+                Storage::delete($dish->image);
+            }
+
+            //carica nuovo file
+            $img_path = Storage::put('uploads', $form_data['image']);
+
+            //aggiorna l'array $data con il percorso del file nuovo
+            $form_data['image'] = $img_path;
+        }
 
 
         // creazione dati
