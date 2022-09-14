@@ -2,8 +2,9 @@
 
 @section('content')
     <div class="container">
-        <div class="card" style="width: 30rem; min-height: 20rem"> {{-- TODO remove INLINE STYLE --}}
+        <div class="card" style="width: 80rem; min-height: 20rem"> {{-- TODO remove INLINE STYLE --}}
             <div class="card-body">
+              <img class="card-img-top" src="{{asset('storage/' . $dish->image)}}" alt="">
               <h3 class="card-title">{{ $dish->name }}</h5>
               <p class="card-text">{{$dish->description}}</p>
               <p class="card-text">Prezzo: {{$dish->price}}</p>

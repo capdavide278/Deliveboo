@@ -17,6 +17,7 @@ class CreateDishesTable extends Migration
             $table->id();
             $table->foreignId('restaurant_id')->constrained();
             $table->string('name', 50);
+            $table->string('image', 100)->nullable();
             $table->string('description')->nullable();
             $table->float('price');
             $table->boolean('is_visible')->nullable();

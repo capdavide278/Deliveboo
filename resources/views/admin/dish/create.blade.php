@@ -19,6 +19,16 @@
         </div>
 
         <div class="mb-3">
+            <label class="form-label" for="image">Image</label>
+            <input class="form-control @error('image') is-invalid @enderror" type="file" name="image" id="image" accept="image/*">
+            @error('image')
+                <div class="invalid-feedback">
+                    {{ $message }}
+                </div>
+            @enderror
+        </div>
+
+        <div class="mb-3">
             <label class="form-label" for="description">Description</label>
             <textarea class="form-control @error('description') is-invalid @enderror" type="text" maxlength="100" name="description" id="description" value="{{ old('description') }}"></textarea>
             @error('description')

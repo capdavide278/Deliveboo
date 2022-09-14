@@ -7,6 +7,7 @@ use App\Models\Restaurant;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class DishController extends Controller
 {
@@ -51,14 +52,14 @@ class DishController extends Controller
     {
 
          // validazione dati
-         $request->validate($this->validation_rules);
-
-
-
+        $request->validate($this->validation_rules);
         $user_id =  Auth::id();
         // richiesta dati al db
-        $form_data = $request->all();
+        $data = $request->all();
         $var_temp = Restaurant::all()->where('user_id', '=', $user_id )->pluck('id')->toArray();
+        // salvataggio dell'immagine inserita nel db
+        $img_path = Storage::put('uploads', $data['image']);
+        $data['image'] = $img_path;
 
         // $data = $form_data + [
         //     // 'restaurant_id' => Auth::id()
@@ -68,6 +69,7 @@ class DishController extends Controller
         $dish = new Dish();
         $dish->restaurant_id = $var_temp[0];
         $dish->name = request('name');
+        $dish->image = $img_path;
         $dish->description = request('description');
         $dish->price = request('price');
         $dish->is_visible = $request->has('is_visible');
@@ -110,8 +112,8 @@ class DishController extends Controller
      */
     public function update(Request $request, Dish $dish)
     {
-         // validazione dati
-         $request->validate($this->validation_rules);
+        // validazione dati
+        $request->validate($this->validation_rules);
 
         // richiesta dati al db
         $form_data = $request->all();
