@@ -56,6 +56,7 @@ class RegisterController extends Controller
             'p_iva' => ['required','numeric','unique:users'],
             'date_of_birth' => ['nullable','date'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'min:8', 'unique:users'],
         ]);
     }
 

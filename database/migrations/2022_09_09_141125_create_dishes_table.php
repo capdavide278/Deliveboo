@@ -19,7 +19,7 @@ class CreateDishesTable extends Migration
             $table->string('name', 50);
             $table->string('description')->nullable();
             $table->float('price');
-            $table->boolean('is_visible')->default(1);
+            $table->boolean('is_visible')->nullable();
             $table->timestamps();
         });
     }

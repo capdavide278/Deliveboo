@@ -10,13 +10,16 @@ use Illuminate\Support\Facades\Auth;
 
 class DishController extends Controller
 {
-
+    protected $validation_rules = [
+        'name'              => 'required|string|max:50',
+        'description'       => 'nullable|string|max:100',
+        'price'             => 'required|numeric',
+        // TODO cambiare nullable in required
+        'is_visible'        => 'nullable|boolean'
+    ];
+    
     protected $perPage= 10;
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
     public function index()
     {
         $user_id =  Auth::id();
@@ -46,17 +49,10 @@ class DishController extends Controller
      */
     public function store(Request $request)
     {
-        $is_visible = $request->boolean('is_visible');
-
-
+        
          // validazione dati
-         $request->validate([
-            'name'              => 'required|string|max:50',
-            'description'       => 'nullable|string|max:100',
-            'price'             => 'required|numeric',
-            // TODO cambiare nullable in required
-            'is_visible'        => 'nullable|boolean'
-        ]);
+         $request->validate($this->validation_rules);
+            
 
 
         $user_id =  Auth::id();
@@ -64,12 +60,18 @@ class DishController extends Controller
         $form_data = $request->all();
         $var_temp = Restaurant::all()->where('user_id', '=', $user_id )->pluck('id')->toArray();
 
-        $data = $form_data + [
-            // 'restaurant_id' => Auth::id()
-            'restaurant_id' =>  $var_temp[0]
-        ];
+        // $data = $form_data + [
+        //     // 'restaurant_id' => Auth::id()
+        //     'restaurant_id' =>  $var_temp[0]
+        // ];
         // creazione dati
-        $dish = Dish::create($data);
+        $dish = new Dish();
+        $dish->restaurant_id = $var_temp[0];
+        $dish->name = request('name');
+        $dish->description = request('description');
+        $dish->price = request('price');
+        $dish->is_visible = $request->has('is_visible');
+        $dish->save();
 
         // ti mando alla pagina
         return redirect()->route('admin.dish.show', [
@@ -109,19 +111,16 @@ class DishController extends Controller
     public function update(Request $request, Dish $dish)
     {
          // validazione dati
-         $request->validate([
-            'name'              => 'required|string|max:50',
-            'description'       => 'nullable|string|max:100',
-            'price'             => 'required|numeric',
-            // TODO cambiare nullable in required ???
-            'is_visible'        => 'nullable|boolean',
-        ]);
+         $request->validate($this->validation_rules);
 
         // richiesta dati al db
         $form_data = $request->all();
 
+        
+
         // creazione dati
         $dish->update($form_data);
+
 
         // ti mando alla pagina
         return redirect()->route('admin.dish.show', [
