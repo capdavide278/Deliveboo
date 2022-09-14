@@ -10,7 +10,7 @@
 
         <div class="mb-3">
             <label class="form-label" for="name">Name *</label>
-            <input class="form-control @error('name') is-invalid @enderror" type="text" name="name" maxlength="50" id="name" value="{{ old('name') }}" required>
+            <input class="form-control @error('name') is-invalid @enderror" type="text" name="name" maxlength="50" id="name" value="{{ old('name') }}"  required>
             @error('name')
                 <div class="invalid-feedback">
                     {{ $message }}

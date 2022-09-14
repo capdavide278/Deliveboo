@@ -21,7 +21,6 @@
                     <h3>Email: {{$restaurant->rest_email}}</h3>
                     <h3>Indirizzo: {{ $restaurant->address}}</h3>
 
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora dolores quod, reiciendis odio esse, optio fuga quam, ab reprehenderit possimus quia perferendis alias nulla blanditiis quas ipsa debitis sequi deserunt.</p>
                     <a href="{{route('admin.dish.create')}}">
                         <button class="btn btn-success"  type="submit">Add Dish</button>
                     </a>

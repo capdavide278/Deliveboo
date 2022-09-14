@@ -13,7 +13,7 @@
                                                     <img class="card-img-top" src="{{asset('storage/' . $dish->image)}}" alt="">
                                                     <h3 class="card-title">{{ $dish->name }}</h5>
                                                     <p class="card-text">{{$dish->description}}</p>
-                                                    <p class="card-text">Prezzo: {{$dish->price}}</p>
+                                                    <p class="card-text">Prezzo: {{$dish->price}} €</p>
                                                     <div class="row">
                                                         <div class="col-12">
                                                             <div class="row justify-content-center">
