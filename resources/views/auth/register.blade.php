@@ -43,7 +43,7 @@
                             <label for="phonenumber" class="col-md-4 col-form-label text-md-right">{{ __('Phonenumber *') }}</label>
 
                             <div class="col-md-6">
-                                <input id="phonenumber" type="text" class="form-control @error('phonenumber') is-invalid @enderror" maxlength="15" name="phonenumber" value="{{ old('phonenumber') }}" required autocomplete="name" autofocus>
+                                <input id="phonenumber" type="text" class="form-control @error('phonenumber') is-invalid @enderror" maxlength="10" name="phonenumber" value="{{ old('phonenumber') }}" required autocomplete="name" autofocus>
 
                                 @error('phonenumber')
                                     <span class="invalid-feedback" role="alert">

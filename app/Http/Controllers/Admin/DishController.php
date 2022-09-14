@@ -14,7 +14,7 @@ class DishController extends Controller
     protected $validation_rules = [
         'name'              => 'required|string|max:50',
         'description'       => 'nullable|string|max:100',
-        'price'             => 'required|numeric',
+        'price'             => 'required|numeric|min:1',
         // TODO cambiare nullable in required
         'is_visible'        => 'nullable|boolean'
     ];

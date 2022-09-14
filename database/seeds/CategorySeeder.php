@@ -30,7 +30,7 @@ class CategorySeeder extends Seeder
                 'description'   => 'lorem ipsum',
             ],
             [
-                'name'          => 'Vegano o detti anche S****i',
+                'name'          => 'Vegano',
                 'description'   => 'lorem ipsum',
             ],
             [

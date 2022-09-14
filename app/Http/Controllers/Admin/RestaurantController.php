@@ -12,10 +12,10 @@ use App\Models\Category;
 class RestaurantController extends Controller
 {
     protected $validation_rules = [
-        'name_restaurant'   => 'required|string|max:255',
+        'name_restaurant'   => 'required|string|max:50',
         'address'           => 'required|string|max:255',
-        'rest_phonenumber'  => 'nullable|numeric',
-        'rest_email'        => 'required|email|max:255',
+        'rest_phonenumber'  => 'nullable|numeric|digits:10',
+        'rest_email'        => 'required|email:rfc,dns|unique:restaurants,rest_email',
     ];
     protected $perPage= 10;
 

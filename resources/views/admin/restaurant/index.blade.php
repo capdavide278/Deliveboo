@@ -20,6 +20,9 @@
                     <h3>Telefono: {{ $restaurant->rest_phonenumber}}</h3>
                     <h3>Email: {{$restaurant->rest_email}}</h3>
                     <h3>Indirizzo: {{ $restaurant->address}}</h3>
+                    <h3>Categorie: @foreach($restaurant->category as $cat)
+                                        {{$cat->name}}
+                                    @endforeach</h3>
 
                     <a href="{{route('admin.dish.create')}}">
                         <button class="btn btn-success"  type="submit">Add Dish</button>
