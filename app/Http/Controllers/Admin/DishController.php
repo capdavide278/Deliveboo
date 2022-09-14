@@ -17,9 +17,9 @@ class DishController extends Controller
         // TODO cambiare nullable in required
         'is_visible'        => 'nullable|boolean'
     ];
-    
+
     protected $perPage= 10;
-    
+
     public function index()
     {
         $user_id =  Auth::id();
@@ -49,10 +49,10 @@ class DishController extends Controller
      */
     public function store(Request $request)
     {
-        
+
          // validazione dati
          $request->validate($this->validation_rules);
-            
+
 
 
         $user_id =  Auth::id();
@@ -116,10 +116,15 @@ class DishController extends Controller
         // richiesta dati al db
         $form_data = $request->all();
 
-        
+
 
         // creazione dati
-        $dish->update($form_data);
+
+        $dish->name = request('name');
+        $dish->description = request('description');
+        $dish->price = request('price');
+        $dish->is_visible = $request->has('is_visible');
+        $dish->save($form_data);
 
 
         // ti mando alla pagina
