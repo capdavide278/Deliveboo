@@ -6,6 +6,7 @@ use App\Models\Restaurant;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class RestaurantController extends Controller
 {
@@ -58,6 +59,15 @@ class RestaurantController extends Controller
         $data = $form_data + [
             'user_id' => Auth::id(),
         ];
+        // TODO MO CHE POSSIAMO
+        // if(key_exists('image', $data)){
+
+        //     $img_path = Storage::put('uploads', $data['image']);
+
+        //     //aggiorniamo il valore della chiave image con il nome dell'img creata
+        //     $data['image'] = $img_path;
+        // }
+
         // creazione dati
         $restaurant = Restaurant::create($data);
 
