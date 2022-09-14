@@ -26,11 +26,16 @@ class DishController extends Controller
         $user_id =  Auth::id();
         $rest_id =  Restaurant::all()->where('user_id', '=', $user_id )->pluck('id')->toArray();
 
-        $dishes = Dish::all()->where('restaurant_id', '=', $rest_id[0]);
+        if($rest_id  = []){
+            $dishes = Dish::all()->where('restaurant_id', '=', $rest_id[0]);
         //$rest_id[0] indica il primo elemento del toArray dalla collection di Restaurant
 
-        return view('admin.dish.index', compact('dishes'));
-    }
+        return view('admin.dish.index', compact('dishes'));}
+        else{
+            return view('admin.dish.create');}
+
+        }
+
 
     /**
      * Show the form for creating a new resource.
