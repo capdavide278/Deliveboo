@@ -13,8 +13,8 @@
         @method('PUT')
 
         <div class="mb-3">
-            <label class="form-label" for="name">name</label>
-            <input class="form-control @error('name') is-invalid @enderror" type="text" name="name" id="name" value="{{ old('name', $dish->name) }}">
+            <label class="form-label" for="name">Name *</label>
+            <input class="form-control @error('name') is-invalid @enderror" type="text" name="name"  maxlength="50" required id="name" value="{{ old('name', $dish->name) }}">
             @error('name')
                 <div class="invalid-feedback">
                     {{ $message }}
@@ -23,8 +23,8 @@
         </div>
 
         <div class="mb-3">
-            <label class="form-label" for="description">description</label>
-            <input class="form-control @error('description') is-invalid @enderror" type="text" name="description" id="description" value="{{ old('description', $dish->description) }}">
+            <label class="form-label" for="description">Description</label>
+            <input class="form-control @error('description') is-invalid @enderror" type="text" name="description" maxlength="100" id="description" value="{{ old('description', $dish->description) }}">
             @error('description')
                 <div class="invalid-feedback">
                     {{ $message }}
@@ -33,8 +33,8 @@
         </div>
 
         <div class="mb-3">
-            <label class="form-label" for="price">price</label>
-            <input class="form-control @error('price') is-invalid @enderror" type="text" name="price" id="price" value="{{ old('price', $dish->price) }}">
+            <label class="form-label" for="price">Price *</label>
+            <input class="form-control @error('price') is-invalid @enderror" type="text" name="price" id="price" required value="{{ old('price', $dish->price) }}">
             @error('price')
                 <div class="invalid-feedback">
                     {{ $message }}
@@ -42,9 +42,9 @@
             @enderror
         </div>
 
-        <div>               
+        <div>
             <input type="checkbox" name="is_visible" class="form-check-input switch-input" value="1" {{ old('is_visible', $dish->is_visible) ? 'checked="1"' : '0' }}/>
-            <label for="is_visible">Piatto nel Menù</label>
+            <label for="is_visible">Piatto nel Menù *</label>
         </div>
 
         <button type="submit" class="btn btn-primary">Save</button>
