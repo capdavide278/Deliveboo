@@ -49,9 +49,7 @@ class DishController extends Controller
      */
     public function store(Request $request)
     {
-        $is_visible = $request->boolean('is_visible');
-
-
+        
          // validazione dati
          $request->validate($this->validation_rules);
             
@@ -62,12 +60,18 @@ class DishController extends Controller
         $form_data = $request->all();
         $var_temp = Restaurant::all()->where('user_id', '=', $user_id )->pluck('id')->toArray();
 
-        $data = $form_data + [
-            // 'restaurant_id' => Auth::id()
-            'restaurant_id' =>  $var_temp[0]
-        ];
+        // $data = $form_data + [
+        //     // 'restaurant_id' => Auth::id()
+        //     'restaurant_id' =>  $var_temp[0]
+        // ];
         // creazione dati
-        $dish = Dish::create($data);
+        $dish = new Dish();
+        $dish->restaurant_id = $var_temp[0];
+        $dish->name = request('name');
+        $dish->description = request('description');
+        $dish->price = request('price');
+        $dish->is_visible = $request->has('is_visible');
+        $dish->save();
 
         // ti mando alla pagina
         return redirect()->route('admin.dish.show', [
@@ -112,8 +116,11 @@ class DishController extends Controller
         // richiesta dati al db
         $form_data = $request->all();
 
+        
+
         // creazione dati
         $dish->update($form_data);
+
 
         // ti mando alla pagina
         return redirect()->route('admin.dish.show', [

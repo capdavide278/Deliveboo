@@ -41,6 +41,11 @@
             @enderror
         </div>
 
+        <div>               
+            <input type="checkbox" name="is_visible" class="form-check-input switch-input" value="1" {{ old('is_visible', $dish->is_visible) ? 'checked="1"' : '0' }}/>
+            <label for="is_visible">Piatto nel Menù</label>
+        </div>
+
         <button type="submit" class="btn btn-primary">Save</button>
     </form>
 @endsection
