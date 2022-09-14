@@ -32,7 +32,7 @@ class DishController extends Controller
 
         return view('admin.dish.index', compact('dishes'));}
         else{
-            return view('admin.dish.create');}
+            return view('admin.restourant.create');}
 
         }
 
