@@ -1,11 +1,10 @@
 @extends('admin.layout.app')
 
 @section('content')
-    {{-- @dump($errors->all())
-    @dump(Auth::user()->name) --}}
-    {{-- @dd($errors->get('tags.*')) --}}
 
-    <h1>Edit Restaurant</h1>
+<div class="container">
+    <h3>Edit Restaurant: </h3>
+    <h1>{{ old('name_restaurant', $restaurant->name_restaurant) }}</h1>
     <form action="{{ route('admin.restaurant.update', ['restaurant' => $restaurant])}}" method="post" novalidate enctype="multipart/form-data">
 
         @csrf
@@ -56,4 +55,5 @@
 
         <button type="submit" class="btn btn-primary">Save</button>
     </form>
+</div>
 @endsection

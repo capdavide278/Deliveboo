@@ -1,13 +1,11 @@
 @extends('admin.layout.app')
 
 @section('content')
-    {{-- @dump($errors->all())
-    @dump(Auth::user()->name) --}}
-    {{-- @dd($errors->get('tags.*')) --}}
 
+<div class="container">
     <h1>Create new dish</h1>
     <form action="{{ route('admin.dish.store') }}" method="post" novalidate enctype="multipart/form-data">
-        
+
         @csrf
 
         <div class="mb-3">
@@ -39,18 +37,12 @@
                 </div>
             @enderror
         </div>
-        {{-- TODO modificare form --}}
-        
-            <div>               
-                <input type="checkbox" name="is_visible" class="form-check-input switch-input" value="1" {{ old('is_visible') ? 'checked="1"' : '0' }} checked/>
-                <label for="is_visible">Piatto nel Menù</label>
-            </div>
+        <div>
+            <input type="checkbox" name="is_visible" class="form-check-input switch-input" value="1" {{ old('is_visible') ? 'checked="1"' : '0' }} checked/>
+            <label for="is_visible">Piatto nel Menù</label>
+        </div>
 
-          
-            
-            
-            
-            <button type="submit" class="btn btn-primary">Save</button>
+        <button type="submit" class="btn btn-primary">Save</button>
         </form>
-        {{-- @dd() --}}
+</div>
 @endsection

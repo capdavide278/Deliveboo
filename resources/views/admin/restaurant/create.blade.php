@@ -4,10 +4,10 @@
     {{-- @dump($errors->all())
     @dump(Auth::user()->name) --}}
     {{-- @dd($errors->get('tags.*')) --}}
-
-    <h1>Create restaurant</h1>
+    <div class="container">
+        <h1>Inserisci i dati del tuo Ristorante</h1>
     <form action="{{ route('admin.restaurant.store') }}" method="post" novalidate enctype="multipart/form-data">
-        
+
         @csrf
 
         <div class="mb-3">
@@ -51,8 +51,10 @@
         </div>
 
 
-        
+
 
         <button type="submit" class="btn btn-primary">Save</button>
     </form>
+    </div>
+
 @endsection

@@ -15,16 +15,18 @@
         <tbody> --}}
             @foreach($restaurants as $restaurant)
                 <div class="container">
-                    <h1>Nome ristorante: {{ $restaurant->name_restaurant }}</h1>
-                    <h2>Numero di telefono: {{ $restaurant->rest_phonenumber}}</h2>
-                    <h2>Email: {{$restaurant->rest_email}}</h2>
+                    <h1>{{ $restaurant->name_restaurant }}</h1>
+                    <h3>Telefono: {{ $restaurant->rest_phonenumber}}</h3>
+                    <h3>Email: {{$restaurant->rest_email}}</h3>
                     <h3>Indirizzo: {{ $restaurant->address}}</h3>
+
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora dolores quod, reiciendis odio esse, optio fuga quam, ab reprehenderit possimus quia perferendis alias nulla blanditiis quas ipsa debitis sequi deserunt.</p>
                     <a href="{{route('admin.dish.create')}}">
                         <button class="btn btn-success"  type="submit">Add Dish</button>
                     </a>
 
                     @if(Auth::id() == $restaurant->user_id)
-                                    <a href="{{ route('admin.restaurant.edit', ['restaurant' => $restaurant]) }}" class="btn btn-warning">Edit</a>
+                        <a href="{{ route('admin.restaurant.edit', ['restaurant' => $restaurant]) }}" class="btn btn-warning">Edit</a>
                     @endif
 
                 </div>

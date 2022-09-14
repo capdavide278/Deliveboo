@@ -5,7 +5,8 @@
     @dump(Auth::user()->name) --}}
     {{-- @dd($errors->get('tags.*')) --}}
 
-    <h1>Edit dish</h1>
+    <div class="container">
+        <h1>Edit dish</h1>
     <form action="{{ route('admin.dish.update', ['dish' => $dish]) }}" method="post" novalidate enctype="multipart/form-data">
 
         @csrf
@@ -48,4 +49,6 @@
 
         <button type="submit" class="btn btn-primary">Save</button>
     </form>
+    </div>
+
 @endsection
