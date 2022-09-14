@@ -40245,8 +40245,8 @@ var app = new Vue({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\ANDREA\01_WebDev\01_boolean\php\00_FinalProject\Deliveboo\resources\js\front.js */"./resources/js/front.js");
-module.exports = __webpack_require__(/*! C:\ANDREA\01_WebDev\01_boolean\php\00_FinalProject\Deliveboo\resources\sass\back.scss */"./resources/sass/back.scss");
+__webpack_require__(/*! C:\Users\glogh\Music\php\laravel\Deliveboo\resources\js\front.js */"./resources/js/front.js");
+module.exports = __webpack_require__(/*! C:\Users\glogh\Music\php\laravel\Deliveboo\resources\sass\back.scss */"./resources/sass/back.scss");
 
 
 /***/ })
