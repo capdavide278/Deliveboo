@@ -60,6 +60,33 @@
             @enderror
         </div>
 
+        <fieldset class="mb-3">
+            <legend>Categories</legend>
+            @foreach ($categories as $category)
+                <div class="form-check">
+                    <input
+                    class="form-check-input"
+                    type="checkbox"
+                    {{--  aggiungendo [] al nome abbiamo un array come valore di ritorno --}}
+                        name="categories[]"
+                        value="{{ $category->id }}"
+                        id="category-{{ $category->id }}"
+                        @if(in_array($category->id, old('categories') ?: [])) checked @endif
+                    >
+                    <label class="form-check-label" for="category-{{ $category->id }}">{{ $category->name }}</label>
+                </div>
+            @endforeach
+
+
+            @foreach ($errors->get('categories.*') as $messagges)
+                @foreach ($messagges as $message)
+
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                @endforeach
+            @endforeach
+        </fieldset>
 
 
 
