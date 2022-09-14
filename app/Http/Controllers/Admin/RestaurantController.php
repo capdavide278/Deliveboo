@@ -9,11 +9,12 @@ use Illuminate\Support\Facades\Auth;
 
 class RestaurantController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    protected $validation_rules = [
+        'name_restaurant'   => 'required|string|max:255',
+        'address'           => 'required|string|max:255',
+        'rest_phonenumber'  => 'nullable|numeric',
+        'rest_email'        => 'required|email|max:255',
+    ];
     protected $perPage= 10;
 
     public function index()
@@ -51,12 +52,7 @@ class RestaurantController extends Controller
     public function store(Request $request)
     {
         // validazione dati
-        $request->validate([
-            'name_restaurant'   => 'required|string|max:255',
-            'address'           => 'required|string|max:255',
-            'rest_phonenumber'  => 'nullable|numeric',
-            'rest_email'        => 'required|email|max:255',
-        ]);
+        $request->validate($this->validation_rules);
         // richiesta dati al db
         $form_data = $request->all();
         $data = $form_data + [
@@ -105,12 +101,7 @@ class RestaurantController extends Controller
     public function update(Request $request, Restaurant $restaurant)
     {
         // validazione dati
-        $request->validate([
-            'name_restaurant'   => 'required|string|max:255',
-            'address'           => 'required|string|max:255',
-            'rest_phonenumber'  => 'nullable|numeric',
-            'rest_email'        => 'required|email|max:255',
-        ]);
+        $request->validate($this->validation_rules);
         // richiesta dati al db
         $data = $request->all();
         // aggiornamento dati nel db

@@ -10,13 +10,16 @@ use Illuminate\Support\Facades\Auth;
 
 class DishController extends Controller
 {
-
+    protected $validation_rules = [
+        'name'              => 'required|string|max:50',
+        'description'       => 'nullable|string|max:100',
+        'price'             => 'required|numeric',
+        // TODO cambiare nullable in required
+        'is_visible'        => 'nullable|boolean'
+    ];
+    
     protected $perPage= 10;
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
     public function index()
     {
         $user_id =  Auth::id();
@@ -50,13 +53,8 @@ class DishController extends Controller
 
 
          // validazione dati
-         $request->validate([
-            'name'              => 'required|string|max:50',
-            'description'       => 'nullable|string|max:100',
-            'price'             => 'required|numeric',
-            // TODO cambiare nullable in required
-            'is_visible'        => 'nullable|boolean'
-        ]);
+         $request->validate($this->validation_rules);
+            
 
 
         $user_id =  Auth::id();
@@ -109,13 +107,7 @@ class DishController extends Controller
     public function update(Request $request, Dish $dish)
     {
          // validazione dati
-         $request->validate([
-            'name'              => 'required|string|max:50',
-            'description'       => 'nullable|string|max:100',
-            'price'             => 'required|numeric',
-            // TODO cambiare nullable in required ???
-            'is_visible'        => 'nullable|boolean',
-        ]);
+         $request->validate($this->validation_rules);
 
         // richiesta dati al db
         $form_data = $request->all();
