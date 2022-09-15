@@ -27860,58 +27860,49 @@ module.exports = function(module) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
+__webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js"); // const register_form = document.getElementById("register_form");
+// if (register_form) {
+//     // register_form.onsubmit = function () { return validateRegister() };
+//     register_form.addEventListener("submit", validateRegister());
+// }
 
-var register_form = document.getElementById("register_form");
 
-if (register_form) {
-  // register_form.onsubmit = function () { return validateRegister() };
-  register_form.addEventListener("submit", validateRegister());
-}
+window.validateRegister = function () {
+  var name_register = document.getElementById("name").value;
+  var surname_register = document.getElementById("surname").value;
+  var phonenumber_register = document.getElementById("phonenumber").value;
+  var p_iva_register = document.getElementById("p_iva").value; // let date_of_birth_register = document.getElementById("date_of_birth").value
 
-function validateRegister() {
-  var name_register = document.getElementById("register_name").value;
-  var surname_register = document.getElementById("register_surname").value;
-  var phonenumber_register = document.getElementById("register_phonenumber").value;
-  var p_iva_register = document.getElementById("register_p_iva").value;
-  var date_of_birth_register = document.getElementById("register_date_of_birth").value;
-  var email_address_register = document.getElementById("register_email").value;
-  var password_register = document.getElementById("register_password").value;
-  var confirm_password_register = document.getElementById("register_password_confirm").value; // let val_name = document.getElementById('name_fill')
+  var email_address_register = document.getElementById("email").value;
+  var password_register = document.getElementById("password").value;
+  var confirm_password_register = document.getElementById("password_confirm").value; // let val_name = document.getElementById('name_fill')
   // let val_surname = document.getElementById('surname_fill')
-  // let val_password = document.getElementById('password_fill')
 
-  if (email_address_register != "" & name_register != "" & surname_register != "" & phonenumber_register != "" & p_iva_register != "" & date_of_birth_register != "") {
-    // if (name_register.length > 20) {
-    //     val_name.innerHTML = 'hai un massimo di 20 caratteri';
-    //     return false;
-    // } 
-    // if (surname_register.length > 20) {
-    //     val_surname.innerHTML = 'hai un massimo di 20 caratteri';
-    //     return false;
-    // } 
-    // if (password != conferma) {
-    //     alert("La password confermata è diversa da quella scelta, controllare.");
-    //     document.modulo.conferma.value = "";
-    //     document.modulo.conferma.focus();
-    //     return false;
-    //     }
+  var val_mail = document.getElementById('email_fill');
+  var val_compila = document.getElementById('compilatutto');
+  var val_password = document.getElementById('password_fill');
+
+  if (name_register != '' & surname_register != '' & phonenumber_register != '' & email_address_register != "") {
     if (!email_address_register.includes('@') || !email_address_register.includes('.')) {
-      alert('email non corretta');
-      return false;
+      alert('email normale');
     }
 
     if (password_register != confirm_password_register) {
-      alert("La password confermata è diversa da quella scelta, controllare.");
-      return false;
+      alert('metti la stessa password ');
     }
   } else {
-    alert('compila tutti i campi');
-    return false;
-  }
+    alert('compila tutto');
+  } // if (password_register != confirm_password_register) {
+  //     alert("La password confermata è diversa da quella scelta, controllare.");
+  //     return false;
+  // } 
+  // }
+  // else {
+  //     val_compila.innerHTML = 'compila i campi vuoti';
+  //     return false;
+  // }
 
-  return true;
-}
+};
 
 /***/ }),
 

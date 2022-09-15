@@ -57,6 +57,7 @@ class RegisterController extends Controller
             'date_of_birth' => ['nullable','date'],
             'email' => ['required', 'string', 'email:rfc,dns', 'unique:users'],
             'password' => ['required', 'string', 'min:8'],
+            'password_confirmation' => ['required', 'same:password'] 
         ]);
     }
 
