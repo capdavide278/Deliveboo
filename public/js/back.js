@@ -27862,6 +27862,57 @@ module.exports = function(module) {
 
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
+var register_form = document.getElementById("register_form");
+
+if (register_form) {
+  // register_form.onsubmit = function () { return validateRegister() };
+  register_form.addEventListener("submit", validateRegister());
+}
+
+function validateRegister() {
+  var name_register = document.getElementById("register_name").value;
+  var surname_register = document.getElementById("register_surname").value;
+  var phonenumber_register = document.getElementById("register_phonenumber").value;
+  var p_iva_register = document.getElementById("register_p_iva").value;
+  var date_of_birth_register = document.getElementById("register_date_of_birth").value;
+  var email_address_register = document.getElementById("register_email").value;
+  var password_register = document.getElementById("register_password").value;
+  var confirm_password_register = document.getElementById("register_password_confirm").value; // let val_name = document.getElementById('name_fill')
+  // let val_surname = document.getElementById('surname_fill')
+  // let val_password = document.getElementById('password_fill')
+
+  if (email_address_register != "" & name_register != "" & surname_register != "" & phonenumber_register != "" & p_iva_register != "" & date_of_birth_register != "") {
+    // if (name_register.length > 20) {
+    //     val_name.innerHTML = 'hai un massimo di 20 caratteri';
+    //     return false;
+    // } 
+    // if (surname_register.length > 20) {
+    //     val_surname.innerHTML = 'hai un massimo di 20 caratteri';
+    //     return false;
+    // } 
+    // if (password != conferma) {
+    //     alert("La password confermata è diversa da quella scelta, controllare.");
+    //     document.modulo.conferma.value = "";
+    //     document.modulo.conferma.focus();
+    //     return false;
+    //     }
+    if (!email_address_register.includes('@') || !email_address_register.includes('.')) {
+      alert('email non corretta');
+      return false;
+    }
+
+    if (password_register != confirm_password_register) {
+      alert("La password confermata è diversa da quella scelta, controllare.");
+      return false;
+    }
+  } else {
+    alert('compila tutti i campi');
+    return false;
+  }
+
+  return true;
+}
+
 /***/ }),
 
 /***/ "./resources/js/bootstrap.js":
@@ -27915,7 +27966,7 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\glogh\Music\php\laravel\Deliveboo\resources\js\back.js */"./resources/js/back.js");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\php_esercizi\laravel\Deliveboo\resources\js\back.js */"./resources/js/back.js");
 
 
 /***/ })
