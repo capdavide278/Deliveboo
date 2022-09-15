@@ -16,7 +16,7 @@ class CreateRestaurantsTable extends Migration
         Schema::create('restaurants', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained();
-            $table->bigInteger('rest_phonenumber');
+            $table->bigInteger('rest_phonenumber')->nullable();
             $table->string('rest_email')->unique();
             $table->string('image')->nullable();
             $table->string('name_restaurant');

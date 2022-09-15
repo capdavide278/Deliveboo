@@ -72,12 +72,16 @@ class RestaurantController extends Controller
 
         // creazione dati
         $restaurant = Restaurant::create($data);
-        $restaurant->category()->sync($data['categories']);
+        if('categories[]'){
+            echo 'Inserisci Categorie';
+        } else {
+            $restaurant->category()->sync($data['categories']);
+            // ti mando alla pagina
+            return redirect()->route('admin.restaurant.index', [
+                'restaurant'    => $restaurant,
+            ]);
+        }
 
-        // ti mando alla pagina
-        return redirect()->route('admin.restaurant.index', [
-            'restaurant'    => $restaurant,
-        ]);
 
     }
 

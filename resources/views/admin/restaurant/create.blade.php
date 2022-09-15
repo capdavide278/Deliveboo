@@ -43,11 +43,11 @@
         <div class="mb-3">
             <label class="form-label" for="rest_phonenumber">Restaurant Phonenumber</label>
             <input class="form-control @error('rest_phonenumber') is-invalid @enderror" type="text" maxlength="10" name="rest_phonenumber" id="rest_phonenumber" value="{{ old('rest_phonenumber') }}">
-            @error('rest_phonenumber')
+            {{-- @error('rest_phonenumber')
                 <div class="invalid-feedback">
                     {{ $message }}
                 </div>
-            @enderror
+            @enderror --}}
         </div>
 
         <div class="mb-3">
