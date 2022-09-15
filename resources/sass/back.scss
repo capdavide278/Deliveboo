@@ -6,3 +6,17 @@
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+
+.overlay {
+    display: flex;
+    position: fixed;
+    inset: 0;
+    background-color: rgba($color: #000000, $alpha: 0.4);
+
+    .popup {
+        margin: auto;
+        padding: 2rem;
+        background-color: #FFFFFF;
+        border-radius: 1rem;
+    }
+}

@@ -1,6 +1,21 @@
 @extends('admin.layout.app')
 
 @section('content')
+
+ {{-- messaggio creazione piatto --}}
+ @if (session('create'))
+ <div class="alert alert-warning alert-dismissible fade show" role="alert">
+     {{session('create')}}
+     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+ </div>
+@endif
+{{-- messaggio edit piatto --}}
+@if (session('edit'))
+ <div class="alert alert-warning alert-dismissible fade show" role="alert">
+     {{session('edit')}}
+     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+ </div>
+@endif
     <div class="container">
         <div class="card" style="width: 20rem; min-height: 10rem"> {{-- TODO remove INLINE STYLE --}}
             <div class="card-body">
