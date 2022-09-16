@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Restaurant;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+
 
 class AdminController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
+    protected $perPage= 10;
+
     public function __construct()
     {
         $this->middleware('auth');
@@ -24,6 +24,7 @@ class AdminController extends Controller
      */
     public function index()
     {
-        return view('admin.home');
+        $restaurants = Auth::user()->restaurant()->paginate($this->perPage);
+        return view('admin.home', compact('restaurants'));
     }
 }

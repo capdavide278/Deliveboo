@@ -46,8 +46,11 @@
             <input type="checkbox" name="is_visible" class="form-check-input switch-input" value="1" {{ old('is_visible', $dish->is_visible) ? 'checked="1"' : '0' }}/>
             <label for="is_visible">Piatto nel Menù *</label>
         </div>
+        <br>
+        <button type="submit" class="btn btn-primary me-3">Save</button>
+        <a href="{{route('admin.dish.index')}}" class="btn btn-success me-3">Return Dashboard</a>
 
-        <button type="submit" onclick="validateEditDish()"class="btn btn-primary">Save</button>
+        <button type="submit" class="btn btn-primary">Save</button>
     </form>
     </div>
 

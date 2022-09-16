@@ -28,9 +28,9 @@
                         <button class="btn btn-success"  type="submit">Add Dish</button>
                     </a>
 
-                    @if(Auth::id() == $restaurant->user_id)
+                    {{-- @if(Auth::id() == $restaurant->user_id)
                         <a href="{{ route('admin.restaurant.edit', ['restaurant' => $restaurant]) }}" class="btn btn-warning">Edit</a>
-                    @endif
+                    @endif --}}
 
                 </div>
             @endforeach

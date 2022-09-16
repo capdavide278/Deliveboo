@@ -54,16 +54,35 @@
                             </div>
                         @endif
                         <div class="row justify-content-center">
-                            <a class="col-3" href="{{route('admin.restaurant.index')}}">
-                                <button class="btn btn-primary"  type="submit">Your Restaurants</button>
-                            </a>
-                            <a class="col-3" href="{{route('admin.dish.index')}}">
-                                <button class="btn btn-warning"  type="submit">Your Dishes</button>
-                            </a>
+                            @foreach($restaurants as $restaurant)
+                            <div class="container">
+                                <h1 class="text-uppercase">{{ $restaurant->name_restaurant }}</h1>
+                                {{-- <img src="{{asset('storage/' . $restaurant->image)}}" alt=""> --}}
+                                <h3>Telefono: {{ $restaurant->rest_phonenumber}}</h3>
+                                <h3>Email: {{$restaurant->rest_email}}</h3>
+                                <h3>Indirizzo: {{ $restaurant->address}}</h3>
+                                <h3>Categorie: @foreach($restaurant->category as $cat)
+                                                    {{$cat->name}}
+                                                @endforeach</h3>
+
+                                <a href="{{route('admin.dish.create')}}">
+                                    <button class="btn btn-success me-3"  type="submit">Add Dish</button>
+                                </a>
+                                <a class="col-3" href="{{route('admin.dish.index')}}">
+                                    <button class="btn btn-warning"  type="submit">Your Dishes</button>
+                                </a>
+
+
+
+                            </div>
+                        @endforeach
+
                         </div>
                     </div>
 
                 </div>
+
+
             </div>
 
         </div>

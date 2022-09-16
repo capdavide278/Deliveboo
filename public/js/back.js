@@ -27860,122 +27860,25 @@ module.exports = function(module) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js"); // validation register
+__webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js"); //cancellazione piatto
 
 
-window.validateRegister = function () {
-  var name_register = document.getElementById("name").value;
-  var surname_register = document.getElementById("surname").value;
-  var phonenumber_register = document.getElementById("phonenumber").value; // let p_iva_register = document.getElementById("p_iva").value
-  // let date_of_birth_register = document.getElementById("date_of_birth").value
+var eleOverlay = document.querySelector('.overlay');
 
-  var email_address_register = document.getElementById("email").value;
-  var password_register = document.getElementById("password").value;
-  var confirm_password_register = document.getElementById("password_confirm").value; // let val_name = document.getElementById('name_fill')
-  // let val_surname = document.getElementById('surname_fill')
-
-  var val_mail = document.getElementById('email_fill');
-  var val_compila = document.getElementById('compila_tutto');
-  var val_password = document.getElementById('password_fill');
-
-  if (name_register != '' & surname_register != '' & phonenumber_register != '' & email_address_register != "") {
-    if (!email_address_register.includes('@') || !email_address_register.includes('.')) {
-      val_mail.innerHTML = 'email non valida';
-    } else {
-      val_mail.innerHTML = 'bravo email valida';
-    }
-
-    if (password_register != confirm_password_register) {
-      val_password.innerHTML = 'metti la stessa password';
-    }
-
-    return false;
-  } else {
-    val_compila.innerHTML = 'compila tutto per favore';
-  }
-
-  return true;
-}; // const form = document.getElementById('register_form')
-// form.addEventListener("submit", validateRegister());
-// validation creazione ristorante
-
-
-window.validateRestaurant = function () {
-  var name_restaurant = document.getElementById("name_restaurant").value;
-  var address = document.getElementById("address").value;
-  var my_categories = document.getElementById('category');
-  var my_category;
-  var compila = document.getElementById('compila');
-
-  if (name_restaurant != '' & address != '') {
-    '';
-  } else {
-    compila.innerHTML = 'compila tutti i campi';
-  } // my_categories.forEach(category => {
-  //     if (category.checked) {
-  //         my_category = true;
-  //         alert('pep')
-  //     } else {
-  //         alert('metti categoria')
-  //     }
-  // });
-
-
-  return true;
-}; // categorie
-
-
-var checkboxvalue = document.querySelectorAll('.remove-input');
-var checkboxlength = checkboxvalue.length;
-checkboxvalue.forEach(function (checkbox) {
-  checkbox.addEventListener('click', function () {
-    checkboxvalue.forEach(function (checkbox) {
-      checkbox.removeAttribute('required');
+if (eleOverlay) {
+  var deleteButtons = document.querySelectorAll('.js-delete');
+  var formPopup = document.querySelector('.popup');
+  deleteButtons.forEach(function (button) {
+    button.addEventListener('click', function () {
+      eleOverlay.classList.remove('d-none');
     });
-    checkbox.classList.toggle('remove-input');
-    checkboxvalue = document.querySelectorAll('.remove-input');
-
-    if (checkboxvalue.length == checkboxlength) {
-      checkboxvalue.forEach(function (checkbox) {
-        checkbox.setAttribute('required', '');
-      });
-    }
   });
-}); // validation piatto
+  document.querySelector('.js-no').addEventListener('click', function () {
+    eleOverlay.classList.add('d-none');
+  });
+}
 
-window.validateDish = function () {
-  var name_dish = document.getElementById('name_dish').value;
-  var price_dish = document.getElementById('price_dish').value;
-
-  if (name_dish != '' & price_dish != '') {
-    if (price_dish > 1) {
-      alert('bravo hai messo un prezzo normale');
-    } else if (price_dish.includes('-')) {
-      alert('il prezzo non può essere negativo');
-    }
-  } else {
-    alert('compila tutto');
-  }
-
-  return true;
-};
-
-window.validateEditDish = function () {
-  var name_dish = document.getElementById('name_dish').value;
-  var price_dish = document.getElementById('price_dish').value;
-
-  if (name_dish != '' & price_dish != '') {
-    if (price_dish > 1) {
-      alert('bravo hai messo un prezzo normale');
-    } else if (price_dish.includes('-')) {
-      alert('il prezzo non può essere negativo');
-    }
-  } else {
-    alert('compila tutto');
-  }
-
-  return true;
-};
+;
 
 /***/ }),
 

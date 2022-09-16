@@ -86,7 +86,7 @@ class DishController extends Controller
         // ti mando alla pagina
         return redirect()->route('admin.dish.show', [
             'dish'    => $dish
-        ]);
+        ])->with('create', "Il piatto  {$dish->name} è stato creato");
     }
 
     /**
@@ -152,7 +152,7 @@ class DishController extends Controller
         // ti mando alla pagina
         return redirect()->route('admin.dish.show', [
             'dish'    => $dish
-        ]);
+        ])->with('edit', "Il piatto  {$dish->name} è stato modificato");
     }
 
     /**
@@ -163,8 +163,10 @@ class DishController extends Controller
      */
     public function destroy(Dish $dish)
     {
+        $dish->transaction()->detach();
+
         $dish->delete();
 
-        return redirect()->route('admin.dish.index');
+        return redirect()->route('admin.dish.index')->with('deleted', "Il piatto  {$dish->name} è stato eliminato");
     }
 }

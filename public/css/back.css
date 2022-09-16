@@ -12627,3 +12627,17 @@ fieldset:disabled .btn {
   }
 }
 
+.overlay {
+  display: flex;
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.overlay .popup {
+  margin: auto;
+  padding: 2rem;
+  background-color: #FFFFFF;
+  border-radius: 1rem;
+}
+
