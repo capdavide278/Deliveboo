@@ -37,21 +37,24 @@ if (eleOverlay) {
         if (name_register != '' & surname_register != '' & phonenumber_register != '' & email_address_register != "") {
 
             if (!email_address_register.includes('@') || !email_address_register.includes('.')) {
-                val_mail.innerHTML = 'email non valida';
+                // val_mail.innerHTML = 'email non valida';
+                alert('strunz')
             }
-            else {
-                val_mail.innerHTML = 'bravo email valida';
-            } 
+            // else {
+            //     val_mail.innerHTML = 'bravo email valida';
+            // } 
             
             if (password_register != confirm_password_register) {
-                val_password.innerHTML = 'metti la stessa password';
+                // val_password.innerHTML = 'metti la stessa password';
+                alert('stip')
             }
 
             return false;
 
         }
         else {
-            val_compila.innerHTML = 'compila tutto per favore';     
+            // val_compila.innerHTML = 'compila tutto per favore';     
+            alert('compila')
         }
         
         return true;
