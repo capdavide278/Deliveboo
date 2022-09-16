@@ -41,6 +41,7 @@
         <div class="mb-3">
             <label class="form-label" for="price">Price *</label>
             <input class="form-control @error('price') is-invalid @enderror" type="text" pattern="^[0-9]{1,3}$" name="price" id="price_dish" value="{{ old('price') }}" required>
+            <div id="price_dish"></div>
             @error('price')
                 <div class="invalid-feedback">
                     {{ $message }}

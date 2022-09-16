@@ -65,8 +65,9 @@
             @foreach ($categories as $category)
                 <div class="form-check">
                     <input
-                    class="form-check-input"
+                    class="form-check-input remove-input"
                     type="checkbox"
+                    required
                     {{--  aggiungendo [] al nome abbiamo un array come valore di ritorno --}}
                         name="categories[]"
                         value="{{ $category->id }}"
@@ -91,7 +92,7 @@
         <div id="compila"></div>
 
 
-        <button type="submit" onclick="validateRestaurant()" class="btn btn-primary">Save</button>
+        <button type="submit" class="btn btn-primary">Save</button>
     </form>
     </div>
 

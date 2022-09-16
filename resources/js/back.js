@@ -14,7 +14,6 @@ require('./bootstrap');
         let val_mail = document.getElementById('email_fill')
         let val_compila = document.getElementById('compila_tutto')
         let val_password = document.getElementById('password_fill')
-        let button = document.getElementById('button')
 
 
         if (name_register != '' & surname_register != '' & phonenumber_register != '' & email_address_register != "") {
@@ -59,22 +58,47 @@ require('./bootstrap');
         if (name_restaurant != '' & address != '') {
             ''
         } else {
-            alert('compila')
+            compila.innerHTML = 'compila tutti i campi'
         }
 
-        my_categories.forEach(category => {
-            if (category.checked) {
-                my_category = true;
-                alert('pep')
-            } else {
-                alert('metti categoria')
-            }
-        });
+        // my_categories.forEach(category => {
+        //     if (category.checked) {
+        //         my_category = true;
+        //         alert('pep')
+        //     } else {
+        //         alert('metti categoria')
+        //     }
+        // });
             
     
         
         return true;
     }
+
+
+
+    // categorie
+    let checkboxvalue = document.querySelectorAll('.remove-input');
+    let checkboxlength = checkboxvalue.length;
+    
+    checkboxvalue.forEach(checkbox => {
+        checkbox.addEventListener('click', function(){
+            checkboxvalue.forEach(checkbox => {
+                checkbox.removeAttribute('required');
+
+            });
+            checkbox.classList.toggle('remove-input');
+            checkboxvalue = document.querySelectorAll('.remove-input');
+
+            if (checkboxvalue.length == checkboxlength) {
+                checkboxvalue.forEach(checkbox => {
+                    checkbox.setAttribute('required', '');
+                });
+            }
+            
+        });
+    });
+
 
     // validation piatto
     window.validateDish = function() {

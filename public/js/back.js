@@ -27877,7 +27877,6 @@ window.validateRegister = function () {
   var val_mail = document.getElementById('email_fill');
   var val_compila = document.getElementById('compila_tutto');
   var val_password = document.getElementById('password_fill');
-  var button = document.getElementById('button');
 
   if (name_register != '' & surname_register != '' & phonenumber_register != '' & email_address_register != "") {
     if (!email_address_register.includes('@') || !email_address_register.includes('.')) {
@@ -27911,20 +27910,38 @@ window.validateRestaurant = function () {
   if (name_restaurant != '' & address != '') {
     '';
   } else {
-    alert('compila');
-  }
+    compila.innerHTML = 'compila tutti i campi';
+  } // my_categories.forEach(category => {
+  //     if (category.checked) {
+  //         my_category = true;
+  //         alert('pep')
+  //     } else {
+  //         alert('metti categoria')
+  //     }
+  // });
 
-  my_categories.forEach(function (category) {
-    if (category.checked) {
-      my_category = true;
-      alert('pep');
-    } else {
-      alert('metti categoria');
+
+  return true;
+}; // categorie
+
+
+var checkboxvalue = document.querySelectorAll('.remove-input');
+var checkboxlength = checkboxvalue.length;
+checkboxvalue.forEach(function (checkbox) {
+  checkbox.addEventListener('click', function () {
+    checkboxvalue.forEach(function (checkbox) {
+      checkbox.removeAttribute('required');
+    });
+    checkbox.classList.toggle('remove-input');
+    checkboxvalue = document.querySelectorAll('.remove-input');
+
+    if (checkboxvalue.length == checkboxlength) {
+      checkboxvalue.forEach(function (checkbox) {
+        checkbox.setAttribute('required', '');
+      });
     }
   });
-  return true;
-}; // validation piatto
-
+}); // validation piatto
 
 window.validateDish = function () {
   var name_dish = document.getElementById('name_dish').value;
