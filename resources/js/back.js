@@ -1,20 +1,20 @@
 require('./bootstrap');
-console.log('ooooooooooooo');
     // validation register
     window.validateRegister = function(){
         let name_register = document.getElementById("name").value
         let surname_register = document.getElementById("surname").value
         let phonenumber_register = document.getElementById("phonenumber").value
-        let p_iva_register = document.getElementById("p_iva").value
+        // let p_iva_register = document.getElementById("p_iva").value
         // let date_of_birth_register = document.getElementById("date_of_birth").value
         let email_address_register = document.getElementById("email").value
         let password_register = document.getElementById("password").value;
         let confirm_password_register = document.getElementById("password_confirm").value;
-        let val_name = document.getElementById('name_fill')
+        // let val_name = document.getElementById('name_fill')
         // let val_surname = document.getElementById('surname_fill')
         let val_mail = document.getElementById('email_fill')
         let val_compila = document.getElementById('compila_tutto')
         let val_password = document.getElementById('password_fill')
+        let button = document.getElementById('button')
 
 
         if (name_register != '' & surname_register != '' & phonenumber_register != '' & email_address_register != "") {
@@ -34,11 +34,9 @@ console.log('ooooooooooooo');
 
         }
         else {
-            
-            val_compila.innerHTML = 'compila tutto per favore'
-            
-                   
+            val_compila.innerHTML = 'compila tutto per favore';     
         }
+        
         return true;
     }
 

@@ -27860,24 +27860,24 @@ module.exports = function(module) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
+__webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js"); // validation register
 
-console.log('ooooooooooooo'); // validation register
 
 window.validateRegister = function () {
   var name_register = document.getElementById("name").value;
   var surname_register = document.getElementById("surname").value;
-  var phonenumber_register = document.getElementById("phonenumber").value;
-  var p_iva_register = document.getElementById("p_iva").value; // let date_of_birth_register = document.getElementById("date_of_birth").value
+  var phonenumber_register = document.getElementById("phonenumber").value; // let p_iva_register = document.getElementById("p_iva").value
+  // let date_of_birth_register = document.getElementById("date_of_birth").value
 
   var email_address_register = document.getElementById("email").value;
   var password_register = document.getElementById("password").value;
-  var confirm_password_register = document.getElementById("password_confirm").value;
-  var val_name = document.getElementById('name_fill'); // let val_surname = document.getElementById('surname_fill')
+  var confirm_password_register = document.getElementById("password_confirm").value; // let val_name = document.getElementById('name_fill')
+  // let val_surname = document.getElementById('surname_fill')
 
   var val_mail = document.getElementById('email_fill');
   var val_compila = document.getElementById('compila_tutto');
   var val_password = document.getElementById('password_fill');
+  var button = document.getElementById('button');
 
   if (name_register != '' & surname_register != '' & phonenumber_register != '' & email_address_register != "") {
     if (!email_address_register.includes('@') || !email_address_register.includes('.')) {

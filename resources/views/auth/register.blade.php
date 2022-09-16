@@ -9,7 +9,7 @@
 
                 <div id="pep"></div>
                 <div class="card-body">
-                    <form method="POST" name="register_form" onclick="validateRegister()"  id="register_form" action="{{ route('register') }}">
+                    <form method="POST" name="register_form" onsubmit="validateRegister()"  id="register_form" action="{{ route('register') }}">
                         @csrf
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name *') }}</label>
@@ -122,7 +122,7 @@
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" id="button" onclick="validateRegister()" class="btn btn-primary">
                                     {{ __('Register') }}
                                 </button>
                             </div>

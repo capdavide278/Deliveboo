@@ -49,16 +49,19 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
-        return Validator::make($data, [
-            'name' => ['required', 'string', 'max:20'],
-            'surname' => ['required','string','max:20'],
-            'phonenumber' => ['nullable','numeric','digits:10'],
-            'p_iva' => ['required','numeric','unique:users','digits:11'],
-            'date_of_birth' => ['nullable','date'],
-            'email' => ['required', 'string', 'email:rfc,dns', 'unique:users'],
-            'password' => ['required', 'string', 'min:8'],
-            'password_confirmation' => ['required', 'same:password'] 
-        ]);
+        
+            return Validator::make($data, [
+                'name' => ['required', 'string', 'max:20'],
+                'surname' => ['required','string','max:20'],
+                'phonenumber' => ['nullable','numeric','digits:10'],
+                'p_iva' => ['required','numeric','unique:users','digits:11'],
+                'date_of_birth' => ['nullable','date'],
+                'email' => ['required', 'string', 'email:rfc,dns', 'unique:users'],
+                'password' => ['required', 'string', 'min:8'],
+                'password_confirmation' => ['required', 'same:password'] 
+            ]);
+        
+        
     }
 
     /**
@@ -70,14 +73,17 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         // create per i dati nuovi dell'user
-        return User::create([
-            'name' => $data['name'],
-            'surname' => $data['surname'],
-            'phonenumber' => $data['phonenumber'],
-            'p_iva' => $data['p_iva'],
-            'date_of_birth' => $data['date_of_birth'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-        ]);
+        if ($data = true) {
+            return User::create([
+                'name' => $data['name'],
+                'surname' => $data['surname'],
+                'phonenumber' => $data['phonenumber'],
+                'p_iva' => $data['p_iva'],
+                'date_of_birth' => $data['date_of_birth'],
+                'email' => $data['email'],
+                'password' => Hash::make($data['password']),
+            ]);
+        }
+        
     }
 }
