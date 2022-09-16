@@ -5211,7 +5211,8 @@ __webpack_require__.r(__webpack_exports__);
   name: 'PageHome',
   data: function data() {
     return {
-      restaurants: []
+      restaurants: [],
+      category: []
     };
   },
   created: function created() {
@@ -5220,6 +5221,7 @@ __webpack_require__.r(__webpack_exports__);
     axios.get('/api/restaurants').then(function (res) {
       _this.restaurants = res.data.response.data;
     });
+    console.log(this.category);
   }
 });
 
@@ -5387,7 +5389,7 @@ var render = function render() {
 
   return _c("div", {
     staticClass: "container"
-  }, [_c("h1", [_vm._v("DeliveBoo")]), _vm._v(" "), _c("div", {
+  }, [_c("h1", [_vm._v("DeliveBoo")]), _vm._v(" "), _vm._m(0), _vm._v(" "), _c("div", {
     staticClass: "row g-3 mt-4"
   }, _vm._l(_vm.restaurants, function (restaurant) {
     return _c("div", {
@@ -5418,7 +5420,42 @@ var render = function render() {
   }), 0)]);
 };
 
-var staticRenderFns = [];
+var staticRenderFns = [function () {
+  var _vm = this,
+      _c = _vm._self._c;
+
+  return _c("div", {
+    staticClass: "input-group mb-3"
+  }, [_c("div", {
+    staticClass: "input-group-prepend"
+  }, [_c("label", {
+    staticClass: "input-group-text",
+    attrs: {
+      "for": "inputGroupSelect01"
+    }
+  }, [_vm._v("Categorie")])]), _vm._v(" "), _c("select", {
+    staticClass: "custom-select",
+    attrs: {
+      id: "inputGroupSelect01"
+    }
+  }, [_c("option", {
+    attrs: {
+      selected: ""
+    }
+  }, [_vm._v("Tutte")]), _vm._v(" "), _c("option", {
+    attrs: {
+      value: "ristorante"
+    }
+  }, [_vm._v("Ristorante")]), _vm._v(" "), _c("option", {
+    attrs: {
+      value: "pizzeria"
+    }
+  }, [_vm._v("Pizzeria")]), _vm._v(" "), _c("option", {
+    attrs: {
+      value: "pesce"
+    }
+  }, [_vm._v("Pesce")])])]);
+}];
 render._withStripped = true;
 
 
