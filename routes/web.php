@@ -14,9 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Auth::routes();
 
@@ -28,5 +28,10 @@ Route::middleware('auth')
         Route::get('/', 'AdminController@index')->name('home');
         Route::resource('restaurant', 'RestaurantController');
         Route::resource('dish', 'DishController');
-        
+
    });
+
+//per gestire le rotte di vue eliminiamo la rotta principale della home in alto e mettiamo questo
+Route::get("{any?}", function(){
+    return view('welcome');
+   })->where("any", ".*")->name('welcome');

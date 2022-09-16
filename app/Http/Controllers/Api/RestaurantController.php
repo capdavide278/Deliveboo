@@ -15,10 +15,10 @@ class RestaurantController extends Controller
      */
     public function index(Request $request)
     {
-        $perPage_default = 10;
+        $perPage_default = 12;
         //request è la richiesta completa dell'utente
 
-        $perPage = $request->query('perPage', 10);
+        $perPage = $request->query('perPage', 12);
 
         //se la richiesta è sbagliata
         if($perPage < 1 || $perPage > 150){

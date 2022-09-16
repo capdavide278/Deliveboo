@@ -2,17 +2,52 @@
 
 require('./bootstrap');
 
-// window.Vue = require('vue');
 
 
-// Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 import Vue from 'vue'; //importiamo la libreria vue
-// import VueRouter from 'vue-router'; //importiamo la libreria vue router
+import VueRouter from 'vue-router'; //importiamo la libreria vue router
 
 import App from './App.vue'; //importiamo il file App.vue
+
+//importiamo i componenti delle pagine
+import PageHome from './pages/PageHome.vue';
+import PageAbout from './pages/PageAbout.vue';
+import PageContacts from './pages/PageContacts.vue';
+import Page404 from './pages/Page404.vue';
+
+const routes = [
+    {
+        path: '/',
+        name: 'home',
+        component: PageHome,
+    },
+    {
+        path: '/about',
+        name: 'about',
+        component: PageAbout,
+    },
+    {
+        path: '/contacts',
+        name: 'contacts',
+        component: PageContacts,
+    },
+    {
+        path: '*',
+        name: 'page404',
+        component: Page404,
+    }
+];
+
+const router = new VueRouter({
+    routes,
+    mode: 'history',
+});
+
+Vue.use(VueRouter); //diciamo a vue di usare il pluggin vue router
 
 
 const app = new Vue({
     el: '#app',
     render: h => h(App),
+    router, //diciamo avue di inizializzare la nostra app usando il router
 });
