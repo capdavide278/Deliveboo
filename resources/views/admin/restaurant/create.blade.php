@@ -6,18 +6,18 @@
     {{-- @dd($errors->get('tags.*')) --}}
     <div class="container">
         <h1>Inserisci i dati del tuo Ristorante</h1>
-    <form action="{{ route('admin.restaurant.store') }}" method="post" novalidate enctype="multipart/form-data">
+    <form action="{{ route('admin.restaurant.store') }}" method="post"  novalidate enctype="multipart/form-data">
 
         @csrf
 
         <div class="mb-3">
             <label class="form-label" for="name_restaurant">Name Restaurant *</label>
             <input class="form-control @error('name_restaurant') is-invalid @enderror" type="text" name="name_restaurant" maxlength="50" id="name_restaurant" value="{{ old('name_restaurant') }}" required>
-            @error('name_restaurant')
+            {{-- @error('name_restaurant')
                 <div class="invalid-feedback">
                     {{ $message }}
                 </div>
-            @enderror
+            @enderror --}}
         </div>
 
 {{--         <div class="mb-3">
@@ -33,11 +33,11 @@
         <div class="mb-3">
             <label class="form-label" for="address">Address *</label>
             <input class="form-control @error('address') is-invalid @enderror" type="text" name="address" id="address" value="{{ old('address') }}" required>
-            @error('address')
+            {{-- @error('address')
                 <div class="invalid-feedback">
                     {{ $message }}
                 </div>
-            @enderror
+            @enderror --}}
         </div>
 
         <div class="mb-3">
@@ -53,11 +53,11 @@
         <div class="mb-3">
             <label class="form-label" for="rest_email">Restaurant Email *</label>
             <input class="form-control @error('rest_email') is-invalid @enderror" type="email" name="rest_email" id="rest_email" value="{{ old('rest_email') }}" required>
-            @error('rest_email')
+            {{-- @error('rest_email')
                 <div class="invalid-feedback">
                     {{ $message }}
                 </div>
-            @enderror
+            @enderror --}}
         </div>
 
         <fieldset class="mb-3">
@@ -88,9 +88,10 @@
             @endforeach
         </fieldset>
 
+        <div id="compila"></div>
 
 
-        <button type="submit" class="btn btn-primary">Save</button>
+        <button type="submit" onclick="validateRestaurant()" class="btn btn-primary">Save</button>
     </form>
     </div>
 

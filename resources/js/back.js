@@ -1,60 +1,117 @@
 require('./bootstrap');
-
-
-// const register_form = document.getElementById("register_form");
-// if (register_form) {
-//     // register_form.onsubmit = function () { return validateRegister() };
-//     register_form.addEventListener("submit", validateRegister());
-// }
-
-
-window.validateRegister = function (){
-    let name_register = document.getElementById("name").value
-    let surname_register = document.getElementById("surname").value
-    let phonenumber_register = document.getElementById("phonenumber").value
-    let p_iva_register = document.getElementById("p_iva").value
-    // let date_of_birth_register = document.getElementById("date_of_birth").value
-    let email_address_register = document.getElementById("email").value
-    let password_register = document.getElementById("password").value;
-    let confirm_password_register = document.getElementById("password_confirm").value;
-    // let val_name = document.getElementById('name_fill')
-    // let val_surname = document.getElementById('surname_fill')
-    let val_mail = document.getElementById('email_fill')
-    let val_compila = document.getElementById('compilatutto')
-    let val_password = document.getElementById('password_fill')
+console.log('ooooooooooooo');
+    // validation register
+    window.validateRegister = function(){
+        let name_register = document.getElementById("name").value
+        let surname_register = document.getElementById("surname").value
+        let phonenumber_register = document.getElementById("phonenumber").value
+        let p_iva_register = document.getElementById("p_iva").value
+        // let date_of_birth_register = document.getElementById("date_of_birth").value
+        let email_address_register = document.getElementById("email").value
+        let password_register = document.getElementById("password").value;
+        let confirm_password_register = document.getElementById("password_confirm").value;
+        let val_name = document.getElementById('name_fill')
+        // let val_surname = document.getElementById('surname_fill')
+        let val_mail = document.getElementById('email_fill')
+        let val_compila = document.getElementById('compila_tutto')
+        let val_password = document.getElementById('password_fill')
 
 
         if (name_register != '' & surname_register != '' & phonenumber_register != '' & email_address_register != "") {
 
             if (!email_address_register.includes('@') || !email_address_register.includes('.')) {
-                alert('email normale')
+                val_mail.innerHTML = 'email non valida';
             }
-           
-           
+            else {
+                val_mail.innerHTML = 'bravo email valida';
+            } 
+            
             if (password_register != confirm_password_register) {
-                alert('metti la stessa password ')
+                val_password.innerHTML = 'metti la stessa password';
             }
 
+            return false;
 
         }
         else {
-            alert('compila tutto')
+            
+            val_compila.innerHTML = 'compila tutto per favore'
+            
+                   
+        }
+        return true;
+    }
+
+
+
+    // const form = document.getElementById('register_form')
+    // form.addEventListener("submit", validateRegister());
+
+
+
+    // validation creazione ristorante
+
+    window.validateRestaurant = function() {
+        let name_restaurant = document.getElementById("name_restaurant").value
+        let address = document.getElementById("address").value
+        let my_categories = document.getElementById('category')
+        let my_category;
+        let compila = document.getElementById('compila')
+
+        if (name_restaurant != '' & address != '') {
+            ''
+        } else {
+            alert('compila')
         }
 
-       
-        // if (password_register != confirm_password_register) {
-        //     alert("La password confermata è diversa da quella scelta, controllare.");
-        //     return false;
-        // } 
+        my_categories.forEach(category => {
+            if (category.checked) {
+                my_category = true;
+                alert('pep')
+            } else {
+                alert('metti categoria')
+            }
+        });
+            
+    
+        
+        return true;
+    }
+
+    // validation piatto
+    window.validateDish = function() {
+        let name_dish = document.getElementById('name_dish').value;
+        let price_dish = document.getElementById('price_dish').value;
+
+        if (name_dish != '' & price_dish != '') {
+            if (price_dish > 1) {
+                alert('bravo hai messo un prezzo normale');
+            } else if (price_dish.includes('-')) {
+                alert('il prezzo non può essere negativo')
+            }
+        } else {
+            alert('compila tutto');
+        }
+
+        return true;
+    }    
 
 
-    // }
-    // else {
-    //     val_compila.innerHTML = 'compila i campi vuoti';
-    //     return false;
-    // }
-}
+    window.validateEditDish = function() {
+        let name_dish = document.getElementById('name_dish').value;
+        let price_dish = document.getElementById('price_dish').value;
 
- 
+        if (name_dish != '' & price_dish != '') {
+            if (price_dish > 1) {
+                alert('bravo hai messo un prezzo normale');
+            } else if (price_dish.includes('-')) {
+                alert('il prezzo non può essere negativo')
+            }
+        } else {
+            alert('compila tutto');
+        }
+
+        return true;
+    }    
 
     

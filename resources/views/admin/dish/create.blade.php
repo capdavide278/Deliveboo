@@ -4,13 +4,13 @@
 
 <div class="container">
     <h1>Create new dish</h1>
-    <form action="{{ route('admin.dish.store') }}" method="post" novalidate enctype="multipart/form-data">
+    <form action="{{ route('admin.dish.store') }}"  method="post" novalidate enctype="multipart/form-data">
 
         @csrf
 
         <div class="mb-3">
             <label class="form-label" for="name">Name *</label>
-            <input class="form-control @error('name') is-invalid @enderror" type="text" name="name" maxlength="50" id="name" value="{{ old('name') }}"  required>
+            <input class="form-control @error('name') is-invalid @enderror" type="text" name="name" maxlength="50" id="name_dish" value="{{ old('name') }}"  required>
             @error('name')
                 <div class="invalid-feedback">
                     {{ $message }}
@@ -40,7 +40,7 @@
 
         <div class="mb-3">
             <label class="form-label" for="price">Price *</label>
-            <input class="form-control @error('price') is-invalid @enderror" type="text" pattern="^[0-9]{1,3}$" name="price" id="price" value="{{ old('price') }}" required>
+            <input class="form-control @error('price') is-invalid @enderror" type="text" pattern="^[0-9]{1,3}$" name="price" id="price_dish" value="{{ old('price') }}" required>
             @error('price')
                 <div class="invalid-feedback">
                     {{ $message }}
@@ -52,7 +52,7 @@
             <label for="is_visible">Piatto nel Menù</label>
         </div>
 
-        <button type="submit" class="btn btn-primary">Save</button>
-        </form>
+        <button type="submit" onclick="validateDish()" class="btn btn-primary">Save</button>
+    </form>
 </div>
 @endsection

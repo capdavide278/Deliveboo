@@ -9,7 +9,7 @@
 
                 <div id="pep"></div>
                 <div class="card-body">
-                    <form method="POST" name="register_form" id="register_form" novalidate  action="{{ route('register') }}">
+                    <form method="POST" name="register_form" onclick="validateRegister()"  id="register_form" action="{{ route('register') }}">
                         @csrf
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name *') }}</label>
@@ -87,7 +87,7 @@
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address *') }}</label>
                             <div class="col-md-6">
                                 <input id="email" type="text" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
-                                <div id="email-fill"></div>
+                                <h4 id="email_fill"></h4>
                                 {{-- @error('email')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -115,14 +115,14 @@
 
                             <div class="col-md-6">
                                 <input id="password_confirm" type="password" class="form-control" name="password_confirmation" value="{{ old('password_confirmation') }}" required autocomplete="new-password">
-                                <div id="password_fill"></div>
-                                <h1 id="compilatutto" style="color: red"></h1>
+                                <h4 id="password_fill"></h4>
+                                <h1 id="compila_tutto" style="color: red"></h1>
                             </div>
                         </div>
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" onclick="validateRegister()"  class="btn btn-primary">
+                                <button type="submit" class="btn btn-primary">
                                     {{ __('Register') }}
                                 </button>
                             </div>
