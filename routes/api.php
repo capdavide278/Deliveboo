@@ -19,4 +19,5 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::get('/restaurants', 'Api\RestaurantController@index')->name('api.restaurants.index');
+Route::get('/restaurants/{restaurant}', 'Api\restaurantController@show')->name('api.restaurant.show');
 

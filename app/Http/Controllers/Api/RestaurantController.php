@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\Restaurant;
 use Illuminate\Http\Request;
+use SebastianBergmann\Environment\Console;
 
 class RestaurantController extends Controller
 {
@@ -58,9 +59,19 @@ class RestaurantController extends Controller
      * @param  \App\Models\Restaurant  $restaurant
      * @return \Illuminate\Http\Response
      */
-    public function show(Restaurant $restaurant)
+    public function show(string $idRest)
     {
-        //
+        $restaurantApi = Restaurant::with('dish')->where('id', $idRest)->first();
+        if($restaurantApi) {
+            return response()->json([
+                'success' => true,
+                'result' =>$restaurantApi
+            ]);
+        } else {
+            return response()->json([
+                'success' => false,
+            ]);
+        }
     }
 
     /**

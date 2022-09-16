@@ -14,6 +14,7 @@ import PageHome from './pages/PageHome.vue';
 import PageAbout from './pages/PageAbout.vue';
 import PageContacts from './pages/PageContacts.vue';
 import Page404 from './pages/Page404.vue';
+import PageShowDish from './pages/PageShowDish.vue';
 
 const routes = [
     {
@@ -30,6 +31,13 @@ const routes = [
         path: '/contacts',
         name: 'contacts',
         component: PageContacts,
+    },
+    {
+        //pagina di dettaglio dinamica del riasstorante con piatti
+        path: '/:idRest',
+        name: 'PageShowDish',
+        component: PageShowDish,
+        props: true //per le rotte dinamiche
     },
     {
         path: '*',
