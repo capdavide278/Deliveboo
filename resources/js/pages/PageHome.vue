@@ -1,19 +1,29 @@
 <template>
     <div class="container">
         <h1>DeliveBoo</h1>
-        <!-- search -->
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-                <label class="input-group-text" for="inputGroupSelect01">Categorie</label>
-            </div>
-            <select  class="custom-select" id="inputGroupSelect01">
-                <option selected>Tutte</option>
-                <option value="ristorante">Ristorante</option>
-                <option value="pizzeria">Pizzeria</option>
-                <option value="pesce">Pesce</option>
+        <!-- <CategoryCheck  @search="search" /> -->
+        <section>
 
-            </select>
-        </div>
+            <div class="" @change="search(inputCategory)" method="get">
+                <span><strong>Categorie:  </strong></span>
+                <!-- <div v-for="(category, i) in categories" :key="i">
+
+                    <input type="checkbox" class=" form-check-input" :name="category" :id="category" :value="category" v-model="checkedNames" />
+                    <label class=" form-check-label" :for="category">{{category}}</label>
+                </div> -->
+
+
+               <input type="checkbox" class=" form-check-input" name="ristorante"  id="2" value="2" v-model="inputCategory" />
+                <label class=" form-check-label" for="ristorante">ristorante</label>
+
+                <input type="checkbox" class=" form-check-input" name="vegano"  id="5" value="5" v-model="inputCategory" />
+                <label class=" form-check-label" for="vegano">vegano</label>
+
+                <input type="checkbox" class=" form-check-input" name="pizzeria" id="1" value="1" v-model="inputCategory" />
+                <label class=" form-check-label" for="pizzeria">pizzeria</label>
+            </div>
+        </section>
+
         <div class="row g-3 mt-4">
 
             <div v-for="restaurant in restaurants" :key="restaurant.id" class="card col-sm-6 col-md-4 ">
@@ -39,24 +49,57 @@
 </template>
 
 <script>
+import { computed } from 'vue';
+// import CategoryCheck from '../components/CategoryCheck.vue'
 
     export default {
         name:'PageHome',
+        components:{
+        // CategoryCheck,
+    },
+    props:{
+categoria: String
+    },
+
+
         data(){
             return {
+                categories : [ 'Pizzeria', 'Ristorante', 'Pesce', 'Vegetariano', 'Vegano', 'Bergamasco', 'Etnico', 'Asiatico',  'Messicano'],
+                checkedNames: '',
                 restaurants: [],
+                restaurantsCat: [],
                 category: [],
+                userValue: '',
+                inputCategory: [],
+                genereApi: {},
+            genereVari: [],
+            stringa : ''
             }
         },
         created(){
+
             axios.get('/api/restaurants')
             .then(res => {
             this.restaurants = res.data.response.data;
-    });
-    console.log(this.category)
+            });
+            },
+            methods: {
+                search(cat){
+                    this.inputCategory = cat;
+                    console.log(this.inputCategory.toString());
+                    this.stringa = this.inputCategory.toString();
 
-    }
-    }
+                    axios.get('/api/restaurants/search?category='+this.stringa )
+                    .then(res => {
+                        this.restaurants = res.data.response;
+                        console.log(this.restaurantsCat);
+                    });
+
+
+                }
+            },
+
+        }
 </script>
 
 <style lang="scss" scoped>

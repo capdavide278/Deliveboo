@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Restaurant;
+
 use Illuminate\Http\Request;
 use SebastianBergmann\Environment\Console;
 
@@ -18,7 +19,6 @@ class RestaurantController extends Controller
     {
         $perPage_default = 12;
         //request è la richiesta completa dell'utente
-
         $perPage = $request->query('perPage', 12);
 
         //se la richiesta è sbagliata
@@ -26,12 +26,29 @@ class RestaurantController extends Controller
             $perPage = $perPage_default;
         }
         $restaurants = Restaurant::with('category', 'dish')->paginate($perPage);
+
         return response()->json([
             'success' => true,
             'response' =>$restaurants
         ]);
+
+
     }
 
+    public function search(Request $request){
+        $category = $request->get('category');
+//es richiesta url -> /api/restaurants/search?category=8&9
+        $restaurantsCat = Restaurant::with(['category'])->whereHas('category', function($q) use ( $category ){
+             $q->where('category_id', 'like', $category);
+         })->get();
+        //   ddd($restaurantsCat);
+
+         if($restaurantsCat){
+            return response()->json([
+            'success' => true,
+            'response' =>$restaurantsCat
+        ]);}
+    }
     /**
      * Show the form for creating a new resource.
      *

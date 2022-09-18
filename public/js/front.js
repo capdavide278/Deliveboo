@@ -5207,12 +5207,29 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
+ // import CategoryCheck from '../components/CategoryCheck.vue'
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'PageHome',
+  components: {// CategoryCheck,
+  },
+  props: {
+    categoria: String
+  },
   data: function data() {
     return {
+      categories: ['Pizzeria', 'Ristorante', 'Pesce', 'Vegetariano', 'Vegano', 'Bergamasco', 'Etnico', 'Asiatico', 'Messicano'],
+      checkedNames: '',
       restaurants: [],
-      category: []
+      restaurantsCat: [],
+      category: [],
+      userValue: '',
+      inputCategory: [],
+      genereApi: {},
+      genereVari: [],
+      stringa: ''
     };
   },
   created: function created() {
@@ -5221,7 +5238,19 @@ __webpack_require__.r(__webpack_exports__);
     axios.get('/api/restaurants').then(function (res) {
       _this.restaurants = res.data.response.data;
     });
-    console.log(this.category);
+  },
+  methods: {
+    search: function search(cat) {
+      var _this2 = this;
+
+      this.inputCategory = cat;
+      console.log(this.inputCategory.toString());
+      this.stringa = this.inputCategory.toString();
+      axios.get('/api/restaurants/search?category=' + this.stringa).then(function (res) {
+        _this2.restaurants = res.data.response;
+        console.log(_this2.restaurantsCat);
+      });
+    }
   }
 });
 
@@ -5389,7 +5418,142 @@ var render = function render() {
 
   return _c("div", {
     staticClass: "container"
-  }, [_c("h1", [_vm._v("DeliveBoo")]), _vm._v(" "), _vm._m(0), _vm._v(" "), _c("div", {
+  }, [_c("h1", [_vm._v("DeliveBoo")]), _vm._v(" "), _c("section", [_c("div", {
+    attrs: {
+      method: "get"
+    },
+    on: {
+      change: function change($event) {
+        return _vm.search(_vm.inputCategory);
+      }
+    }
+  }, [_vm._m(0), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.inputCategory,
+      expression: "inputCategory"
+    }],
+    staticClass: "form-check-input",
+    attrs: {
+      type: "checkbox",
+      name: "ristorante",
+      id: "2",
+      value: "2"
+    },
+    domProps: {
+      checked: Array.isArray(_vm.inputCategory) ? _vm._i(_vm.inputCategory, "2") > -1 : _vm.inputCategory
+    },
+    on: {
+      change: function change($event) {
+        var $$a = _vm.inputCategory,
+            $$el = $event.target,
+            $$c = $$el.checked ? true : false;
+
+        if (Array.isArray($$a)) {
+          var $$v = "2",
+              $$i = _vm._i($$a, $$v);
+
+          if ($$el.checked) {
+            $$i < 0 && (_vm.inputCategory = $$a.concat([$$v]));
+          } else {
+            $$i > -1 && (_vm.inputCategory = $$a.slice(0, $$i).concat($$a.slice($$i + 1)));
+          }
+        } else {
+          _vm.inputCategory = $$c;
+        }
+      }
+    }
+  }), _vm._v(" "), _c("label", {
+    staticClass: "form-check-label",
+    attrs: {
+      "for": "ristorante"
+    }
+  }, [_vm._v("ristorante")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.inputCategory,
+      expression: "inputCategory"
+    }],
+    staticClass: "form-check-input",
+    attrs: {
+      type: "checkbox",
+      name: "vegano",
+      id: "5",
+      value: "5"
+    },
+    domProps: {
+      checked: Array.isArray(_vm.inputCategory) ? _vm._i(_vm.inputCategory, "5") > -1 : _vm.inputCategory
+    },
+    on: {
+      change: function change($event) {
+        var $$a = _vm.inputCategory,
+            $$el = $event.target,
+            $$c = $$el.checked ? true : false;
+
+        if (Array.isArray($$a)) {
+          var $$v = "5",
+              $$i = _vm._i($$a, $$v);
+
+          if ($$el.checked) {
+            $$i < 0 && (_vm.inputCategory = $$a.concat([$$v]));
+          } else {
+            $$i > -1 && (_vm.inputCategory = $$a.slice(0, $$i).concat($$a.slice($$i + 1)));
+          }
+        } else {
+          _vm.inputCategory = $$c;
+        }
+      }
+    }
+  }), _vm._v(" "), _c("label", {
+    staticClass: "form-check-label",
+    attrs: {
+      "for": "vegano"
+    }
+  }, [_vm._v("vegano")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.inputCategory,
+      expression: "inputCategory"
+    }],
+    staticClass: "form-check-input",
+    attrs: {
+      type: "checkbox",
+      name: "pizzeria",
+      id: "1",
+      value: "1"
+    },
+    domProps: {
+      checked: Array.isArray(_vm.inputCategory) ? _vm._i(_vm.inputCategory, "1") > -1 : _vm.inputCategory
+    },
+    on: {
+      change: function change($event) {
+        var $$a = _vm.inputCategory,
+            $$el = $event.target,
+            $$c = $$el.checked ? true : false;
+
+        if (Array.isArray($$a)) {
+          var $$v = "1",
+              $$i = _vm._i($$a, $$v);
+
+          if ($$el.checked) {
+            $$i < 0 && (_vm.inputCategory = $$a.concat([$$v]));
+          } else {
+            $$i > -1 && (_vm.inputCategory = $$a.slice(0, $$i).concat($$a.slice($$i + 1)));
+          }
+        } else {
+          _vm.inputCategory = $$c;
+        }
+      }
+    }
+  }), _vm._v(" "), _c("label", {
+    staticClass: "form-check-label",
+    attrs: {
+      "for": "pizzeria"
+    }
+  }, [_vm._v("pizzeria")])])]), _vm._v(" "), _c("div", {
     staticClass: "row g-3 mt-4"
   }, _vm._l(_vm.restaurants, function (restaurant) {
     return _c("div", {
@@ -5424,37 +5588,7 @@ var staticRenderFns = [function () {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _c("div", {
-    staticClass: "input-group mb-3"
-  }, [_c("div", {
-    staticClass: "input-group-prepend"
-  }, [_c("label", {
-    staticClass: "input-group-text",
-    attrs: {
-      "for": "inputGroupSelect01"
-    }
-  }, [_vm._v("Categorie")])]), _vm._v(" "), _c("select", {
-    staticClass: "custom-select",
-    attrs: {
-      id: "inputGroupSelect01"
-    }
-  }, [_c("option", {
-    attrs: {
-      selected: ""
-    }
-  }, [_vm._v("Tutte")]), _vm._v(" "), _c("option", {
-    attrs: {
-      value: "ristorante"
-    }
-  }, [_vm._v("Ristorante")]), _vm._v(" "), _c("option", {
-    attrs: {
-      value: "pizzeria"
-    }
-  }, [_vm._v("Pizzeria")]), _vm._v(" "), _c("option", {
-    attrs: {
-      value: "pesce"
-    }
-  }, [_vm._v("Pesce")])])]);
+  return _c("span", [_c("strong", [_vm._v("Categorie:  ")])]);
 }];
 render._withStripped = true;
 
