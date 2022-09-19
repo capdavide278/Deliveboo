@@ -5193,7 +5193,113 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'PageCart'
+  name: 'PageCart',
+  data: function data() {
+    return {
+      cart2: '',
+      cart: '',
+      prova: localStorage.getItem('cart')
+    };
+  },
+  created: function created() {
+    this.cart2 = localStorage.getItem('cart');
+    this.cart = JSON.parse(this.cart2);
+    console.log(localStorage.getItem('cart'));
+  },
+  computed: {
+    cartTotal: function cartTotal() {
+      //in this function we can show all data that add in cart and i use it to show total of price that user add
+      var i;
+      var total = 0;
+
+      for (i = 0; i < this.cart.length; i++) {
+        total += this.cart[i].price;
+      }
+
+      return total;
+    },
+    totalItem: function totalItem() {
+      // in this function we Plus all price of buy
+      var sum = 0;
+      var summ = 0;
+      this.cart.forEach(function (item) {
+        var sum = item.price;
+        summ += sum * parseFloat(item.qty);
+
+        if (summ < 1) {
+          $(".modal").hide();
+        }
+      });
+      return summ;
+    }
+  },
+  methods: {
+    findById: function findById(arr, id) {
+      // this important to show one by one of Quantity
+      return arr.find(function (x) {
+        return x.id === id;
+      });
+    },
+    added: function added(item) {
+      // when user choose a buy, this function add that in cart
+      var itemm = this.findById(this.cart, item.id);
+
+      if (itemm !== undefined) {
+        itemm.qty += 1;
+        this.saveCats();
+      } else {
+        // cartadd is here to get all things that click or chosen by user
+        this.cartadd.id = item.id;
+        this.cartadd.name = item.name;
+        this.cartadd.price = item.price; // this.cartadd.image = item.image;
+
+        this.cartadd.qty = 1;
+        this.cart.push(this.cartadd);
+        this.cartadd = {};
+        this.saveCats(); // this function most important to save all inform of products
+
+        console.log(localStorage.getItem('cart'));
+      }
+    },
+    viewCart: function viewCart() {
+      if (localStorage.getItem("cart")) {
+        this.cart = JSON.parse(localStorage.getItem("cart"));
+        this.badge = this.cart.length;
+        this.totalprice = this.cart.reduce(function (total, item) {
+          return total + item.qty * item.price;
+        }, 0);
+      }
+    },
+    saveCats: function saveCats() {
+      // for save in local storage set the below code
+      var parsed = JSON.stringify(this.cart);
+      localStorage.setItem("cart", parsed);
+      this.viewCart(); // by this function we can see all products are save in web
+    },
+    remove: function remove(id) {
+      // this function remove buy, one by one according id in cart & main page
+      var item = this.findById(this.cart, id);
+
+      if (item !== undefined) {
+        item.qty -= 1;
+
+        if (item.qty <= 0) {
+          var index = this.cart.indexOf(item);
+          this.cart.splice(index, 1);
+        }
+
+        this.saveCats();
+        console.log(localStorage.getItem('cart'));
+      }
+    },
+    removeall: function removeall(id) {
+      var item = this.findById(this.cart, id);
+      item.qty = 0;
+      var index = this.cart.indexOf(item);
+      this.cart.splice(index, 1);
+      this.saveCats();
+    }
+  }
 });
 
 /***/ }),
@@ -5262,7 +5368,14 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       is404: false,
-      restaurant: null
+      restaurant: null,
+      cart: [],
+      cartadd: {
+        id: "",
+        name: "",
+        price: "",
+        image: ""
+      }
     };
   },
   created: function created() {
@@ -5278,6 +5391,78 @@ __webpack_require__.r(__webpack_exports__);
         _this.is404 = true;
       }
     });
+    this.viewCart();
+  },
+  methods: {
+    findById: function findById(arr, id) {
+      // this important to show one by one of Quantity
+      return arr.find(function (x) {
+        return x.id === id;
+      });
+    },
+    viewCart: function viewCart() {
+      if (localStorage.getItem("cart")) {
+        this.cart = JSON.parse(localStorage.getItem("cart"));
+        this.badge = this.cart.length;
+        this.totalprice = this.cart.reduce(function (total, item) {
+          return total + item.qty * item.price;
+        }, 0);
+      }
+    },
+    added: function added(item) {
+      // when user choose a buy, this function add that in cart
+      var itemm = this.findById(this.cart, item.id);
+
+      if (itemm !== undefined) {
+        itemm.qty += 1;
+        this.saveCats();
+      } else {
+        // cartadd is here to get all things that click or chosen by user
+        this.cartadd.id = item.id;
+        this.cartadd.name = item.name;
+        this.cartadd.price = item.price; // this.cartadd.image = item.image;
+
+        this.cartadd.qty = 1;
+        this.cart.push(this.cartadd);
+        this.cartadd = {};
+        this.saveCats(); // this function most important to save all inform of products
+
+        console.log(localStorage.getItem('cart'));
+      }
+    },
+    saveCats: function saveCats() {
+      // for save in local storage set the below code
+      var parsed = JSON.stringify(this.cart);
+      localStorage.setItem("cart", parsed);
+      this.viewCart(); // by this function we can see all products are save in web
+    },
+    remove: function remove(id) {
+      // this function remove buy, one by one according id in cart & main page
+      var item = this.findById(this.cart, id);
+
+      if (item !== undefined) {
+        item.qty -= 1;
+
+        if (item.qty <= 0) {
+          var index = this.cart.indexOf(item);
+          this.cart.splice(index, 1);
+        }
+
+        this.saveCats();
+        console.log(localStorage.getItem('cart'));
+      }
+    },
+    Card: function Card() {
+      // in this part user can log in cart. infact this part is a button to show all choose buy
+      $("#myDIV").toggleClass("hide").fadeTo("slow"); // in this part when user click, cart show
+
+      $(".page").addClass("hide"); // in this part when user click, main page hide and cart show for user
+    },
+    back: function back() {
+      // in this part user can back from cart to main page
+      $("#myDIV").addClass("hide");
+      $(".page").removeClass("hide");
+    }
   }
 });
 
@@ -5376,7 +5561,48 @@ var render = function render() {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _c("h1", [_vm._v("Sono il carrello")]);
+  return _c("section", [_c("h1", [_vm._v("Il tuo carrello:")]), _vm._v(" "), _vm._l(_vm.cart, function (dish) {
+    return _c("div", {
+      key: dish.id,
+      staticClass: "card mb-3"
+    }, [_c("div", {
+      staticClass: "card-body"
+    }, [_c("h2", {
+      staticClass: "card-title text-uppercase"
+    }, [_vm._v(_vm._s(dish.name))]), _vm._v(" "), _c("div", [_vm._v("Prezzo: " + _vm._s(dish.price) + " €")]), _vm._v(" "), _c("div", [_vm._v(_vm._s(dish.qty) + " porzioni")])]), _vm._v(" "), _c("div", {
+      staticClass: "row"
+    }, [_c("button", {
+      staticClass: "btn btn-primary col-3 me-3",
+      attrs: {
+        type: "button"
+      },
+      on: {
+        click: function click($event) {
+          return _vm.added(dish);
+        }
+      }
+    }, [_vm._v("Aggiungi")]), _vm._v(" "), _c("button", {
+      staticClass: "btn btn-success col-3 me-3",
+      attrs: {
+        type: "button"
+      },
+      on: {
+        click: function click($event) {
+          return _vm.remove(dish.id);
+        }
+      }
+    }, [_vm._v("Elimina porzione")]), _vm._v(" "), _c("button", {
+      staticClass: "btn btn-danger col-3",
+      attrs: {
+        type: "button"
+      },
+      on: {
+        click: function click($event) {
+          return _vm.removeall(dish.id);
+        }
+      }
+    }, [_vm._v("Elimina")])])]);
+  }), _vm._v(" "), !_vm.totalItem == 0 ? _c("div", [_c("h3", [_c("b", [_vm._v("Totale carrello:  €" + _vm._s(_vm.totalItem))])])]) : _vm._e()], 2);
 };
 
 var staticRenderFns = [];
@@ -5478,7 +5704,18 @@ var render = function render() {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _c("div", [_vm.is404 ? _c("Page404") : _vm.restaurant ? _c("section", [_c("h1", [_vm._v(_vm._s(_vm.restaurant.name_restaurant))]), _vm._v(" "), _vm._l(_vm.restaurant.dish, function (dish) {
+  return _c("div", [_c("router-link", {
+    attrs: {
+      to: {
+        name: "cart"
+      }
+    }
+  }, [_c("button", {
+    staticClass: "btn btn-primary",
+    attrs: {
+      type: ""
+    }
+  }, [_vm._v("carrello")])]), _vm._v(" "), _vm.is404 ? _c("Page404") : _vm.restaurant ? _c("section", [_c("h1", [_vm._v(_vm._s(_vm.restaurant.name_restaurant))]), _vm._v(" "), _vm._l(_vm.restaurant.dish, function (dish) {
     return _c("div", {
       key: dish.id,
       staticClass: "card mb-3"
@@ -5495,7 +5732,17 @@ var render = function render() {
       staticClass: "card-text"
     }, [_vm._v(_vm._s(dish.description))]), _vm._v(" "), _c("div", {
       staticClass: "text-end"
-    }, [_vm._v("Prezzo: " + _vm._s(dish.price) + " €")])])]);
+    }, [_vm._v("Prezzo: " + _vm._s(dish.price) + " €")])]), _vm._v(" "), _c("button", {
+      staticClass: "btn btn-primary col-3",
+      attrs: {
+        type: "button"
+      },
+      on: {
+        click: function click($event) {
+          return _vm.added(dish);
+        }
+      }
+    }, [_vm._v("Aggiungi al carrello")])]);
   })], 2) : _vm._e()], 1);
 };
 
