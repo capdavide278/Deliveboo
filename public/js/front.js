@@ -5243,10 +5243,13 @@ __webpack_require__.r(__webpack_exports__);
     search: function search(cat) {
       var _this2 = this;
 
+      console.log('chi sei?' + cat);
       this.inputCategory = cat;
       console.log(this.inputCategory[0]);
+      var checked = document.querySelectorAll('.form-check-input').checked;
+      console.log(checked + 'check');
 
-      if (this.inputCategory[0] != 0) {
+      if (this.inputCategory[0] != undefined) {
         this.stringa = this.inputCategory.toString();
 
         if (this.inputCategory[1] != undefined) {
@@ -5259,7 +5262,9 @@ __webpack_require__.r(__webpack_exports__);
           console.log(_this2.restaurants);
           console.log('/api/restaurants/search?category=' + _this2.stringa);
         });
-      } else if (this.inputCategory = undefined) {
+      }
+
+      if (this.inputCategory[0] == undefined) {
         axios.get('/api/restaurants').then(function (res) {
           _this2.restaurants = res.data.response.data;
         });
@@ -5451,6 +5456,48 @@ var render = function render() {
     staticClass: "form-check-input",
     attrs: {
       type: "checkbox",
+      name: "pizzeria",
+      id: "1",
+      value: "1"
+    },
+    domProps: {
+      checked: Array.isArray(_vm.inputCategory) ? _vm._i(_vm.inputCategory, "1") > -1 : _vm.inputCategory
+    },
+    on: {
+      change: function change($event) {
+        var $$a = _vm.inputCategory,
+            $$el = $event.target,
+            $$c = $$el.checked ? true : false;
+
+        if (Array.isArray($$a)) {
+          var $$v = "1",
+              $$i = _vm._i($$a, $$v);
+
+          if ($$el.checked) {
+            $$i < 0 && (_vm.inputCategory = $$a.concat([$$v]));
+          } else {
+            $$i > -1 && (_vm.inputCategory = $$a.slice(0, $$i).concat($$a.slice($$i + 1)));
+          }
+        } else {
+          _vm.inputCategory = $$c;
+        }
+      }
+    }
+  }), _vm._v(" "), _c("label", {
+    staticClass: "form-check-label",
+    attrs: {
+      "for": "pizzeria"
+    }
+  }, [_vm._v("pizzeria")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.inputCategory,
+      expression: "inputCategory"
+    }],
+    staticClass: "form-check-input",
+    attrs: {
+      type: "checkbox",
       name: "ristorante",
       id: "2",
       value: "2"
@@ -5484,6 +5531,90 @@ var render = function render() {
       "for": "ristorante"
     }
   }, [_vm._v("ristorante")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.inputCategory,
+      expression: "inputCategory"
+    }],
+    staticClass: "form-check-input",
+    attrs: {
+      type: "checkbox",
+      name: "pesce",
+      id: "3",
+      value: "3"
+    },
+    domProps: {
+      checked: Array.isArray(_vm.inputCategory) ? _vm._i(_vm.inputCategory, "3") > -1 : _vm.inputCategory
+    },
+    on: {
+      change: function change($event) {
+        var $$a = _vm.inputCategory,
+            $$el = $event.target,
+            $$c = $$el.checked ? true : false;
+
+        if (Array.isArray($$a)) {
+          var $$v = "3",
+              $$i = _vm._i($$a, $$v);
+
+          if ($$el.checked) {
+            $$i < 0 && (_vm.inputCategory = $$a.concat([$$v]));
+          } else {
+            $$i > -1 && (_vm.inputCategory = $$a.slice(0, $$i).concat($$a.slice($$i + 1)));
+          }
+        } else {
+          _vm.inputCategory = $$c;
+        }
+      }
+    }
+  }), _vm._v(" "), _c("label", {
+    staticClass: "form-check-label",
+    attrs: {
+      "for": "pesce"
+    }
+  }, [_vm._v("pesce")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.inputCategory,
+      expression: "inputCategory"
+    }],
+    staticClass: "form-check-input",
+    attrs: {
+      type: "checkbox",
+      name: "vegetariano",
+      id: "4",
+      value: "4"
+    },
+    domProps: {
+      checked: Array.isArray(_vm.inputCategory) ? _vm._i(_vm.inputCategory, "4") > -1 : _vm.inputCategory
+    },
+    on: {
+      change: function change($event) {
+        var $$a = _vm.inputCategory,
+            $$el = $event.target,
+            $$c = $$el.checked ? true : false;
+
+        if (Array.isArray($$a)) {
+          var $$v = "4",
+              $$i = _vm._i($$a, $$v);
+
+          if ($$el.checked) {
+            $$i < 0 && (_vm.inputCategory = $$a.concat([$$v]));
+          } else {
+            $$i > -1 && (_vm.inputCategory = $$a.slice(0, $$i).concat($$a.slice($$i + 1)));
+          }
+        } else {
+          _vm.inputCategory = $$c;
+        }
+      }
+    }
+  }), _vm._v(" "), _c("label", {
+    staticClass: "form-check-label",
+    attrs: {
+      "for": "vegetariano"
+    }
+  }, [_vm._v("vegetariano")]), _vm._v(" "), _c("input", {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -5535,12 +5666,12 @@ var render = function render() {
     staticClass: "form-check-input",
     attrs: {
       type: "checkbox",
-      name: "pizzeria",
-      id: "1",
-      value: "1"
+      name: "bergamasco",
+      id: "6",
+      value: "6"
     },
     domProps: {
-      checked: Array.isArray(_vm.inputCategory) ? _vm._i(_vm.inputCategory, "1") > -1 : _vm.inputCategory
+      checked: Array.isArray(_vm.inputCategory) ? _vm._i(_vm.inputCategory, "6") > -1 : _vm.inputCategory
     },
     on: {
       change: function change($event) {
@@ -5549,7 +5680,7 @@ var render = function render() {
             $$c = $$el.checked ? true : false;
 
         if (Array.isArray($$a)) {
-          var $$v = "1",
+          var $$v = "6",
               $$i = _vm._i($$a, $$v);
 
           if ($$el.checked) {
@@ -5565,9 +5696,135 @@ var render = function render() {
   }), _vm._v(" "), _c("label", {
     staticClass: "form-check-label",
     attrs: {
-      "for": "pizzeria"
+      "for": "bergamasco"
     }
-  }, [_vm._v("pizzeria")])])]), _vm._v(" "), _c("div", {
+  }, [_vm._v("bergamasco")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.inputCategory,
+      expression: "inputCategory"
+    }],
+    staticClass: "form-check-input",
+    attrs: {
+      type: "checkbox",
+      name: "etnico",
+      id: "7",
+      value: "7"
+    },
+    domProps: {
+      checked: Array.isArray(_vm.inputCategory) ? _vm._i(_vm.inputCategory, "7") > -1 : _vm.inputCategory
+    },
+    on: {
+      change: function change($event) {
+        var $$a = _vm.inputCategory,
+            $$el = $event.target,
+            $$c = $$el.checked ? true : false;
+
+        if (Array.isArray($$a)) {
+          var $$v = "7",
+              $$i = _vm._i($$a, $$v);
+
+          if ($$el.checked) {
+            $$i < 0 && (_vm.inputCategory = $$a.concat([$$v]));
+          } else {
+            $$i > -1 && (_vm.inputCategory = $$a.slice(0, $$i).concat($$a.slice($$i + 1)));
+          }
+        } else {
+          _vm.inputCategory = $$c;
+        }
+      }
+    }
+  }), _vm._v(" "), _c("label", {
+    staticClass: "form-check-label",
+    attrs: {
+      "for": "etnico"
+    }
+  }, [_vm._v("etnico")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.inputCategory,
+      expression: "inputCategory"
+    }],
+    staticClass: "form-check-input",
+    attrs: {
+      type: "checkbox",
+      name: "asiatico",
+      id: "8",
+      value: "8"
+    },
+    domProps: {
+      checked: Array.isArray(_vm.inputCategory) ? _vm._i(_vm.inputCategory, "8") > -1 : _vm.inputCategory
+    },
+    on: {
+      change: function change($event) {
+        var $$a = _vm.inputCategory,
+            $$el = $event.target,
+            $$c = $$el.checked ? true : false;
+
+        if (Array.isArray($$a)) {
+          var $$v = "8",
+              $$i = _vm._i($$a, $$v);
+
+          if ($$el.checked) {
+            $$i < 0 && (_vm.inputCategory = $$a.concat([$$v]));
+          } else {
+            $$i > -1 && (_vm.inputCategory = $$a.slice(0, $$i).concat($$a.slice($$i + 1)));
+          }
+        } else {
+          _vm.inputCategory = $$c;
+        }
+      }
+    }
+  }), _vm._v(" "), _c("label", {
+    staticClass: "form-check-label",
+    attrs: {
+      "for": "asiatico"
+    }
+  }, [_vm._v("asiatico")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.inputCategory,
+      expression: "inputCategory"
+    }],
+    staticClass: "form-check-input",
+    attrs: {
+      type: "checkbox",
+      name: "messicano",
+      id: "9",
+      value: "9"
+    },
+    domProps: {
+      checked: Array.isArray(_vm.inputCategory) ? _vm._i(_vm.inputCategory, "9") > -1 : _vm.inputCategory
+    },
+    on: {
+      change: function change($event) {
+        var $$a = _vm.inputCategory,
+            $$el = $event.target,
+            $$c = $$el.checked ? true : false;
+
+        if (Array.isArray($$a)) {
+          var $$v = "9",
+              $$i = _vm._i($$a, $$v);
+
+          if ($$el.checked) {
+            $$i < 0 && (_vm.inputCategory = $$a.concat([$$v]));
+          } else {
+            $$i > -1 && (_vm.inputCategory = $$a.slice(0, $$i).concat($$a.slice($$i + 1)));
+          }
+        } else {
+          _vm.inputCategory = $$c;
+        }
+      }
+    }
+  }), _vm._v(" "), _c("label", {
+    staticClass: "form-check-label",
+    attrs: {
+      "for": "messicano"
+    }
+  }, [_vm._v("messicano")])])]), _vm._v(" "), _c("div", {
     staticClass: "row g-3 mt-4"
   }, _vm._l(_vm.restaurants, function (restaurant) {
     return _c("div", {

@@ -6,21 +6,33 @@
 
             <div class="" @change="search(inputCategory)" method="get">
                 <span><strong>Categorie:  </strong></span>
-                <!-- <div v-for="(category, i) in categories" :key="i">
-
-                    <input type="checkbox" class=" form-check-input" :name="category" :id="category" :value="category" v-model="checkedNames" />
-                    <label class=" form-check-label" :for="category">{{category}}</label>
-                </div> -->
 
 
-               <input type="checkbox" class=" form-check-input" name="ristorante"  id="2" value="2" v-model="inputCategory" />
-                <label class=" form-check-label" for="ristorante">ristorante</label>
-
-                <input type="checkbox" class=" form-check-input" name="vegano"  id="5" value="5" v-model="inputCategory" />
-                <label class=" form-check-label" for="vegano">vegano</label>
 
                 <input type="checkbox" class=" form-check-input" name="pizzeria" id="1" value="1" v-model="inputCategory" />
                 <label class=" form-check-label" for="pizzeria">pizzeria</label>
+               <input type="checkbox" class=" form-check-input" name="ristorante"  id="2" value="2" v-model="inputCategory" />
+                <label class=" form-check-label" for="ristorante">ristorante</label>
+
+                <input type="checkbox" class=" form-check-input" name="pesce"  id="3" value="3" v-model="inputCategory" />
+                <label class=" form-check-label" for="pesce">pesce</label>
+
+                <input type="checkbox" class=" form-check-input" name="vegetariano"  id="4" value="4" v-model="inputCategory" />
+                <label class=" form-check-label" for="vegetariano">vegetariano</label>
+                <input type="checkbox" class=" form-check-input" name="vegano"  id="5" value="5" v-model="inputCategory" />
+                <label class=" form-check-label" for="vegano">vegano</label>
+
+
+                <input type="checkbox" class=" form-check-input" name="bergamasco" id="6" value="6" v-model="inputCategory" />
+                <label class=" form-check-label" for="bergamasco">bergamasco</label>
+                <input type="checkbox" class=" form-check-input" name="etnico"  id="7" value="7" v-model="inputCategory" />
+                <label class=" form-check-label" for="etnico">etnico</label>
+
+                <input type="checkbox" class=" form-check-input" name="asiatico"  id="8" value="8" v-model="inputCategory" />
+                <label class=" form-check-label" for="asiatico">asiatico</label>
+
+                <input type="checkbox" class=" form-check-input" name="messicano" id="9" value="9" v-model="inputCategory" />
+                <label class=" form-check-label" for="messicano">messicano</label>
             </div>
         </section>
 
@@ -85,11 +97,15 @@ categoria: String
             },
             methods: {
                 search(cat){
+                    console.log('chi sei?'+cat)
                     this.inputCategory = cat;
                     console.log(this.inputCategory[0]);
 
+                    const checked = document.querySelectorAll('.form-check-input').checked;
+                    console.log(checked +'check')
 
-                     if (this.inputCategory[0] != 0 ) {
+
+                     if (this.inputCategory[0] != undefined ) {
                      this.stringa = this.inputCategory.toString();
 
                          if (this.inputCategory[1] != undefined ) {
@@ -103,7 +119,9 @@ categoria: String
                            console.log(this.restaurants);
                            console.log('/api/restaurants/search?category='+this.stringa)
                        });
-                     } else if (this.inputCategory = undefined)  {
+                     }
+
+                      if (this.inputCategory[0] == undefined)  {
                          axios.get('/api/restaurants')
                         .then(res => {
                         this.restaurants = res.data.response.data;
