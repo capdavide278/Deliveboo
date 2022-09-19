@@ -10,7 +10,7 @@
                     <h2 class="card-title text-uppercase">{{dish.name}}</h2>
                     <p class="card-text">{{dish.description}}</p>
                     <div class="text-end">Prezzo: {{dish.price}} €</div>
-
+                    
                 </div>
             </div>
         </section>
@@ -34,8 +34,9 @@ export default {
         is404: false,
         restaurant: null,
     }
-},
-created(){
+
+    },
+    created(){
     axios.get('/api/restaurants/' + this.idRest)
     .then(risposta =>
     {
@@ -48,7 +49,7 @@ created(){
         } else{
             this.is404 = true;
         }
-});
+    });
 }
 }
 </script>

@@ -1,6 +1,6 @@
 <template>
     <div id="containerTotal">
-
+        <nav-bar></nav-bar>
     <div class="container">
 
         <!-- in base all'URL deciderà il contenuto della pagina -->
@@ -10,8 +10,12 @@
 </template>
 
 <script>
+    import NavBar from './components/NavBar.vue';
     export default {
         name:'App',
+        components : {
+            NavBar,
+        }
 
     }
 </script>

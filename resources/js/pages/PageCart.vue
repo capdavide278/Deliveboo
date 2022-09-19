@@ -1,5 +1,16 @@
 <template>
-    <h1>Sono il carrello</h1>
+     <table>
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Price</th>
+                <th>Qty</th>
+            </tr>
+        </thead>
+        <tbody id="tbody">
+
+        </tbody>
+    </table>
 </template>
 
 <script>
