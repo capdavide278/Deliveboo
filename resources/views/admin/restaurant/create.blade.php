@@ -61,7 +61,7 @@
         </div>
 
         <fieldset class="mb-3">
-            <legend>Categories</legend>
+            <legend>Categories*</legend>
             @foreach ($categories as $category)
                 <div class="form-check">
                     <input
