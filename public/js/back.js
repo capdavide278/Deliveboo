@@ -27883,42 +27883,31 @@ if (eleOverlay) {
 window.validateRegister = function () {
   var name_register = document.getElementById("name").value;
   var surname_register = document.getElementById("surname").value;
-  var phonenumber_register = document.getElementById("phonenumber").value; // let p_iva_register = document.getElementById("p_iva").value
-  // let date_of_birth_register = document.getElementById("date_of_birth").value
+  var phonenumber_register = document.getElementById("phonenumber").value;
+  var p_iva_register = document.getElementById("p_iva").value; // let date_of_birth_register = document.getElementById("date_of_birth").value
 
   var email_address_register = document.getElementById("email").value;
   var password_register = document.getElementById("password").value;
   var confirm_password_register = document.getElementById("password_confirm").value; // let val_name = document.getElementById('name_fill')
   // let val_surname = document.getElementById('surname_fill')
+  // let val_mail = document.getElementById('email_fill')
+  // let val_compila = document.getElementById('compila_tutto')
+  // let val_password = document.getElementById('password_fill')
 
-  var val_mail = document.getElementById('email_fill');
-  var val_compila = document.getElementById('compila_tutto');
-  var val_password = document.getElementById('password_fill');
-
-  if (name_register != '' & surname_register != '' & phonenumber_register != '' & email_address_register != "") {
+  if (name_register != '' & surname_register != '' & phonenumber_register != '' & email_address_register != '' & p_iva_register != '') {
     if (!email_address_register.includes('@') || !email_address_register.includes('.')) {
-      // val_mail.innerHTML = 'email non valida';
-      alert('strunz');
-    } // else {
-    //     val_mail.innerHTML = 'bravo email valida';
-    // } 
-
-
-    if (password_register != confirm_password_register) {
-      // val_password.innerHTML = 'metti la stessa password';
-      alert('stip');
+      alert('mail non valida');
     }
 
-    return false;
+    if (password_register != confirm_password_register) {
+      alert('password diversa');
+    }
   } else {
-    // val_compila.innerHTML = 'compila tutto per favore';     
-    alert('compila');
+    alert('compila tutti i campi');
   }
 
   return true;
-}; // const form = document.getElementById('register_form')
-// form.addEventListener("submit", validateRegister());
-// validation creazione ristorante
+}; // validation creazione ristorante
 
 
 window.validateRestaurant = function () {
@@ -27931,7 +27920,7 @@ window.validateRestaurant = function () {
   if (name_restaurant != '' & address != '') {
     '';
   } else {
-    compila.innerHTML = 'compila tutti i campi';
+    alert('compila tutti i campi');
   } // my_categories.forEach(category => {
   //     if (category.checked) {
   //         my_category = true;
@@ -27943,26 +27932,25 @@ window.validateRestaurant = function () {
 
 
   return true;
-}; // categorie
+}; // // categorie
+// let checkboxvalue = document.querySelectorAll('.remove-input');
+// let checkboxlength = checkboxvalue.length;
+// checkboxvalue.forEach(checkbox => {
+//     checkbox.addEventListener('click', function(){
+//         checkboxvalue.forEach(checkbox => {
+//             checkbox.removeAttribute('required');
+//         });
+//         checkbox.classList.toggle('remove-input');
+//         checkboxvalue = document.querySelectorAll('.remove-input');
+//         if (checkboxvalue.length == checkboxlength) {
+//             checkboxvalue.forEach(checkbox => {
+//                 checkbox.setAttribute('required', '');
+//             });
+//         }
+//     });
+// });
+// validation piatto
 
-
-var checkboxvalue = document.querySelectorAll('.remove-input');
-var checkboxlength = checkboxvalue.length;
-checkboxvalue.forEach(function (checkbox) {
-  checkbox.addEventListener('click', function () {
-    checkboxvalue.forEach(function (checkbox) {
-      checkbox.removeAttribute('required');
-    });
-    checkbox.classList.toggle('remove-input');
-    checkboxvalue = document.querySelectorAll('.remove-input');
-
-    if (checkboxvalue.length == checkboxlength) {
-      checkboxvalue.forEach(function (checkbox) {
-        checkbox.setAttribute('required', '');
-      });
-    }
-  });
-}); // validation piatto
 
 window.validateDish = function () {
   var name_dish = document.getElementById('name_dish').value;
@@ -27970,7 +27958,7 @@ window.validateDish = function () {
 
   if (name_dish != '' & price_dish != '') {
     if (price_dish > 1) {
-      alert('bravo hai messo un prezzo normale');
+      ' ';
     } else if (price_dish.includes('-')) {
       alert('il prezzo non può essere negativo');
     }
@@ -27987,7 +27975,7 @@ window.validateEditDish = function () {
 
   if (name_dish != '' & price_dish != '') {
     if (price_dish > 1) {
-      alert('bravo hai messo un prezzo normale');
+      '';
     } else if (price_dish.includes('-')) {
       alert('il prezzo non può essere negativo');
     }

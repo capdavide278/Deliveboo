@@ -6,8 +6,6 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">{{ __('Register') }}</div>
-
-                <div id="pep"></div>
                 <div class="card-body">
                     <form method="POST" name="register_form" id="register_form" action="{{ route('register') }}">
                         @csrf
@@ -16,7 +14,6 @@
 
                             <div class="col-md-6">
                                 <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
-                                <div id="name-fill"></div>
                                 @error('name')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -31,7 +28,6 @@
 
                             <div class="col-md-6">
                                 <input id="surname" type="text" class="form-control @error('surname') is-invalid @enderror" maxlength="22" name="surname" value="{{ old('surname') }}" required autocomplete="name" autofocus>
-                                <div id="surname-fill"></div>
                                 @error('surname')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -45,7 +41,6 @@
 
                             <div class="col-md-6">
                                 <input id="phonenumber" type="text" class="form-control @error('phonenumber') is-invalid @enderror" maxlength="10" name="phonenumber" value="{{ old('phonenumber') }}" required autocomplete="name" autofocus>
-                                {{-- <div class="fill"></div> --}}
                                 @error('phonenumber')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -87,7 +82,6 @@
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address *') }}</label>
                             <div class="col-md-6">
                                 <input id="email" type="text" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
-                                <div id="email_fill"></div>
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -99,7 +93,7 @@
                         <div class="form-group row mb-4">
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ ('Password') }}*</label>
 
-                            <div class="col-md-8">
+                            <div class="col-md-6">
                                 <input id="password" type="password" class=" pws form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" minlength="8">
 
                                 @error('password')
@@ -115,14 +109,14 @@
                         <div class="form-group row mb-4">
                             <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ ('Confirm Password') }}*</label>
 
-                            <div class="col-md-8">
-                                <input id="password-confirm" type="password" class="form-control pws-confirmed" name="password_confirmation" required autocomplete="new-password">
+                            <div class="col-md-6">
+                                <input id="password_confirm" type="password" class="form-control pws-confirmed" name="password_confirmation" required autocomplete="new-password">
                             </div>
                         </div>
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" onclick="validateRegister()" id="button" class="btn btn-primary">
+                                <button type="submit" id="button" onclick="validateRegister()" class="btn btn-primary">
                                     {{ __('Register') }}
                                 </button>
                             </div>

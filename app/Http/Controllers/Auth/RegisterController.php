@@ -59,8 +59,6 @@ class RegisterController extends Controller
                 'email' => ['required', 'string', 'email:rfc,dns', 'unique:users'],
                 'password' => ['required', 'string', 'min:8'],
                 'password_confirmation' => ['required', 'same:password'],
-                'categories' => ['required', 'array'],
-                'categories.*' => ['required', 'integer', 'exists:specializations,id'] 
             ]);
         
         
