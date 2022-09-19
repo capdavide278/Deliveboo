@@ -45,11 +45,12 @@ const routes = [
         component: PageShowDish,
         props: true //per le rotte dinamiche
     },
+
     {
         path: '*',
         name: 'page404',
         component: Page404,
-    }
+    },
 ];
 
 const router = new VueRouter({

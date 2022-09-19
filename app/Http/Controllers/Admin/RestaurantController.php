@@ -16,6 +16,7 @@ class RestaurantController extends Controller
         'address'           => 'required|string|max:255',
         'rest_phonenumber'  => 'nullable|numeric|digits:10',
         'rest_email'        => 'required|email:rfc,dns|unique:restaurants,rest_email',
+        'categories'          => 'required',
     ];
     protected $perPage= 10;
 

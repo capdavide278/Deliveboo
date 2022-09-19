@@ -13,6 +13,7 @@
                     <h2 class="card-title text-uppercase">{{dish.name}}</h2>
                     <p class="card-text">{{dish.description}}</p>
                     <div class="text-end">Prezzo: {{dish.price}} €</div>
+
                 </div>
                 <button @click="added(dish)" type="button" class="btn btn-primary col-3">Aggiungi al carrello</button>
 
@@ -45,8 +46,9 @@ export default {
             image: "",
         },
     }
-},
-created(){
+
+    },
+    created(){
     axios.get('/api/restaurants/' + this.idRest)
     .then(risposta =>
     {
