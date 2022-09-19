@@ -86,15 +86,29 @@ categoria: String
             methods: {
                 search(cat){
                     this.inputCategory = cat;
-                    console.log(this.inputCategory.toString());
-                    this.stringa = this.inputCategory.toString();
+                    console.log(this.inputCategory[0]);
 
-                    axios.get('/api/restaurants/search?category='+this.stringa )
-                    .then(res => {
-                        this.restaurants = res.data.response;
-                        console.log(this.restaurantsCat);
-                    });
 
+                     if (this.inputCategory[0] != 0 ) {
+                     this.stringa = this.inputCategory.toString();
+
+                         if (this.inputCategory[1] != undefined ) {
+                            this.stringa = this.inputCategory.toString();
+                            this.stringa = this.stringa.replace(/,/g,'&');
+                      }
+
+                      axios.get('/api/restaurants/search?category='+this.stringa )
+                      .then(res => {
+                          this.restaurants = res.data.response;
+                           console.log(this.restaurants);
+                           console.log('/api/restaurants/search?category='+this.stringa)
+                       });
+                     } else if (this.inputCategory = undefined)  {
+                         axios.get('/api/restaurants')
+                        .then(res => {
+                        this.restaurants = res.data.response.data;
+                        });
+                        }
 
                 }
             },

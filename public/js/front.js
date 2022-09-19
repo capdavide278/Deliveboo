@@ -5244,12 +5244,26 @@ __webpack_require__.r(__webpack_exports__);
       var _this2 = this;
 
       this.inputCategory = cat;
-      console.log(this.inputCategory.toString());
-      this.stringa = this.inputCategory.toString();
-      axios.get('/api/restaurants/search?category=' + this.stringa).then(function (res) {
-        _this2.restaurants = res.data.response;
-        console.log(_this2.restaurantsCat);
-      });
+      console.log(this.inputCategory[0]);
+
+      if (this.inputCategory[0] != 0) {
+        this.stringa = this.inputCategory.toString();
+
+        if (this.inputCategory[1] != undefined) {
+          this.stringa = this.inputCategory.toString();
+          this.stringa = this.stringa.replace(/,/g, '&');
+        }
+
+        axios.get('/api/restaurants/search?category=' + this.stringa).then(function (res) {
+          _this2.restaurants = res.data.response;
+          console.log(_this2.restaurants);
+          console.log('/api/restaurants/search?category=' + _this2.stringa);
+        });
+      } else if (this.inputCategory = undefined) {
+        axios.get('/api/restaurants').then(function (res) {
+          _this2.restaurants = res.data.response.data;
+        });
+      }
     }
   }
 });
