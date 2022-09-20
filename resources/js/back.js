@@ -17,45 +17,62 @@ if (eleOverlay) {
     })
 };
 
-    // validation register
-    window.validateRegister = function(){
-        let name_register = document.getElementById("name").value
-        let surname_register = document.getElementById("surname").value
-        let phonenumber_register = document.getElementById("phonenumber").value
-        let p_iva_register = document.getElementById("p_iva").value
-        // let date_of_birth_register = document.getElementById("date_of_birth").value
-        let email_address_register = document.getElementById("email").value
-        let password_register = document.getElementById("password").value;
-        let confirm_password_register = document.getElementById("password_confirm").value;
-        // let val_name = document.getElementById('name_fill')
-        // let val_surname = document.getElementById('surname_fill')
-        // let val_mail = document.getElementById('email_fill')
-        // let val_compila = document.getElementById('compila_tutto')
-        // let val_password = document.getElementById('password_fill')
-        let controlloValidazione = document.getElementById("controlloValidazione").value;
+    // // validation register
+    // window.validateRegister = function(e){
+    //     let name_register = document.getElementById("name").value
+    //     let surname_register = document.getElementById("surname").value
+    //     let phonenumber_register = document.getElementById("phonenumber").value
+    //     let p_iva_register = document.getElementById("p_iva").value
+    //     // let date_of_birth_register = document.getElementById("date_of_birth").value
+    //     let email_address_register = document.getElementById("email").value
+    //     let password_register = document.getElementById("password").value;
+    //     let confirm_password_register = document.getElementById("password_confirm").value;
+    //     let controlloValidazione = document.getElementById("controlloValidazione").value;
 
-        if (name_register != '' & surname_register != '' & phonenumber_register != '' & email_address_register != '' & p_iva_register != '') {
+    //     if (name_register != '' & surname_register != '' & phonenumber_register != '' & email_address_register != '' & p_iva_register != '' & password_register != '' & confirm_password_register != '') {
+
+
+    //         if (password_register != confirm_password_register) {
+    //             // alert('password diversa');
+    //             document.getElementById("controlloValidazione").innerHTML ='Attenzione: La password è diversa';
+    //             return false;
+    //         }
+            
+    //         return true;
+    //     }
+    //     else {
+    //         // alert('compila tutti i campi');
+    //         
+    //     }
+        
+    //     return true;
+    // }
+
+
+    const form_register = document.getElementById('register_form');
+    form_register.addEventListener('submit', function (event) {
+        const name_register = document.getElementById("name").value;
+        const surname_register = document.getElementById("surname").value;
+        const email_address_register = document.getElementById("email").value
+        const password_register = document.getElementById("password").value;
+        const confirm_password_register = document.getElementById("password_confirm").value;
+        if (name_register != '' & surname_register != '' & email_address_register != '') {
 
             if (!email_address_register.includes('@') || !email_address_register.includes('.')) {
-                // alert('mail non valida');
+                event.preventDefault();
                 document.getElementById("controlloValidazione").innerHTML ='Attenzione: La mail non è valida';
             }
 
             if (password_register != confirm_password_register) {
-                // alert('password diversa');
-                document.getElementById("controlloValidazione").innerHTML ='Attenzione: La password è diversa';
-
+                event.preventDefault();
+                document.getElementById("controlloValidazione").innerHTML ='Attenzione: La password non è valida';
             }
-
+        
+        } else {
+            document.getElementById("controlloValidazione").innerHTML ='Attenzione: compila tutti i campi';
         }
-        else {
-            // alert('compila tutti i campi');
-            document.getElementById("controlloValidazione").innerHTML ='Attenzione: Compila tutti i campi';
-
-        }
-
-        return true;
-    }
+        
+    })
 
 
 

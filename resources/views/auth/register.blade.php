@@ -7,7 +7,7 @@
             <div class="card">
                 <div class="card-header">{{ __('Register') }}</div>
                 <div class="card-body">
-                    <form method="POST" name="register_form" id="register_form" action="{{ route('register') }}">
+                    <form method="POST" name="register_form"  id="register_form" action="{{ route('register') }}">
                         @csrf
                         <h2 id="controlloValidazione"></h2>
                         <div class="form-group row">
@@ -24,7 +24,7 @@
                         </div>
 
 
-                        <div class="form-group row">
+                        <div class="form-group row my-4">
                             <label for="surname" class="col-md-4 col-form-label text-md-right">{{ __('Surname *') }}</label>
 
                             <div class="col-md-6">
@@ -37,7 +37,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group row">
+                        <div class="form-group row mb-4">
                             <label for="phonenumber" class="col-md-4 col-form-label text-md-right">{{ __('Phonenumber *') }}</label>
 
                             <div class="col-md-6">
@@ -50,7 +50,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group row">
+                        <div class="form-group row mb-4">
                             <label for="p_iva" class="col-md-4 col-form-label text-md-right">{{ __('Partita IVA *') }}</label>
 
                             <div class="col-md-6">
@@ -64,7 +64,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group row">
+                        <div class="form-group row mb-4">
                             <label for="date_of_birth" class="col-md-4 col-form-label text-md-right">{{ __('Date of birth') }}</label>
 
                             <div class="col-md-6">
@@ -79,7 +79,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group row">
+                        <div class="form-group row mb-4">
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address *') }}</label>
                             <div class="col-md-6">
                                 <input id="email" type="text" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
@@ -117,7 +117,7 @@
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" id="button" onclick="validateRegister()" class="btn btn-primary">
+                                <button type="submit" id="button" class="btn btn-primary">
                                     {{ __('Register') }}
                                 </button>
                             </div>
