@@ -9,6 +9,7 @@
     <form action="{{ route('admin.restaurant.store') }}" method="post"  novalidate enctype="multipart/form-data">
 
         @csrf
+        <h2 id="controlloValidazione"></h2>
 
         <div class="mb-3">
             <label class="form-label" for="name_restaurant">Name Restaurant *</label>

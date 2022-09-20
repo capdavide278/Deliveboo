@@ -9,6 +9,7 @@
                 <div class="card-body">
                     <form method="POST" name="register_form" id="register_form" action="{{ route('register') }}">
                         @csrf
+                        <h2 id="controlloValidazione"></h2>
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name *') }}</label>
 
@@ -21,7 +22,7 @@
                                 @enderror
                             </div>
                         </div>
-                        
+
 
                         <div class="form-group row">
                             <label for="surname" class="col-md-4 col-form-label text-md-right">{{ __('Surname *') }}</label>

@@ -32,23 +32,28 @@ if (eleOverlay) {
         // let val_mail = document.getElementById('email_fill')
         // let val_compila = document.getElementById('compila_tutto')
         // let val_password = document.getElementById('password_fill')
-
+        let controlloValidazione = document.getElementById("controlloValidazione").value;
 
         if (name_register != '' & surname_register != '' & phonenumber_register != '' & email_address_register != '' & p_iva_register != '') {
 
             if (!email_address_register.includes('@') || !email_address_register.includes('.')) {
-                alert('mail non valida');
+                // alert('mail non valida');
+                document.getElementById("controlloValidazione").innerHTML ='Attenzione: La mail non è valida';
             }
-                 
+
             if (password_register != confirm_password_register) {
-                alert('password diversa');
+                // alert('password diversa');
+                document.getElementById("controlloValidazione").innerHTML ='Attenzione: La password è diversa';
+
             }
 
         }
         else {
-            alert('compila tutti i campi');
+            // alert('compila tutti i campi');
+            document.getElementById("controlloValidazione").innerHTML ='Attenzione: Compila tutti i campi';
+
         }
-        
+
         return true;
     }
 
@@ -66,7 +71,7 @@ if (eleOverlay) {
         if (name_restaurant != '' & address != '') {
             ''
         } else {
-            alert('compila tutti i campi')
+            document.getElementById("controlloValidazione").innerHTML ='Attenzione: Compila tutti i campi';
         }
 
         // my_categories.forEach(category => {
@@ -77,9 +82,9 @@ if (eleOverlay) {
         //         alert('metti categoria')
         //     }
         // });
-            
-    
-        
+
+
+
         return true;
     }
 
@@ -88,7 +93,7 @@ if (eleOverlay) {
     // // categorie
     // let checkboxvalue = document.querySelectorAll('.remove-input');
     // let checkboxlength = checkboxvalue.length;
-    
+
     // checkboxvalue.forEach(checkbox => {
     //     checkbox.addEventListener('click', function(){
     //         checkboxvalue.forEach(checkbox => {
@@ -103,7 +108,7 @@ if (eleOverlay) {
     //                 checkbox.setAttribute('required', '');
     //             });
     //         }
-            
+
     //     });
     // });
 
@@ -117,14 +122,14 @@ if (eleOverlay) {
             if (price_dish > 1) {
                ' ';
             } else if (price_dish.includes('-')) {
-                alert('il prezzo non può essere negativo')
+                document.getElementById("controlloValidazione").innerHTML ='Attenzione: Il prezzo non può essere negativo';
             }
         } else {
-            alert('compila tutto');
+            document.getElementById("controlloValidazione").innerHTML ='Attenzione: Compila tutti i campi';
         }
 
         return true;
-    }    
+    }
 
 
     window.validateEditDish = function() {
@@ -135,13 +140,12 @@ if (eleOverlay) {
             if (price_dish > 1) {
                 '';
             } else if (price_dish.includes('-')) {
-                alert('il prezzo non può essere negativo')
+                document.getElementById("controlloValidazione").innerHTML ='Attenzione: Il prezzo non può essere negativo';
             }
         } else {
-            alert('compila tutto');
+            document.getElementById("controlloValidazione").innerHTML ='Attenzione: Compila tutti i campi';
         }
 
         return true;
-    }    
+    }
 
-    

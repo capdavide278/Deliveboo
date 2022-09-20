@@ -27894,16 +27894,21 @@ window.validateRegister = function () {
   // let val_compila = document.getElementById('compila_tutto')
   // let val_password = document.getElementById('password_fill')
 
+  var controlloValidazione = document.getElementById("controlloValidazione").value;
+
   if (name_register != '' & surname_register != '' & phonenumber_register != '' & email_address_register != '' & p_iva_register != '') {
     if (!email_address_register.includes('@') || !email_address_register.includes('.')) {
-      alert('mail non valida');
+      // alert('mail non valida');
+      document.getElementById("controlloValidazione").innerHTML = 'Attenzione: La mail non è valida';
     }
 
     if (password_register != confirm_password_register) {
-      alert('password diversa');
+      // alert('password diversa');
+      document.getElementById("controlloValidazione").innerHTML = 'Attenzione: La password è diversa';
     }
   } else {
-    alert('compila tutti i campi');
+    // alert('compila tutti i campi');
+    document.getElementById("controlloValidazione").innerHTML = 'Attenzione: Compila tutti i campi';
   }
 
   return true;
@@ -27920,7 +27925,7 @@ window.validateRestaurant = function () {
   if (name_restaurant != '' & address != '') {
     '';
   } else {
-    alert('compila tutti i campi');
+    document.getElementById("controlloValidazione").innerHTML = 'Attenzione: Compila tutti i campi';
   } // my_categories.forEach(category => {
   //     if (category.checked) {
   //         my_category = true;
@@ -27960,10 +27965,10 @@ window.validateDish = function () {
     if (price_dish > 1) {
       ' ';
     } else if (price_dish.includes('-')) {
-      alert('il prezzo non può essere negativo');
+      document.getElementById("controlloValidazione").innerHTML = 'Attenzione: Il prezzo non può essere negativo';
     }
   } else {
-    alert('compila tutto');
+    document.getElementById("controlloValidazione").innerHTML = 'Attenzione: Compila tutti i campi';
   }
 
   return true;
@@ -27977,10 +27982,10 @@ window.validateEditDish = function () {
     if (price_dish > 1) {
       '';
     } else if (price_dish.includes('-')) {
-      alert('il prezzo non può essere negativo');
+      document.getElementById("controlloValidazione").innerHTML = 'Attenzione: Il prezzo non può essere negativo';
     }
   } else {
-    alert('compila tutto');
+    document.getElementById("controlloValidazione").innerHTML = 'Attenzione: Compila tutti i campi';
   }
 
   return true;
@@ -28039,7 +28044,7 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\php_esercizi\laravel\Deliveboo\Deliveboo\resources\js\back.js */"./resources/js/back.js");
+module.exports = __webpack_require__(/*! C:\Users\glogh\Music\php\laravel\Deliveboo\resources\js\back.js */"./resources/js/back.js");
 
 
 /***/ })

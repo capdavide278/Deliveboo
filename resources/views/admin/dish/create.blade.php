@@ -7,6 +7,7 @@
     <form action="{{ route('admin.dish.store') }}"  method="post" novalidate enctype="multipart/form-data">
 
         @csrf
+        <h2 id="controlloValidazione"></h2>
 
         <div class="mb-3">
             <label class="form-label" for="name">Name *</label>

@@ -11,6 +11,7 @@
 
         @csrf
         @method('PUT')
+        <h2 id="controlloValidazione"></h2>
 
         <div class="mb-3">
             <label class="form-label" for="name">Name *</label>
@@ -47,10 +48,9 @@
             <label for="is_visible">Piatto nel Menù *</label>
         </div>
         <br>
-        <button type="submit" class="btn btn-primary me-3">Save</button>
+        <button type="submit"  onclick="validateDish()"  class="btn btn-primary me-3">Save</button>
         <a href="{{route('admin.dish.index')}}" class="btn btn-success me-3">Return Dashboard</a>
 
-        <button type="submit" class="btn btn-primary">Save</button>
     </form>
     </div>
 

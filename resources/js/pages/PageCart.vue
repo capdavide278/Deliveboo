@@ -8,7 +8,7 @@
                     <div >Prezzo: {{dish.price}} €</div>
                     <div>{{dish.qty}} porzioni</div>
                 </div>
-                <div class="row">
+                <div class="d-flex justify-content-around">
 
                     <button @click="added(dish)" type="button" class="btn btn-primary col-3 me-3">Aggiungi</button>
                     <button @click="remove(dish.id)" type="button" class="btn btn-success col-3 me-3">Elimina porzione</button>

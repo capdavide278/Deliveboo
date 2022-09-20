@@ -1,7 +1,7 @@
 <template>
     <div>
             <router-link :to="{name: 'cart' }">
-                <button type="" class="btn btn-primary">carrello</button>
+                <button type="" class="btn btn-primary">CARRELLO</button>
                 </router-link>
         <Page404 v-if='is404'/>
         <section v-else-if="restaurant">
@@ -15,8 +15,10 @@
                     <div class="text-end">Prezzo: {{dish.price}} €</div>
 
                 </div>
-                <button @click="added(dish)" type="button" class="btn btn-primary col-3">Aggiungi al carrello</button>
 
+
+                <button v-if="dish.is_visible" @click="added(dish)" type="button" class="btn btn-primary col-3">Aggiungi al carrello</button>
+                <h5 v-else> Il piatto non è al momento disponibile</h5>
             </div>
         </section>
     </div>
@@ -91,6 +93,7 @@ methods : {
       } else {
         // cartadd is here to get all things that click or chosen by user
         this.cartadd.id = item.id;
+        this.cartadd.Restid = item.restaurant_id;
         this.cartadd.name = item.name;
         this.cartadd.price = item.price;
         // this.cartadd.image = item.image;
@@ -123,17 +126,17 @@ methods : {
       }
     },
 
-    Card() {
-      // in this part user can log in cart. infact this part is a button to show all choose buy
-      $("#myDIV").toggleClass("hide").fadeTo("slow"); // in this part when user click, cart show
-      $(".page").addClass("hide"); // in this part when user click, main page hide and cart show for user
-    },
+    // Card() {
+    //   // in this part user can log in cart. infact this part is a button to show all choose buy
+    //   $("#myDIV").toggleClass("hide").fadeTo("slow"); // in this part when user click, cart show
+    //   $(".page").addClass("hide"); // in this part when user click, main page hide and cart show for user
+    // },
 
-    back() {
-      // in this part user can back from cart to main page
-      $("#myDIV").addClass("hide");
-      $(".page").removeClass("hide");
-    },
+    // back() {
+    //   // in this part user can back from cart to main page
+    //   $("#myDIV").addClass("hide");
+    //   $(".page").removeClass("hide");
+    // },
 }
 }
 </script>
