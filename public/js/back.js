@@ -27860,6 +27860,8 @@ module.exports = function(module) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
+
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js"); //cancellazione piatto
 
 
@@ -27881,89 +27883,113 @@ if (eleOverlay) {
 ; //  VALIDATION REGISTER SENZA INVIO DEL FORM
 
 var form_register = document.getElementById('register_form');
-form_register.addEventListener('submit', function (event) {
-  var name_register = document.getElementById("name").value;
-  var surname_register = document.getElementById("surname").value;
-  var email_address_register = document.getElementById("email").value;
-  var password_register = document.getElementById("password").value;
-  var confirm_password_register = document.getElementById("password_confirm").value;
-  var mail_alert = document.getElementById("mail_alert");
-  var password_alert = document.getElementById("password_alert");
-  var insert_all = document.getElementById("controlloValidazione");
 
-  if (name_register != '' & surname_register != '' & email_address_register != '') {
-    if (!email_address_register.includes('@') || !email_address_register.includes('.')) {
-      event.preventDefault();
-      mail_alert.innerHTML = 'Attenzione: La mail non è valida';
+if (form_register) {
+  form_register.addEventListener('submit', function (event) {
+    var name_register = document.getElementById("name").value;
+    var surname_register = document.getElementById("surname").value;
+    var email_address_register = document.getElementById("email").value;
+    var password_register = document.getElementById("password").value;
+    var confirm_password_register = document.getElementById("password_confirm").value;
+    var mail_alert = document.getElementById("mail_alert");
+    var password_alert = document.getElementById("password_alert");
+    var insert_all = document.getElementById("controlloValidazione");
+
+    if (name_register != '' & surname_register != '' & email_address_register != '') {
+      if (!email_address_register.includes('@') || !email_address_register.includes('.')) {
+        event.preventDefault();
+        mail_alert.innerHTML = 'Attenzione: La mail non è valida';
+      } else {
+        mail_alert.classList.add("none");
+      }
+
+      if (password_register != confirm_password_register) {
+        event.preventDefault();
+        password_alert.innerHTML = 'Attenzione: La password non è valida';
+      } else {
+        password_alert.classList.add("none");
+      }
     } else {
-      mail_alert.classList.add("none");
-    }
-
-    if (password_register != confirm_password_register) {
       event.preventDefault();
-      password_alert.innerHTML = 'Attenzione: La password non è valida';
+      insert_all.innerHTML = 'Attenzione: compila tutti i campi';
+    }
+  });
+} // validation creazione ristorante
+
+
+var form_rest = document.getElementById('rest_form');
+
+if (form_rest) {
+  form_rest.addEventListener('submit', function (event) {
+    var name_restaurant = document.getElementById("name_restaurant").value;
+    var address = document.getElementById("address").value;
+    var checkbox = document.querySelectorAll('.checkbox');
+    console.log(_typeof(checkbox));
+    var category_alert = document.getElementById('category_alert');
+
+    if (name_restaurant != '' & address != '') {
+      for (var index = 0; index < 9; index++) {
+        if (!checkbox.index.checked) {
+          event.preventDefault();
+          category_alert.innerHTML = 'Attenzione: metti una categoria';
+        } else {
+          category_alert.classList.add('.none');
+        }
+      }
+
+      return true;
     } else {
-      password_alert.classList.add("none");
+      event.preventDefault();
+      document.getElementById("controlloValidazione").innerHTML = 'Attenzione: Compila tutti i campi';
     }
-  } else {
-    event.preventDefault();
-    insert_all.innerHTML = 'Attenzione: compila tutti i campi';
-  }
-}); // validation creazione ristorante
+  });
+} // // validation piatto
 
-window.validateRestaurant = function () {
-  var name_restaurant = document.getElementById("name_restaurant").value;
-  var address = document.getElementById("address").value;
-  var checkbox = document.querySelectorAll('.checkbox').checked;
 
-  if (name_restaurant != '' & address != '') {
-    if (!checkbox) {
-      document.getElementById("controlloValidazione").innerHTML = 'Attenzione: metti una categoria';
-      return false;
+var form_dish = document.getElementById('dish_form');
+
+if (form_dish) {
+  form_dish.addEventListener('submit', function (event) {
+    var name_dish = document.getElementById('name_dish').value;
+    var price_dish = document.getElementById('price_dish').value;
+    var price_alert = document.getElementById('price_alert');
+
+    if (name_dish != '' & price_dish != '') {
+      if (price_dish > 1) {
+        ' ';
+      } else if (price_dish.includes('-')) {
+        event.preventDefault();
+        price_alert.innerHTML = 'Attenzione: Il prezzo non può essere negativo';
+      }
+    } else {
+      event.preventDefault();
+      document.getElementById("controlloValidazione").innerHTML = 'Attenzione: Compila tutti i campi';
     }
-
-    return false;
-  } else {
-    document.getElementById("controlloValidazione").innerHTML = 'Attenzione: Compila tutti i campi';
-  }
-
-  return true;
-}; // validation piatto
+  });
+} // VALIDATION PAGINA EDIT PIATTI
 
 
-window.validateDish = function () {
-  var name_dish = document.getElementById('name_dish').value;
-  var price_dish = document.getElementById('price_dish').value;
+var form_edit_dish = document.getElementById('dish_edit_form');
 
-  if (name_dish != '' & price_dish != '') {
-    if (price_dish > 1) {
-      ' ';
-    } else if (price_dish.includes('-')) {
-      document.getElementById("controlloValidazione").innerHTML = 'Attenzione: Il prezzo non può essere negativo';
+if (form_edit_dish) {
+  form_edit_dish.addEventListener('submit', function (event) {
+    var name_dish = document.getElementById('name_dish').value;
+    var price_dish = document.getElementById('price_dish').value;
+    var price_alert = document.getElementById('price_alert');
+
+    if (name_dish != '' & price_dish != '') {
+      if (price_dish > 1) {
+        ' ';
+      } else if (price_dish.includes('-')) {
+        event.preventDefault();
+        price_alert.innerHTML = 'Attenzione: Il prezzo non può essere negativo';
+      }
+    } else {
+      event.preventDefault();
+      document.getElementById("controlloValidazione").innerHTML = 'Attenzione: Compila tutti i campi';
     }
-  } else {
-    document.getElementById("controlloValidazione").innerHTML = 'Attenzione: Compila tutti i campi';
-  }
-
-  return true;
-};
-
-window.validateEditDish = function () {
-  var name_dish = document.getElementById('name_dish').value;
-  var price_dish = document.getElementById('price_dish').value;
-
-  if (name_dish != '' & price_dish != '') {
-    if (price_dish > 1) {
-      '';
-    } else if (price_dish.includes('-')) {
-      document.getElementById("controlloValidazione").innerHTML = 'Attenzione: Il prezzo non può essere negativo';
-    }
-  } else {
-    document.getElementById("controlloValidazione").innerHTML = 'Attenzione: Compila tutti i campi';
-  }
-
-  return true;
-};
+  });
+}
 
 /***/ }),
 

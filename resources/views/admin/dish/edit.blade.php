@@ -1,13 +1,11 @@
 @extends('admin.layout.app')
 
 @section('content')
-    {{-- @dump($errors->all())
-    @dump(Auth::user()->name) --}}
-    {{-- @dd($errors->get('tags.*')) --}}
+
 
     <div class="container">
         <h1>Edit dish</h1>
-    <form action="{{ route('admin.dish.update', ['dish' => $dish]) }}" method="post" novalidate enctype="multipart/form-data">
+    <form id="dish_edit_form" action="{{ route('admin.dish.update', ['dish' => $dish]) }}" method="post" novalidate enctype="multipart/form-data">
 
         @csrf
         @method('PUT')
@@ -36,6 +34,7 @@
         <div class="mb-3">
             <label class="form-label" for="price">Price *</label>
             <input class="form-control price_dish @error('price') is-invalid @enderror" type="text" name="price" id="price_dish" required value="{{ old('price', $dish->price) }}">
+            <span id="price_alert" class="red"></span>
             @error('price')
                 <div class="invalid-feedback">
                     {{ $message }}
@@ -48,7 +47,7 @@
             <label for="is_visible">Piatto nel Menù *</label>
         </div>
         <br>
-        <button type="submit"  onclick="validateDish()"  class="btn btn-primary me-3">Save</button>
+        <button type="submit"  class="btn btn-primary me-3">Save</button>
         <a href="{{route('admin.dish.index')}}" class="btn btn-success me-3">Return Dashboard</a>
 
     </form>
