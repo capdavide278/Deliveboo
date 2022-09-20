@@ -17,38 +17,7 @@ if (eleOverlay) {
     })
 };
 
-    // // validation register
-    // window.validateRegister = function(e){
-    //     let name_register = document.getElementById("name").value
-    //     let surname_register = document.getElementById("surname").value
-    //     let phonenumber_register = document.getElementById("phonenumber").value
-    //     let p_iva_register = document.getElementById("p_iva").value
-    //     // let date_of_birth_register = document.getElementById("date_of_birth").value
-    //     let email_address_register = document.getElementById("email").value
-    //     let password_register = document.getElementById("password").value;
-    //     let confirm_password_register = document.getElementById("password_confirm").value;
-    //     let controlloValidazione = document.getElementById("controlloValidazione").value;
-
-    //     if (name_register != '' & surname_register != '' & phonenumber_register != '' & email_address_register != '' & p_iva_register != '' & password_register != '' & confirm_password_register != '') {
-
-
-    //         if (password_register != confirm_password_register) {
-    //             // alert('password diversa');
-    //             document.getElementById("controlloValidazione").innerHTML ='Attenzione: La password è diversa';
-    //             return false;
-    //         }
-            
-    //         return true;
-    //     }
-    //     else {
-    //         // alert('compila tutti i campi');
-    //         
-    //     }
-        
-    //     return true;
-    // }
-
-
+    //  VALIDATION REGISTER SENZA INVIO DEL FORM
     const form_register = document.getElementById('register_form');
     form_register.addEventListener('submit', function (event) {
         const name_register = document.getElementById("name").value;
@@ -56,20 +25,28 @@ if (eleOverlay) {
         const email_address_register = document.getElementById("email").value
         const password_register = document.getElementById("password").value;
         const confirm_password_register = document.getElementById("password_confirm").value;
+        const mail_alert = document.getElementById("mail_alert");
+        const password_alert = document.getElementById("password_alert")
+        const insert_all = document.getElementById("controlloValidazione");
         if (name_register != '' & surname_register != '' & email_address_register != '') {
 
             if (!email_address_register.includes('@') || !email_address_register.includes('.')) {
                 event.preventDefault();
-                document.getElementById("controlloValidazione").innerHTML ='Attenzione: La mail non è valida';
+                mail_alert.innerHTML ='Attenzione: La mail non è valida';
+            } else {
+                mail_alert.classList.add("none");
             }
 
             if (password_register != confirm_password_register) {
                 event.preventDefault();
-                document.getElementById("controlloValidazione").innerHTML ='Attenzione: La password non è valida';
+                password_alert.innerHTML ='Attenzione: La password non è valida';
+            } else {
+                password_alert.classList.add("none");
             }
-        
+            
         } else {
-            document.getElementById("controlloValidazione").innerHTML ='Attenzione: compila tutti i campi';
+            event.preventDefault();
+            insert_all.innerHTML ='Attenzione: compila tutti i campi';
         }
         
     })

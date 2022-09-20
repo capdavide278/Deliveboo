@@ -12641,7 +12641,11 @@ fieldset:disabled .btn {
   border-radius: 1rem;
 }
 
-#controlloValidazione {
+.red {
   color: red;
+}
+
+.none {
+  display: none;
 }
 
