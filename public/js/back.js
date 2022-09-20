@@ -27918,43 +27918,21 @@ window.validateRegister = function () {
 window.validateRestaurant = function () {
   var name_restaurant = document.getElementById("name_restaurant").value;
   var address = document.getElementById("address").value;
-  var my_categories = document.getElementById('category');
-  var my_category;
-  var compila = document.getElementById('compila');
+  var checkbox = document.querySelectorAll('.checkbox').checked;
 
   if (name_restaurant != '' & address != '') {
-    '';
+    if (!checkbox) {
+      document.getElementById("controlloValidazione").innerHTML = 'Attenzione: metti una categoria';
+      return false;
+    }
+
+    return false;
   } else {
     document.getElementById("controlloValidazione").innerHTML = 'Attenzione: Compila tutti i campi';
-  } // my_categories.forEach(category => {
-  //     if (category.checked) {
-  //         my_category = true;
-  //         alert('pep')
-  //     } else {
-  //         alert('metti categoria')
-  //     }
-  // });
-
+  }
 
   return true;
-}; // // categorie
-// let checkboxvalue = document.querySelectorAll('.remove-input');
-// let checkboxlength = checkboxvalue.length;
-// checkboxvalue.forEach(checkbox => {
-//     checkbox.addEventListener('click', function(){
-//         checkboxvalue.forEach(checkbox => {
-//             checkbox.removeAttribute('required');
-//         });
-//         checkbox.classList.toggle('remove-input');
-//         checkboxvalue = document.querySelectorAll('.remove-input');
-//         if (checkboxvalue.length == checkboxlength) {
-//             checkboxvalue.forEach(checkbox => {
-//                 checkbox.setAttribute('required', '');
-//             });
-//         }
-//     });
-// });
-// validation piatto
+}; // validation piatto
 
 
 window.validateDish = function () {
@@ -28044,7 +28022,7 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\glogh\Music\php\laravel\Deliveboo\resources\js\back.js */"./resources/js/back.js");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\php_esercizi\laravel\Deliveboo\Deliveboo\resources\js\back.js */"./resources/js/back.js");
 
 
 /***/ })

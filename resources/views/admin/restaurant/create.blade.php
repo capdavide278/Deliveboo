@@ -6,6 +6,7 @@
     {{-- @dd($errors->get('tags.*')) --}}
     <div class="container">
         <h1>Inserisci i dati del tuo Ristorante</h1>
+        <h1 id="message"></h1>
     <form action="{{ route('admin.restaurant.store') }}" method="post"  novalidate enctype="multipart/form-data">
 
         @csrf
@@ -13,7 +14,7 @@
 
         <div class="mb-3">
             <label class="form-label" for="name_restaurant">Name Restaurant *</label>
-            <input class="form-control @error('name_restaurant') is-invalid @enderror" type="text" name="name_restaurant" maxlength="50" id="name_restaurant" value="{{ old('name_restaurant') }}" required>
+            <input class="form-control @error('name_restaurant') is-invalid @enderror" type="text" name="name_restaurant" maxlength="50" id="name_restaurant" value="{{ old('name_restaurant') }}" required autocomplete="name_restaurant" autofocus>
             @error('name_restaurant')
                 <div class="invalid-feedback">
                     {{ $message }}
@@ -33,7 +34,7 @@
 
         <div class="mb-3">
             <label class="form-label" for="address">Address *</label>
-            <input class="form-control @error('address') is-invalid @enderror" type="text" name="address" id="address" value="{{ old('address') }}" required>
+            <input class="form-control @error('address') is-invalid @enderror" type="text" name="address" id="address" value="{{ old('address') }}" required autocomplete="address" autofocus>
             @error('address')
                 <div class="invalid-feedback">
                     {{ $message }}
@@ -66,7 +67,7 @@
             @foreach ($categories as $category)
                 <div class="form-check">
                     <input
-                    class="form-check-input remove-input"
+                    class="form-check-input checkbox"
                     type="checkbox"
                     required
                     {{--  aggiungendo [] al nome abbiamo un array come valore di ritorno --}}

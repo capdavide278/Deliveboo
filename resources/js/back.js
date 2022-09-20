@@ -64,53 +64,20 @@ if (eleOverlay) {
     window.validateRestaurant = function() {
         let name_restaurant = document.getElementById("name_restaurant").value
         let address = document.getElementById("address").value
-        let my_categories = document.getElementById('category')
-        let my_category;
-        let compila = document.getElementById('compila')
-
+        const checkbox = document.querySelectorAll('.checkbox').checked
         if (name_restaurant != '' & address != '') {
-            ''
+            if (!checkbox) {           
+                document.getElementById("controlloValidazione").innerHTML = 'Attenzione: metti una categoria'
+                return false;
+            }
+
+            return false;
         } else {
             document.getElementById("controlloValidazione").innerHTML ='Attenzione: Compila tutti i campi';
         }
 
-        // my_categories.forEach(category => {
-        //     if (category.checked) {
-        //         my_category = true;
-        //         alert('pep')
-        //     } else {
-        //         alert('metti categoria')
-        //     }
-        // });
-
-
-
         return true;
     }
-
-
-
-    // // categorie
-    // let checkboxvalue = document.querySelectorAll('.remove-input');
-    // let checkboxlength = checkboxvalue.length;
-
-    // checkboxvalue.forEach(checkbox => {
-    //     checkbox.addEventListener('click', function(){
-    //         checkboxvalue.forEach(checkbox => {
-    //             checkbox.removeAttribute('required');
-
-    //         });
-    //         checkbox.classList.toggle('remove-input');
-    //         checkboxvalue = document.querySelectorAll('.remove-input');
-
-    //         if (checkboxvalue.length == checkboxlength) {
-    //             checkboxvalue.forEach(checkbox => {
-    //                 checkbox.setAttribute('required', '');
-    //             });
-    //         }
-
-    //     });
-    // });
 
 
     // validation piatto
