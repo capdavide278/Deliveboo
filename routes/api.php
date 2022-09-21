@@ -23,3 +23,6 @@ Route::get('/restaurants/search', 'Api\RestaurantController@search')->name('api.
 
 Route::get('/restaurants/{restaurant}', 'Api\restaurantController@show')->name('api.restaurant.show');
 
+Route::get('products', 'Api\Products\ProductController@index');
+Route::get('orders/generate', 'Api\Orders\OrderController@generate');
+Route::post('orders/make/payment', 'Api\Orders\OrderController@makePayment');
