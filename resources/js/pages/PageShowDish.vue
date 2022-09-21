@@ -10,6 +10,7 @@
             <div class="card mb-3" v-for="dish in restaurant.dish" :key="dish.id">
                 <img :src="dish.image"  :alt="dish.name">
                 <div class="card-body">
+                    <!-- <img class="card-image-top" :src="dish.image" alt=""> -->
                     <h2 class="card-title text-uppercase">{{dish.name}}</h2>
                     <p class="card-text">{{dish.description}}</p>
                     <div class="text-end">Prezzo: {{dish.price}} €</div>

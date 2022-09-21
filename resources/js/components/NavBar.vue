@@ -1,17 +1,19 @@
 <template>
-    <div>
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <h2>DeliveBoo</h2>
-          <div class="container-fluid">
+    <div id="nav-color" class="container-fluid">
+      <nav class="container navbar navbar-expand-lg">
+        <a href="">
+            <img class="logo_size" src="../img/logo_deliveboo.png" alt="">
+        </a>
+          <div class="">
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                   <span class="navbar-toggler-icon"></span>
               </button>
               <div class="collapse navbar-collapse" id="navbarNav">
                   <ul class="navbar-nav">
                       <li v-for="(navItem, index) in navItems" :key="index" class="nav-item">
-                          <router-link :to="{name: navItem.routeName}" class="nav-link active">{{ navItem.label }}</router-link>
+                          <router-link :to="{name: navItem.routeName}" class="nav-link active"><button class="btn btn-light">{{ navItem.label }}</button></router-link>
                       </li>
-                      <li class="nav-item"><a class="nav-link active" href="/login">Login</a></li>
+                      <li class="nav-item"><a class="nav-link active" href="/login"><button class="btn btn-light">Login</button></a></li>
                   </ul>
               </div>
           </div>
@@ -41,6 +43,12 @@
 
   <style lang="scss" scoped>
 
-
+    #nav-color {
+        background-color: #00ccbc;
+        .logo_size {
+            width: 100px;
+            height: 100px;
+        }
+    }
 
   </style>

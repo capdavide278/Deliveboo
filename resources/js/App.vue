@@ -1,12 +1,12 @@
 <template>
     <div id="containerTotal">
         <nav-bar></nav-bar>
-    <div class="container">
+    
 
         <!-- in base all'URL deciderà il contenuto della pagina -->
         <router-view></router-view>
+    
     </div>
-</div>
 </template>
 
 <script>
