@@ -21,18 +21,32 @@
           <b>Totale carrello:  €{{ totalItem }}</b>
         </h3>
       </div>
+      <div>
+        {{$route.params.id}}
+        <Payment/>
+          <button v-if="!disableBuyButton" @click.prevent="beforeBuy">
+            Procedi con l'ordine
+          </button>
+          <button v-else>{{loadingPayment? 'Loading....': 'Procedi con l\'acquisto'}}</button>
+      </div>
     </section>
 </template>
 
 <script>
+import Payment from '../components/Payment.vue'
 
 export default {
     name: 'PageCart',
+    components:{
+        Payment,
+    },
     data(){
         return{
             cart2: '',
             cart: '',
             prova: localStorage.getItem('cart'),
+            disableBuyButton : false,
+            loadingPayment: false
         }
 
     },

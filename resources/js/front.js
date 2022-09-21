@@ -9,6 +9,9 @@ import VueRouter from 'vue-router'; //importiamo la libreria vue router
 
 import App from './App.vue'; //importiamo il file App.vue
 
+import vueBraintree from 'vue-braintree';
+Vue.use(vueBraintree);
+
 //importiamo i componenti delle pagine
 import PageHome from './pages/PageHome.vue';
 import PageAbout from './pages/PageAbout.vue';
