@@ -23,3 +23,10 @@ Route::get('/restaurants/search', 'Api\RestaurantController@search')->name('api.
 
 Route::get('/restaurants/{restaurant}', 'Api\restaurantController@show')->name('api.restaurant.show');
 
+Route::middleware('auth:api')->get('/user', function(Request $request){
+    return $request->user();
+});
+
+Route::get('products', 'Admin\ProductController@index');
+Route::get('orders/generate', 'Admin\TransactionController@generate');
+Route::post('orders/make/payment', 'Admin\TransactionController@makePayment');

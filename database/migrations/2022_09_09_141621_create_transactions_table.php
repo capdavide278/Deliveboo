@@ -19,7 +19,7 @@ class CreateTransactionsTable extends Migration
             $table->string('name', 50);
             //da aggiungere cognome?
             $table->string('address');
-            $table->string('email');
+            $table->string('email'); 
             $table->bigInteger('phonenumber');
             $table->float('total');
             $table->timestamps();
