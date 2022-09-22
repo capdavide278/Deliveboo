@@ -14,19 +14,17 @@ class OrderController extends Controller
 
         $token = $gateway->clientToken()->generate();
 
-        $data = [
-            'success' => true,
-            'token' => $token,
-        ];
-
-        return response()->json($data,200);
+        return response()->json([
+            'success'   => true,
+            'token' => $token
+        ]);
     }
     public function makePayment(OrderRequest $request, Gateway $gateway){
 
-        $product = Dish::find($request->product);
+        // $product = Dish::find($request->product);
 
         $result = $gateway->transaction()->sale([
-            'amount' => $product->price,
+            'amount' => $request->amount,
             'paymentMethodNonce' => $request->token,
             'options' => [
                 'submitForSettlement' => true

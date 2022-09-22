@@ -21,32 +21,44 @@
           <b>Totale carrello:  €{{ totalItem }}</b>
         </h3>
       </div>
-      <div>
-        {{$route.params.id}}
-        <Payment/>
-          <button v-if="!disableBuyButton" @click.prevent="beforeBuy">
-            Procedi con l'ordine
-          </button>
-          <button v-else>{{loadingPayment? 'Loading....': 'Procedi con l\'acquisto'}}</button>
+      <div  v-if="loading">
+
+            <Payment
+            ref="paymentRef"
+            :authorization="tokenApi"
+            @onSuccess="paymentOnSuccess"/>
+
       </div>
+      <div v-else>
+            <h3>{{message}}</h3>
+        </div>
     </section>
+
 </template>
 
 <script>
+
 import Payment from '../components/Payment.vue'
+import Checkout from "./Checkout.vue";
 
 export default {
+
     name: 'PageCart',
     components:{
         Payment,
+        Checkout
     },
     data(){
         return{
             cart2: '',
             cart: '',
             prova: localStorage.getItem('cart'),
-            disableBuyButton : false,
-            loadingPayment: false
+            user: "",
+            tokenApi: "",
+            loading: false,
+            message: 'Loading...',
+            amount2: ''
+
         }
 
     },
@@ -55,8 +67,22 @@ export default {
         this.cart2 = localStorage.getItem('cart');
         this.cart = JSON.parse(this.cart2);
         console.log(localStorage.getItem('cart'));
+        axios.get("/api/orders/generate")
+            .then(res => {
+            if (res.data.success) {
+                this.tokenApi = res.data.token;
+                this.loading = true;
+                console.log(res.data.success)
+                console.log(this.tokenApi)
+            }
+        });
 
+    },
+    mounted() {
 
+        this.amount = this.cart.reduce((total, item) => {
+          return total + item.qty * item.price;
+        }, 0);
     },
     computed: {
     cartTotal: function () {
@@ -67,7 +93,7 @@ export default {
       for (i = 0; i < this.cart.length; i++) {
         total += this.cart[i].price;
       }
-
+      this.amount2 = total;
       return total;
     },
     totalItem: function () {
@@ -147,7 +173,20 @@ added(item) {
           this.cart.splice(index, 1);
         this.saveCats();
 
-    }
+    },
+    paymentOnSuccess(token){
+        console.log(this.cart.price)
+            axios.post("/api/orders/make/payment",{
+                token: token,
+                amount: this.amount
+            })
+            .then(res => {
+            if (res.data.success) {
+                this.message = res.data.message;
+                this.loading = false;
+            }
+        });
+        }
 }
 
 }

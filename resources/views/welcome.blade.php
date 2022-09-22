@@ -8,8 +8,13 @@
     </head>
     <body>
 
-        <div id="app"></div>
+        <div id="app">
 
-       <script src="{{asset('js/front.js')}}"></script>
+        </div>
+
+        <script src="{{asset('js/front.js')}}"></script>
+<!-- includes the Braintree JS client SDK -->
+<script src="https://js.braintreegateway.com/web/dropin/1.33.0/js/dropin.min.js"></script>
+
     </body>
 </html>
