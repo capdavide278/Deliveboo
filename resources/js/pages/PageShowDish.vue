@@ -22,12 +22,12 @@
                 </div>
 
 
-                <button v-if="dish.is_visible" @click="added(dish), product_alert()" onclick="alert('piatto aggiunto')" id="cart_button" type="button" class="btn btn-primary col-3">Aggiungi al carrello</button>
+                <button v-if="dish.is_visible" @click="added(dish), product_alert()" id="cart_button" type="button" class="btn btn-primary col-3">Aggiungi al carrello</button>
                 <h5 v-else> Il piatto non è al momento disponibile</h5>
                 
             </div>
-            <div class="alert alert-primary" role="alert">
-                    {{alert}}
+            <div id="alertmsg" class="alert none alert-success" role="alert">
+                    <h2 class="blue">{{alert}}</h2>
             </div>
         </section>
     </div>
@@ -115,6 +115,8 @@ methods : {
     },
 
     product_alert(){
+        const alertmess = document.getElementById('alertmsg')
+        alertmess.classList.add('block')
         this.alert = "piatto aggiunto al carrello"
     },
     
@@ -158,7 +160,15 @@ methods : {
 
 <style lang="scss" scoped>
 
-
+.none {
+  display: none;
+}
+.block {
+  display: block;
+}
+.blue {
+  color: #0d6efd;
+}
 
 
 </style>
