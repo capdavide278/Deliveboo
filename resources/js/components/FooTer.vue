@@ -1,5 +1,5 @@
 <template>
-    <footer id="footer" class="container-fluid mt-5">
+    <footer id="footer">
         <div class="container">
             <div class="row">
                 <div class="col-3 py-5">
@@ -78,6 +78,7 @@
 <style lang="scss" scoped>
 
     #footer {
+        margin-top: 120px;
         background-color: #2e3333;
         .white-footer{
             color: white;

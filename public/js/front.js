@@ -5739,7 +5739,6 @@ var staticRenderFns = [function () {
       _setup = _vm._self._setupProxy;
 
   return _c("footer", {
-    staticClass: "container-fluid mt-5",
     attrs: {
       id: "footer"
     }
@@ -6813,7 +6812,7 @@ var staticRenderFns = [function () {
     staticClass: "deliveboo-color"
   }, [_vm._v("Sei un ristoratore? "), _c("a", {
     attrs: {
-      href: "/login"
+      href: "/register"
     }
   }, [_vm._v("Registrati")]), _vm._v(" per vendere i tuoi prodotti")])]), _vm._v(" "), _c("div", {
     staticClass: "col-5"
@@ -6836,7 +6835,7 @@ var staticRenderFns = [function () {
     staticClass: "row"
   }, [_c("h1", {
     staticClass: "text-center mb-3"
-  }, [_vm._v("La selezione di deliveboo scelta apposta per i pro player")]), _vm._v(" "), _c("div", {
+  }, [_vm._v("La selezione di deliveboo scelta apposta per voi")]), _vm._v(" "), _c("div", {
     staticClass: "col-12 mt-4"
   }, [_c("div", {
     staticClass: "row justify-content-between align-items-center"
@@ -6853,7 +6852,7 @@ var staticRenderFns = [function () {
     staticClass: "row justify-content-between align-items-center"
   }, [_c("div", {
     staticClass: "col-5"
-  }, [_c("h2", [_vm._v("Il cibo italiano probabilmente il migliore al mondo")])]), _vm._v(" "), _c("div", {
+  }, [_c("h2", [_vm._v("Il cibo italiano il migliore al mondo")])]), _vm._v(" "), _c("div", {
     staticClass: "col-6"
   }, [_c("div", {
     staticClass: "col-6",
@@ -37105,7 +37104,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "#footer[data-v-3264b626] {\n  background-color: #2e3333;\n}\n#footer .white-footer[data-v-3264b626] {\n  color: white;\n}", ""]);
+exports.push([module.i, "#footer[data-v-3264b626] {\n  margin-top: 120px;\n  background-color: #2e3333;\n}\n#footer .white-footer[data-v-3264b626] {\n  color: white;\n}", ""]);
 
 // exports
 
