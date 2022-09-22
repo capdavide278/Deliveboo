@@ -6,6 +6,7 @@ use Braintree\Gateway;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Orders\OrderRequest;
+use App\Models\Dish;
 
 class OrderController extends Controller
 {
@@ -19,8 +20,9 @@ class OrderController extends Controller
     }
 
     public function makePayment(OrderRequest $request, Gateway $gateway){
+        $dish = Dish::find($request->dish);
         $result = $gateway->transaction()->sale([
-            'amount'    => '10',
+            'amount'    => $dish->price,
             'paymentMethodNonce'    => $request->token,
             'options'   => [
                 'submitForSettlement'   => true,
@@ -30,14 +32,16 @@ class OrderController extends Controller
         if ($result->success) {
             $data = [
                 'success' => true, 
-                'message'   => 'transazione eseguita'
+                'message'   => 'transazione eseguita',
             ];
+            return response()->json($data, 200);
         } else {
             $data = [
                 'success' => false, 
-                'token'   => 'transazione fallita'
+                'message'   => 'transazione fallita'
             ];
+            return response()->json($data, 401);
         }
-        return response()->json($data, 401);
+        return 'makepayment';
     }
 }

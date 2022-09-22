@@ -16,6 +16,7 @@ import PageContacts from './pages/PageContacts.vue';
 import Page404 from './pages/Page404.vue';
 import PageShowDish from './pages/PageShowDish.vue';
 import PageCart from './pages/PageCart.vue';
+import PageCheckout from './pages/PageCheckout.vue';
 
 const routes = [
     {
@@ -44,6 +45,12 @@ const routes = [
         name: 'PageShowDish',
         component: PageShowDish,
         props: true //per le rotte dinamiche
+    },
+
+    {
+        path: '/checkout',
+        name: 'PageCheckout',
+        component: PageCheckout,
     },
 
     {

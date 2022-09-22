@@ -1,11 +1,11 @@
 <template>
-    <h1>Contattaci</h1>
+    <h1>Paga {{totalITem}}</h1>
 </template>
 
 <script>
 
 export default {
-    name: 'PageContacts',
+    name: 'PageCheckout',
 
 }
 </script>

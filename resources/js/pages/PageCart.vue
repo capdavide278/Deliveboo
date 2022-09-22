@@ -20,6 +20,7 @@
         <h3>
           <b>Totale carrello:  €{{ totalItem }}</b>
         </h3>
+        <router-link :to="{name:'PageCheckout',  params: {Totalprice: totalItem}}" class="btn btn-primary mt-4">Paga</router-link>
       </div>
     </section>
 </template>

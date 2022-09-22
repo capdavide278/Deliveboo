@@ -32,6 +32,6 @@ Route::middleware('auth')
    });
 
 //per gestire le rotte di vue eliminiamo la rotta principale della home in alto e mettiamo questo
-Route::get("{any?}", function(){
-    return view('welcome');
-   })->where("any", ".*")->name('welcome');
+   Route::get("{any?}", function(){
+      return view('welcome');
+      })->where("any", ".*")->name('welcome');
