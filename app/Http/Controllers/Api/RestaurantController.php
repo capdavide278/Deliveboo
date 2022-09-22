@@ -17,9 +17,9 @@ class RestaurantController extends Controller
      */
     public function index(Request $request)
     {
-        $perPage_default = 6;
+        $perPage_default = 50;
         //request è la richiesta completa dell'utente
-        $perPage = $request->query('perPage', 6);
+        $perPage = $request->query('perPage', 50);
 
         //se la richiesta è sbagliata
         if($perPage < 1 || $perPage > 150){
@@ -48,6 +48,41 @@ class RestaurantController extends Controller
             'success' => true,
             'response' =>$restaurantsCat
         ]);}
+    }
+
+    public function searchCat(Request $request){
+
+        $category = $request->get('category');
+        $arrCategories = explode(',',$category);
+
+
+        $idRistoranti = [];
+        $idRistFiltrati = [];
+
+        foreach($arrCategories as $category){
+            $arrRest = Restaurant::whereHas('category', function($q) use($category){
+                $q->where('category_id', $category);
+            })->get();
+
+            foreach ($arrRest as $res) {
+                $idRistoranti[] = $res->id;
+            }
+        }
+
+        $counterId = array_count_values($idRistoranti);
+
+        foreach ($counterId as $id => $idContato) {
+            if($idContato == count($arrCategories)) {
+                $idRistFiltrati[] = $id;
+            }
+        }
+
+        $restFiltered = Restaurant::with(['category'])->find($idRistFiltrati)->all();
+
+        return response()->json([
+            'success' => true,
+            'arrRestaurants' => $restFiltered,
+        ]);
     }
     /**
      * Show the form for creating a new resource.

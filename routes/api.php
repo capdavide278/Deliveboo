@@ -20,6 +20,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/restaurants', 'Api\RestaurantController@index')->name('api.restaurants.index');
 Route::get('/restaurants/search', 'Api\RestaurantController@search')->name('api.restaurants.search');
+Route::get('/category/restaurants', 'Api\RestaurantController@searchCat')->name('api.restaurants.restaurants');
 
 Route::get('/restaurants/{restaurant}', 'Api\restaurantController@show')->name('api.restaurant.show');
 
