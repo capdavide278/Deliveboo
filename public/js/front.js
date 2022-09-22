@@ -5539,6 +5539,10 @@ __webpack_require__.r(__webpack_exports__);
         this.saveCats(); // this function most important to save all inform of products
 
         console.log(localStorage.getItem('cart'));
+
+        if (this.cartadd.qty > 1) {
+          alert('hai aggiunto al carrello');
+        }
       }
     },
     saveCats: function saveCats() {
