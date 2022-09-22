@@ -104,7 +104,7 @@
         <div class="container-fluid pt-3">
             <div class="container">
                 <div class="row">
-                    <h1 class="text-center mb-3">La selezione di deliveboo scelta apposta per i pro player</h1>
+                    <h1 class="text-center mb-3">La selezione di deliveboo scelta apposta per te</h1>
                     <div class="col-12 mt-4">
                         <div class="row justify-content-between align-items-center">
                             
@@ -112,14 +112,14 @@
                                 <h1>Il grande classico italiano</h1>
                             </div>
                             <div class="col-5">
-                                <h2>Il cibo italiano probabilmente il migliore al mondo</h2>
+                                <h2>Il cibo italiano il migliore al mondo</h2>
                             </div>
                         </div>
                     </div>
                     <div class="col-12 mt-4">
                         <div class="row justify-content-between align-items-center">
                             <div class="col-5">
-                                <h2>Il cibo italiano probabilmente il migliore al mondo</h2>
+                                <h2>McDonald's i panini gustosi per te</h2>
                             </div>
                             <div class="col-6">
                                 <div id="mc" class="col-6">

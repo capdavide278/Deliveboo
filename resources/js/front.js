@@ -74,3 +74,5 @@ const app = new Vue({
     render: h => h(App),
     router, //diciamo avue di inizializzare la nostra app usando il router
 });
+
+

@@ -5593,7 +5593,8 @@ __webpack_require__.r(__webpack_exports__);
         name: "",
         price: "",
         image: ""
-      }
+      },
+      alert: ''
     };
   },
   created: function created() {
@@ -5648,6 +5649,9 @@ __webpack_require__.r(__webpack_exports__);
 
         console.log(localStorage.getItem('cart'));
       }
+    },
+    product_alert: function product_alert() {
+      this.alert = "piatto aggiunto al carrello";
     },
     saveCats: function saveCats() {
       // for save in local storage set the below code
@@ -6836,7 +6840,7 @@ var staticRenderFns = [function () {
     staticClass: "row"
   }, [_c("h1", {
     staticClass: "text-center mb-3"
-  }, [_vm._v("La selezione di deliveboo scelta apposta per i pro player")]), _vm._v(" "), _c("div", {
+  }, [_vm._v("La selezione di deliveboo scelta apposta per te")]), _vm._v(" "), _c("div", {
     staticClass: "col-12 mt-4"
   }, [_c("div", {
     staticClass: "row justify-content-between align-items-center"
@@ -6847,13 +6851,13 @@ var staticRenderFns = [function () {
     }
   }, [_c("h1", [_vm._v("Il grande classico italiano")])]), _vm._v(" "), _c("div", {
     staticClass: "col-5"
-  }, [_c("h2", [_vm._v("Il cibo italiano probabilmente il migliore al mondo")])])])]), _vm._v(" "), _c("div", {
+  }, [_c("h2", [_vm._v("Il cibo italiano il migliore al mondo")])])])]), _vm._v(" "), _c("div", {
     staticClass: "col-12 mt-4"
   }, [_c("div", {
     staticClass: "row justify-content-between align-items-center"
   }, [_c("div", {
     staticClass: "col-5"
-  }, [_c("h2", [_vm._v("Il cibo italiano probabilmente il migliore al mondo")])]), _vm._v(" "), _c("div", {
+  }, [_c("h2", [_vm._v("McDonald's i panini gustosi per te")])]), _vm._v(" "), _c("div", {
     staticClass: "col-6"
   }, [_c("div", {
     staticClass: "col-6",
@@ -6882,7 +6886,9 @@ var render = function render() {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _c("div", [_c("router-link", {
+  return _c("div", [_c("div", {
+    staticClass: "d-flex justify-content-end"
+  }, [_c("router-link", {
     attrs: {
       to: {
         name: "cart"
@@ -6893,7 +6899,7 @@ var render = function render() {
     attrs: {
       type: ""
     }
-  }, [_vm._v("CARRELLO")])]), _vm._v(" "), _vm.is404 ? _c("Page404") : _vm.restaurant ? _c("section", [_c("h1", [_vm._v(_vm._s(_vm.restaurant.name_restaurant))]), _vm._v(" "), _vm._l(_vm.restaurant.dish, function (dish) {
+  }, [_vm._v("CARRELLO")]), _vm._v("\n                " + _vm._s(this.qty) + "\n            ")])], 1), _vm._v(" "), _vm.is404 ? _c("Page404") : _vm.restaurant ? _c("section", [_c("h1", [_vm._v(_vm._s(_vm.restaurant.name_restaurant))]), _vm._v(" "), _vm._l(_vm.restaurant.dish, function (dish) {
     return _c("div", {
       key: dish.id,
       staticClass: "card mb-3"
@@ -6913,15 +6919,22 @@ var render = function render() {
     }, [_vm._v("Prezzo: " + _vm._s(dish.price) + " €")])]), _vm._v(" "), dish.is_visible ? _c("button", {
       staticClass: "btn btn-primary col-3",
       attrs: {
+        onclick: "alert('piatto aggiunto')",
+        id: "cart_button",
         type: "button"
       },
       on: {
         click: function click($event) {
-          return _vm.added(dish);
+          _vm.added(dish), _vm.product_alert();
         }
       }
     }, [_vm._v("Aggiungi al carrello")]) : _c("h5", [_vm._v(" Il piatto non è al momento disponibile")])]);
-  })], 2) : _vm._e()], 1);
+  }), _vm._v(" "), _c("div", {
+    staticClass: "alert alert-primary",
+    attrs: {
+      role: "alert"
+    }
+  }, [_vm._v("\n                    " + _vm._s(_vm.alert) + "\n            ")])], 2) : _vm._e()], 1);
 };
 
 var staticRenderFns = [];
