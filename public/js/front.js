@@ -5496,29 +5496,21 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
- // import CategoryCheck from '../components/CategoryCheck.vue'
-
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'PageHome',
-  components: {// CategoryCheck
-  },
   props: {
     categoria: String
   },
   data: function data() {
     return {
-      categories: ['Pizzeria', 'Ristorante', 'Pesce', 'Vegetariano', 'Vegano', 'Bergamasco', 'Etnico', 'Asiatico', 'Messicano'],
-      checkedNames: '',
+      categorie: ['Pizzeria', 'Ristorante', 'Pesce', 'Vegetariano', 'Vegano', 'Bergamasco', 'Etnico', 'Asiatico', 'Messicano'],
       restaurants: [],
-      restaurantsCat: [],
-      category: [],
-      userValue: '',
-      inputCategory: [],
-      genereApi: {},
-      genereVari: [],
-      stringa: ''
+      categories: [],
+      // categorie da mostrare
+      arrRestaurants: [],
+      // ristoranti filtrati in base alla categoria
+      catIds: [] // id categoria che si trova nella funzione di ogni categoria per la chiamata api
+
     };
   },
   created: function created() {
@@ -5529,35 +5521,29 @@ __webpack_require__.r(__webpack_exports__);
     });
   },
   methods: {
-    search: function search(cat) {
+    trovaRistorante: function trovaRistorante() {
       var _this2 = this;
 
-      console.log('chi sei?' + cat);
-      this.inputCategory = cat;
-      console.log(this.inputCategory[0]);
-      var checked = document.querySelectorAll('.form-check-input').checked;
-      console.log(checked + 'check');
-
-      if (this.inputCategory[0] != undefined) {
-        this.stringa = this.inputCategory.toString();
-
-        if (this.inputCategory[1] != undefined) {
-          this.stringa = this.inputCategory.toString();
-          this.stringa = this.stringa.replace(/,/g, '&');
+      axios.get('/api/category/restaurants' + '?category=' + this.catIds).then(function (response) {
+        if (response.data.success) {
+          _this2.restaurants = response.data.arrRestaurants;
+          console.log(response.data.arrRestaurants);
         }
-
-        axios.get('/api/restaurants/search?category=' + this.stringa).then(function (res) {
-          _this2.restaurants = res.data.response;
-          console.log(_this2.restaurants);
-          console.log('/api/restaurants/search?category=' + _this2.stringa);
-        });
+      });
+    },
+    IdCategoria: function IdCategoria(cat) {
+      if (this.catIds.includes(cat)) {
+        var posizione = this.catIds.indexOf(cat);
+        this.catIds.splice(posizione, 1);
+      } else {
+        this.catIds.push(cat);
+        console.log(this.catIds);
       }
 
-      if (this.inputCategory[0] == undefined) {
-        axios.get('/api/restaurants').then(function (res) {
-          _this2.restaurants = res.data.response.data;
-        });
-      }
+      this.trovaRistorante();
+    },
+    resetCategory: function resetCategory() {
+      this.arrRestaurants = [];
     }
   }
 });
@@ -5745,7 +5731,6 @@ var staticRenderFns = [function () {
       _setup = _vm._self._setupProxy;
 
   return _c("footer", {
-    staticClass: "container-fluid mt-5",
     attrs: {
       id: "footer"
     }
@@ -6358,412 +6343,23 @@ var render = function render() {
   }, [_c("div", {
     staticClass: "col-4"
   }, [_c("div", {
-    staticClass: "categories",
-    attrs: {
-      method: "get"
-    },
-    on: {
-      change: function change($event) {
-        return _vm.search(_vm.inputCategory);
-      }
-    }
+    staticClass: "categories"
   }, [_c("h1", [_vm._v(" Seleziona le Categorie:")]), _vm._v(" "), _c("div", {
-    staticClass: "border-bottom pb-3"
-  }, [_c("input", {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: _vm.inputCategory,
-      expression: "inputCategory"
-    }],
-    staticClass: "big-check mt-4 form-check-input",
-    attrs: {
-      type: "checkbox",
-      name: "pizzeria",
-      id: "1",
-      value: "1"
-    },
-    domProps: {
-      checked: Array.isArray(_vm.inputCategory) ? _vm._i(_vm.inputCategory, "1") > -1 : _vm.inputCategory
-    },
-    on: {
-      change: function change($event) {
-        var $$a = _vm.inputCategory,
-            $$el = $event.target,
-            $$c = $$el.checked ? true : false;
-
-        if (Array.isArray($$a)) {
-          var $$v = "1",
-              $$i = _vm._i($$a, $$v);
-
-          if ($$el.checked) {
-            $$i < 0 && (_vm.inputCategory = $$a.concat([$$v]));
-          } else {
-            $$i > -1 && (_vm.inputCategory = $$a.slice(0, $$i).concat($$a.slice($$i + 1)));
-          }
-        } else {
-          _vm.inputCategory = $$c;
+    staticClass: "d-flex flex-column"
+  }, _vm._l(_vm.categorie, function (element, i) {
+    return _c("div", {
+      key: i,
+      staticClass: "btn btn-warning col-3",
+      attrs: {
+        type: "button"
+      },
+      on: {
+        click: function click($event) {
+          return _vm.IdCategoria(i + 1);
         }
       }
-    }
-  }), _vm._v(" "), _c("label", {
-    staticClass: "big-label form-check-label mt-4",
-    attrs: {
-      "for": "pizzeria"
-    }
-  }, [_vm._v("pizzeria")])]), _vm._v(" "), _c("div", {
-    staticClass: "border-bottom pb-3"
-  }, [_c("input", {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: _vm.inputCategory,
-      expression: "inputCategory"
-    }],
-    staticClass: "big-check mt-4 form-check-input",
-    attrs: {
-      type: "checkbox",
-      name: "ristorante",
-      id: "2",
-      value: "2"
-    },
-    domProps: {
-      checked: Array.isArray(_vm.inputCategory) ? _vm._i(_vm.inputCategory, "2") > -1 : _vm.inputCategory
-    },
-    on: {
-      change: function change($event) {
-        var $$a = _vm.inputCategory,
-            $$el = $event.target,
-            $$c = $$el.checked ? true : false;
-
-        if (Array.isArray($$a)) {
-          var $$v = "2",
-              $$i = _vm._i($$a, $$v);
-
-          if ($$el.checked) {
-            $$i < 0 && (_vm.inputCategory = $$a.concat([$$v]));
-          } else {
-            $$i > -1 && (_vm.inputCategory = $$a.slice(0, $$i).concat($$a.slice($$i + 1)));
-          }
-        } else {
-          _vm.inputCategory = $$c;
-        }
-      }
-    }
-  }), _vm._v(" "), _c("label", {
-    staticClass: "big-label mt-4 form-check-label",
-    attrs: {
-      "for": "ristorante"
-    }
-  }, [_vm._v("ristorante")])]), _vm._v(" "), _c("div", {
-    staticClass: "border-bottom pb-3"
-  }, [_c("input", {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: _vm.inputCategory,
-      expression: "inputCategory"
-    }],
-    staticClass: "big-check mt-4 form-check-input",
-    attrs: {
-      type: "checkbox",
-      name: "pesce",
-      id: "3",
-      value: "3"
-    },
-    domProps: {
-      checked: Array.isArray(_vm.inputCategory) ? _vm._i(_vm.inputCategory, "3") > -1 : _vm.inputCategory
-    },
-    on: {
-      change: function change($event) {
-        var $$a = _vm.inputCategory,
-            $$el = $event.target,
-            $$c = $$el.checked ? true : false;
-
-        if (Array.isArray($$a)) {
-          var $$v = "3",
-              $$i = _vm._i($$a, $$v);
-
-          if ($$el.checked) {
-            $$i < 0 && (_vm.inputCategory = $$a.concat([$$v]));
-          } else {
-            $$i > -1 && (_vm.inputCategory = $$a.slice(0, $$i).concat($$a.slice($$i + 1)));
-          }
-        } else {
-          _vm.inputCategory = $$c;
-        }
-      }
-    }
-  }), _vm._v(" "), _c("label", {
-    staticClass: "big-label mt-4 form-check-label",
-    attrs: {
-      "for": "pesce"
-    }
-  }, [_vm._v("pesce")])]), _vm._v(" "), _c("div", {
-    staticClass: "border-bottom pb-3"
-  }, [_c("input", {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: _vm.inputCategory,
-      expression: "inputCategory"
-    }],
-    staticClass: "big-check mt-4 form-check-input",
-    attrs: {
-      type: "checkbox",
-      name: "vegetariano",
-      id: "4",
-      value: "4"
-    },
-    domProps: {
-      checked: Array.isArray(_vm.inputCategory) ? _vm._i(_vm.inputCategory, "4") > -1 : _vm.inputCategory
-    },
-    on: {
-      change: function change($event) {
-        var $$a = _vm.inputCategory,
-            $$el = $event.target,
-            $$c = $$el.checked ? true : false;
-
-        if (Array.isArray($$a)) {
-          var $$v = "4",
-              $$i = _vm._i($$a, $$v);
-
-          if ($$el.checked) {
-            $$i < 0 && (_vm.inputCategory = $$a.concat([$$v]));
-          } else {
-            $$i > -1 && (_vm.inputCategory = $$a.slice(0, $$i).concat($$a.slice($$i + 1)));
-          }
-        } else {
-          _vm.inputCategory = $$c;
-        }
-      }
-    }
-  }), _vm._v(" "), _c("label", {
-    staticClass: "big-label mt-4 form-check-label",
-    attrs: {
-      "for": "vegetariano"
-    }
-  }, [_vm._v("vegetariano")])]), _vm._v(" "), _c("div", {
-    staticClass: "border-bottom pb-3"
-  }, [_c("input", {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: _vm.inputCategory,
-      expression: "inputCategory"
-    }],
-    staticClass: "big-check mt-4 form-check-input",
-    attrs: {
-      type: "checkbox",
-      name: "vegano",
-      id: "5",
-      value: "5"
-    },
-    domProps: {
-      checked: Array.isArray(_vm.inputCategory) ? _vm._i(_vm.inputCategory, "5") > -1 : _vm.inputCategory
-    },
-    on: {
-      change: function change($event) {
-        var $$a = _vm.inputCategory,
-            $$el = $event.target,
-            $$c = $$el.checked ? true : false;
-
-        if (Array.isArray($$a)) {
-          var $$v = "5",
-              $$i = _vm._i($$a, $$v);
-
-          if ($$el.checked) {
-            $$i < 0 && (_vm.inputCategory = $$a.concat([$$v]));
-          } else {
-            $$i > -1 && (_vm.inputCategory = $$a.slice(0, $$i).concat($$a.slice($$i + 1)));
-          }
-        } else {
-          _vm.inputCategory = $$c;
-        }
-      }
-    }
-  }), _vm._v(" "), _c("label", {
-    staticClass: "big-label mt-4 form-check-label",
-    attrs: {
-      "for": "vegano"
-    }
-  }, [_vm._v("vegano")])]), _vm._v(" "), _c("div", {
-    staticClass: "border-bottom pb-3"
-  }, [_c("input", {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: _vm.inputCategory,
-      expression: "inputCategory"
-    }],
-    staticClass: "big-check mt-4 form-check-input",
-    attrs: {
-      type: "checkbox",
-      name: "bergamasco",
-      id: "6",
-      value: "6"
-    },
-    domProps: {
-      checked: Array.isArray(_vm.inputCategory) ? _vm._i(_vm.inputCategory, "6") > -1 : _vm.inputCategory
-    },
-    on: {
-      change: function change($event) {
-        var $$a = _vm.inputCategory,
-            $$el = $event.target,
-            $$c = $$el.checked ? true : false;
-
-        if (Array.isArray($$a)) {
-          var $$v = "6",
-              $$i = _vm._i($$a, $$v);
-
-          if ($$el.checked) {
-            $$i < 0 && (_vm.inputCategory = $$a.concat([$$v]));
-          } else {
-            $$i > -1 && (_vm.inputCategory = $$a.slice(0, $$i).concat($$a.slice($$i + 1)));
-          }
-        } else {
-          _vm.inputCategory = $$c;
-        }
-      }
-    }
-  }), _vm._v(" "), _c("label", {
-    staticClass: "big-label mt-4 form-check-label",
-    attrs: {
-      "for": "bergamasco"
-    }
-  }, [_vm._v("bergamasco")])]), _vm._v(" "), _c("div", {
-    staticClass: "border-bottom pb-3"
-  }, [_c("input", {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: _vm.inputCategory,
-      expression: "inputCategory"
-    }],
-    staticClass: "big-check mt-4 form-check-input",
-    attrs: {
-      type: "checkbox",
-      name: "etnico",
-      id: "7",
-      value: "7"
-    },
-    domProps: {
-      checked: Array.isArray(_vm.inputCategory) ? _vm._i(_vm.inputCategory, "7") > -1 : _vm.inputCategory
-    },
-    on: {
-      change: function change($event) {
-        var $$a = _vm.inputCategory,
-            $$el = $event.target,
-            $$c = $$el.checked ? true : false;
-
-        if (Array.isArray($$a)) {
-          var $$v = "7",
-              $$i = _vm._i($$a, $$v);
-
-          if ($$el.checked) {
-            $$i < 0 && (_vm.inputCategory = $$a.concat([$$v]));
-          } else {
-            $$i > -1 && (_vm.inputCategory = $$a.slice(0, $$i).concat($$a.slice($$i + 1)));
-          }
-        } else {
-          _vm.inputCategory = $$c;
-        }
-      }
-    }
-  }), _vm._v(" "), _c("label", {
-    staticClass: "big-label mt-4 form-check-label",
-    attrs: {
-      "for": "etnico"
-    }
-  }, [_vm._v("etnico")])]), _vm._v(" "), _c("div", {
-    staticClass: "border-bottom pb-3"
-  }, [_c("input", {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: _vm.inputCategory,
-      expression: "inputCategory"
-    }],
-    staticClass: "big-check mt-4 form-check-input",
-    attrs: {
-      type: "checkbox",
-      name: "asiatico",
-      id: "8",
-      value: "8"
-    },
-    domProps: {
-      checked: Array.isArray(_vm.inputCategory) ? _vm._i(_vm.inputCategory, "8") > -1 : _vm.inputCategory
-    },
-    on: {
-      change: function change($event) {
-        var $$a = _vm.inputCategory,
-            $$el = $event.target,
-            $$c = $$el.checked ? true : false;
-
-        if (Array.isArray($$a)) {
-          var $$v = "8",
-              $$i = _vm._i($$a, $$v);
-
-          if ($$el.checked) {
-            $$i < 0 && (_vm.inputCategory = $$a.concat([$$v]));
-          } else {
-            $$i > -1 && (_vm.inputCategory = $$a.slice(0, $$i).concat($$a.slice($$i + 1)));
-          }
-        } else {
-          _vm.inputCategory = $$c;
-        }
-      }
-    }
-  }), _vm._v(" "), _c("label", {
-    staticClass: "big-label mt-4 form-check-label",
-    attrs: {
-      "for": "asiatico"
-    }
-  }, [_vm._v("asiatico")])]), _vm._v(" "), _c("div", {
-    staticClass: "border-bottom pb-3"
-  }, [_c("input", {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: _vm.inputCategory,
-      expression: "inputCategory"
-    }],
-    staticClass: "big-check mt-4 form-check-input",
-    attrs: {
-      type: "checkbox",
-      name: "messicano",
-      id: "9",
-      value: "9"
-    },
-    domProps: {
-      checked: Array.isArray(_vm.inputCategory) ? _vm._i(_vm.inputCategory, "9") > -1 : _vm.inputCategory
-    },
-    on: {
-      change: function change($event) {
-        var $$a = _vm.inputCategory,
-            $$el = $event.target,
-            $$c = $$el.checked ? true : false;
-
-        if (Array.isArray($$a)) {
-          var $$v = "9",
-              $$i = _vm._i($$a, $$v);
-
-          if ($$el.checked) {
-            $$i < 0 && (_vm.inputCategory = $$a.concat([$$v]));
-          } else {
-            $$i > -1 && (_vm.inputCategory = $$a.slice(0, $$i).concat($$a.slice($$i + 1)));
-          }
-        } else {
-          _vm.inputCategory = $$c;
-        }
-      }
-    }
-  }), _vm._v(" "), _c("label", {
-    staticClass: "big-label mt-4 form-check-label",
-    attrs: {
-      "for": "messicano"
-    }
-  }, [_vm._v("messicano")])])])]), _vm._v(" "), _c("div", {
+    }, [_c("p", [_vm._v(_vm._s(element))])]);
+  }), 0)])]), _vm._v(" "), _c("div", {
     staticClass: "col-8"
   }, [_c("div", {
     staticClass: "row justify-content-center"
@@ -6819,7 +6415,7 @@ var staticRenderFns = [function () {
     staticClass: "deliveboo-color"
   }, [_vm._v("Sei un ristoratore? "), _c("a", {
     attrs: {
-      href: "/login"
+      href: "/register"
     }
   }, [_vm._v("Registrati")]), _vm._v(" per vendere i tuoi prodotti")])]), _vm._v(" "), _c("div", {
     staticClass: "col-5"
@@ -6842,7 +6438,7 @@ var staticRenderFns = [function () {
     staticClass: "row"
   }, [_c("h1", {
     staticClass: "text-center mb-3"
-  }, [_vm._v("La selezione di deliveboo scelta apposta per te")]), _vm._v(" "), _c("div", {
+  }, [_vm._v("La selezione di deliveboo scelta apposta per voi")]), _vm._v(" "), _c("div", {
     staticClass: "col-12 mt-4"
   }, [_c("div", {
     staticClass: "row justify-content-between align-items-center"
@@ -37122,7 +36718,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "#footer[data-v-3264b626] {\n  background-color: #2e3333;\n}\n#footer .white-footer[data-v-3264b626] {\n  color: white;\n}", ""]);
+exports.push([module.i, "#footer[data-v-3264b626] {\n  margin-top: 120px;\n  background-color: #2e3333;\n}\n#footer .white-footer[data-v-3264b626] {\n  color: white;\n}", ""]);
 
 // exports
 
@@ -72122,8 +71718,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\xampp\htdocs\php_esercizi\laravel\Deliveboo\resources\js\front.js */"./resources/js/front.js");
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\php_esercizi\laravel\Deliveboo\resources\sass\back.scss */"./resources/sass/back.scss");
+__webpack_require__(/*! C:\Users\Davide\Desktop\Deliveboo\resources\js\front.js */"./resources/js/front.js");
+module.exports = __webpack_require__(/*! C:\Users\Davide\Desktop\Deliveboo\resources\sass\back.scss */"./resources/sass/back.scss");
 
 
 /***/ })
