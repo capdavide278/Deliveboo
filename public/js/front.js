@@ -6515,7 +6515,7 @@ var render = function render() {
     attrs: {
       type: ""
     }
-  }, [_vm._v("CARRELLO")]), _vm._v("\n                " + _vm._s(this.qty) + "\n            ")])], 1), _vm._v(" "), _vm.is404 ? _c("Page404") : _vm.restaurant ? _c("section", [_c("h1", [_vm._v(_vm._s(_vm.restaurant.name_restaurant))]), _vm._v(" "), _vm._l(_vm.restaurant.dish, function (dish) {
+  }, [_vm._v("CARRELLO")]), _vm._v("\n            " + _vm._s(this.qty) + "\n        ")])], 1), _vm._v(" "), _vm.is404 ? _c("Page404") : _vm.restaurant ? _c("section", [_c("h1", [_vm._v(_vm._s(_vm.restaurant.name_restaurant))]), _vm._v(" "), _vm._l(_vm.restaurant.dish, function (dish) {
     return _c("div", {
       key: dish.id,
       staticClass: "card mb-3",
@@ -36797,26 +36797,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".none[data-v-763ca4ef] {\n  display: none;\n}\n.block[data-v-763ca4ef] {\n  display: block;\n}\n.blue[data-v-763ca4ef] {\n  color: #0d6efd;\n}", ""]);
-
-// exports
-
-
-/***/ }),
-
-/***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/PageShowDish.vue?vue&type=style&index=0&id=763ca4ef&lang=scss&scoped=true&":
-/*!*****************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/PageShowDish.vue?vue&type=style&index=0&id=763ca4ef&lang=scss&scoped=true& ***!
-  \*****************************************************************************************************************************************************************************************************************************************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
-// imports
-
-
-// module
-exports.push([module.i, "img[data-v-763ca4ef] {\n  width: 200px;\n}", ""]);
+exports.push([module.i, ".none[data-v-763ca4ef] {\n  display: none;\n}\n.block[data-v-763ca4ef] {\n  display: block;\n}\n.blue[data-v-763ca4ef] {\n  color: #0d6efd;\n}\nimg[data-v-763ca4ef] {\n  width: 200px;\n}", ""]);
 
 // exports
 
