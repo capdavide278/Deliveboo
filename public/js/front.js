@@ -5636,11 +5636,11 @@ __webpack_require__.r(__webpack_exports__);
         console.log(localStorage.getItem('cart'));
       }
     },
-    product_alert: function product_alert() {
-      var alertmess = document.getElementById('alertmsg');
-      alertmess.classList.add('block');
-      this.alert = "piatto aggiunto al carrello";
-    },
+    // product_alert(){
+    //     const alertmess = document.getElementById("alert_msg");
+    //     alertmess.classList.add('block')
+    //     this.alert = "piatto aggiunto al carrello"
+    // },
     saveCats: function saveCats() {
       // for save in local storage set the below code
       var parsed = JSON.stringify(this.cart);
@@ -6517,24 +6517,25 @@ var render = function render() {
     }, [_vm._v("Prezzo: " + _vm._s(dish.price) + " €")])]), _vm._v(" "), dish.is_visible ? _c("button", {
       staticClass: "btn btn-primary col-3",
       attrs: {
+        onclick: "alert('piatto aggiunto')",
         id: "cart_button",
         type: "button"
       },
       on: {
         click: function click($event) {
-          _vm.added(dish), _vm.product_alert();
+          return _vm.added(dish);
         }
       }
-    }, [_vm._v("Aggiungi al carrello")]) : _c("h5", [_vm._v(" Il piatto non è al momento disponibile")])]);
-  }), _vm._v(" "), _c("div", {
-    staticClass: "alert none alert-success",
-    attrs: {
-      id: "alertmsg",
-      role: "alert"
-    }
-  }, [_c("h2", {
-    staticClass: "blue"
-  }, [_vm._v(_vm._s(_vm.alert))])])], 2) : _vm._e()], 1);
+    }, [_vm._v("Aggiungi al carrello")]) : _c("h5", [_vm._v(" Il piatto non è al momento disponibile")]), _vm._v(" "), _c("div", {
+      staticClass: "alert none alert-success",
+      attrs: {
+        id: "alert_msg",
+        role: "alert"
+      }
+    }, [_c("h2", {
+      staticClass: "blue"
+    }, [_vm._v(_vm._s(_vm.alert))])])]);
+  })], 2) : _vm._e()], 1);
 };
 
 var staticRenderFns = [];
@@ -71718,8 +71719,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\Davide\Desktop\Deliveboo\resources\js\front.js */"./resources/js/front.js");
-module.exports = __webpack_require__(/*! C:\Users\Davide\Desktop\Deliveboo\resources\sass\back.scss */"./resources/sass/back.scss");
+__webpack_require__(/*! C:\xampp\htdocs\php_esercizi\laravel\Deliveboo\resources\js\front.js */"./resources/js/front.js");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\php_esercizi\laravel\Deliveboo\resources\sass\back.scss */"./resources/sass/back.scss");
 
 
 /***/ })
