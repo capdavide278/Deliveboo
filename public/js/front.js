@@ -5514,8 +5514,12 @@ __webpack_require__.r(__webpack_exports__);
       // categorie da mostrare
       arrRestaurants: [],
       // ristoranti filtrati in base alla categoria
-      catIds: [] // id categoria che si trova nella funzione di ogni categoria per la chiamata api
-
+      catIds: [],
+      // id categoria che si trova nella funzione di ogni categoria per la chiamata api
+      // isActive : false,
+      // YesButton : false,
+      cart: '',
+      cart2: ''
     };
   },
   created: function created() {
@@ -5527,6 +5531,20 @@ __webpack_require__.r(__webpack_exports__);
 
       axios.get('/api/restaurants').then(function (res) {
         _this.restaurants = res.data.response.data;
+      });
+    },
+    warningPauroso: function warningPauroso() {// this.isActive = true;
+    },
+    yesButton: function yesButton() {
+      this.YesButton = true;
+    },
+    removeall: function removeall(element) {
+      this.cart2 = localStorage.getItem('cart');
+      this.cart = JSON.parse(this.cart2);
+      this.cart.forEach(function (elemento) {
+        if (element != elemento.Restid) {
+          localStorage.clear();
+        }
       });
     },
     trovaRistorante: function trovaRistorante() {
@@ -6433,7 +6451,7 @@ var render = function render() {
         staticClass: "white tag"
       }, [_vm._v("\n                                        " + _vm._s(category.name) + "\n                                    ")]);
     })], 2)]), _vm._v(" "), _c("router-link", {
-      staticClass: "btn btn-primary mt-4",
+      staticClass: "mt-4",
       attrs: {
         to: {
           name: "PageShowDish",
@@ -6442,7 +6460,14 @@ var render = function render() {
           }
         }
       }
-    }, [_vm._v("ORDINA")])], 1);
+    }, [_c("button", {
+      staticClass: "btn btn-primary",
+      on: {
+        click: function click($event) {
+          return _vm.removeall(restaurant.id);
+        }
+      }
+    }, [_vm._v("ORDINA")])])], 1);
   })], 2)])])])]), _vm._v(" "), _vm._m(1)]);
 };
 
@@ -72113,8 +72138,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\ANDREA\01_WebDev\01_boolean\php\00_FinalProject\Deliveboo\resources\js\front.js */"./resources/js/front.js");
-module.exports = __webpack_require__(/*! C:\ANDREA\01_WebDev\01_boolean\php\00_FinalProject\Deliveboo\resources\sass\back.scss */"./resources/sass/back.scss");
+__webpack_require__(/*! C:\xampp\htdocs\php_esercizi\laravel\Deliveboo\resources\js\front.js */"./resources/js/front.js");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\php_esercizi\laravel\Deliveboo\resources\sass\back.scss */"./resources/sass/back.scss");
 
 
 /***/ })
