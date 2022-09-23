@@ -57,7 +57,7 @@
                             @foreach($restaurants as $restaurant)
                             <div class="container">
                                 <h1 class="text-uppercase">{{ $restaurant->name_restaurant }}</h1>
-                                {{-- <img src="{{asset('storage/' . $restaurant->image)}}" alt=""> --}}
+                                <img src="{{asset('storage/' . $restaurant->image)}}" alt="">
                                 <h3>Telefono: {{ $restaurant->rest_phonenumber}}</h3>
                                 <h3>Email: {{$restaurant->rest_email}}</h3>
                                 <h3>Indirizzo: {{ $restaurant->address}}</h3>

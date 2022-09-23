@@ -1,20 +1,19 @@
 <template>
-    <div>
+    <div id="showDish">
           <div class="d-flex justify-content-end">
             <router-link :to="{name: 'cart' }">
                 <button type="" class="btn btn-primary">CARRELLO</button>
                 {{this.qty}}
             </router-link>
           </div>
-            
+
         <Page404 v-if='is404'/>
         <section v-else-if="restaurant">
 
-<h1>{{restaurant.name_restaurant}}</h1>
-            <div class="card mb-3" v-for="dish in restaurant.dish" :key="dish.id">
-                <img :src="dish.image"  :alt="dish.name">
+          <h1>{{restaurant.name_restaurant}}</h1>
+            <div id="card" class="card mb-3" v-for="dish in restaurant.dish" :key="dish.id">
+                <img :src="`/storage/${dish.image}`"  :alt="dish.name">
                 <div class="card-body">
-                    <!-- <img class="card-image-top" :src="dish.image" alt=""> -->
                     <h2 class="card-title text-uppercase">{{dish.name}}</h2>
                     <p class="card-text">{{dish.description}}</p>
                     <div class="text-end">Prezzo: {{dish.price}} €</div>
@@ -159,16 +158,23 @@ methods : {
 </script>
 
 <style lang="scss" scoped>
+#showDish{
+    margin-top: 120px;
 
-.none {
-  display: none;
+    .none {
+      display: none;
+    }
+    .block {
+      display: block;
+    }
+    .blue {
+      color: #0d6efd;
+    }
+    img{
+      width: 200px;
+    }
 }
-.block {
-  display: block;
-}
-.blue {
-  color: #0d6efd;
-}
+
 
 
 </style>

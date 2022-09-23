@@ -14,32 +14,28 @@
             </div>
         </div>
 
-
+        <!-- categorie -->
         <div class="container-fluid back-restaurant pt-4">
-            <h1 class="text-center my-5">Scegli il ristorante adatto a te</h1>
+            <h1 class="text-center my-5">SCEGLI IL RISTORANTE ADATTO A TE</h1>
             <section class="container">
                 <div class="row">
-                    <div class="col-4">
+                    <div class="col-2">
 
                         <div class="categories">
 
-                            <h1> Seleziona le Categorie:</h1>
+                            <h4> Seleziona le Categorie:</h4>
                             <div class="d-flex flex-column">
-                                <div type="button" class="btn btn-warning col-3" v-for="(element, i) in categorie" :key="i" @click="IdCategoria(i+1)">
+                                <div type="button" class="btn btn-warning col-3 bt-selezioneCat" v-for="(element, i) in categorie" :key="i" @click="IdCategoria(i+1)">
                                     <p>{{element}}</p>
                                 </div>
                             </div>
-
+                            <button class="btn btn-light" @click="resetCategory()">Cancella selezione</button>
                         </div>
                     </div>
-
-
-
-
-                    <div class="col-8">
-
+        <!-- ristoranti -->
+                    <div class="col-10">
                         <div class="row justify-content-center">
-                            <h1 class="text-center">Ristoranti che potrebbero piacerti:</h1>
+                            <h4 class="text-center">Ristoranti che potrebbero piacerti:</h4>
                             <div v-for="restaurant in restaurants" :key="restaurant.id" class="card col-sm-6 col-md-3 mx-1 my-2">
                         <!-- <img class="card-image-top" :src="restaurant.image" :alt=" restaurant.name_restaurant"> -->
                                 <div class="card-body">
@@ -114,42 +110,44 @@
             catIds: [], // id categoria che si trova nella funzione di ogni categoria per la chiamata api
             }
         },
-        created(){
-
+    created(){
+        this.search();
+    },
+    methods: {
+        search(){
             axios.get('/api/restaurants')
             .then(res => {
             this.restaurants = res.data.response.data;
             });
-            },
-            methods: {
-
-            trovaRistorante(){
-
+        },
+        trovaRistorante(){
+            if(this.catIds[0] != undefined){
                 axios.get('/api/category/restaurants' + '?category=' +this.catIds).then(response => {
-                if (response.data.success) {
-                    this.restaurants = response.data.arrRestaurants
-                    console.log(response.data.arrRestaurants)
-                }
-
-                })
-            },
-            IdCategoria(cat){
-
-                if (this.catIds.includes(cat)) {
-                    let posizione = this.catIds.indexOf(cat)
-                    this.catIds.splice(posizione, 1)
-                } else {
-                    this.catIds.push(cat);
-                    console.log(this.catIds)
-                }
-
-                this.trovaRistorante();
-            },
-
-            resetCategory(){
-                this.arrRestaurants = [];
+            if (response.data.success) {
+                this.restaurants = response.data.arrRestaurants
+                console.log(response.data.arrRestaurants)
             }
-            },
+            })} else {
+                this.search();
+            }
+        },
+        IdCategoria(cat){
+
+            if (this.catIds.includes(cat)) {
+                let posizione = this.catIds.indexOf(cat)
+                this.catIds.splice(posizione, 1)
+            } else {
+                this.catIds.push(cat);
+                console.log(this.catIds)
+            }
+
+            this.trovaRistorante();
+        },
+        resetCategory(){
+            this.arrRestaurants = [];
+            this.search();
+        }
+        },
 
         }
 </script>
@@ -158,6 +156,7 @@
     #jumbotron {
         background-color: #00ccbc;;
         max-width: 100%;
+        margin-top: 120px;
         .deliveboo-color {
             color: #440063;
         }
@@ -177,6 +176,13 @@
     }
         .big-label {
             font-size: 20px;
+        }
+
+        .bt-selezioneCat{
+            min-width: 120px;
+            text-align: center;
+            margin-bottom: 10px;
+            height: 40px;
         }
     }
 

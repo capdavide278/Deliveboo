@@ -1,38 +1,47 @@
 <template>
     <section>
-        <h1>Il tuo carrello:</h1>
-        <div class="card mb-3" v-for="dish in cart" :key="dish.id">
-                <!-- <img :src="dish.image"  :alt="dish.name"> -->
-                <div class="card-body">
-                    <h2 class="card-title text-uppercase">{{dish.name}}</h2>
-                    <div >Prezzo: {{dish.price}} €</div>
-                    <div>{{dish.qty}} porzioni</div>
-                </div>
-                <div class="d-flex justify-content-around">
+        <!-- <h1>Il carrello è vuoto</h1> -->
+        <div v-if="disabilita & this.cart != ''">
+            <h1>Il tuo carrello:</h1>
+            <div v-if="cart !=''">
 
-                    <button @click="added(dish)" type="button" class="btn btn-primary col-3 me-3">Aggiungi</button>
-                    <button @click="remove(dish.id)" type="button" class="btn btn-success col-3 me-3">Elimina porzione</button>
-                    <button @click="removeall(dish.id)" type="button" class="btn btn-danger col-3">Elimina</button>
-                </div>
+                <div class="card mb-3" v-for="dish in cart" :key="dish.id">
+                        <!-- <img :src="dish.image"  :alt="dish.name"> -->
+                        <div class="card-body">
+                            <h2 class="card-title text-uppercase">{{dish.name}}</h2>
+                            <div >Prezzo: {{dish.price}} €</div>
+                            <div>{{dish.qty}} porzioni</div>
+                        </div>
+                        <div class="d-flex justify-content-around">
 
+                            <button @click="added(dish)" type="button" class="btn btn-primary col-3 me-3">Aggiungi</button>
+                            <button @click="remove(dish.id)" type="button" class="btn btn-success col-3 me-3">Elimina porzione</button>
+                            <button @click="removeall(dish.id)" type="button" class="btn btn-danger col-3">Elimina</button>
+                        </div>
+
+                    </div>
             </div>
-            <div v-if="!totalItem == 0">
-        <h3>
-          <b>Totale carrello:  €{{ totalItem }}</b>
-        </h3>
-      </div>
-      <div  v-if="loading">
+                <div v-if="!totalItem == 0">
+            <h3>
+              <b>Totale carrello:  €{{ totalItem }}</b>
+            </h3>
+          </div>
+
+      <div v-if="loading">
 
             <Payment
             ref="paymentRef"
             :authorization="tokenApi"
-            @onSuccess="paymentOnSuccess"/>
+            @onSuccess="paymentOnSuccess"
+           />
 
       </div>
-      <div v-else>
-            <h3>{{message}}</h3>
-        </div>
-    </section>
+    </div>
+    <div v-else>
+          <h3>{{message}}</h3>
+    </div>
+
+</section>
 
 </template>
 
@@ -57,8 +66,8 @@ export default {
             tokenApi: "",
             loading: false,
             message: 'Loading...',
-            amount2: ''
-
+            amount2: '',
+            disabilita: true,
         }
 
     },
@@ -73,7 +82,6 @@ export default {
                 this.tokenApi = res.data.token;
                 this.loading = true;
                 console.log(res.data.success)
-                console.log(this.tokenApi)
             }
         });
 
@@ -186,6 +194,13 @@ added(item) {
                 this.loading = false;
             }
         });
+        localStorage.clear();
+             this.cart2= '';
+            this.cart= '';
+            this.disabilita= false;
+        },
+        error(){
+
         }
 }
 
@@ -194,7 +209,10 @@ added(item) {
 
 <style lang="scss" scoped>
 
+section{
+    margin-top: 120px;
 
+}
 
 
 </style>

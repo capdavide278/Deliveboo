@@ -1,5 +1,7 @@
 <template >
+<section>
 
+</section>
 </template>
 
 <script>
@@ -11,5 +13,8 @@ export default {
 </script>
 
 <style>
+section{
+    margin-top: 120px;
 
+}
 </style>

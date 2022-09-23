@@ -59,22 +59,32 @@ class RestaurantController extends Controller
         $request->validate($this->validation_rules);
         // richiesta dati al db
         $form_data = $request->all();
+
         $data = $form_data + [
-            'user_id' => Auth::id(),
-        ];
-        // TODO MO CHE POSSIAMO
-        // if(key_exists('image', $data)){
+             'user_id' => Auth::id(),
+         ];
+        $img_path = '';
+        if(key_exists('image', $data)){
 
-        //     $img_path = Storage::put('uploads', $data['image']);
+            $img_path = Storage::put('uploads', $data['image']);
 
-        //     //aggiorniamo il valore della chiave image con il nome dell'img creata
-        //     $data['image'] = $img_path;
-        // }
+            //aggiorniamo il valore della chiave image con il nome dell'img creata
+            $data['image'] = $img_path;
+        }
 
         // creazione dati
-        $restaurant = Restaurant::create($data);
+        $restaurant = new Restaurant();
+        $restaurant->user_id =  Auth::id();
+        $restaurant->name_restaurant = request('name_restaurant');
+        $restaurant->image = $img_path;
+        $restaurant->address = request('address');
+        $restaurant->rest_email = request('rest_email');
+        $restaurant->rest_phonenumber = request('rest_phonenumber');
+        $restaurant->save();
 
-            $restaurant->category()->sync($data['categories']);
+        $restaurant->category()->sync($data['categories']);
+
+
             // ti mando alla pagina
             return redirect()->route('admin.restaurant.index', [
                 'restaurant'    => $restaurant,

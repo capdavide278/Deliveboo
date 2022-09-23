@@ -1,9 +1,9 @@
 <template>
     <div id="nav-color" class="container-fluid">
       <nav class="container navbar navbar-expand-lg">
-        <a href="">
+        <router-link :to="{name: 'home'}" class="nav-link active">
             <img class="logo_size" src="../img/logo_deliveboo.png" alt="">
-        </a>
+        </router-link>
           <div class="">
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                   <span class="navbar-toggler-icon"></span>
@@ -17,6 +17,7 @@
                   </ul>
               </div>
           </div>
+          <div>Shopping Cart: </div>
       </nav>
     </div>
   </template>
@@ -45,6 +46,12 @@
 
     #nav-color {
         background-color: #00ccbc;
+        height: 120px;
+        width: 100%;
+        position: fixed;
+        top:0;
+        left: 0;
+        z-index: 500;
         .logo_size {
             width: 100px;
             height: 100px;

@@ -21,6 +21,11 @@ class DishController extends Controller
 
     protected $perPage= 10;
 
+    private function fixImageUrl($imgPath)
+    {
+        return $imgPath ? asset('/storage/' . $imgPath) : null;
+    }
+
     public function index()
     {
         $user_id =  Auth::id();
