@@ -11,72 +11,31 @@
                         <img id="chef" src="../img/chef-jumbo.png" alt="">
                     </div>
                 </div>
-            </div> 
+            </div>
         </div>
 
-
+        <!-- categorie -->
         <div class="container-fluid back-restaurant pt-4">
-            <h1 class="text-center my-5">Scegli il ristorante adatto a te</h1>
+            <h1 class="text-center my-5">SCEGLI IL RISTORANTE ADATTO A TE</h1>
             <section class="container">
                 <div class="row">
-                    <div class="col-4">
-                        <div class="categories " @change="search(inputCategory)" method="get">
-                            <h1> Seleziona le Categorie:</h1>
+                    <div class="col-2">
 
+                        <div class="categories">
 
-                            <div class="border-bottom pb-3">
-                                <input type="checkbox" class="big-check mt-4 form-check-input" name="pizzeria" id="1" value="1" v-model="inputCategory" />
-                                <label class="big-label form-check-label mt-4" for="pizzeria">pizzeria</label>
+                            <h4> Seleziona le Categorie:</h4>
+                            <div class="d-flex flex-column">
+                                <div type="button" class="btn btn-warning col-3 bt-selezioneCat" v-for="(element, i) in categorie" :key="i" @click="IdCategoria(i+1)">
+                                    <p>{{element}}</p>
+                                </div>
                             </div>
-                            <div class="border-bottom pb-3">
-                                <input type="checkbox" class="big-check mt-4 form-check-input" name="ristorante"  id="2" value="2" v-model="inputCategory" />
-                                <label class="big-label mt-4 form-check-label" for="ristorante">ristorante</label>
-                            </div>
-                            <div class="border-bottom pb-3">
-                                <input type="checkbox" class="big-check mt-4 form-check-input" name="pesce"  id="3" value="3" v-model="inputCategory" />
-                                <label class="big-label mt-4 form-check-label" for="pesce">pesce</label>
-                            </div>
-                            
-                            <div class="border-bottom pb-3">  
-                                <input type="checkbox" class="big-check mt-4 form-check-input" name="vegetariano"  id="4" value="4" v-model="inputCategory" />
-                                <label class="big-label mt-4 form-check-label" for="vegetariano">vegetariano</label>
-                            </div>
-
-                            <div class="border-bottom pb-3">
-                                <input type="checkbox" class="big-check mt-4 form-check-input" name="vegano"  id="5" value="5" v-model="inputCategory" />
-                                <label class="big-label mt-4 form-check-label" for="vegano">vegano</label>
-                            </div>    
-
-                            <div class="border-bottom pb-3">
-                                <input type="checkbox" class="big-check mt-4 form-check-input" name="bergamasco" id="6" value="6" v-model="inputCategory" />
-                                <label class="big-label mt-4 form-check-label" for="bergamasco">bergamasco</label>
-                            </div>
-                             
-                            <div class="border-bottom pb-3">
-                                <input type="checkbox" class="big-check mt-4 form-check-input" name="etnico"  id="7" value="7" v-model="inputCategory" />
-                                <label class="big-label mt-4 form-check-label" for="etnico">etnico</label>
-                            </div>
-
-                            <div class="border-bottom pb-3">
-                                <input type="checkbox" class="big-check mt-4 form-check-input" name="asiatico"  id="8" value="8" v-model="inputCategory" />
-                                <label class="big-label mt-4 form-check-label" for="asiatico">asiatico</label>
-                            </div>
-
-                            <div class="border-bottom pb-3">
-                                <input type="checkbox" class="big-check mt-4 form-check-input" name="messicano" id="9" value="9" v-model="inputCategory" />
-                                <label class="big-label mt-4 form-check-label" for="messicano">messicano</label>
-                            </div>
-                            
+                            <button class="btn btn-light" @click="resetCategory()">Cancella selezione</button>
                         </div>
                     </div>
-                
-            
-                
-            
-                    <div class="col-8">
-                       
+        <!-- ristoranti -->
+                    <div class="col-10">
                         <div class="row justify-content-center">
-                            <h1 class="text-center">Ristoranti che potrebbero piacerti:</h1>
+                            <h4 class="text-center">Ristoranti che potrebbero piacerti:</h4>
                             <div v-for="restaurant in restaurants" :key="restaurant.id" class="card col-sm-6 col-md-3 mx-1 my-2">
                         <!-- <img class="card-image-top" :src="restaurant.image" :alt=" restaurant.name_restaurant"> -->
                                 <div class="card-body">
@@ -90,15 +49,15 @@
                                             {{ category.name }}
                                         </span>
                                     </div>
-                                </div>    
+                                </div>
                                 <router-link :to="{name:'PageShowDish', params: {idRest: restaurant.id}}" class="btn btn-primary  mt-4">ORDINA</router-link>
                             </div>
 
                         </div>
-                        
+
                     </div>
-                </div> 
-            </section> 
+                </div>
+            </section>
         </div>
         <!-- piatti -->
         <div class="container-fluid pt-3">
@@ -107,19 +66,19 @@
                     <h1 class="text-center mb-3">La selezione di deliveboo scelta apposta per voi</h1>
                     <div class="col-12 mt-4">
                         <div class="row justify-content-between align-items-center">
-                            
+
                             <div id="pizza" class="col-6">
                                 <h1>Il grande classico italiano</h1>
                             </div>
                             <div class="col-5">
-                                <h2>Il cibo italiano probabilmente il migliore al mondo</h2>
+                                <h2>Il cibo italiano il migliore al mondo</h2>
                             </div>
                         </div>
                     </div>
                     <div class="col-12 mt-4">
                         <div class="row justify-content-between align-items-center">
                             <div class="col-5">
-                                <h2>Il cibo italiano il migliore al mondo</h2>
+                                <h2>McDonald's i panini gustosi per te</h2>
                             </div>
                             <div class="col-6">
                                 <div id="mc" class="col-6">
@@ -132,80 +91,63 @@
             </div>
         </div>
     </div>
-    
-    
+
+
 </template>
 
 <script>
-import { computed } from 'vue';
-// import CategoryCheck from '../components/CategoryCheck.vue'
-
     export default {
         name:'PageHome',
-        components:{
-        // CategoryCheck
-    },
     props:{
-categoria: String
+        categoria: String
     },
-
-
-        data(){
-            return {
-                categories : [ 'Pizzeria', 'Ristorante', 'Pesce', 'Vegetariano', 'Vegano', 'Bergamasco', 'Etnico', 'Asiatico',  'Messicano'],
-                checkedNames: '',
-                restaurants: [],
-                restaurantsCat: [],
-                category: [],
-                userValue: '',
-                inputCategory: [],
-                genereApi: {},
-            genereVari: [],
-            stringa : ''
+    data(){
+        return {
+            categorie : [ 'Pizzeria', 'Ristorante', 'Pesce', 'Vegetariano', 'Vegano', 'Bergamasco', 'Etnico', 'Asiatico',  'Messicano'],
+            restaurants: [],
+            categories: [], // categorie da mostrare
+            arrRestaurants: [], // ristoranti filtrati in base alla categoria
+            catIds: [], // id categoria che si trova nella funzione di ogni categoria per la chiamata api
             }
         },
-        created(){
-
+    created(){
+        this.search();
+    },
+    methods: {
+        search(){
             axios.get('/api/restaurants')
             .then(res => {
             this.restaurants = res.data.response.data;
             });
-            },
-            methods: {
-                search(cat){
-                    console.log('chi sei?'+cat)
-                    this.inputCategory = cat;
-                    console.log(this.inputCategory[0]);
+        },
+        trovaRistorante(){
+            if(this.catIds[0] != undefined){
+                axios.get('/api/category/restaurants' + '?category=' +this.catIds).then(response => {
+            if (response.data.success) {
+                this.restaurants = response.data.arrRestaurants
+                console.log(response.data.arrRestaurants)
+            }
+            })} else {
+                this.search();
+            }
+        },
+        IdCategoria(cat){
 
-                    const checked = document.querySelectorAll('.form-check-input').checked;
-                    console.log(checked +'check')
+            if (this.catIds.includes(cat)) {
+                let posizione = this.catIds.indexOf(cat)
+                this.catIds.splice(posizione, 1)
+            } else {
+                this.catIds.push(cat);
+                console.log(this.catIds)
+            }
 
-
-                     if (this.inputCategory[0] != undefined ) {
-                     this.stringa = this.inputCategory.toString();
-
-                         if (this.inputCategory[1] != undefined ) {
-                            this.stringa = this.inputCategory.toString();
-                            this.stringa = this.stringa.replace(/,/g,'&');
-                      }
-
-                      axios.get('/api/restaurants/search?category='+this.stringa )
-                      .then(res => {
-                          this.restaurants = res.data.response;
-                           console.log(this.restaurants);
-                           console.log('/api/restaurants/search?category='+this.stringa)
-                       });
-                     }
-
-                      if (this.inputCategory[0] == undefined)  {
-                         axios.get('/api/restaurants')
-                        .then(res => {
-                        this.restaurants = res.data.response.data;
-                        });
-                        }
-
-                }
-            },
+            this.trovaRistorante();
+        },
+        resetCategory(){
+            this.arrRestaurants = [];
+            this.search();
+        }
+        },
 
         }
 </script>
@@ -214,6 +156,7 @@ categoria: String
     #jumbotron {
         background-color: #00ccbc;;
         max-width: 100%;
+        margin-top: 120px;
         .deliveboo-color {
             color: #440063;
         }
@@ -227,15 +170,22 @@ categoria: String
     }
 
     .categories{
-        
+
         .big-check {
         padding: 20px;
     }
         .big-label {
             font-size: 20px;
         }
+
+        .bt-selezioneCat{
+            min-width: 120px;
+            text-align: center;
+            margin-bottom: 10px;
+            height: 40px;
+        }
     }
-    
+
     #pizza {
         background-image: url('../img/pizza.jpg');
         background-size: cover;

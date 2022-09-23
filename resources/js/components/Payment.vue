@@ -77,8 +77,6 @@ export default {
             .reduce((total, dish) => total + dish.price * dish.qty, 0)
             .toFixed(2);
             console.log('tot'+ amount);
-
-
         },
     onError (error){
         let message = error.message

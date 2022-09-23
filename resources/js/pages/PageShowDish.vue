@@ -1,8 +1,12 @@
 <template>
     <div>
+          <div class="d-flex justify-content-end">
             <router-link :to="{name: 'cart' }">
                 <button type="" class="btn btn-primary">CARRELLO</button>
-                </router-link>
+                {{this.qty}}
+            </router-link>
+          </div>
+            
         <Page404 v-if='is404'/>
         <section v-else-if="restaurant">
 
@@ -17,8 +21,12 @@
                 </div>
 
 
-                <button v-if="dish.is_visible" @click="added(dish)" type="button" class="btn btn-primary col-3">Aggiungi al carrello</button>
+                <button v-if="dish.is_visible" @click="added(dish), product_alert()" id="cart_button" type="button" class="btn btn-primary col-3">Aggiungi al carrello</button>
                 <h5 v-else> Il piatto non è al momento disponibile</h5>
+                
+            </div>
+            <div id="alertmsg" class="alert none alert-success" role="alert">
+                    <h2 class="blue">{{alert}}</h2>
             </div>
         </section>
     </div>
@@ -26,7 +34,6 @@
 
 <script>
 import Page404 from './Page404.vue'
-
 
 export default {
     name: 'PageShowDish',
@@ -47,6 +54,7 @@ export default {
             price: "",
             image: "",
         },
+        alert: '',
     }
 
     },
@@ -104,6 +112,14 @@ methods : {
         console.log(localStorage.getItem('cart'))
       }
     },
+
+    product_alert(){
+        const alertmess = document.getElementById('alertmsg')
+        alertmess.classList.add('block')
+        this.alert = "piatto aggiunto al carrello"
+    },
+    
+
     saveCats() {
       // for save in local storage set the below code
       let parsed = JSON.stringify(this.cart);
@@ -143,7 +159,15 @@ methods : {
 
 <style lang="scss" scoped>
 
-
+.none {
+  display: none;
+}
+.block {
+  display: block;
+}
+.blue {
+  color: #0d6efd;
+}
 img{
   width: 200px;
 }

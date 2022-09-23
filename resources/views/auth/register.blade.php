@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
+                <div class="auth-color card-header">{{ __('Register') }}</div>
                 <div class="card-body">
                     <form method="POST" name="register_form"  id="register_form" action="{{ route('register') }}">
                         @csrf
