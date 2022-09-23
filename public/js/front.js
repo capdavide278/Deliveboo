@@ -5193,13 +5193,18 @@ __webpack_require__.r(__webpack_exports__);
         routeName: 'cart'
       }],
       cart2: '',
-      cart: ''
+      cart: '',
+      qtyTot: ''
     };
   },
   created: function created() {
     this.cart2 = localStorage.getItem('cart');
     this.cart = JSON.parse(this.cart2);
     console.log('nav' + this.cart);
+    this.cart.forEach(function (element) {
+      console.log(element.qty);
+      console.log(qtyTot.push(element.qty));
+    });
   }
 });
 

@@ -39,12 +39,17 @@
                 ],
                 cart2: '',
                 cart: '',
+                qtyTot: '',
           }
       },
       created(){
         this.cart2 = localStorage.getItem('cart');
         this.cart = JSON.parse(this.cart2);
         console.log('nav'+this.cart)
+        this.cart.forEach(element => {
+            console.log(element.qty)
+           console.log(qtyTot.push(element.qty))
+        });
       }
   }
   </script>

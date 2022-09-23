@@ -19,6 +19,7 @@ class DishSeeder extends Seeder
 
         for($i=0; $i<10; $i++){
             $dish = new Dish;
+            $dish->is_visible = $faker->numberBetween(0,1);
             $dish->restaurant_id = $faker->randomElement($restaurant_ids);
             $dish->name= $faker->name();
             $dish->description= $faker->paragraph();
