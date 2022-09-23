@@ -27,3 +27,4 @@ Route::get('/restaurants/{restaurant}', 'Api\restaurantController@show')->name('
 Route::get('products', 'Api\Products\ProductController@index');
 Route::get('orders/generate', 'Api\Orders\OrderController@generate');
 Route::post('orders/make/payment', 'Api\Orders\OrderController@makePayment');
+Route::post('/transaction', 'Api\TransactionController@store');

@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Api\Orders;
 
 use App\Models\Dish;
 use Braintree\Gateway;
+use App\Models\Restaurant;
+use App\Models\Transaction;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Orders\OrderRequest;
@@ -52,4 +54,6 @@ class OrderController extends Controller
         }
         return 'make Payment';
     }
+
+
 }

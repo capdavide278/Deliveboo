@@ -5191,8 +5191,15 @@ __webpack_require__.r(__webpack_exports__);
       }, {
         label: 'Cart',
         routeName: 'cart'
-      }]
+      }],
+      cart2: '',
+      cart: ''
     };
+  },
+  created: function created() {
+    this.cart2 = localStorage.getItem('cart');
+    this.cart = JSON.parse(this.cart2);
+    console.log('nav' + this.cart);
   }
 });
 
@@ -5225,6 +5232,7 @@ __webpack_require__.r(__webpack_exports__);
       lastname: "",
       address: "",
       email: "",
+      phonenumber: "0",
       allDone: false,
       cart: JSON.parse(window.localStorage.getItem("cart")),
       error: ''
@@ -5236,12 +5244,8 @@ __webpack_require__.r(__webpack_exports__);
     // },
     onSuccess: function onSuccess(payload) {
       var token = payload.nonce;
-      this.$emit('onSuccess', token); // const nonce = payload.nonce
-
-      var amount = this.cart.reduce(function (total, dish) {
-        return total + dish.price * dish.qty;
-      }, 0).toFixed(2);
-      console.log('tot' + amount);
+      this.$emit('onSuccess', token);
+      this.sendForm();
     },
     onError: function onError(error) {
       var message = error.message;
@@ -5253,10 +5257,31 @@ __webpack_require__.r(__webpack_exports__);
       }
 
       this.$emit('onError', message);
+    },
+    sendForm: function sendForm() {
+      // let new_cart = [];
+      //         this.cart.forEach((element) => {
+      //             new_cart.push(JSON.stringify(element));
+      //         });
+      var total = this.cart.reduce(function (amount, dish) {
+        return amount + dish.price * dish.qty;
+      }, 0).toFixed(2);
+      axios.post("/api/transaction", {
+        name: this.name,
+        lastname: this.lastname,
+        address: this.address,
+        email: this.email,
+        // cart: new_cart,
+        phonenumber: this.phonenumber,
+        total: total
+      }).then(function (res) {
+        if (res.data.success) {
+          console.log('YESSS');
+        }
+      })["catch"](function (error) {
+        console.log(error);
+      });
     }
-  },
-  sendForm: function sendForm() {
-    console.log('ciao');
   }
 });
 
@@ -6021,7 +6046,7 @@ var render = function render() {
     on: {
       submit: function submit($event) {
         $event.preventDefault();
-        return _vm.sendForm();
+        return _vm.sendForm.apply(null, arguments);
       }
     }
   }, [_c("div", {
@@ -6092,6 +6117,36 @@ var render = function render() {
     staticClass: "form-group mb-3"
   }, [_c("label", {
     attrs: {
+      "for": "phonenumber"
+    }
+  }, [_vm._v("Phonenumber")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.phonenumber,
+      expression: "phonenumber"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      type: "text",
+      maxlength: "10",
+      name: "phonenumber",
+      id: "phonenumber",
+      placeholder: "Inserisci il tuo numero"
+    },
+    domProps: {
+      value: _vm.phonenumber
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.phonenumber = $event.target.value;
+      }
+    }
+  })]), _vm._v(" "), _c("div", {
+    staticClass: "form-group mb-3"
+  }, [_c("label", {
+    attrs: {
       "for": "address"
     }
   }, [_vm._v("Indirizzo")]), _vm._v(" "), _c("input", {
@@ -6150,7 +6205,9 @@ var render = function render() {
         _vm.email = $event.target.value;
       }
     }
-  })])]), _vm._v(" "), _c("v-braintree", {
+  })])]), _vm._v(" "), _c("div", {
+    staticClass: "col-4"
+  }, [_c("v-braintree", {
     attrs: {
       authorization: _vm.authorization,
       locale: "it_IT"
@@ -6159,9 +6216,9 @@ var render = function render() {
       success: _vm.onSuccess,
       error: _vm.onError
     }
-  }), _vm._v(" "), _vm.error ? _c("p", {
+  })], 1), _vm._v(" "), _vm.error ? _c("p", {
     staticClass: "text-red-500 mb-4"
-  }, [_vm._v(_vm._s(_vm.error))]) : _vm._e()], 1)]) : _vm._e()]);
+  }, [_vm._v(_vm._s(_vm.error))]) : _vm._e()])]) : _vm._e()]);
 };
 
 var staticRenderFns = [function () {
@@ -6269,7 +6326,7 @@ var render = function render() {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _c("section", [_vm.disabilita & this.cart != "" ? _c("div", [_c("h1", [_vm._v("Il tuo carrello:")]), _vm._v(" "), _vm.cart != "" ? _c("div", _vm._l(_vm.cart, function (dish) {
+  return _c("section", [_vm.disabilita & this.cart != "" ? _c("div", [_c("h1", [_vm._v("Il tuo carrello:")]), _vm._v(" "), _vm.cart != "" ? _c("div", [_c("div", _vm._l(_vm.cart, function (dish) {
     return _c("div", {
       key: dish.id,
       staticClass: "card mb-3"
@@ -6310,7 +6367,7 @@ var render = function render() {
         }
       }
     }, [_vm._v("Elimina")])])]);
-  }), 0) : _vm._e(), _vm._v(" "), !_vm.totalItem == 0 ? _c("div", [_c("h3", [_c("b", [_vm._v("Totale carrello:  €" + _vm._s(_vm.totalItem))])])]) : _vm._e(), _vm._v(" "), _vm.loading ? _c("div", [_c("Payment", {
+  }), 0)]) : _vm._e(), _vm._v(" "), !_vm.totalItem == 0 ? _c("div", [_c("h3", [_c("b", [_vm._v("Totale carrello:  €" + _vm._s(_vm.totalItem))])])]) : _vm._e(), _vm._v(" "), _vm.loading ? _c("div", [_c("Payment", {
     ref: "paymentRef",
     attrs: {
       authorization: _vm.tokenApi
@@ -6578,7 +6635,7 @@ var render = function render() {
     attrs: {
       type: ""
     }
-  }, [_vm._v("CARRELLO")]), _vm._v("\n            " + _vm._s(this.qty) + "\n        ")])], 1), _vm._v(" "), _vm.is404 ? _c("Page404") : _vm.restaurant ? _c("section", [_c("h1", [_vm._v(_vm._s(_vm.restaurant.name_restaurant))]), _vm._v(" "), _vm._l(_vm.restaurant.dish, function (dish) {
+  }, [_vm._v("CARRELLO")])])], 1), _vm._v(" "), _vm.is404 ? _c("Page404") : _vm.restaurant ? _c("section", [_c("h1", [_vm._v(_vm._s(_vm.restaurant.name_restaurant))]), _vm._v(" "), _vm._l(_vm.restaurant.dish, function (dish) {
     return _c("div", {
       key: dish.id,
       staticClass: "card mb-3",

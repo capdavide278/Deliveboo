@@ -3,7 +3,7 @@
           <div class="d-flex justify-content-end">
             <router-link :to="{name: 'cart' }">
                 <button type="" class="btn btn-primary">CARRELLO</button>
-                {{this.qty}}
+                <!-- {{this.qty}} -->
             </router-link>
           </div>
 

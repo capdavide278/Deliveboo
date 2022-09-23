@@ -6,6 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Transaction extends Model
 {
+    protected $fillable = [
+        'name', 'lastname', 'email', 'address', 'phonenumber', 'total'
+    ];
     // relazione transazioni ristoranti
     public function restaurant(){
         return $this->belongsTo('App\Models\Restaurant');

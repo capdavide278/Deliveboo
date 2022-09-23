@@ -4,9 +4,8 @@
         <div v-if="disabilita & this.cart != ''">
             <h1>Il tuo carrello:</h1>
             <div v-if="cart !=''">
-
-                <div class="card mb-3" v-for="dish in cart" :key="dish.id">
-                        <!-- <img :src="dish.image"  :alt="dish.name"> -->
+                <div>
+                    <div class="card mb-3" v-for="dish in cart" :key="dish.id">
                         <div class="card-body">
                             <h2 class="card-title text-uppercase">{{dish.name}}</h2>
                             <div >Prezzo: {{dish.price}} €</div>
@@ -20,6 +19,7 @@
                         </div>
 
                     </div>
+                </div>
             </div>
                 <div v-if="!totalItem == 0">
             <h3>
