@@ -13,7 +13,10 @@ export default {
 
 <style lang="scss" scoped>
 
+h1{
+    margin-top: 120px;
 
+}
 
 
 </style>

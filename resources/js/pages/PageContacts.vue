@@ -1,5 +1,8 @@
 <template>
-    <h1>Contattaci</h1>
+    <div id="contact">
+
+        <h1>Contattaci</h1>
+    </div>
 </template>
 
 <script>
@@ -13,7 +16,10 @@ export default {
 
 <style lang="scss" scoped>
 
+#contact{
+    margin-top: 120px;
 
+}
 
 
 </style>

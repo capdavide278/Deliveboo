@@ -1,5 +1,8 @@
 <template>
-    <h1>Chi siamo</h1>
+    <section>
+
+        <h1>Chi siamo</h1>
+    </section>
     </template>
 
     <script>
@@ -12,7 +15,10 @@
     </script>
 
     <style lang="scss" >
+        section{
+            margin-top: 120px;
 
+        }
 
 
 
