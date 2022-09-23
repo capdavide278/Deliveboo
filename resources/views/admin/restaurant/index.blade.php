@@ -18,6 +18,7 @@
                     <h1>{{ $restaurant->name_restaurant }}</h1>
                     {{-- <img src="{{asset('storage/' . $restaurant->image)}}" alt=""> --}}
                     <h3>Telefono: {{ $restaurant->rest_phonenumber}}</h3>
+                    <img src="{{asset('storage/' . $restaurant->image)}}" class="max-width" alt="{{$restaurant->name_restaurant}}">
                     <h3>Email: {{$restaurant->rest_email}}</h3>
                     <h3>Indirizzo: {{ $restaurant->address}}</h3>
                     <h3>Categorie: @foreach($restaurant->category as $cat)

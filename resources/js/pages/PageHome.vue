@@ -19,33 +19,34 @@
             <h1 class="text-center my-5">SCEGLI IL RISTORANTE ADATTO A TE</h1>
             <section class="container">
                 <div class="row">
-                    <div class="col-2">
+                    <div class="col-12">
 
-                        <div class="categories">
+                        <div class="row justify-content-center categories">
 
                             <h4> Seleziona le Categorie:</h4>
-                            <div class="d-flex flex-column">
-                                <div type="button" class="btn btn-warning col-3 bt-selezioneCat" v-for="(element, i) in categorie" :key="i" @click="IdCategoria(i+1)">
+                            <div class="col-10">
+                                <div type="button" class="btn btn-success col-1 bt-selezioneCat me-2" v-for="(element, i) in categorie" :key="i" @click="IdCategoria(i+1)">
                                     <p>{{element}}</p>
                                 </div>
                             </div>
-                            <button class="btn btn-light" @click="resetCategory()">Cancella selezione</button>
+                            <button class="col-2 btn btn-danger bt-selezioneCat" @click="resetCategory()">Annulla</button>
                         </div>
                     </div>
         <!-- ristoranti -->
-                    <div class="col-10">
+                    <div class="col-12">
                         <div class="row justify-content-center">
                             <h4 class="text-center">Ristoranti che potrebbero piacerti:</h4>
-                            <div v-for="restaurant in restaurants" :key="restaurant.id" class="card col-sm-6 col-md-3 mx-1 my-2">
-                        <!-- <img class="card-image-top" :src="restaurant.image" :alt=" restaurant.name_restaurant"> -->
+                            <div v-for="restaurant in restaurants" :key="restaurant.id" class="card restaurant col-sm-6 col-md-3 mx-1 pb-5 my-2">
+                                <img v-if="restaurant.image.includes('http')" class="card-image-top max-width" :src="restaurant.image " :alt=" restaurant.name_restaurant">
+                                <img v-else class="card-image-top max-width" :src="`/storage/${restaurant.image}` " :alt=" restaurant.name_restaurant">
                                 <div class="card-body">
-                                    <h3 class="card-title text-uppercase">{{ restaurant.name_restaurant }}</h3>
-                                    <span>Telefono: {{ restaurant.rest_phonenumber}}</span>
-                                    <div>Email: {{restaurant.rest_email}}</div>
-                                    <span>Indirizzo: {{ restaurant.address}}</span>
+                                    <h3 class="white card-title text-uppercase">{{ restaurant.name_restaurant }}</h3>
+                                    <span class="white">Telefono: {{ restaurant.rest_phonenumber}}</span>
+                                    <div class="white">Email: {{restaurant.rest_email}}</div>
+                                    <span class="white">Indirizzo: {{ restaurant.address}}</span>
                                     <div class="tags text-end">
-                                        <strong>Category: </strong>
-                                        <span v-for="category in restaurant.category" :key="category.id" class="tag">
+                                        <strong class="white">Category: </strong>
+                                        <span v-for="category in restaurant.category" :key="category.id" class="white tag">
                                             {{ category.name }}
                                         </span>
                                     </div>
@@ -60,7 +61,7 @@
             </section>
         </div>
         <!-- piatti -->
-        <div class="container-fluid pt-3">
+        <div class="container-fluid back-selection pt-3">
             <div class="container">
                 <div class="row">
                     <h1 class="text-center mb-3">La selezione di deliveboo scelta apposta per voi</h1>
@@ -165,8 +166,8 @@
         }
     }
 
-    .back-restaurant {
-       background-color: #F5E1A4;
+    .back-selection {
+       background-color: #ffeae4;
     }
 
     .categories{
@@ -179,7 +180,8 @@
         }
 
         .bt-selezioneCat{
-            min-width: 120px;
+            min-width: 110px;
+            max-width: 110px;
             text-align: center;
             margin-bottom: 10px;
             height: 40px;
@@ -206,6 +208,17 @@
             padding: 100px;
             color: black;
         }
+    }
+    .restaurant {
+        background-color: #202428;
+        .white{
+            color : white;
+        }
+    }
+    .max-width {
+        object-fit: cover;
+        max-width: 100%;
+        height: 200px;
     }
 
 </style>
