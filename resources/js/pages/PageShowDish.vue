@@ -18,7 +18,9 @@
                     <h2 class="card-title text-uppercase">{{dish.name}}</h2>
                     <p class="card-text">{{dish.description}}</p>
                     <div class="text-end">Prezzo: {{dish.price}} €</div>
-
+                    <div id="alertmsg" class="alert none alert-success" role="alert">
+                      <h2 class="blue">{{alert}}</h2>
+                    </div>
                 </div>
 
 
@@ -26,9 +28,7 @@
                 <h5 v-else> Il piatto non è al momento disponibile</h5>
                 
             </div>
-            <div id="alertmsg" class="alert none alert-success" role="alert">
-                    <h2 class="blue">{{alert}}</h2>
-            </div>
+            
         </section>
     </div>
 </template>
@@ -115,9 +115,9 @@ methods : {
     },
 
     product_alert(){
-        const alertmess = document.getElementById('alertmsg')
-        alertmess.classList.add('block')
-        this.alert = "piatto aggiunto al carrello"
+        const alertmess = document.getElementById('alertmsg')   
+          alertmess.classList.add('block')
+          this.alert = "piatto aggiunto al carrello"      
     },
     
 
