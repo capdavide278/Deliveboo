@@ -27,7 +27,7 @@
       name: 'NavBar',
       data() {
           return {
-              navItems: [
+                 navItems: [
                   {
                       label: 'Home',
                       routeName: 'home'
@@ -36,8 +36,15 @@
                       label: 'Cart',
                       routeName: 'cart'
                   },
-              ]
+                ],
+                cart2: '',
+                cart: '',
           }
+      },
+      created(){
+        this.cart2 = localStorage.getItem('cart');
+        this.cart = JSON.parse(this.cart2);
+        console.log('nav'+this.cart)
       }
   }
   </script>

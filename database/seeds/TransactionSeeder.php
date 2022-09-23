@@ -19,6 +19,7 @@ class TransactionSeeder extends Seeder
         $transactions = [
             [
                 'name'          => 'VAndrea',
+                'lastname'      => 'Neri',
                 'restaurant_id' => $faker->randomElement($restaurant_ids),
                 'address'       => 'via GiovanniDaProcida',
                 'email'         => 'vandreavp@email.com',
@@ -27,6 +28,7 @@ class TransactionSeeder extends Seeder
             ],
             [
                 'name'          => 'VGiorgia',
+                'lastname'      => 'Bianchi',
                 'restaurant_id' => $faker->randomElement($restaurant_ids),
                 'address'       => 'via GiovanniDaCrocida',
                 'email'         => 'vgiorgiavp@email.com',
@@ -35,6 +37,7 @@ class TransactionSeeder extends Seeder
             ],
             [
                 'name'          => 'VDavide',
+                'lastname'      => 'Rossi',
                 'restaurant_id' => $faker->randomElement($restaurant_ids),
                 'address'       => 'via GiovanniDaVrocida',
                 'email'         => 'vdavidevp@email.com',
