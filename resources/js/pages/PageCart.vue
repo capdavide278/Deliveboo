@@ -1,6 +1,6 @@
 <template>
     <section>
-        <h1>Il carrello è vuoto</h1>
+        <!-- <h1>Il carrello è vuoto</h1> -->
         <div v-if="disabilita & this.cart != ''">
             <h1>Il tuo carrello:</h1>
             <div v-if="cart !=''">
@@ -209,7 +209,10 @@ added(item) {
 
 <style lang="scss" scoped>
 
+section{
+    margin-top: 120px;
 
+}
 
 
 </style>
