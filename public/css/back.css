@@ -12653,3 +12653,7 @@ fieldset:disabled .btn {
   background-color: #00ccbc;
 }
 
+.max-width {
+  max-width: 100%;
+}
+

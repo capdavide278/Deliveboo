@@ -6366,15 +6366,15 @@ var render = function render() {
   }, [_c("div", {
     staticClass: "row"
   }, [_c("div", {
-    staticClass: "col-2"
+    staticClass: "col-12"
   }, [_c("div", {
-    staticClass: "categories"
+    staticClass: "row justify-content-center categories"
   }, [_c("h4", [_vm._v(" Seleziona le Categorie:")]), _vm._v(" "), _c("div", {
-    staticClass: "d-flex flex-column"
+    staticClass: "col-10"
   }, _vm._l(_vm.categorie, function (element, i) {
     return _c("div", {
       key: i,
-      staticClass: "btn btn-warning col-3 bt-selezioneCat",
+      staticClass: "btn btn-success col-1 bt-selezioneCat me-2",
       attrs: {
         type: "button"
       },
@@ -6385,14 +6385,14 @@ var render = function render() {
       }
     }, [_c("p", [_vm._v(_vm._s(element))])]);
   }), 0), _vm._v(" "), _c("button", {
-    staticClass: "btn btn-light",
+    staticClass: "col-2 btn btn-danger bt-selezioneCat",
     on: {
       click: function click($event) {
         return _vm.resetCategory();
       }
     }
-  }, [_vm._v("Cancella selezione")])])]), _vm._v(" "), _c("div", {
-    staticClass: "col-10"
+  }, [_vm._v("Annulla")])])]), _vm._v(" "), _c("div", {
+    staticClass: "col-12"
   }, [_c("div", {
     staticClass: "row justify-content-center"
   }, [_c("h4", {
@@ -6400,17 +6400,37 @@ var render = function render() {
   }, [_vm._v("Ristoranti che potrebbero piacerti:")]), _vm._v(" "), _vm._l(_vm.restaurants, function (restaurant) {
     return _c("div", {
       key: restaurant.id,
-      staticClass: "card col-sm-6 col-md-3 mx-1 my-2"
-    }, [_c("div", {
+      staticClass: "card restaurant col-sm-6 col-md-3 mx-1 pb-5 my-2"
+    }, [restaurant.image.includes("http") ? _c("img", {
+      staticClass: "card-image-top max-width",
+      attrs: {
+        src: restaurant.image,
+        alt: restaurant.name_restaurant
+      }
+    }) : _c("img", {
+      staticClass: "card-image-top max-width",
+      attrs: {
+        src: "/storage/".concat(restaurant.image),
+        alt: restaurant.name_restaurant
+      }
+    }), _vm._v(" "), _c("div", {
       staticClass: "card-body"
     }, [_c("h3", {
-      staticClass: "card-title text-uppercase"
-    }, [_vm._v(_vm._s(restaurant.name_restaurant))]), _vm._v(" "), _c("span", [_vm._v("Telefono: " + _vm._s(restaurant.rest_phonenumber))]), _vm._v(" "), _c("div", [_vm._v("Email: " + _vm._s(restaurant.rest_email))]), _vm._v(" "), _c("span", [_vm._v("Indirizzo: " + _vm._s(restaurant.address))]), _vm._v(" "), _c("div", {
+      staticClass: "white card-title text-uppercase"
+    }, [_vm._v(_vm._s(restaurant.name_restaurant))]), _vm._v(" "), _c("span", {
+      staticClass: "white"
+    }, [_vm._v("Telefono: " + _vm._s(restaurant.rest_phonenumber))]), _vm._v(" "), _c("div", {
+      staticClass: "white"
+    }, [_vm._v("Email: " + _vm._s(restaurant.rest_email))]), _vm._v(" "), _c("span", {
+      staticClass: "white"
+    }, [_vm._v("Indirizzo: " + _vm._s(restaurant.address))]), _vm._v(" "), _c("div", {
       staticClass: "tags text-end"
-    }, [_c("strong", [_vm._v("Category: ")]), _vm._v(" "), _vm._l(restaurant.category, function (category) {
+    }, [_c("strong", {
+      staticClass: "white"
+    }, [_vm._v("Category: ")]), _vm._v(" "), _vm._l(restaurant.category, function (category) {
       return _c("span", {
         key: category.id,
-        staticClass: "tag"
+        staticClass: "white tag"
       }, [_vm._v("\n                                        " + _vm._s(category.name) + "\n                                    ")]);
     })], 2)]), _vm._v(" "), _c("router-link", {
       staticClass: "btn btn-primary mt-4",
@@ -6463,7 +6483,7 @@ var staticRenderFns = [function () {
       _c = _vm._self._c;
 
   return _c("div", {
-    staticClass: "container-fluid pt-3"
+    staticClass: "container-fluid back-selection pt-3"
   }, [_c("div", {
     staticClass: "container"
   }, [_c("div", {
@@ -36873,7 +36893,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "#jumbotron[data-v-13e03f97] {\n  background-color: #00ccbc;\n  max-width: 100%;\n  margin-top: 120px;\n}\n#jumbotron .deliveboo-color[data-v-13e03f97] {\n  color: #440063;\n}\n#jumbotron #chef[data-v-13e03f97] {\n  max-width: 100%;\n}\n.back-restaurant[data-v-13e03f97] {\n  background-color: #F5E1A4;\n}\n.categories .big-check[data-v-13e03f97] {\n  padding: 20px;\n}\n.categories .big-label[data-v-13e03f97] {\n  font-size: 20px;\n}\n.categories .bt-selezioneCat[data-v-13e03f97] {\n  min-width: 120px;\n  text-align: center;\n  margin-bottom: 10px;\n  height: 40px;\n}\n#pizza[data-v-13e03f97] {\n  background-image: url(" + escape(__webpack_require__(/*! ../img/pizza.jpg */ "./resources/js/img/pizza.jpg")) + ");\n  background-size: cover;\n  max-width: 100%;\n}\n#pizza h1[data-v-13e03f97] {\n  padding: 100px;\n  color: black;\n}\n#mc[data-v-13e03f97] {\n  background-image: url(" + escape(__webpack_require__(/*! ../img/mcdonald.jpg */ "./resources/js/img/mcdonald.jpg")) + ");\n  background-size: cover;\n  width: 100%;\n}\n#mc h1[data-v-13e03f97] {\n  padding: 100px;\n  color: black;\n}", ""]);
+exports.push([module.i, "#jumbotron[data-v-13e03f97] {\n  background-color: #00ccbc;\n  max-width: 100%;\n  margin-top: 120px;\n}\n#jumbotron .deliveboo-color[data-v-13e03f97] {\n  color: #440063;\n}\n#jumbotron #chef[data-v-13e03f97] {\n  max-width: 100%;\n}\n.back-selection[data-v-13e03f97] {\n  background-color: #ffeae4;\n}\n.categories .big-check[data-v-13e03f97] {\n  padding: 20px;\n}\n.categories .big-label[data-v-13e03f97] {\n  font-size: 20px;\n}\n.categories .bt-selezioneCat[data-v-13e03f97] {\n  min-width: 110px;\n  max-width: 110px;\n  text-align: center;\n  margin-bottom: 10px;\n  height: 40px;\n}\n#pizza[data-v-13e03f97] {\n  background-image: url(" + escape(__webpack_require__(/*! ../img/pizza.jpg */ "./resources/js/img/pizza.jpg")) + ");\n  background-size: cover;\n  max-width: 100%;\n}\n#pizza h1[data-v-13e03f97] {\n  padding: 100px;\n  color: black;\n}\n#mc[data-v-13e03f97] {\n  background-image: url(" + escape(__webpack_require__(/*! ../img/mcdonald.jpg */ "./resources/js/img/mcdonald.jpg")) + ");\n  background-size: cover;\n  width: 100%;\n}\n#mc h1[data-v-13e03f97] {\n  padding: 100px;\n  color: black;\n}\n.restaurant[data-v-13e03f97] {\n  background-color: #202428;\n}\n.restaurant .white[data-v-13e03f97] {\n  color: white;\n}\n.max-width[data-v-13e03f97] {\n  -o-object-fit: cover;\n     object-fit: cover;\n  max-width: 100%;\n  height: 200px;\n}", ""]);
 
 // exports
 
