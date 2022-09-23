@@ -51,8 +51,12 @@
                                         </span>
                                     </div>
                                 </div>
-                                <router-link :to="{name:'PageShowDish', params: {idRest: restaurant.id}}" class="btn btn-primary  mt-4">ORDINA</router-link>
+                                <router-link :to="{name:'PageShowDish', params: {idRest: restaurant.id}}" class="mt-4"> 
+                                    <button class="btn btn-primary" @click="removeall(restaurant.id)">ORDINA</button>                   
+                                </router-link>
                             </div>
+                            
+                                    
 
                         </div>
 
@@ -109,6 +113,10 @@
             categories: [], // categorie da mostrare
             arrRestaurants: [], // ristoranti filtrati in base alla categoria
             catIds: [], // id categoria che si trova nella funzione di ogni categoria per la chiamata api
+            // isActive : false,
+            // YesButton : false,
+            cart : '',
+            cart2 : ''
             }
         },
     created(){
@@ -121,6 +129,24 @@
             this.restaurants = res.data.response.data;
             });
         },
+
+        warningPauroso() {
+            // this.isActive = true;
+            
+        },
+        yesButton() {
+            this.YesButton=true;
+        },
+        removeall(element){
+            this.cart2 = localStorage.getItem('cart');
+            this.cart = JSON.parse(this.cart2);
+            this.cart.forEach(elemento => {
+                if (element != elemento.Restid) {
+                    localStorage.clear()
+                }     
+            });
+        },
+
         trovaRistorante(){
             if(this.catIds[0] != undefined){
                 axios.get('/api/category/restaurants' + '?category=' +this.catIds).then(response => {
