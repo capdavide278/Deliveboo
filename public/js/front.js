@@ -72113,8 +72113,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\xampp\htdocs\php_esercizi\laravel\Deliveboo\resources\js\front.js */"./resources/js/front.js");
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\php_esercizi\laravel\Deliveboo\resources\sass\back.scss */"./resources/sass/back.scss");
+__webpack_require__(/*! C:\ANDREA\01_WebDev\01_boolean\php\00_FinalProject\Deliveboo\resources\js\front.js */"./resources/js/front.js");
+module.exports = __webpack_require__(/*! C:\ANDREA\01_WebDev\01_boolean\php\00_FinalProject\Deliveboo\resources\sass\back.scss */"./resources/sass/back.scss");
 
 
 /***/ })
