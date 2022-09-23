@@ -5519,22 +5519,29 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   created: function created() {
-    var _this = this;
-
-    axios.get('/api/restaurants').then(function (res) {
-      _this.restaurants = res.data.response.data;
-    });
+    this.search();
   },
   methods: {
+    search: function search() {
+      var _this = this;
+
+      axios.get('/api/restaurants').then(function (res) {
+        _this.restaurants = res.data.response.data;
+      });
+    },
     trovaRistorante: function trovaRistorante() {
       var _this2 = this;
 
-      axios.get('/api/category/restaurants' + '?category=' + this.catIds).then(function (response) {
-        if (response.data.success) {
-          _this2.restaurants = response.data.arrRestaurants;
-          console.log(response.data.arrRestaurants);
-        }
-      });
+      if (this.catIds[0] != undefined) {
+        axios.get('/api/category/restaurants' + '?category=' + this.catIds).then(function (response) {
+          if (response.data.success) {
+            _this2.restaurants = response.data.arrRestaurants;
+            console.log(response.data.arrRestaurants);
+          }
+        });
+      } else {
+        this.search();
+      }
     },
     IdCategoria: function IdCategoria(cat) {
       if (this.catIds.includes(cat)) {
@@ -5549,6 +5556,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     resetCategory: function resetCategory() {
       this.arrRestaurants = [];
+      this.search();
     }
   }
 });
@@ -6339,20 +6347,20 @@ var render = function render() {
     staticClass: "container-fluid back-restaurant pt-4"
   }, [_c("h1", {
     staticClass: "text-center my-5"
-  }, [_vm._v("Scegli il ristorante adatto a te")]), _vm._v(" "), _c("section", {
+  }, [_vm._v("SCEGLI IL RISTORANTE ADATTO A TE")]), _vm._v(" "), _c("section", {
     staticClass: "container"
   }, [_c("div", {
     staticClass: "row"
   }, [_c("div", {
-    staticClass: "col-4"
+    staticClass: "col-2"
   }, [_c("div", {
     staticClass: "categories"
-  }, [_c("h1", [_vm._v(" Seleziona le Categorie:")]), _vm._v(" "), _c("div", {
+  }, [_c("h4", [_vm._v(" Seleziona le Categorie:")]), _vm._v(" "), _c("div", {
     staticClass: "d-flex flex-column"
   }, _vm._l(_vm.categorie, function (element, i) {
     return _c("div", {
       key: i,
-      staticClass: "btn btn-warning col-3",
+      staticClass: "btn btn-warning col-3 bt-selezioneCat",
       attrs: {
         type: "button"
       },
@@ -6362,11 +6370,18 @@ var render = function render() {
         }
       }
     }, [_c("p", [_vm._v(_vm._s(element))])]);
-  }), 0)])]), _vm._v(" "), _c("div", {
-    staticClass: "col-8"
+  }), 0), _vm._v(" "), _c("button", {
+    staticClass: "btn btn-light",
+    on: {
+      click: function click($event) {
+        return _vm.resetCategory();
+      }
+    }
+  }, [_vm._v("Cancella selezione")])])]), _vm._v(" "), _c("div", {
+    staticClass: "col-10"
   }, [_c("div", {
     staticClass: "row justify-content-center"
-  }, [_c("h1", {
+  }, [_c("h4", {
     staticClass: "text-center"
   }, [_vm._v("Ristoranti che potrebbero piacerti:")]), _vm._v(" "), _vm._l(_vm.restaurants, function (restaurant) {
     return _c("div", {
@@ -36740,7 +36755,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "#nav-color[data-v-5dd24bca] {\n  background-color: #00ccbc;\n}\n#nav-color .logo_size[data-v-5dd24bca] {\n  width: 100px;\n  height: 100px;\n}", ""]);
+exports.push([module.i, "#nav-color[data-v-5dd24bca] {\n  background-color: #00ccbc;\n  height: 120px;\n  width: 100%;\n  position: fixed;\n  top: 0;\n  left: 0;\n  z-index: 500;\n}\n#nav-color .logo_size[data-v-5dd24bca] {\n  width: 100px;\n  height: 100px;\n}", ""]);
 
 // exports
 
@@ -36760,7 +36775,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "#jumbotron[data-v-13e03f97] {\n  background-color: #00ccbc;\n  max-width: 100%;\n}\n#jumbotron .deliveboo-color[data-v-13e03f97] {\n  color: #440063;\n}\n#jumbotron #chef[data-v-13e03f97] {\n  max-width: 100%;\n}\n.back-restaurant[data-v-13e03f97] {\n  background-color: #F5E1A4;\n}\n.categories .big-check[data-v-13e03f97] {\n  padding: 20px;\n}\n.categories .big-label[data-v-13e03f97] {\n  font-size: 20px;\n}\n#pizza[data-v-13e03f97] {\n  background-image: url(" + escape(__webpack_require__(/*! ../img/pizza.jpg */ "./resources/js/img/pizza.jpg")) + ");\n  background-size: cover;\n  max-width: 100%;\n}\n#pizza h1[data-v-13e03f97] {\n  padding: 100px;\n  color: black;\n}\n#mc[data-v-13e03f97] {\n  background-image: url(" + escape(__webpack_require__(/*! ../img/mcdonald.jpg */ "./resources/js/img/mcdonald.jpg")) + ");\n  background-size: cover;\n  width: 100%;\n}\n#mc h1[data-v-13e03f97] {\n  padding: 100px;\n  color: black;\n}", ""]);
+exports.push([module.i, "#jumbotron[data-v-13e03f97] {\n  background-color: #00ccbc;\n  max-width: 100%;\n  margin-top: 120px;\n}\n#jumbotron .deliveboo-color[data-v-13e03f97] {\n  color: #440063;\n}\n#jumbotron #chef[data-v-13e03f97] {\n  max-width: 100%;\n}\n.back-restaurant[data-v-13e03f97] {\n  background-color: #F5E1A4;\n}\n.categories .big-check[data-v-13e03f97] {\n  padding: 20px;\n}\n.categories .big-label[data-v-13e03f97] {\n  font-size: 20px;\n}\n.categories .bt-selezioneCat[data-v-13e03f97] {\n  min-width: 120px;\n  text-align: center;\n  margin-bottom: 10px;\n  height: 40px;\n}\n#pizza[data-v-13e03f97] {\n  background-image: url(" + escape(__webpack_require__(/*! ../img/pizza.jpg */ "./resources/js/img/pizza.jpg")) + ");\n  background-size: cover;\n  max-width: 100%;\n}\n#pizza h1[data-v-13e03f97] {\n  padding: 100px;\n  color: black;\n}\n#mc[data-v-13e03f97] {\n  background-image: url(" + escape(__webpack_require__(/*! ../img/mcdonald.jpg */ "./resources/js/img/mcdonald.jpg")) + ");\n  background-size: cover;\n  width: 100%;\n}\n#mc h1[data-v-13e03f97] {\n  padding: 100px;\n  color: black;\n}", ""]);
 
 // exports
 

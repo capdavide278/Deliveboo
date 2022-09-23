@@ -46,6 +46,12 @@
 
     #nav-color {
         background-color: #00ccbc;
+        height: 120px;
+        width: 100%;
+        position: fixed;
+        top:0;
+        left: 0;
+        z-index: 500;
         .logo_size {
             width: 100px;
             height: 100px;

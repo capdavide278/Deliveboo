@@ -19,7 +19,7 @@
             @enderror
         </div>
 
-{{--         <div class="mb-3">
+        <div class="mb-3">
             <label class="form-label" for="image">Image Restaurant</label>
             <input class="form-control @error('image') is-invalid @enderror" type="file" name="image" id="image" accept="image/*">
             @error('image')
@@ -27,7 +27,7 @@
                     {{ $message }}
                 </div>
             @enderror
-        </div> --}}
+        </div>
 
         <div class="mb-3">
             <label class="form-label" for="address">Address *</label>
