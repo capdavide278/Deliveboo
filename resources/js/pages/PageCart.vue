@@ -2,7 +2,7 @@
     <section>
         <!-- <h1>Il carrello è vuoto</h1> -->
         <div v-if="disabilita & this.cart != ''">
-            <h1>Il tuo carrello:</h1>
+            <h1>Il tuo carrello contiene {{sum}} piatti:</h1>
             <div v-if="cart !=''">
                 <div>
                     <div class="card mb-3" v-for="dish in cart" :key="dish.id">
@@ -68,10 +68,10 @@ export default {
             message: 'Loading...',
             amount2: '',
             disabilita: true,
+            sum: 0,
         }
 
     },
-
     created(){
         this.cart2 = localStorage.getItem('cart');
         this.cart = JSON.parse(this.cart2);
@@ -84,10 +84,9 @@ export default {
                 console.log(res.data.success)
             }
         });
-
+        // iconShopping();
     },
     mounted() {
-
         this.amount = this.cart.reduce((total, item) => {
           return total + item.qty * item.price;
         }, 0);
@@ -119,31 +118,42 @@ export default {
       return summ;
     },
   },
-methods:{
+    methods:{
+    // iconShopping(){
+    //     this.sum = 0;
+    //     let cartLOcalStorage = '';
+    //     cartLOcalStorage = localStorage.getItem('cart');
+    //     cart = '';
+    //     let cart = JSON.parse(cartLOcalStorage);
+    //     let qtyTot= [];
+    //     cart.forEach(element => {
+    //         this.sum += element.qty;
+    //     });
+    // },
     findById(arr, id) {
-  // this important to show one by one of Quantity
-  return arr.find((x) => x.id === id);
-},
-added(item) {
-      // when user choose a buy, this function add that in cart
-
-      var itemm = this.findById(this.cart, item.id);
-      if (itemm !== undefined) {
-        itemm.qty += 1;
-        this.saveCats();
-      } else {
-        // cartadd is here to get all things that click or chosen by user
-        this.cartadd.id = item.id;
-        this.cartadd.name = item.name;
-        this.cartadd.price = item.price;
-        // this.cartadd.image = item.image;
-        this.cartadd.qty = 1;
-        this.cart.push(this.cartadd);
-        this.cartadd = {};
-        this.saveCats(); // this function most important to save all inform of products
-        console.log(localStorage.getItem('cart'))
-      }
+        // this important to show one by one of Quantity
+        return arr.find((x) => x.id === id);
     },
+    added(item) {
+        // when user choose a buy, this function add that in cart
+
+        var itemm = this.findById(this.cart, item.id);
+        if (itemm !== undefined) {
+            itemm.qty += 1;
+            this.saveCats();
+        } else {
+            // cartadd is here to get all things that click or chosen by user
+            this.cartadd.id = item.id;
+            this.cartadd.name = item.name;
+            this.cartadd.price = item.price;
+            // this.cartadd.image = item.image;
+            this.cartadd.qty = 1;
+            this.cart.push(this.cartadd);
+            this.cartadd = {};
+            this.saveCats(); // this function most important to save all inform of products
+            console.log(localStorage.getItem('cart'))
+        }
+        },
     viewCart() {
       if (localStorage.getItem("cart")) {
         this.cart = JSON.parse(localStorage.getItem("cart"));
@@ -158,8 +168,8 @@ added(item) {
       let parsed = JSON.stringify(this.cart);
       localStorage.setItem("cart", parsed);
       this.viewCart(); // by this function we can see all products are save in web
+    //   iconShopping();
     },
-
     remove(id) {
       // this function remove buy, one by one according id in cart & main page
       var item = this.findById(this.cart, id);
@@ -202,7 +212,8 @@ added(item) {
         error(){
 
         }
-}
+    },
+
 
 }
 </script>

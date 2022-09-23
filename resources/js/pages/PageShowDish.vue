@@ -1,5 +1,7 @@
 <template>
     <div id="showDish">
+        <div>Shopping Cart: {{sum}}</div>
+
           <div class="d-flex justify-content-end">
             <router-link :to="{name: 'cart' }">
                 <button type="" class="btn btn-primary">CARRELLO</button>
@@ -27,7 +29,7 @@
                     <h2 class="blue">{{alert}}</h2>
                 </div>
             </div>
-            
+
         </section>
     </div>
 </template>
@@ -55,6 +57,7 @@ export default {
             image: "",
         },
         alert: '',
+        sum: 0,
     }
 
     },
@@ -74,6 +77,7 @@ export default {
     });
 
     this.viewCart();
+    this.iconShopping();
 
 },
 methods : {
@@ -112,18 +116,11 @@ methods : {
         console.log(localStorage.getItem('cart'))
       }
     },
-
-    // product_alert(){
-    //     const alertmess = document.getElementById("alert_msg");
-    //     alertmess.classList.add('block')
-    //     this.alert = "piatto aggiunto al carrello"
-    // },
-    
-
     saveCats() {
       // for save in local storage set the below code
       let parsed = JSON.stringify(this.cart);
       localStorage.setItem("cart", parsed);
+      this.iconShopping();
       this.viewCart(); // by this function we can see all products are save in web
     },
 
@@ -141,18 +138,18 @@ methods : {
 
       }
     },
+    iconShopping(){
+        this.sum = 0;
+        let cartLOcalStorage = '';
+        cartLOcalStorage = localStorage.getItem('cart');
+        cart = '';
+        let cart = JSON.parse(cartLOcalStorage);
+        let qtyTot= [];
+        cart.forEach(element => {
+            this.sum += element.qty;
+        });
+    }
 
-    // Card() {
-    //   // in this part user can log in cart. infact this part is a button to show all choose buy
-    //   $("#myDIV").toggleClass("hide").fadeTo("slow"); // in this part when user click, cart show
-    //   $(".page").addClass("hide"); // in this part when user click, main page hide and cart show for user
-    // },
-
-    // back() {
-    //   // in this part user can back from cart to main page
-    //   $("#myDIV").addClass("hide");
-    //   $(".page").removeClass("hide");
-    // },
 }
 }
 </script>
