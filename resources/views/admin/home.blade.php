@@ -69,9 +69,11 @@
                                     <button class="btn btn-success me-3"  type="submit">Add Dish</button>
                                 </a>
                                 <a class="col-3" href="{{route('admin.dish.index')}}">
-                                    <button class="btn btn-warning"  type="submit">Your Dishes</button>
+                                    <button class="btn btn-warning me-3"  type="submit">Your Dishes</button>
                                 </a>
-
+                                <a href="{{route('admin.transaction')}}">
+                                    <button class="btn btn-success me-3"  type="submit">Transaction</button>
+                                </a>
 
 
                             </div>

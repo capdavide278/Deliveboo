@@ -6,6 +6,7 @@ use App\Models\Restaurant;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class TransactionController extends Controller
 {
@@ -16,7 +17,15 @@ class TransactionController extends Controller
      */
     public function index()
     {
-        //
+        $user_id =  Auth::id();
+        $rest_id =  Restaurant::all()->where('user_id', '=', $user_id )->pluck('id')->toArray();
+
+
+            $transaction = Transaction::all()->where('restaurant_id', '=', $rest_id[0]);
+        //$rest_id[0] indica il primo elemento del toArray dalla collection di Transaction
+
+        return view('admin.transaction.index', compact('transaction'));
+
     }
 
     /**
@@ -37,27 +46,6 @@ class TransactionController extends Controller
      */
     public function store(Request $request)
     {
-        // $request->validate([
-        //     'name'   => 'required|string|max:50',
-        //     'lastname'   => 'required|string|max:50',
-        //     'address'           => 'required|string|max:255',
-        //     'phonenumber'  => 'nullable|numeric|digits:10',
-        //     'email'        => 'required|email:rfc,dns|unique:restaurants,rest_email',
-        //     'total' => 'required|numeric'
-        // ]);
-
-        // $form_data= $request->all();
-
-
-
-        // $data = $form_data + [
-        //     'restaurant_id' => Restaurant::id(),
-        // ];
-
-        // $transaction = Transaction::create($data);
-        // // $transaction->dish()->sync($data['dish']);
-        // // $transaction->dish()->sync($data['dish',
-        // // 'quantity' => json_decode($dish)->quantity]);
 
 
     }
