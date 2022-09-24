@@ -20,24 +20,26 @@
 
         <!-- categorie -->
         <div class="container-fluid back-restaurant pt-4">
-            <h1 class="text-center my-5">SCEGLI IL RISTORANTE ADATTO A TE</h1>
             <section class="container">
                 <div class="row">
-                    <div class="col-12">
-
+                    <div class="col-2">
                         <div class="row justify-content-center categories">
 
-                            <h4> Seleziona le Categorie:</h4>
-                            <div class="col-10">
-                                <div type="button" class="btn btn-success col-1 bt-selezioneCat me-2" v-for="(element, i) in categorie" :key="i" @click="IdCategoria(i+1)">
-                                    <p>{{element}}</p>
-                                </div>
-                            </div>
-                            <button class="col-2 btn btn-danger bt-selezioneCat" @click="resetCategory()">Annulla</button>
+                                <button class="button" v-for="(element, i) in categorie" :key="i" @click="IdCategoria(i+1)">
+                                    {{element}}
+                                    <div class="button__horizontal"></div>
+	                                <div class="button__vertical"></div>
+                                </button>
+                                <button class="button bt-annulla" @click="resetCategory()">
+                                    ANNULLA
+                                    <div class="button__horizontal"></div>
+	                                <div class="button__vertical"></div>
+                                </button>
+
                         </div>
                     </div>
         <!-- ristoranti -->
-                    <div class="col-12">
+                    <div class="col-9">
                         <div class="row justify-content-center">
                             <h4 class="text-center">Ristoranti che potrebbero piacerti:</h4>
                             <div v-for="restaurant in restaurants" :key="restaurant.id" class="card restaurant col-sm-6 col-md-3 mx-1 pb-5 my-2">
@@ -59,9 +61,6 @@
                                     <button class="btn btn-primary" @click="removeall(restaurant.id)">ORDINA</button>
                                 </router-link>
                             </div>
-
-
-
                         </div>
 
                     </div>
@@ -227,19 +226,90 @@
 
         .categories{
 
-            .big-check {
-            padding: 20px;
+            .button {
+            text-align: center;
+            --offset: 10px;
+            --border-size: 2px;
+            margin-bottom: 40px;
+            display: block;
+            position: relative;
+            padding: 1.5em 3em;
+            appearance: none;
+            border: 0;
+            background: transparent;
+            color:#00ccbc;
+            text-transform: uppercase;
+            letter-spacing: .25em;
+            outline: none;
+            cursor: pointer;
+            font-weight: bold;
+            border-radius: 0;
+            box-shadow: inset 0 0 0 var(--border-size) currentcolor;
+            transition: background .8s ease;
+
+            &:hover {
+                background: rgba(100, 0, 0, .03);
+            }
+
+            .button__horizontal,
+            .button__vertical {
+                position: absolute;
+                top: var(--horizontal-offset, 0);
+                right: var(--vertical-offset, 0);
+                bottom: var(--horizontal-offset, 0);
+                left: var(--vertical-offset, 0);
+                transition: transform .8s ease;
+                will-change: transform;
+
+                &::before {
+                    content: '';
+                    position: absolute;
+                    border: inherit;
+                }
+            }
+
+            .button__horizontal {
+                --vertical-offset: calc(var(--offset) * -1);
+                border-top: var(--border-size) solid currentcolor;
+                border-bottom: var(--border-size) solid currentcolor;
+
+                &::before {
+                    top: calc(var(--vertical-offset) - var(--border-size));
+                    bottom: calc(var(--vertical-offset) - var(--border-size));
+                    left: calc(var(--vertical-offset) * -1);
+                    right: calc(var(--vertical-offset) * -1);
+                }
+            }
+
+            &:hover .button__horizontal {
+                transform: scaleX(0);
+            }
+
+            .button__vertical {
+                --horizontal-offset: calc(var(--offset) * -1);
+                border-left: var(--border-size) solid currentcolor;
+                border-right: var(--border-size) solid currentcolor;
+
+                &::before {
+                    top: calc(var(--horizontal-offset) * -1);
+                    bottom: calc(var(--horizontal-offset) * -1);
+                    left: calc(var(--horizontal-offset) - var(--border-size));
+                    right: calc(var(--horizontal-offset) - var(--border-size));
+                }
+            }
+
+            &:hover .button__vertical {
+                transform: scaleY(0);
+            }
+
+
         }
             .big-label {
                 font-size: 20px;
             }
 
-            .bt-selezioneCat{
-                min-width: 110px;
-                max-width: 110px;
-                text-align: center;
-                margin-bottom: 10px;
-                height: 40px;
+            .bt-annulla{
+                color:#7acc00;
             }
         }
 

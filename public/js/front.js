@@ -6509,40 +6509,41 @@ var render = function render() {
     }
   }, [_vm._v("Shopping Cart: " + _vm._s(_vm.sum))])]), _vm._v(" "), _c("div", {
     staticClass: "container-fluid back-restaurant pt-4"
-  }, [_c("h1", {
-    staticClass: "text-center my-5"
-  }, [_vm._v("SCEGLI IL RISTORANTE ADATTO A TE")]), _vm._v(" "), _c("section", {
+  }, [_c("section", {
     staticClass: "container"
   }, [_c("div", {
     staticClass: "row"
   }, [_c("div", {
-    staticClass: "col-12"
+    staticClass: "col-2"
   }, [_c("div", {
     staticClass: "row justify-content-center categories"
-  }, [_c("h4", [_vm._v(" Seleziona le Categorie:")]), _vm._v(" "), _c("div", {
-    staticClass: "col-10"
-  }, _vm._l(_vm.categorie, function (element, i) {
-    return _c("div", {
+  }, [_vm._l(_vm.categorie, function (element, i) {
+    return _c("button", {
       key: i,
-      staticClass: "btn btn-success col-1 bt-selezioneCat me-2",
-      attrs: {
-        type: "button"
-      },
+      staticClass: "button",
       on: {
         click: function click($event) {
           return _vm.IdCategoria(i + 1);
         }
       }
-    }, [_c("p", [_vm._v(_vm._s(element))])]);
-  }), 0), _vm._v(" "), _c("button", {
-    staticClass: "col-2 btn btn-danger bt-selezioneCat",
+    }, [_vm._v("\n                                    " + _vm._s(element) + "\n                                    "), _c("div", {
+      staticClass: "button__horizontal"
+    }), _vm._v(" "), _c("div", {
+      staticClass: "button__vertical"
+    })]);
+  }), _vm._v(" "), _c("button", {
+    staticClass: "button bt-annulla",
     on: {
       click: function click($event) {
         return _vm.resetCategory();
       }
     }
-  }, [_vm._v("Annulla")])])]), _vm._v(" "), _c("div", {
-    staticClass: "col-12"
+  }, [_vm._v("\n                                    ANNULLA\n                                    "), _c("div", {
+    staticClass: "button__horizontal"
+  }), _vm._v(" "), _c("div", {
+    staticClass: "button__vertical"
+  })])], 2)]), _vm._v(" "), _c("div", {
+    staticClass: "col-9"
   }, [_c("div", {
     staticClass: "row justify-content-center"
   }, [_c("h4", {
@@ -6581,7 +6582,7 @@ var render = function render() {
       return _c("span", {
         key: category.id,
         staticClass: "white tag"
-      }, [_vm._v("\n                                        " + _vm._s(category.name) + "\n                                    ")]);
+      }, [_vm._v("\n                                            " + _vm._s(category.name) + "\n                                        ")]);
     })], 2)]), _vm._v(" "), _c("router-link", {
       staticClass: "mt-4",
       attrs: {
@@ -37050,7 +37051,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "#containerHome[data-v-13e03f97] {\n  position: relative;\n}\n#containerHome #jumbotron[data-v-13e03f97] {\n  background-color: #00ccbc;\n  max-width: 100%;\n  margin-top: 120px;\n}\n#containerHome #jumbotron .deliveboo-color[data-v-13e03f97] {\n  color: #440063;\n}\n#containerHome #jumbotron #chef[data-v-13e03f97] {\n  max-width: 100%;\n}\n#containerHome #shoppingCart[data-v-13e03f97] {\n  position: absolute;\n  top: 50px;\n  right: 20px;\n  color: white;\n  z-index: 600;\n}\n#containerHome .back-selection[data-v-13e03f97] {\n  background-color: #ffeae4;\n}\n#containerHome .categories .big-check[data-v-13e03f97] {\n  padding: 20px;\n}\n#containerHome .categories .big-label[data-v-13e03f97] {\n  font-size: 20px;\n}\n#containerHome .categories .bt-selezioneCat[data-v-13e03f97] {\n  min-width: 110px;\n  max-width: 110px;\n  text-align: center;\n  margin-bottom: 10px;\n  height: 40px;\n}\n#containerHome #pizza[data-v-13e03f97] {\n  background-image: url(" + escape(__webpack_require__(/*! ../img/pizza.jpg */ "./resources/js/img/pizza.jpg")) + ");\n  background-size: cover;\n  max-width: 100%;\n}\n#containerHome #pizza h1[data-v-13e03f97] {\n  padding: 100px;\n  color: black;\n}\n#containerHome #mc[data-v-13e03f97] {\n  background-image: url(" + escape(__webpack_require__(/*! ../img/mcdonald.jpg */ "./resources/js/img/mcdonald.jpg")) + ");\n  background-size: cover;\n  width: 100%;\n}\n#containerHome #mc h1[data-v-13e03f97] {\n  padding: 100px;\n  color: black;\n}\n#containerHome .restaurant[data-v-13e03f97] {\n  background-color: #202428;\n}\n#containerHome .restaurant .white[data-v-13e03f97] {\n  color: white;\n}\n#containerHome .max-width[data-v-13e03f97] {\n  -o-object-fit: cover;\n     object-fit: cover;\n  max-width: 100%;\n  height: 200px;\n}", ""]);
+exports.push([module.i, "#containerHome[data-v-13e03f97] {\n  position: relative;\n}\n#containerHome #jumbotron[data-v-13e03f97] {\n  background-color: #00ccbc;\n  max-width: 100%;\n  margin-top: 120px;\n}\n#containerHome #jumbotron .deliveboo-color[data-v-13e03f97] {\n  color: #440063;\n}\n#containerHome #jumbotron #chef[data-v-13e03f97] {\n  max-width: 100%;\n}\n#containerHome #shoppingCart[data-v-13e03f97] {\n  position: absolute;\n  top: 50px;\n  right: 20px;\n  color: white;\n  z-index: 600;\n}\n#containerHome .back-selection[data-v-13e03f97] {\n  background-color: #ffeae4;\n}\n#containerHome .categories .button[data-v-13e03f97] {\n  text-align: center;\n  --offset: 10px;\n  --border-size: 2px;\n  margin-bottom: 40px;\n  display: block;\n  position: relative;\n  padding: 1.5em 3em;\n  -webkit-appearance: none;\n     -moz-appearance: none;\n          appearance: none;\n  border: 0;\n  background: transparent;\n  color: #00ccbc;\n  text-transform: uppercase;\n  letter-spacing: 0.25em;\n  outline: none;\n  cursor: pointer;\n  font-weight: bold;\n  border-radius: 0;\n  box-shadow: inset 0 0 0 var(--border-size) currentcolor;\n  transition: background 0.8s ease;\n}\n#containerHome .categories .button[data-v-13e03f97]:hover {\n  background: rgba(100, 0, 0, 0.03);\n}\n#containerHome .categories .button .button__horizontal[data-v-13e03f97],\n#containerHome .categories .button .button__vertical[data-v-13e03f97] {\n  position: absolute;\n  top: var(--horizontal-offset, 0);\n  right: var(--vertical-offset, 0);\n  bottom: var(--horizontal-offset, 0);\n  left: var(--vertical-offset, 0);\n  transition: transform 0.8s ease;\n  will-change: transform;\n}\n#containerHome .categories .button .button__horizontal[data-v-13e03f97]::before,\n#containerHome .categories .button .button__vertical[data-v-13e03f97]::before {\n  content: \"\";\n  position: absolute;\n  border: inherit;\n}\n#containerHome .categories .button .button__horizontal[data-v-13e03f97] {\n  --vertical-offset: calc(var(--offset) * -1);\n  border-top: var(--border-size) solid currentcolor;\n  border-bottom: var(--border-size) solid currentcolor;\n}\n#containerHome .categories .button .button__horizontal[data-v-13e03f97]::before {\n  top: calc(var(--vertical-offset) - var(--border-size));\n  bottom: calc(var(--vertical-offset) - var(--border-size));\n  left: calc(var(--vertical-offset) * -1);\n  right: calc(var(--vertical-offset) * -1);\n}\n#containerHome .categories .button:hover .button__horizontal[data-v-13e03f97] {\n  transform: scaleX(0);\n}\n#containerHome .categories .button .button__vertical[data-v-13e03f97] {\n  --horizontal-offset: calc(var(--offset) * -1);\n  border-left: var(--border-size) solid currentcolor;\n  border-right: var(--border-size) solid currentcolor;\n}\n#containerHome .categories .button .button__vertical[data-v-13e03f97]::before {\n  top: calc(var(--horizontal-offset) * -1);\n  bottom: calc(var(--horizontal-offset) * -1);\n  left: calc(var(--horizontal-offset) - var(--border-size));\n  right: calc(var(--horizontal-offset) - var(--border-size));\n}\n#containerHome .categories .button:hover .button__vertical[data-v-13e03f97] {\n  transform: scaleY(0);\n}\n#containerHome .categories .big-label[data-v-13e03f97] {\n  font-size: 20px;\n}\n#containerHome .categories .bt-annulla[data-v-13e03f97] {\n  color: #7acc00;\n}\n#containerHome #pizza[data-v-13e03f97] {\n  background-image: url(" + escape(__webpack_require__(/*! ../img/pizza.jpg */ "./resources/js/img/pizza.jpg")) + ");\n  background-size: cover;\n  max-width: 100%;\n}\n#containerHome #pizza h1[data-v-13e03f97] {\n  padding: 100px;\n  color: black;\n}\n#containerHome #mc[data-v-13e03f97] {\n  background-image: url(" + escape(__webpack_require__(/*! ../img/mcdonald.jpg */ "./resources/js/img/mcdonald.jpg")) + ");\n  background-size: cover;\n  width: 100%;\n}\n#containerHome #mc h1[data-v-13e03f97] {\n  padding: 100px;\n  color: black;\n}\n#containerHome .restaurant[data-v-13e03f97] {\n  background-color: #202428;\n}\n#containerHome .restaurant .white[data-v-13e03f97] {\n  color: white;\n}\n#containerHome .max-width[data-v-13e03f97] {\n  -o-object-fit: cover;\n     object-fit: cover;\n  max-width: 100%;\n  height: 200px;\n}", ""]);
 
 // exports
 
