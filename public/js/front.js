@@ -5230,7 +5230,11 @@ __webpack_require__.r(__webpack_exports__);
       allDone: false,
       cart: JSON.parse(window.localStorage.getItem("cart")),
       error: '',
-      inputRestID: ''
+      inputRestID: '',
+      successMessage: '',
+      errorMessage: '',
+      sending: false,
+      inputserrorMessages: {}
     };
   },
   mounted: function mounted() {
@@ -5260,6 +5264,8 @@ __webpack_require__.r(__webpack_exports__);
       this.$emit('onError', message);
     },
     sendForm: function sendForm() {
+      var _this = this;
+
       var total = JSON.parse(window.localStorage.getItem("cart")).reduce(function (amount, dish) {
         return amount + dish.price * dish.qty;
       }, 0).toFixed(2);
@@ -5275,9 +5281,34 @@ __webpack_require__.r(__webpack_exports__);
       }).then(function (res) {
         if (res.data.success) {
           localStorage.clear();
+
+          _this.submitMessage();
         }
       })["catch"](function (error) {
         console.log(error);
+      });
+    },
+    submitMessage: function submitMessage() {
+      var _this2 = this;
+
+      this.sending = true;
+      axios.post('/api/leads', {
+        name: this.name,
+        lastname: this.lastname,
+        address: this.address,
+        email: this.email,
+        // cart: new_cart,
+        phonenumber: this.phonenumber
+      }).then(function (res) {
+        if (res.data.success) {
+          _this2.successMessage = res.data.response;
+        } else {
+          _this2.inputserrorMessages = res.data.response;
+        }
+      })["catch"](function (error) {
+        return _this2.errorMessage = 'Errore imprevisto, riprova!';
+      })["finally"](function (data) {
+        return _this2.sending = false;
       });
     }
   }
@@ -5366,20 +5397,25 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     var _this = this;
 
+    this.message = '';
     this.cart2 = localStorage.getItem('cart');
-    this.cart = JSON.parse(this.cart2);
-    console.log(JSON.parse(this.cart2) + 'carta');
-    axios.get("/api/orders/generate").then(function (res) {
-      if (res.data.success) {
-        _this.tokenApi = res.data.token;
-        _this.loading = true;
-      }
-    });
+
+    if (this.cart2 != null) {
+      this.cart = JSON.parse(this.cart2);
+      axios.get("/api/orders/generate").then(function (res) {
+        if (res.data.success) {
+          _this.tokenApi = res.data.token;
+          _this.loading = true;
+        }
+      });
+    }
   },
   mounted: function mounted() {
-    this.amount = this.cart.reduce(function (total, item) {
-      return total + item.qty * item.price;
-    }, 0);
+    if (this.cart2 != null) {
+      this.amount = this.cart.reduce(function (total, item) {
+        return total + item.qty * item.price;
+      }, 0);
+    }
   },
   computed: {
     cartTotal: function cartTotal() {
@@ -5605,11 +5641,13 @@ __webpack_require__.r(__webpack_exports__);
       var cartLOcalStorage = '';
       cartLOcalStorage = localStorage.getItem('cart'); // cart = '';
 
-      var cart = JSON.parse(cartLOcalStorage);
-      var qtyTot = [];
-      cart.forEach(function (element) {
-        _this3.sum += element.qty;
-      });
+      if (cartLOcalStorage != null) {
+        var cart = JSON.parse(cartLOcalStorage);
+        var qtyTot = [];
+        cart.forEach(function (element) {
+          _this3.sum += element.qty;
+        });
+      }
     }
   }
 });
@@ -6391,7 +6429,11 @@ var render = function render() {
     on: {
       onSuccess: _vm.paymentOnSuccess
     }
-  })], 1) : _vm._e()]) : _c("div", [_c("h3", [_vm._v(_vm._s(_vm.message))])])]);
+  })], 1) : _vm._e()]) : _c("div", [_c("h3", {
+    staticClass: "message"
+  }, [_vm._v(_vm._s(_vm.message))])]), _vm._v(" "), this.card == null ? _c("div", [_c("h1", {
+    staticClass: "message"
+  }, [_vm._v("Il carrello ora è vuoto!!")])]) : _vm._e()]);
 };
 
 var staticRenderFns = [];
@@ -36969,7 +37011,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "section[data-v-313ebd58] {\n  margin-top: 120px;\n}\nsection .none[data-v-313ebd58] {\n  display: none;\n}", ""]);
+exports.push([module.i, "section[data-v-313ebd58] {\n  margin-top: 120px;\n}\nsection .none[data-v-313ebd58] {\n  display: none;\n}\nsection .message[data-v-313ebd58] {\n  text-align: center;\n  margin: 50px auto;\n  max-width: 400px;\n}", ""]);
 
 // exports
 

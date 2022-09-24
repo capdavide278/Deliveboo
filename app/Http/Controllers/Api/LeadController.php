@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use Exception;
 use App\Models\Lead;
 use App\Mail\LeadToLead;
 use App\Mail\LeadToAdmin;
@@ -74,7 +75,7 @@ class LeadController extends Controller
 
             //inviare mail all'admin
             Mail::to('admin@deliveboo.it')->send(new LeadToAdmin($lead));
-        } catch(\Exception $e){
+        } catch(Exception $e){
             return response()->json([
                 'success' => false,
                 'response' => "C\è stato un errore",

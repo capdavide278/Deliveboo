@@ -80,6 +80,8 @@
     #footer {
         margin-top: 120px;
         background-color: #2e3333;
+
+
         .white-footer{
             color: white;
         }

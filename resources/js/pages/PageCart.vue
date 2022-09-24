@@ -1,6 +1,6 @@
 <template>
     <section>
-        <!-- <h1>Il carrello è vuoto</h1> -->
+
         <div v-if="disabilita & this.cart != ''">
             <h1>Il tuo carrello:</h1>
             <div v-if="cart !=''">
@@ -23,28 +23,28 @@
                     </div>
                 </div>
             </div>
-                <div v-if="!totalItem == 0">
-            <h3>
-              <b>Totale carrello:  €{{ totalItem }}</b>
-            </h3>
-          </div>
+            <div v-if="!totalItem == 0">
+                <h3>
+                <b>Totale carrello:  €{{ totalItem }}</b>
+                </h3>
+            </div>
 
-      <div v-if="loading">
+            <div v-if="loading">
+                    <Payment
+                    ref="paymentRef"
+                    :authorization="tokenApi"
+                    @onSuccess="paymentOnSuccess"/>
+            </div>
 
-            <Payment
-            ref="paymentRef"
-            :authorization="tokenApi"
-            @onSuccess="paymentOnSuccess"
-           />
+        </div>
 
-      </div>
-    </div>
-    <div v-else>
-          <h3>{{message}}</h3>
-    </div>
-
-</section>
-
+        <div v-else>
+            <h3 class="message">{{message}}</h3>
+        </div>
+        <div v-if="this.card == null">
+            <h1 class="message">Il carrello ora è vuoto!!</h1>
+        </div>
+    </section>
 </template>
 
 <script>
@@ -74,21 +74,26 @@ export default {
 
     },
     created(){
+
+        this.message = '';
         this.cart2 = localStorage.getItem('cart');
-        this.cart = JSON.parse(this.cart2);
-        console.log(JSON.parse(this.cart2)+'carta');
-        axios.get("/api/orders/generate")
-            .then(res => {
-            if (res.data.success) {
-                this.tokenApi = res.data.token;
-                this.loading = true;
-            }
-        });
+        if(this.cart2 != null){
+            this.cart = JSON.parse(this.cart2);
+            axios.get("/api/orders/generate")
+                .then(res => {
+                if (res.data.success) {
+                    this.tokenApi = res.data.token;
+                    this.loading = true;
+                }
+            });
+        }
     },
     mounted() {
-        this.amount = this.cart.reduce((total, item) => {
-          return total + item.qty * item.price;
-        }, 0);
+        if(this.cart2 != null){
+            this.amount = this.cart.reduce((total, item) => {
+              return total + item.qty * item.price;
+            }, 0);
+        }
     },
     computed: {
     cartTotal: function () {
@@ -204,7 +209,12 @@ section{
     .none{
         display: none;
     }
-}
 
+    .message{
+        text-align: center;
+        margin: 50px auto;
+        max-width: 400px;
+    }
+}
 
 </style>

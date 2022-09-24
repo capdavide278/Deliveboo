@@ -186,11 +186,13 @@
         let cartLOcalStorage = '';
         cartLOcalStorage = localStorage.getItem('cart');
         // cart = '';
-        let cart = JSON.parse(cartLOcalStorage);
-        let qtyTot= [];
-        cart.forEach(element => {
-            this.sum += element.qty;
-        });
+        if(cartLOcalStorage != null){
+            let cart = JSON.parse(cartLOcalStorage);
+            let qtyTot= [];
+            cart.forEach(element => {
+                this.sum += element.qty;
+            });
+        }
     }
         },
         }

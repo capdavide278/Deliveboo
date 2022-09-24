@@ -72,7 +72,10 @@ export default {
         cart: JSON.parse(window.localStorage.getItem("cart")),
         error: '',
         inputRestID: '',
-
+        successMessage: '',
+        errorMessage: '',
+        sending: false,
+        inputserrorMessages: {},
     }
     },
     mounted(){
@@ -116,13 +119,35 @@ export default {
                             (res) =>{
                 if (res.data.success) {
                     localStorage.clear();
+                    this.submitMessage();
                 }
             }
                         )
                         .catch(function (error) {
                 console.log(error);
             });
-        }}
+        },
+        submitMessage(){
+            this.sending = true;
+            axios.post('/api/leads', {
+                name: this.name,
+                lastname: this.lastname,
+                address: this.address,
+                email: this.email,
+                // cart: new_cart,
+                phonenumber: this.phonenumber,
+            })
+            .then(res => {
+                if(res.data.success) {
+                    this.successMessage = res.data.response;
+                } else {
+                    this.inputserrorMessages = res.data.response;
+                }
+            })
+            .catch(error => this.errorMessage = 'Errore imprevisto, riprova!')
+            .finally(data => this.sending = false);
+        },
+    }
     }
 
 

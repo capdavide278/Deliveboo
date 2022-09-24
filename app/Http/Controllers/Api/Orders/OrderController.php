@@ -37,7 +37,7 @@ class OrderController extends Controller
 
             $data = [
                 'success' => true,
-                'message' => 'Transazione eseguita con successo',
+                'message' => 'Grazie dell\'ordine. Il tuo pagamento è stato eseguito con successo e ti abbiamo mandato una mail di conferma! Ora non ti resta che attendere il corriere a casa.',
             ];
 
             return response()->json($data,200);
