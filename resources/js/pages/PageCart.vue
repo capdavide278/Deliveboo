@@ -2,7 +2,7 @@
     <section>
         <!-- <h1>Il carrello è vuoto</h1> -->
         <div v-if="disabilita & this.cart != ''">
-            <h1>Il tuo carrello contiene {{sum}} piatti:</h1>
+            <h1>Il tuo carrello:</h1>
             <div v-if="cart !=''">
                 <div>
                     <div class="card mb-3" v-for="dish in cart" :key="dish.id">
@@ -10,6 +10,8 @@
                             <h2 class="card-title text-uppercase">{{dish.name}}</h2>
                             <div >Prezzo: {{dish.price}} €</div>
                             <div>{{dish.qty}} porzioni</div>
+                            <!-- input per passare id ristorante  -->
+                            <input class="inputRestID none" :value="dish.Restid">
                         </div>
                         <div class="d-flex justify-content-around">
 
@@ -68,23 +70,20 @@ export default {
             message: 'Loading...',
             amount2: '',
             disabilita: true,
-            sum: 0,
         }
 
     },
     created(){
         this.cart2 = localStorage.getItem('cart');
         this.cart = JSON.parse(this.cart2);
-        console.log(localStorage.getItem('cart'));
+        console.log(JSON.parse(this.cart2)+'carta');
         axios.get("/api/orders/generate")
             .then(res => {
             if (res.data.success) {
                 this.tokenApi = res.data.token;
                 this.loading = true;
-                console.log(res.data.success)
             }
         });
-        // iconShopping();
     },
     mounted() {
         this.amount = this.cart.reduce((total, item) => {
@@ -119,24 +118,12 @@ export default {
     },
   },
     methods:{
-    // iconShopping(){
-    //     this.sum = 0;
-    //     let cartLOcalStorage = '';
-    //     cartLOcalStorage = localStorage.getItem('cart');
-    //     cart = '';
-    //     let cart = JSON.parse(cartLOcalStorage);
-    //     let qtyTot= [];
-    //     cart.forEach(element => {
-    //         this.sum += element.qty;
-    //     });
-    // },
     findById(arr, id) {
         // this important to show one by one of Quantity
         return arr.find((x) => x.id === id);
     },
     added(item) {
         // when user choose a buy, this function add that in cart
-
         var itemm = this.findById(this.cart, item.id);
         if (itemm !== undefined) {
             itemm.qty += 1;
@@ -168,7 +155,6 @@ export default {
       let parsed = JSON.stringify(this.cart);
       localStorage.setItem("cart", parsed);
       this.viewCart(); // by this function we can see all products are save in web
-    //   iconShopping();
     },
     remove(id) {
       // this function remove buy, one by one according id in cart & main page
@@ -180,8 +166,6 @@ export default {
           this.cart.splice(index, 1);
         }
         this.saveCats();
-        console.log(localStorage.getItem('cart'))
-
       }
     },
     removeall(id){
@@ -190,7 +174,6 @@ export default {
         var index = this.cart.indexOf(item);
           this.cart.splice(index, 1);
         this.saveCats();
-
     },
     paymentOnSuccess(token){
         console.log(this.cart.price)
@@ -204,17 +187,13 @@ export default {
                 this.loading = false;
             }
         });
-        localStorage.clear();
-             this.cart2= '';
-            this.cart= '';
+              this.cart2= '';
+             this.cart= '';
             this.disabilita= false;
         },
         error(){
-
         }
     },
-
-
 }
 </script>
 
@@ -222,7 +201,9 @@ export default {
 
 section{
     margin-top: 120px;
-
+    .none{
+        display: none;
+    }
 }
 
 

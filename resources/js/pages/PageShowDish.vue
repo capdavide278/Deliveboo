@@ -1,13 +1,10 @@
 <template>
     <div id="showDish">
-        <div>Shopping Cart: {{sum}}</div>
+                <!-- TODO: sistemare con immagine carrello e numerino -->
 
-          <div class="d-flex justify-content-end">
-            <router-link :to="{name: 'cart' }">
-                <button type="" class="btn btn-primary">CARRELLO</button>
-                <!-- {{this.qty}} -->
-            </router-link>
-          </div>
+        <router-link :to="{name: 'cart'}" class="nav-link active">
+            <button type="" class="btn btn-primary" id="shoppingCart">Shopping Cart: {{sum}}</button>
+        </router-link>
 
         <Page404 v-if='is404'/>
         <section v-else-if="restaurant">
@@ -157,7 +154,14 @@ methods : {
 <style lang="scss" scoped>
 #showDish{
     margin-top: 120px;
-
+position: relative;
+    #shoppingCart{
+        position: absolute;
+        top:-80px;
+        right:20px;
+        color: white;
+        z-index:600;
+    }
     .none {
       display: none;
     }

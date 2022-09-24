@@ -19,7 +19,7 @@
                 </div>
 
                 <div class="form-group mb-3">
-                    <label for="phonenumber">Phonenumber</label>
+                    <label for="phonenumber">Telefono</label>
                     <input type="text" v-model="phonenumber" maxlength="10" class="form-control" name="phonenumber" id="phonenumber" placeholder="Inserisci il tuo numero">
                 </div>
 
@@ -70,18 +70,24 @@ export default {
         phonenumber: "0",
         allDone: false,
         cart: JSON.parse(window.localStorage.getItem("cart")),
-        error: ''
+        error: '',
+        inputRestID: '',
+
     }
     },
+    mounted(){
+        this.inputRestID = document.querySelector('.inputRestID').value;
+    },
     methods: {
-    //  onLoad () {
-    //    this.$emit('loading')
-    // },
+
+    findById(arr, id) {
+    // this important to show one by one of Quantity
+    return arr.find((x) => x.id === id);
+        },
         onSuccess (payload) {
             const token = payload.nonce
             this.$emit('onSuccess', token);
                 this.sendForm();
-
             },
         onError (error){
             let message = error.message
@@ -93,12 +99,7 @@ export default {
             this.$emit('onError', message)
         },
         sendForm(){
-            // let new_cart = [];
-            //         this.cart.forEach((element) => {
-
-            //             new_cart.push(JSON.stringify(element));
-            //         });
-                    let total = this.cart
+                    let total = JSON.parse(window.localStorage.getItem("cart"))
                     .reduce((amount, dish) => amount + dish.price * dish.qty, 0)
                     .toFixed(2);
                     axios.post("/api/transaction", {
@@ -106,6 +107,7 @@ export default {
                         lastname: this.lastname,
                         address: this.address,
                         email: this.email,
+                        restaurant_id: this.inputRestID,
                         // cart: new_cart,
                         phonenumber: this.phonenumber,
                         total: total,
@@ -113,11 +115,9 @@ export default {
                         .then(
                             (res) =>{
                 if (res.data.success) {
-                    console.log('YESSS')
+                    localStorage.clear();
                 }
             }
-
-
                         )
                         .catch(function (error) {
                 console.log(error);

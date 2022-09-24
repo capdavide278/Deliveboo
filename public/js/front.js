@@ -5191,21 +5191,10 @@ __webpack_require__.r(__webpack_exports__);
       }, {
         label: 'Cart',
         routeName: 'cart'
-      }],
-      cart2: '',
-      cart: '',
-      qtyTot: ''
+      }]
     };
   },
-  created: function created() {
-    this.cart2 = localStorage.getItem('cart');
-    this.cart = JSON.parse(this.cart2);
-    console.log('nav' + this.cart);
-    this.cart.forEach(function (element) {
-      console.log(element.qty);
-      console.log(qtyTot.push(element.qty));
-    });
-  }
+  mounted: function mounted() {}
 });
 
 /***/ }),
@@ -5240,13 +5229,20 @@ __webpack_require__.r(__webpack_exports__);
       phonenumber: "0",
       allDone: false,
       cart: JSON.parse(window.localStorage.getItem("cart")),
-      error: ''
+      error: '',
+      inputRestID: ''
     };
   },
+  mounted: function mounted() {
+    this.inputRestID = document.querySelector('.inputRestID').value;
+  },
   methods: {
-    //  onLoad () {
-    //    this.$emit('loading')
-    // },
+    findById: function findById(arr, id) {
+      // this important to show one by one of Quantity
+      return arr.find(function (x) {
+        return x.id === id;
+      });
+    },
     onSuccess: function onSuccess(payload) {
       var token = payload.nonce;
       this.$emit('onSuccess', token);
@@ -5264,11 +5260,7 @@ __webpack_require__.r(__webpack_exports__);
       this.$emit('onError', message);
     },
     sendForm: function sendForm() {
-      // let new_cart = [];
-      //         this.cart.forEach((element) => {
-      //             new_cart.push(JSON.stringify(element));
-      //         });
-      var total = this.cart.reduce(function (amount, dish) {
+      var total = JSON.parse(window.localStorage.getItem("cart")).reduce(function (amount, dish) {
         return amount + dish.price * dish.qty;
       }, 0).toFixed(2);
       axios.post("/api/transaction", {
@@ -5276,12 +5268,13 @@ __webpack_require__.r(__webpack_exports__);
         lastname: this.lastname,
         address: this.address,
         email: this.email,
+        restaurant_id: this.inputRestID,
         // cart: new_cart,
         phonenumber: this.phonenumber,
         total: total
       }).then(function (res) {
         if (res.data.success) {
-          console.log('YESSS');
+          localStorage.clear();
         }
       })["catch"](function (error) {
         console.log(error);
@@ -5375,12 +5368,11 @@ __webpack_require__.r(__webpack_exports__);
 
     this.cart2 = localStorage.getItem('cart');
     this.cart = JSON.parse(this.cart2);
-    console.log(localStorage.getItem('cart'));
+    console.log(JSON.parse(this.cart2) + 'carta');
     axios.get("/api/orders/generate").then(function (res) {
       if (res.data.success) {
         _this.tokenApi = res.data.token;
         _this.loading = true;
-        console.log(res.data.success);
       }
     });
   },
@@ -5473,7 +5465,6 @@ __webpack_require__.r(__webpack_exports__);
         }
 
         this.saveCats();
-        console.log(localStorage.getItem('cart'));
       }
     },
     removeall: function removeall(id) {
@@ -5496,7 +5487,6 @@ __webpack_require__.r(__webpack_exports__);
           _this2.loading = false;
         }
       });
-      localStorage.clear();
       this.cart2 = '';
       this.cart = '';
       this.disabilita = false;
@@ -5549,11 +5539,13 @@ __webpack_require__.r(__webpack_exports__);
       // isActive : false,
       // YesButton : false,
       cart: '',
-      cart2: ''
+      cart2: '',
+      sum: 0
     };
   },
   created: function created() {
     this.search();
+    this.iconShopping();
   },
   methods: {
     search: function search() {
@@ -5605,6 +5597,19 @@ __webpack_require__.r(__webpack_exports__);
     resetCategory: function resetCategory() {
       this.arrRestaurants = [];
       this.search();
+    },
+    iconShopping: function iconShopping() {
+      var _this3 = this;
+
+      this.sum = 0;
+      var cartLOcalStorage = '';
+      cartLOcalStorage = localStorage.getItem('cart'); // cart = '';
+
+      var cart = JSON.parse(cartLOcalStorage);
+      var qtyTot = [];
+      cart.forEach(function (element) {
+        _this3.sum += element.qty;
+      });
     }
   }
 });
@@ -5641,7 +5646,8 @@ __webpack_require__.r(__webpack_exports__);
         price: "",
         image: ""
       },
-      alert: ''
+      alert: '',
+      sum: 0
     };
   },
   created: function created() {
@@ -5658,6 +5664,7 @@ __webpack_require__.r(__webpack_exports__);
       }
     });
     this.viewCart();
+    this.iconShopping();
   },
   methods: {
     findById: function findById(arr, id) {
@@ -5697,15 +5704,11 @@ __webpack_require__.r(__webpack_exports__);
         console.log(localStorage.getItem('cart'));
       }
     },
-    // product_alert(){
-    //     const alertmess = document.getElementById("alert_msg");
-    //     alertmess.classList.add('block')
-    //     this.alert = "piatto aggiunto al carrello"
-    // },
     saveCats: function saveCats() {
       // for save in local storage set the below code
       var parsed = JSON.stringify(this.cart);
       localStorage.setItem("cart", parsed);
+      this.iconShopping();
       this.viewCart(); // by this function we can see all products are save in web
     },
     remove: function remove(id) {
@@ -5723,17 +5726,20 @@ __webpack_require__.r(__webpack_exports__);
         this.saveCats();
         console.log(localStorage.getItem('cart'));
       }
-    } // Card() {
-    //   // in this part user can log in cart. infact this part is a button to show all choose buy
-    //   $("#myDIV").toggleClass("hide").fadeTo("slow"); // in this part when user click, cart show
-    //   $(".page").addClass("hide"); // in this part when user click, main page hide and cart show for user
-    // },
-    // back() {
-    //   // in this part user can back from cart to main page
-    //   $("#myDIV").addClass("hide");
-    //   $(".page").removeClass("hide");
-    // },
+    },
+    iconShopping: function iconShopping() {
+      var _this2 = this;
 
+      this.sum = 0;
+      var cartLOcalStorage = '';
+      cartLOcalStorage = localStorage.getItem('cart');
+      cart = '';
+      var cart = JSON.parse(cartLOcalStorage);
+      var qtyTot = [];
+      cart.forEach(function (element) {
+        _this2.sum += element.qty;
+      });
+    }
   }
 });
 
@@ -5990,7 +5996,7 @@ var render = function render() {
     }, [_c("button", {
       staticClass: "btn btn-light"
     }, [_vm._v(_vm._s(navItem.label))])])], 1);
-  }), _vm._v(" "), _vm._m(1)], 2)])]), _vm._v(" "), _c("div", [_vm._v("Shopping Cart: ")])], 1)]);
+  }), _vm._v(" "), _vm._m(1)], 2)])])], 1)]);
 };
 
 var staticRenderFns = [function () {
@@ -6124,7 +6130,7 @@ var render = function render() {
     attrs: {
       "for": "phonenumber"
     }
-  }, [_vm._v("Phonenumber")]), _vm._v(" "), _c("input", {
+  }, [_vm._v("Telefono")]), _vm._v(" "), _c("input", {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -6339,7 +6345,12 @@ var render = function render() {
       staticClass: "card-body"
     }, [_c("h2", {
       staticClass: "card-title text-uppercase"
-    }, [_vm._v(_vm._s(dish.name))]), _vm._v(" "), _c("div", [_vm._v("Prezzo: " + _vm._s(dish.price) + " €")]), _vm._v(" "), _c("div", [_vm._v(_vm._s(dish.qty) + " porzioni")])]), _vm._v(" "), _c("div", {
+    }, [_vm._v(_vm._s(dish.name))]), _vm._v(" "), _c("div", [_vm._v("Prezzo: " + _vm._s(dish.price) + " €")]), _vm._v(" "), _c("div", [_vm._v(_vm._s(dish.qty) + " porzioni")]), _vm._v(" "), _c("input", {
+      staticClass: "inputRestID none",
+      domProps: {
+        value: dish.Restid
+      }
+    })]), _vm._v(" "), _c("div", {
       staticClass: "d-flex justify-content-around"
     }, [_c("button", {
       staticClass: "btn btn-primary col-3 me-3",
@@ -6437,7 +6448,24 @@ var render = function render() {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _c("div", [_vm._m(0), _vm._v(" "), _c("div", {
+  return _c("div", {
+    attrs: {
+      id: "containerHome"
+    }
+  }, [_vm._m(0), _vm._v(" "), _c("router-link", {
+    staticClass: "nav-link active",
+    attrs: {
+      to: {
+        name: "cart"
+      }
+    }
+  }, [_c("button", {
+    staticClass: "btn btn-primary",
+    attrs: {
+      type: "",
+      id: "shoppingCart"
+    }
+  }, [_vm._v("Shopping Cart: " + _vm._s(_vm.sum))])]), _vm._v(" "), _c("div", {
     staticClass: "container-fluid back-restaurant pt-4"
   }, [_c("h1", {
     staticClass: "text-center my-5"
@@ -6530,7 +6558,7 @@ var render = function render() {
         }
       }
     }, [_vm._v("ORDINA")])])], 1);
-  })], 2)])])])]), _vm._v(" "), _vm._m(1)]);
+  })], 2)])])])]), _vm._v(" "), _vm._m(1)], 1);
 };
 
 var staticRenderFns = [function () {
@@ -6627,9 +6655,8 @@ var render = function render() {
     attrs: {
       id: "showDish"
     }
-  }, [_c("div", {
-    staticClass: "d-flex justify-content-end"
   }, [_c("router-link", {
+    staticClass: "nav-link active",
     attrs: {
       to: {
         name: "cart"
@@ -6638,9 +6665,10 @@ var render = function render() {
   }, [_c("button", {
     staticClass: "btn btn-primary",
     attrs: {
-      type: ""
+      type: "",
+      id: "shoppingCart"
     }
-  }, [_vm._v("CARRELLO")])])], 1), _vm._v(" "), _vm.is404 ? _c("Page404") : _vm.restaurant ? _c("section", [_c("h1", [_vm._v(_vm._s(_vm.restaurant.name_restaurant))]), _vm._v(" "), _vm._l(_vm.restaurant.dish, function (dish) {
+  }, [_vm._v("Shopping Cart: " + _vm._s(_vm.sum))])]), _vm._v(" "), _vm.is404 ? _c("Page404") : _vm.restaurant ? _c("section", [_c("h1", [_vm._v(_vm._s(_vm.restaurant.name_restaurant))]), _vm._v(" "), _vm._l(_vm.restaurant.dish, function (dish) {
     return _c("div", {
       key: dish.id,
       staticClass: "card mb-3",
@@ -36941,7 +36969,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "section[data-v-313ebd58] {\n  margin-top: 120px;\n}", ""]);
+exports.push([module.i, "section[data-v-313ebd58] {\n  margin-top: 120px;\n}\nsection .none[data-v-313ebd58] {\n  display: none;\n}", ""]);
 
 // exports
 
@@ -36980,7 +37008,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "#jumbotron[data-v-13e03f97] {\n  background-color: #00ccbc;\n  max-width: 100%;\n  margin-top: 120px;\n}\n#jumbotron .deliveboo-color[data-v-13e03f97] {\n  color: #440063;\n}\n#jumbotron #chef[data-v-13e03f97] {\n  max-width: 100%;\n}\n.back-selection[data-v-13e03f97] {\n  background-color: #ffeae4;\n}\n.categories .big-check[data-v-13e03f97] {\n  padding: 20px;\n}\n.categories .big-label[data-v-13e03f97] {\n  font-size: 20px;\n}\n.categories .bt-selezioneCat[data-v-13e03f97] {\n  min-width: 110px;\n  max-width: 110px;\n  text-align: center;\n  margin-bottom: 10px;\n  height: 40px;\n}\n#pizza[data-v-13e03f97] {\n  background-image: url(" + escape(__webpack_require__(/*! ../img/pizza.jpg */ "./resources/js/img/pizza.jpg")) + ");\n  background-size: cover;\n  max-width: 100%;\n}\n#pizza h1[data-v-13e03f97] {\n  padding: 100px;\n  color: black;\n}\n#mc[data-v-13e03f97] {\n  background-image: url(" + escape(__webpack_require__(/*! ../img/mcdonald.jpg */ "./resources/js/img/mcdonald.jpg")) + ");\n  background-size: cover;\n  width: 100%;\n}\n#mc h1[data-v-13e03f97] {\n  padding: 100px;\n  color: black;\n}\n.restaurant[data-v-13e03f97] {\n  background-color: #202428;\n}\n.restaurant .white[data-v-13e03f97] {\n  color: white;\n}\n.max-width[data-v-13e03f97] {\n  -o-object-fit: cover;\n     object-fit: cover;\n  max-width: 100%;\n  height: 200px;\n}", ""]);
+exports.push([module.i, "#containerHome[data-v-13e03f97] {\n  position: relative;\n}\n#containerHome #jumbotron[data-v-13e03f97] {\n  background-color: #00ccbc;\n  max-width: 100%;\n  margin-top: 120px;\n}\n#containerHome #jumbotron .deliveboo-color[data-v-13e03f97] {\n  color: #440063;\n}\n#containerHome #jumbotron #chef[data-v-13e03f97] {\n  max-width: 100%;\n}\n#containerHome #shoppingCart[data-v-13e03f97] {\n  position: absolute;\n  top: 50px;\n  right: 20px;\n  color: white;\n  z-index: 600;\n}\n#containerHome .back-selection[data-v-13e03f97] {\n  background-color: #ffeae4;\n}\n#containerHome .categories .big-check[data-v-13e03f97] {\n  padding: 20px;\n}\n#containerHome .categories .big-label[data-v-13e03f97] {\n  font-size: 20px;\n}\n#containerHome .categories .bt-selezioneCat[data-v-13e03f97] {\n  min-width: 110px;\n  max-width: 110px;\n  text-align: center;\n  margin-bottom: 10px;\n  height: 40px;\n}\n#containerHome #pizza[data-v-13e03f97] {\n  background-image: url(" + escape(__webpack_require__(/*! ../img/pizza.jpg */ "./resources/js/img/pizza.jpg")) + ");\n  background-size: cover;\n  max-width: 100%;\n}\n#containerHome #pizza h1[data-v-13e03f97] {\n  padding: 100px;\n  color: black;\n}\n#containerHome #mc[data-v-13e03f97] {\n  background-image: url(" + escape(__webpack_require__(/*! ../img/mcdonald.jpg */ "./resources/js/img/mcdonald.jpg")) + ");\n  background-size: cover;\n  width: 100%;\n}\n#containerHome #mc h1[data-v-13e03f97] {\n  padding: 100px;\n  color: black;\n}\n#containerHome .restaurant[data-v-13e03f97] {\n  background-color: #202428;\n}\n#containerHome .restaurant .white[data-v-13e03f97] {\n  color: white;\n}\n#containerHome .max-width[data-v-13e03f97] {\n  -o-object-fit: cover;\n     object-fit: cover;\n  max-width: 100%;\n  height: 200px;\n}", ""]);
 
 // exports
 
@@ -36999,7 +37027,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "#showDish[data-v-763ca4ef] {\n  margin-top: 120px;\n}\n#showDish .none[data-v-763ca4ef] {\n  display: none;\n}\n#showDish .block[data-v-763ca4ef] {\n  display: block;\n}\n#showDish .blue[data-v-763ca4ef] {\n  color: #0d6efd;\n}\n#showDish img[data-v-763ca4ef] {\n  width: 200px;\n}", ""]);
+exports.push([module.i, "#showDish[data-v-763ca4ef] {\n  margin-top: 120px;\n  position: relative;\n}\n#showDish #shoppingCart[data-v-763ca4ef] {\n  position: absolute;\n  top: -80px;\n  right: 20px;\n  color: white;\n  z-index: 600;\n}\n#showDish .none[data-v-763ca4ef] {\n  display: none;\n}\n#showDish .block[data-v-763ca4ef] {\n  display: block;\n}\n#showDish .blue[data-v-763ca4ef] {\n  color: #0d6efd;\n}\n#showDish img[data-v-763ca4ef] {\n  width: 200px;\n}", ""]);
 
 // exports
 
@@ -71376,14 +71404,15 @@ __webpack_require__.r(__webpack_exports__);
 /*!*********************************************!*\
   !*** ./resources/js/components/Payment.vue ***!
   \*********************************************/
-/*! exports provided: default */
+/*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Payment_vue_vue_type_template_id_7bace86b_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Payment.vue?vue&type=template&id=7bace86b&scoped=true& */ "./resources/js/components/Payment.vue?vue&type=template&id=7bace86b&scoped=true&");
 /* harmony import */ var _Payment_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Payment.vue?vue&type=script&lang=js& */ "./resources/js/components/Payment.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _Payment_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _Payment_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
@@ -71413,7 +71442,7 @@ component.options.__file = "resources/js/components/Payment.vue"
 /*!**********************************************************************!*\
   !*** ./resources/js/components/Payment.vue?vue&type=script&lang=js& ***!
   \**********************************************************************/
-/*! exports provided: default */
+/*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -72200,8 +72229,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\xampp\htdocs\php_esercizi\laravel\Deliveboo\resources\js\front.js */"./resources/js/front.js");
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\php_esercizi\laravel\Deliveboo\resources\sass\back.scss */"./resources/sass/back.scss");
+__webpack_require__(/*! C:\Users\glogh\Music\php\laravel\Deliveboo\resources\js\front.js */"./resources/js/front.js");
+module.exports = __webpack_require__(/*! C:\Users\glogh\Music\php\laravel\Deliveboo\resources\sass\back.scss */"./resources/sass/back.scss");
 
 
 /***/ })

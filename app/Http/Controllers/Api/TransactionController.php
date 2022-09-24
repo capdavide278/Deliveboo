@@ -25,7 +25,7 @@ $form_data= $request->all();
 
 
 $transaction = new Transaction();
-$transaction->restaurant_id = 2;
+$transaction->restaurant_id = $form_data['restaurant_id'];
 $transaction->name = $form_data['name'];
 $transaction->lastname = $form_data['lastname'];
 $transaction->email = $form_data['email'];

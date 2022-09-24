@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div id="containerHome">
         <div id="jumbotron" class="container-fluid">
             <div class="container">
                 <div class="row align-items-center justify-content-between">
@@ -13,6 +13,10 @@
                 </div>
             </div>
         </div>
+        <!-- TODO: sistemare con immagine carrello e numerino -->
+        <router-link :to="{name: 'cart'}" class="nav-link active">
+            <button type="" class="btn btn-primary" id="shoppingCart">Shopping Cart: {{sum}}</button>
+        </router-link>
 
         <!-- categorie -->
         <div class="container-fluid back-restaurant pt-4">
@@ -51,12 +55,12 @@
                                         </span>
                                     </div>
                                 </div>
-                                <router-link :to="{name:'PageShowDish', params: {idRest: restaurant.id}}" class="mt-4"> 
-                                    <button class="btn btn-primary" @click="removeall(restaurant.id)">ORDINA</button>                   
+                                <router-link :to="{name:'PageShowDish', params: {idRest: restaurant.id}}" class="mt-4">
+                                    <button class="btn btn-primary" @click="removeall(restaurant.id)">ORDINA</button>
                                 </router-link>
                             </div>
-                            
-                                    
+
+
 
                         </div>
 
@@ -116,11 +120,14 @@
             // isActive : false,
             // YesButton : false,
             cart : '',
-            cart2 : ''
+            cart2 : '',
+            sum: 0,
+
             }
         },
     created(){
         this.search();
+        this.iconShopping();
     },
     methods: {
         search(){
@@ -132,7 +139,7 @@
 
         warningPauroso() {
             // this.isActive = true;
-            
+
         },
         yesButton() {
             this.YesButton=true;
@@ -143,7 +150,7 @@
             this.cart.forEach(elemento => {
                 if (element != elemento.Restid) {
                     localStorage.clear()
-                }     
+                }
             });
         },
 
@@ -173,78 +180,102 @@
         resetCategory(){
             this.arrRestaurants = [];
             this.search();
-        }
         },
-
+        iconShopping(){
+        this.sum = 0;
+        let cartLOcalStorage = '';
+        cartLOcalStorage = localStorage.getItem('cart');
+        // cart = '';
+        let cart = JSON.parse(cartLOcalStorage);
+        let qtyTot= [];
+        cart.forEach(element => {
+            this.sum += element.qty;
+        });
+    }
+        },
         }
 </script>
 
 <style lang="scss" scoped>
-    #jumbotron {
-        background-color: #00ccbc;;
-        max-width: 100%;
-        margin-top: 120px;
-        .deliveboo-color {
-            color: #440063;
-        }
-        #chef{
+
+    #containerHome{
+        position: relative;
+
+        #jumbotron {
+            background-color: #00ccbc;;
             max-width: 100%;
+            margin-top: 120px;
+            .deliveboo-color {
+                color: #440063;
+            }
+            #chef{
+                max-width: 100%;
+            }
         }
-    }
-
-    .back-selection {
-       background-color: #ffeae4;
-    }
-
-    .categories{
-
-        .big-check {
-        padding: 20px;
-    }
-        .big-label {
-            font-size: 20px;
+        #shoppingCart{
+            position: absolute;
+            top:50px;
+            right:20px;
+            color: white;
+            z-index:600;
+        }
+        .back-selection {
+           background-color: #ffeae4;
         }
 
-        .bt-selezioneCat{
-            min-width: 110px;
-            max-width: 110px;
-            text-align: center;
-            margin-bottom: 10px;
-            height: 40px;
+        .categories{
+
+            .big-check {
+            padding: 20px;
         }
+            .big-label {
+                font-size: 20px;
+            }
+
+            .bt-selezioneCat{
+                min-width: 110px;
+                max-width: 110px;
+                text-align: center;
+                margin-bottom: 10px;
+                height: 40px;
+            }
+        }
+
+        #pizza {
+            background-image: url('../img/pizza.jpg');
+            background-size: cover;
+            max-width: 100%;
+
+            h1{
+                padding: 100px;
+                color: black;
+            }
+        }
+
+        #mc {
+            background-image: url('../img/mcdonald.jpg');
+            background-size: cover;
+            width: 100%;
+
+            h1{
+                padding: 100px;
+                color: black;
+            }
+        }
+        .restaurant {
+            background-color: #202428;
+            .white{
+                color : white;
+            }
+        }
+        .max-width {
+            object-fit: cover;
+            max-width: 100%;
+            height: 200px;
+        }
+
+
     }
 
-    #pizza {
-        background-image: url('../img/pizza.jpg');
-        background-size: cover;
-        max-width: 100%;
-
-        h1{
-            padding: 100px;
-            color: black;
-        }
-    }
-
-    #mc {
-        background-image: url('../img/mcdonald.jpg');
-        background-size: cover;
-        width: 100%;
-
-        h1{
-            padding: 100px;
-            color: black;
-        }
-    }
-    .restaurant {
-        background-color: #202428;
-        .white{
-            color : white;
-        }
-    }
-    .max-width {
-        object-fit: cover;
-        max-width: 100%;
-        height: 200px;
-    }
 
 </style>
