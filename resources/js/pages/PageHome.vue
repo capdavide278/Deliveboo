@@ -27,7 +27,7 @@
         </router-link>
 
         <!-- categorie -->
-        <div class="container-fluid back-restaurant pt-4">
+        <div class="container-fluid back-restaurant">
             <section class="container">
                 <div class="row">
                     <div class="col-2">
@@ -47,7 +47,7 @@
                         </div>
                     </div>
         <!-- ristoranti -->
-                    <div class="col-9">
+                    <div id="ristoContainer" class="col-10">
                         <div class="row justify-content-center">
                             <div id="container-title">
                               <div class="highlight-container">
@@ -56,26 +56,28 @@
                                    </h2>
                                </div>
                         </div>
-                            <div v-for="restaurant in restaurants" :key="restaurant.id" class="card restaurant col-sm-6 col-md-3 mx-1 pb-5 my-2">
-                                <img v-if="restaurant.image.includes('http')" class="card-image-top max-width" :src="restaurant.image " :alt=" restaurant.name_restaurant">
-                                <img v-else class="card-image-top max-width" :src="`/storage/${restaurant.image}` " :alt=" restaurant.name_restaurant">
-                                <div class="card-body">
-                                    <h3 class="white card-title text-uppercase">{{ restaurant.name_restaurant }}</h3>
-                                    <span class="white">Telefono: {{ restaurant.rest_phonenumber}}</span>
-                                    <div class="white">Email: {{restaurant.rest_email}}</div>
-                                    <span class="white">Indirizzo: {{ restaurant.address}}</span>
-                                    <div class="tags text-end">
-                                        <strong class="white">Category: </strong>
-                                        <span v-for="category in restaurant.category" :key="category.id" class="white tag">
-                                            {{ category.name }}
-                                        </span>
-                                    </div>
+
+                        <div v-for="restaurant in restaurants" :key="restaurant.id" class="card restaurant col-sm-6 px-3 py-3 ms-2">
+                            <img v-if="restaurant.image.includes('http')" class="card-image-top max-width" :src="restaurant.image " :alt=" restaurant.name_restaurant">
+                            <img v-else class="card-image-top max-width" :src="`/storage/${restaurant.image}` " :alt=" restaurant.name_restaurant">
+                            <div class="card-body">
+                                <h3 class="white card-title text-uppercase">{{ restaurant.name_restaurant }}</h3>
+                                <span class="white">Telefono: {{ restaurant.rest_phonenumber}}</span>
+                                <div class="white">Email: {{restaurant.rest_email}}</div>
+                                <span class="white">Indirizzo: {{ restaurant.address}}</span>
+                                <div class="tags text-end">
+                                    <strong class="white">Category: </strong>
+                                    <span v-for="category in restaurant.category" :key="category.id" class="white tag">
+                                        {{ category.name }}
+                                    </span>
                                 </div>
-                                <router-link :to="{name:'PageShowDish', params: {idRest: restaurant.id}}" class="mt-4">
-                                    <button class="btn btn-primary" @click="removeall(restaurant.id)">ORDINA</button>
-                                </router-link>
                             </div>
+                            <router-link :to="{name:'PageShowDish', params: {idRest: restaurant.id}}" class="mt-4">
+                                <button class="btn btn-primary" @click="removeall(restaurant.id)">ORDINA</button>
+                            </router-link>
                         </div>
+                    </div>
+
 
                     </div>
                 </div>
@@ -430,17 +432,24 @@
                 color: black;
             }
         }
-        .restaurant {
+
+#ristoContainer{
+    .restaurant {
             background-color: #202428;
+            border-radius: 20px;
+            width: 340px;
+            margin-bottom: 20px;
             .white{
                 color : white;
             }
+            .max-width {
+                object-fit: cover;
+                max-width: 100%;
+                height: 200px;
+            }
         }
-        .max-width {
-            object-fit: cover;
-            max-width: 100%;
-            height: 200px;
-        }
+}
+
 
         #partner {
 
