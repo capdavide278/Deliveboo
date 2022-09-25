@@ -6577,9 +6577,7 @@ var render = function render() {
     staticClass: "col-9"
   }, [_c("div", {
     staticClass: "row justify-content-center"
-  }, [_c("h4", {
-    staticClass: "text-center"
-  }, [_vm._v("Ristoranti che potrebbero piacerti:")]), _vm._v(" "), _vm._l(_vm.restaurants, function (restaurant) {
+  }, [_vm._m(1), _vm._v(" "), _vm._l(_vm.restaurants, function (restaurant) {
     return _c("div", {
       key: restaurant.id,
       staticClass: "card restaurant col-sm-6 col-md-3 mx-1 pb-5 my-2"
@@ -6632,7 +6630,7 @@ var render = function render() {
         }
       }
     }, [_vm._v("ORDINA")])])], 1);
-  })], 2)])])])]), _vm._v(" "), _vm._m(1)], 1);
+  })], 2)])])])]), _vm._v(" "), _vm._m(2), _vm._v(" "), _vm._m(3)], 1);
 };
 
 var staticRenderFns = [function () {
@@ -6672,14 +6670,34 @@ var staticRenderFns = [function () {
       _c = _vm._self._c;
 
   return _c("div", {
+    attrs: {
+      id: "container-title"
+    }
+  }, [_c("div", {
+    staticClass: "highlight-container"
+  }, [_c("h2", {
+    staticClass: "highlight"
+  }, [_vm._v("\n                                    Ristoranti che potrebbero piacerti:\n                                   ")])])]);
+}, function () {
+  var _vm = this,
+      _c = _vm._self._c;
+
+  return _c("div", {
     staticClass: "container-fluid back-selection pt-3"
   }, [_c("div", {
     staticClass: "container"
   }, [_c("div", {
     staticClass: "row"
-  }, [_c("h1", {
-    staticClass: "text-center mb-3"
-  }, [_vm._v("La selezione di deliveboo scelta apposta per voi")]), _vm._v(" "), _c("div", {
+  }, [_c("div", {
+    staticClass: "mb-3",
+    attrs: {
+      id: "container-title"
+    }
+  }, [_c("div", {
+    staticClass: "highlight-container"
+  }, [_c("h2", {
+    staticClass: "highlight"
+  }, [_vm._v("\n                                La selezione di deliveboo scelta apposta per voi\n                            ")])])]), _vm._v(" "), _c("div", {
     staticClass: "col-12 mt-4"
   }, [_c("div", {
     staticClass: "row justify-content-between align-items-center"
@@ -6704,6 +6722,71 @@ var staticRenderFns = [function () {
       id: "mc"
     }
   }, [_c("h1", [_vm._v("McDonalds")])])])])])])])]);
+}, function () {
+  var _vm = this,
+      _c = _vm._self._c;
+
+  return _c("div", {
+    staticClass: "mt-5",
+    attrs: {
+      id: "partner"
+    }
+  }, [_c("div", {
+    staticClass: "container"
+  }, [_c("div", {
+    staticClass: "row d-flex column align-items-center"
+  }, [_c("div", {
+    staticClass: "mb-5",
+    attrs: {
+      id: "container-title"
+    }
+  }, [_c("div", {
+    staticClass: "highlight-container"
+  }, [_c("h2", {
+    staticClass: "highlight"
+  }, [_vm._v("\n                                Uniamo le forze\n                            ")])])]), _vm._v(" "), _c("div", {
+    staticClass: "container"
+  }, [_c("div", {
+    staticClass: "row d-flex column text-center"
+  }, [_c("div", {
+    staticClass: "row d-flex justify-content-evenly",
+    attrs: {
+      id: "cardPartner"
+    }
+  }, [_c("div", {
+    staticClass: "col-3"
+  }, [_c("img", {
+    attrs: {
+      src: "https://images.pexels.com/photos/9461776/pexels-photo-9461776.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      alt: "rider"
+    }
+  }), _vm._v(" "), _c("p", {
+    staticClass: "mb-3 mt-3 fst-italic fw-bold"
+  }, [_vm._v("Diventa un Rider")]), _vm._v(" "), _c("button", {
+    staticClass: "btn btn-dark text-center mb-3"
+  }, [_vm._v("\n                                    Unisciti a noi\n                                 ")])]), _vm._v(" "), _c("div", {
+    staticClass: "col-3"
+  }, [_c("img", {
+    attrs: {
+      src: "https://images.pexels.com/photos/2102934/pexels-photo-2102934.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      alt: "chef"
+    }
+  }), _vm._v(" "), _c("p", {
+    staticClass: "mb-3 mt-3 fst-italic fw-bold"
+  }, [_vm._v("Diventa Partner")]), _vm._v(" "), _c("button", {
+    staticClass: "btn btn-dark text-center mb-3"
+  }, [_vm._v("\n                                    Unisciti a noi\n                                 ")])]), _vm._v(" "), _c("div", {
+    staticClass: "col-3"
+  }, [_c("img", {
+    attrs: {
+      src: "https://images.pexels.com/photos/3184287/pexels-photo-3184287.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      alt: "job"
+    }
+  }), _vm._v(" "), _c("p", {
+    staticClass: "mb-3 mt-3 fst-italic fw-bold"
+  }, [_vm._v("Lavora con noi")]), _vm._v(" "), _c("button", {
+    staticClass: "btn btn-dark text-center mb-3"
+  }, [_vm._v("\n                                    Unisciti a noi\n                                 ")])])])])])])])]);
 }];
 render._withStripped = true;
 
@@ -37082,7 +37165,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "#containerHome[data-v-13e03f97] {\n  position: relative;\n}\n#containerHome #jumbotron[data-v-13e03f97] {\n  background-color: #00ccbc;\n  max-width: 100%;\n  margin-top: 120px;\n}\n#containerHome #jumbotron .deliveboo-color[data-v-13e03f97] {\n  color: #440063;\n}\n#containerHome #jumbotron #chef[data-v-13e03f97] {\n  max-width: 100%;\n}\n#containerHome #shoppingCart[data-v-13e03f97] {\n  position: absolute;\n  top: 50px;\n  right: 20px;\n  color: white;\n  z-index: 600;\n}\n#containerHome .back-selection[data-v-13e03f97] {\n  background-color: #ffeae4;\n}\n#containerHome .categories .button[data-v-13e03f97] {\n  text-align: center;\n  --offset: 10px;\n  --border-size: 2px;\n  margin-bottom: 40px;\n  display: block;\n  position: relative;\n  padding: 1.5em 3em;\n  -webkit-appearance: none;\n     -moz-appearance: none;\n          appearance: none;\n  border: 0;\n  background: transparent;\n  color: #00ccbc;\n  text-transform: uppercase;\n  letter-spacing: 0.25em;\n  outline: none;\n  cursor: pointer;\n  font-weight: bold;\n  border-radius: 0;\n  box-shadow: inset 0 0 0 var(--border-size) currentcolor;\n  transition: background 0.8s ease;\n}\n#containerHome .categories .button[data-v-13e03f97]:hover {\n  background: rgba(100, 0, 0, 0.03);\n}\n#containerHome .categories .button .button__horizontal[data-v-13e03f97],\n#containerHome .categories .button .button__vertical[data-v-13e03f97] {\n  position: absolute;\n  top: var(--horizontal-offset, 0);\n  right: var(--vertical-offset, 0);\n  bottom: var(--horizontal-offset, 0);\n  left: var(--vertical-offset, 0);\n  transition: transform 0.8s ease;\n  will-change: transform;\n}\n#containerHome .categories .button .button__horizontal[data-v-13e03f97]::before,\n#containerHome .categories .button .button__vertical[data-v-13e03f97]::before {\n  content: \"\";\n  position: absolute;\n  border: inherit;\n}\n#containerHome .categories .button .button__horizontal[data-v-13e03f97] {\n  --vertical-offset: calc(var(--offset) * -1);\n  border-top: var(--border-size) solid currentcolor;\n  border-bottom: var(--border-size) solid currentcolor;\n}\n#containerHome .categories .button .button__horizontal[data-v-13e03f97]::before {\n  top: calc(var(--vertical-offset) - var(--border-size));\n  bottom: calc(var(--vertical-offset) - var(--border-size));\n  left: calc(var(--vertical-offset) * -1);\n  right: calc(var(--vertical-offset) * -1);\n}\n#containerHome .categories .button:hover .button__horizontal[data-v-13e03f97] {\n  transform: scaleX(0);\n}\n#containerHome .categories .button .button__vertical[data-v-13e03f97] {\n  --horizontal-offset: calc(var(--offset) * -1);\n  border-left: var(--border-size) solid currentcolor;\n  border-right: var(--border-size) solid currentcolor;\n}\n#containerHome .categories .button .button__vertical[data-v-13e03f97]::before {\n  top: calc(var(--horizontal-offset) * -1);\n  bottom: calc(var(--horizontal-offset) * -1);\n  left: calc(var(--horizontal-offset) - var(--border-size));\n  right: calc(var(--horizontal-offset) - var(--border-size));\n}\n#containerHome .categories .button:hover .button__vertical[data-v-13e03f97] {\n  transform: scaleY(0);\n}\n#containerHome .categories .big-label[data-v-13e03f97] {\n  font-size: 20px;\n}\n#containerHome .categories .bt-annulla[data-v-13e03f97] {\n  color: #7acc00;\n}\n#containerHome #pizza[data-v-13e03f97] {\n  background-image: url(" + escape(__webpack_require__(/*! ../img/pizza.jpg */ "./resources/js/img/pizza.jpg")) + ");\n  background-size: cover;\n  max-width: 100%;\n}\n#containerHome #pizza h1[data-v-13e03f97] {\n  padding: 100px;\n  color: black;\n}\n#containerHome #mc[data-v-13e03f97] {\n  background-image: url(" + escape(__webpack_require__(/*! ../img/mcdonald.jpg */ "./resources/js/img/mcdonald.jpg")) + ");\n  background-size: cover;\n  width: 100%;\n}\n#containerHome #mc h1[data-v-13e03f97] {\n  padding: 100px;\n  color: black;\n}\n#containerHome .restaurant[data-v-13e03f97] {\n  background-color: #202428;\n}\n#containerHome .restaurant .white[data-v-13e03f97] {\n  color: white;\n}\n#containerHome .max-width[data-v-13e03f97] {\n  -o-object-fit: cover;\n     object-fit: cover;\n  max-width: 100%;\n  height: 200px;\n}", ""]);
+exports.push([module.i, "#containerHome[data-v-13e03f97] {\n  position: relative;\n}\n#containerHome #jumbotron[data-v-13e03f97] {\n  background-color: #00ccbc;\n  max-width: 100%;\n  margin-top: 120px;\n}\n#containerHome #jumbotron .deliveboo-color[data-v-13e03f97] {\n  color: #440063;\n}\n#containerHome #jumbotron #chef[data-v-13e03f97] {\n  max-width: 100%;\n}\n#containerHome #shoppingCart[data-v-13e03f97] {\n  position: absolute;\n  top: 50px;\n  right: 20px;\n  color: white;\n  z-index: 600;\n}\n#containerHome .back-selection[data-v-13e03f97] {\n  background-color: #ffeae4;\n}\n#containerHome .categories .button[data-v-13e03f97] {\n  text-align: center;\n  --offset: 10px;\n  --border-size: 2px;\n  margin-bottom: 40px;\n  display: block;\n  position: relative;\n  padding: 1.5em 3em;\n  -webkit-appearance: none;\n     -moz-appearance: none;\n          appearance: none;\n  border: 0;\n  background: transparent;\n  color: #00ccbc;\n  text-transform: uppercase;\n  letter-spacing: 0.25em;\n  outline: none;\n  cursor: pointer;\n  font-weight: bold;\n  border-radius: 0;\n  box-shadow: inset 0 0 0 var(--border-size) currentcolor;\n  transition: background 0.8s ease;\n}\n#containerHome .categories .button[data-v-13e03f97]:hover {\n  background: rgba(100, 0, 0, 0.03);\n}\n#containerHome .categories .button .button__horizontal[data-v-13e03f97],\n#containerHome .categories .button .button__vertical[data-v-13e03f97] {\n  position: absolute;\n  top: var(--horizontal-offset, 0);\n  right: var(--vertical-offset, 0);\n  bottom: var(--horizontal-offset, 0);\n  left: var(--vertical-offset, 0);\n  transition: transform 0.8s ease;\n  will-change: transform;\n}\n#containerHome .categories .button .button__horizontal[data-v-13e03f97]::before,\n#containerHome .categories .button .button__vertical[data-v-13e03f97]::before {\n  content: \"\";\n  position: absolute;\n  border: inherit;\n}\n#containerHome .categories .button .button__horizontal[data-v-13e03f97] {\n  --vertical-offset: calc(var(--offset) * -1);\n  border-top: var(--border-size) solid currentcolor;\n  border-bottom: var(--border-size) solid currentcolor;\n}\n#containerHome .categories .button .button__horizontal[data-v-13e03f97]::before {\n  top: calc(var(--vertical-offset) - var(--border-size));\n  bottom: calc(var(--vertical-offset) - var(--border-size));\n  left: calc(var(--vertical-offset) * -1);\n  right: calc(var(--vertical-offset) * -1);\n}\n#containerHome .categories .button:hover .button__horizontal[data-v-13e03f97] {\n  transform: scaleX(0);\n}\n#containerHome .categories .button .button__vertical[data-v-13e03f97] {\n  --horizontal-offset: calc(var(--offset) * -1);\n  border-left: var(--border-size) solid currentcolor;\n  border-right: var(--border-size) solid currentcolor;\n}\n#containerHome .categories .button .button__vertical[data-v-13e03f97]::before {\n  top: calc(var(--horizontal-offset) * -1);\n  bottom: calc(var(--horizontal-offset) * -1);\n  left: calc(var(--horizontal-offset) - var(--border-size));\n  right: calc(var(--horizontal-offset) - var(--border-size));\n}\n#containerHome .categories .button:hover .button__vertical[data-v-13e03f97] {\n  transform: scaleY(0);\n}\n#containerHome .categories .big-label[data-v-13e03f97] {\n  font-size: 20px;\n}\n#containerHome .categories .bt-annulla[data-v-13e03f97] {\n  color: #7acc00;\n}\n#containerHome #pizza[data-v-13e03f97] {\n  background-image: url(" + escape(__webpack_require__(/*! ../img/pizza.jpg */ "./resources/js/img/pizza.jpg")) + ");\n  background-size: cover;\n  max-width: 100%;\n}\n#containerHome #pizza h1[data-v-13e03f97] {\n  padding: 100px;\n  color: black;\n}\n#containerHome #mc[data-v-13e03f97] {\n  background-image: url(" + escape(__webpack_require__(/*! ../img/mcdonald.jpg */ "./resources/js/img/mcdonald.jpg")) + ");\n  background-size: cover;\n  width: 100%;\n}\n#containerHome #mc h1[data-v-13e03f97] {\n  padding: 100px;\n  color: black;\n}\n#containerHome .restaurant[data-v-13e03f97] {\n  background-color: #202428;\n}\n#containerHome .restaurant .white[data-v-13e03f97] {\n  color: white;\n}\n#containerHome .max-width[data-v-13e03f97] {\n  -o-object-fit: cover;\n     object-fit: cover;\n  max-width: 100%;\n  height: 200px;\n}\n#containerHome #partner #cardPartner img[data-v-13e03f97] {\n  border-radius: 50%;\n  width: 200px;\n  height: 3 0px;\n}\n#containerHome #container-title[data-v-13e03f97] {\n  line-height: 1.4;\n  text-align: center;\n  padding: 44px;\n  color: #333;\n}\n#containerHome #container-title .highlight-container[data-v-13e03f97] {\n  position: relative;\n  display: inline-block;\n}\n#containerHome #container-title .highlight-container[data-v-13e03f97]:before {\n  content: \" \";\n  display: block;\n  height: 90%;\n  width: 100%;\n  margin-left: -3px;\n  margin-right: -3px;\n  position: absolute;\n  background: #ffd500;\n  transform: rotate(2deg);\n  top: -1px;\n  left: -1px;\n  border-radius: 20% 25% 20% 24%;\n  padding: 10px 3px 3px 10px;\n}\n#containerHome #container-title .highlight-container .highlight[data-v-13e03f97] {\n  position: relative;\n}", ""]);
 
 // exports
 

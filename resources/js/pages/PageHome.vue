@@ -41,7 +41,13 @@
         <!-- ristoranti -->
                     <div class="col-9">
                         <div class="row justify-content-center">
-                            <h4 class="text-center">Ristoranti che potrebbero piacerti:</h4>
+                            <div id="container-title">
+                              <div class="highlight-container">
+                                  <h2 class="highlight">
+                                    Ristoranti che potrebbero piacerti:
+                                   </h2>
+                               </div>
+                        </div>
                             <div v-for="restaurant in restaurants" :key="restaurant.id" class="card restaurant col-sm-6 col-md-3 mx-1 pb-5 my-2">
                                 <img v-if="restaurant.image.includes('http')" class="card-image-top max-width" :src="restaurant.image " :alt=" restaurant.name_restaurant">
                                 <img v-else class="card-image-top max-width" :src="`/storage/${restaurant.image}` " :alt=" restaurant.name_restaurant">
@@ -71,7 +77,13 @@
         <div class="container-fluid back-selection pt-3">
             <div class="container">
                 <div class="row">
-                    <h1 class="text-center mb-3">La selezione di deliveboo scelta apposta per voi</h1>
+                    <div id="container-title" class="mb-3">
+                        <div class="highlight-container">
+                            <h2 class="highlight">
+                                La selezione di deliveboo scelta apposta per voi
+                            </h2>
+                        </div>
+                    </div>
                     <div class="col-12 mt-4">
                         <div class="row justify-content-between align-items-center">
 
@@ -97,6 +109,51 @@
                     </div>
                 </div>
             </div>
+        </div>
+
+        <!-- partner -->
+        <div id="partner" class="mt-5">
+            <div class="container">
+                <div class="row d-flex column align-items-center">
+                    <div id="container-title" class="mb-5">
+                        <div class="highlight-container">
+                            <h2 class="highlight">
+                                Uniamo le forze
+                            </h2>
+                        </div>
+                    </div>
+                    <div class="container">
+                        <div class="row d-flex column text-center">
+                        <div id="cardPartner" class="row d-flex justify-content-evenly">
+                            <div class="col-3">
+                                 <img src="https://images.pexels.com/photos/9461776/pexels-photo-9461776.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="rider">
+                                 <p class="mb-3 mt-3 fst-italic fw-bold">Diventa un Rider</p>
+                                 <button class="btn btn-dark text-center mb-3">
+                                    Unisciti a noi
+                                 </button>
+                           </div>
+                           <div class="col-3">
+                                 <img src="https://images.pexels.com/photos/2102934/pexels-photo-2102934.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="chef">
+                                 <p class="mb-3 mt-3 fst-italic fw-bold">Diventa Partner</p>
+                                 <button  class="btn btn-dark text-center mb-3">
+                                    Unisciti a noi
+                                 </button>
+                           </div>
+                           <div  class="col-3">
+                                 <img src="https://images.pexels.com/photos/3184287/pexels-photo-3184287.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="job">
+                                 <p class="mb-3 mt-3 fst-italic fw-bold">Lavora con noi</p>
+                                 <button  class="btn btn-dark text-center mb-3">
+                                    Unisciti a noi
+                                 </button>
+                           </div>
+                        </div>
+                    </div>
+                    </div>
+
+                </div>
+
+            </div>
+
         </div>
     </div>
 
@@ -346,7 +403,49 @@
             height: 200px;
         }
 
+        #partner {
 
+            #cardPartner{
+                img{
+                    border-radius: 50%;
+                    width: 200px;
+                    height: 3
+                    00px;
+                }
+            }
+        }
+// fare un testo sottolineato
+        #container-title{
+                line-height: 1.4;
+                text-align: center;
+                padding: 44px;
+                color: #333;
+                .highlight-container{
+                    position: relative;
+                    display: inline-block;
+
+                &:before{
+                    content: " ";
+                    display: block;
+                    height: 90%;
+                    width: 100%;
+                    margin-left: -3px;
+                    margin-right: -3px;
+                    position: absolute;
+                    background: #ffd500;
+                    transform: rotate(2deg);
+                    top: -1px;
+                    left: -1px;
+                    border-radius: 20% 25% 20% 24%;
+                    padding: 10px 3px 3px 10px;
+                }
+                    .highlight{
+                        position: relative;
+
+                    }
+                }
+
+            }
     }
 
 
