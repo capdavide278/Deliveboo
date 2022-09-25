@@ -11,6 +11,8 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/back.js') }}" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">

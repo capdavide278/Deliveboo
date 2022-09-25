@@ -32,6 +32,10 @@
                     <label for="email">Email</label>
                     <input type="email" v-model="email" maxlength="100" class="form-control" name="email" id="email" placeholder="Inserisci la tua email" required/>
                 </div>
+                <div class="form-group mb-3">
+                    <label for="date">Giorno consegna</label>
+                    <input type="date" v-model="date" class="form-control" name="date" id="date" required>
+                </div>
             </div>
             <div class="col-4">
                 <v-braintree
@@ -66,6 +70,7 @@ export default {
         name: "",
         lastname: "",
         address: "",
+        date: '',
         email: "",
         phonenumber: "0",
         allDone: false,
@@ -111,6 +116,7 @@ export default {
                         address: this.address,
                         email: this.email,
                         restaurant_id: this.inputRestID,
+                        date: this.date,
                         // cart: new_cart,
                         phonenumber: this.phonenumber,
                         total: total,

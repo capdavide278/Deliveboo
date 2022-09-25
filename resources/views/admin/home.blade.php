@@ -1,6 +1,8 @@
 @extends('admin.layout.app')
 
 @section('content')
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 <div class="container">
         <div class="row">
             <div class="col col-md-3 accordion" id="accordionExample">
@@ -75,7 +77,55 @@
                                     <button class="btn btn-success me-3"  type="submit">Transaction</button>
                                 </a>
 
+                                <h2 class="mt-3">Statistiche vendite</h2>
 
+                                <div>
+                                    <canvas class="mb-3 mt-2" id="charttransaction"></canvas>
+                                </div>
+
+    <script>
+        const transaction = @json($transactions);
+        const numbertransaction = Object.values(transaction);
+        console.log(numbertransaction)
+        const labels = [
+            'Gennaio',
+            'Febbraio',
+            'Marzo',
+            'Aprile',
+            'Maggio',
+            'Giugno',
+            'Luglio',
+            'Agosto',
+            'Settembre',
+            'Ottobre',
+            'Novembre',
+            'Dicembre'
+        ];
+
+        const datatransaction = {
+            labels: labels,
+            datasets: [{
+                label: 'Statistiche ordini per mese',
+                backgroundColor: '#2d424d',
+                borderColor: '#29988c',
+                data: numbertransaction,
+            }]
+        };
+
+        const configtransaction = {
+            type: 'line',
+            data: datatransaction,
+            options: {}
+        };
+
+
+        const charttransaction = new Chart(
+            document.getElementById('charttransaction'),
+            configtransaction
+        );
+
+
+    </script>
                             </div>
                         @endforeach
 

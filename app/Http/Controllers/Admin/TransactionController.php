@@ -33,9 +33,16 @@ class TransactionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function chartJs()
     {
-        //
+        $user_id =  Auth::id();
+        $rest_id =  Restaurant::all()->where('user_id', '=', $user_id )->pluck('id')->toArray();
+
+
+            $transaction = Transaction::all()->where('restaurant_id', '=', $rest_id[0])->orderBy('date', 'desc')->get();
+        //$rest_id[0] indica il primo elemento del toArray dalla collection di Transaction
+
+        return view('admin.home', compact('transaction'));
     }
 
     /**

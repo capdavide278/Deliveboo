@@ -28,6 +28,7 @@ $transaction = new Transaction();
 $transaction->restaurant_id = $form_data['restaurant_id'];
 $transaction->name = $form_data['name'];
 $transaction->lastname = $form_data['lastname'];
+$transaction->date =  $form_data['date'];
 $transaction->email = $form_data['email'];
 $transaction->address = $form_data['address'];
 $transaction->phonenumber = $form_data['phonenumber'];

@@ -21,6 +21,7 @@ class CreateTransactionsTable extends Migration
             $table->string('address');
             $table->string('email');
             $table->bigInteger('phonenumber');
+            $table->date('date');
             $table->float('total');
             $table->timestamps();
         });

@@ -5225,6 +5225,7 @@ __webpack_require__.r(__webpack_exports__);
       name: "",
       lastname: "",
       address: "",
+      date: '',
       email: "",
       phonenumber: "0",
       allDone: false,
@@ -5275,6 +5276,7 @@ __webpack_require__.r(__webpack_exports__);
         address: this.address,
         email: this.email,
         restaurant_id: this.inputRestID,
+        date: this.date,
         // cart: new_cart,
         phonenumber: this.phonenumber,
         total: total
@@ -6252,6 +6254,35 @@ var render = function render() {
       input: function input($event) {
         if ($event.target.composing) return;
         _vm.email = $event.target.value;
+      }
+    }
+  })]), _vm._v(" "), _c("div", {
+    staticClass: "form-group mb-3"
+  }, [_c("label", {
+    attrs: {
+      "for": "date"
+    }
+  }, [_vm._v("Giorno consegna")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.date,
+      expression: "date"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      type: "date",
+      name: "date",
+      id: "date",
+      required: ""
+    },
+    domProps: {
+      value: _vm.date
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.date = $event.target.value;
       }
     }
   })])]), _vm._v(" "), _c("div", {
