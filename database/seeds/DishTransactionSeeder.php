@@ -14,15 +14,15 @@ class DishTransactionSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
-        // $dishes = Dish::all();
-        // $transaction = Transaction::all()->pluck('id');
-        // $nTransaction = count($transaction);
+         $dishes = Dish::all();
+         $transaction = Transaction::all()->pluck('id');
+         $nTransaction = count($transaction);
 
-        // foreach ($dishes as $dish) {
-        //     $dishTransaction = $faker->randomElements($transaction, rand(0, $nTransaction));
-        //     foreach ($dishTransaction as $transID) {
-        //         $dish->transaction()->attach($transID);
-        //     }
-        // }
+         foreach ($dishes as $dish) {
+             $dishTransaction = $faker->randomElements($transaction, rand(0, $nTransaction));
+             foreach ($dishTransaction as $transID) {
+                 $dish->transaction()->attach($transID);
+             }
+         }
     }
 }

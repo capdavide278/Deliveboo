@@ -14,41 +14,21 @@ class TransactionSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
-        // $restaurant_ids = Restaurant::all()->pluck('id');
 
-        // $transactions = [
-        //     [
-        //         'name'          => 'VAndrea',
-        //         'lastname'      => 'Neri',
-        //         'restaurant_id' => $faker->randomElement($restaurant_ids),
-        //         'address'       => 'via GiovanniDaProcida',
-        //         'email'         => 'vandreavp@email.com',
-        //         'phonenumber'   => '55545678910',
-        //         'total'         => 120.00,
-        //     ],
-        //     [
-        //         'name'          => 'VGiorgia',
-        //         'lastname'      => 'Bianchi',
-        //         'restaurant_id' => $faker->randomElement($restaurant_ids),
-        //         'address'       => 'via GiovanniDaCrocida',
-        //         'email'         => 'vgiorgiavp@email.com',
-        //         'phonenumber'   => '44445678910',
-        //         'total'         => 71.00,
-        //     ],
-        //     [
-        //         'name'          => 'VDavide',
-        //         'lastname'      => 'Rossi',
-        //         'restaurant_id' => $faker->randomElement($restaurant_ids),
-        //         'address'       => 'via GiovanniDaVrocida',
-        //         'email'         => 'vdavidevp@email.com',
-        //         'phonenumber'   => '52245678910',
-        //         'total'         => 61.00,
-        //     ],
-        // ];
+         $restaurant_ids = Restaurant::all()->pluck('id');
 
-        // foreach ($transactions as $transaction) {
-        //     Transaction::create($transaction);
-        // }
 
+         for($i=0; $i<50; $i++){
+             $transaction = new Transaction;
+             $transaction->restaurant_id = $faker->randomElement($restaurant_ids);
+             $transaction->name= $faker->name();
+             $transaction->lastname= $faker->lastname();
+             $transaction->date= $faker->dateTimeThisYear();
+             $transaction->email= $faker->email();
+             $transaction->phonenumber= $faker->numberBetween(1111111111, 9999999999);
+             $transaction->address= $faker->address();
+             $transaction->total= $faker->randomFloat(2,1,50); //randomFloat(decimal, minAbs, maxAbs)
+             $transaction->save();
+         }
     }
 }
