@@ -6532,7 +6532,31 @@ var render = function render() {
     attrs: {
       id: "containerHome"
     }
-  }, [_vm._m(0), _vm._v(" "), _c("router-link", {
+  }, [_c("div", {
+    staticClass: "container-fluid",
+    attrs: {
+      id: "jumbotron"
+    }
+  }, [_c("div", {
+    staticClass: "container"
+  }, [_c("div", {
+    staticClass: "row align-items-center justify-content-between"
+  }, [_c("div", {
+    staticClass: "col-12 col-md-5"
+  }, [_c("filter", {
+    attrs: {
+      id: "motion-blur-filter",
+      filterUnits: "userSpaceOnUse"
+    }
+  }, [_c("feGaussianBlur", {
+    attrs: {
+      stdDeviation: "100 0"
+    }
+  })], 1), _vm._v(" "), _c("span", {
+    attrs: {
+      "filter-content": "S"
+    }
+  }, [_vm._v("I piatti che ami a domicilio")])]), _vm._v(" "), _vm._m(0)])])]), _vm._v(" "), _c("router-link", {
     attrs: {
       to: {
         name: "cart"
@@ -6655,33 +6679,14 @@ var staticRenderFns = [function () {
       _c = _vm._self._c;
 
   return _c("div", {
-    staticClass: "container-fluid",
-    attrs: {
-      id: "jumbotron"
-    }
-  }, [_c("div", {
-    staticClass: "container"
-  }, [_c("div", {
-    staticClass: "row align-items-center justify-content-between"
-  }, [_c("div", {
-    staticClass: "col-5"
-  }, [_c("h1", {
-    staticClass: "deliveboo-color mb-5"
-  }, [_vm._v("I piatti che ami a domicilio")]), _vm._v(" "), _c("h2", {
-    staticClass: "deliveboo-color"
-  }, [_vm._v("Sei un ristoratore? "), _c("a", {
-    attrs: {
-      href: "/register"
-    }
-  }, [_vm._v("Registrati")]), _vm._v(" per vendere i tuoi prodotti")])]), _vm._v(" "), _c("div", {
-    staticClass: "col-5"
+    staticClass: "col-5 d-none d-md-block"
   }, [_c("img", {
     attrs: {
       id: "chef",
       src: __webpack_require__(/*! ../img/chef-jumbo.png */ "./resources/js/img/chef-jumbo.png"),
       alt: ""
     }
-  })])])])]);
+  })]);
 }, function () {
   var _vm = this,
       _c = _vm._self._c;
@@ -37192,7 +37197,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "#containerHome[data-v-13e03f97] {\n  position: relative;\n}\n#containerHome #jumbotron[data-v-13e03f97] {\n  background-color: #00ccbc;\n  max-width: 100%;\n  margin-top: 120px;\n}\n#containerHome #jumbotron .deliveboo-color[data-v-13e03f97] {\n  color: #440063;\n}\n#containerHome #jumbotron #chef[data-v-13e03f97] {\n  max-width: 100%;\n}\n#containerHome #cartImage[data-v-13e03f97] {\n  width: 60px;\n  height: 50px;\n  position: fixed;\n  top: 30px;\n  right: 100px;\n  z-index: 600;\n}\n#containerHome #cartImage[data-v-13e03f97]:hover {\n  cursor: pointer;\n}\n#containerHome #cartImage img[data-v-13e03f97] {\n  width: 100%;\n  height: 100%;\n  border-radius: 20px;\n  border: 2px solid #027e74;\n}\n#containerHome #cartImage #numCarrello[data-v-13e03f97] {\n  position: absolute;\n  top: -5px;\n  right: 20px;\n  z-index: 700;\n  color: #00ccbc;\n  font-weight: bolder;\n}\n#containerHome .back-selection[data-v-13e03f97] {\n  background-color: #ffeae4;\n}\n#containerHome .categories .button[data-v-13e03f97] {\n  text-align: center;\n  --offset: 10px;\n  --border-size: 2px;\n  margin-bottom: 40px;\n  display: block;\n  position: relative;\n  padding: 1.5em 3em;\n  -webkit-appearance: none;\n     -moz-appearance: none;\n          appearance: none;\n  border: 0;\n  background: transparent;\n  color: #00ccbc;\n  text-transform: uppercase;\n  letter-spacing: 0.25em;\n  outline: none;\n  cursor: pointer;\n  font-weight: bold;\n  border-radius: 0;\n  box-shadow: inset 0 0 0 var(--border-size) currentcolor;\n  transition: background 0.8s ease;\n}\n#containerHome .categories .button[data-v-13e03f97]:hover {\n  background: rgba(100, 0, 0, 0.03);\n}\n#containerHome .categories .button .button__horizontal[data-v-13e03f97],\n#containerHome .categories .button .button__vertical[data-v-13e03f97] {\n  position: absolute;\n  top: var(--horizontal-offset, 0);\n  right: var(--vertical-offset, 0);\n  bottom: var(--horizontal-offset, 0);\n  left: var(--vertical-offset, 0);\n  transition: transform 0.8s ease;\n  will-change: transform;\n}\n#containerHome .categories .button .button__horizontal[data-v-13e03f97]::before,\n#containerHome .categories .button .button__vertical[data-v-13e03f97]::before {\n  content: \"\";\n  position: absolute;\n  border: inherit;\n}\n#containerHome .categories .button .button__horizontal[data-v-13e03f97] {\n  --vertical-offset: calc(var(--offset) * -1);\n  border-top: var(--border-size) solid currentcolor;\n  border-bottom: var(--border-size) solid currentcolor;\n}\n#containerHome .categories .button .button__horizontal[data-v-13e03f97]::before {\n  top: calc(var(--vertical-offset) - var(--border-size));\n  bottom: calc(var(--vertical-offset) - var(--border-size));\n  left: calc(var(--vertical-offset) * -1);\n  right: calc(var(--vertical-offset) * -1);\n}\n#containerHome .categories .button:hover .button__horizontal[data-v-13e03f97] {\n  transform: scaleX(0);\n}\n#containerHome .categories .button .button__vertical[data-v-13e03f97] {\n  --horizontal-offset: calc(var(--offset) * -1);\n  border-left: var(--border-size) solid currentcolor;\n  border-right: var(--border-size) solid currentcolor;\n}\n#containerHome .categories .button .button__vertical[data-v-13e03f97]::before {\n  top: calc(var(--horizontal-offset) * -1);\n  bottom: calc(var(--horizontal-offset) * -1);\n  left: calc(var(--horizontal-offset) - var(--border-size));\n  right: calc(var(--horizontal-offset) - var(--border-size));\n}\n#containerHome .categories .button:hover .button__vertical[data-v-13e03f97] {\n  transform: scaleY(0);\n}\n#containerHome .categories .big-label[data-v-13e03f97] {\n  font-size: 20px;\n}\n#containerHome .categories .bt-annulla[data-v-13e03f97] {\n  color: #7acc00;\n}\n#containerHome #pizza[data-v-13e03f97] {\n  background-image: url(" + escape(__webpack_require__(/*! ../img/pizza.jpg */ "./resources/js/img/pizza.jpg")) + ");\n  background-size: cover;\n  max-width: 100%;\n}\n#containerHome #pizza h1[data-v-13e03f97] {\n  padding: 100px;\n  color: black;\n}\n#containerHome #mc[data-v-13e03f97] {\n  background-image: url(" + escape(__webpack_require__(/*! ../img/mcdonald.jpg */ "./resources/js/img/mcdonald.jpg")) + ");\n  background-size: cover;\n  width: 100%;\n}\n#containerHome #mc h1[data-v-13e03f97] {\n  padding: 100px;\n  color: black;\n}\n#containerHome .restaurant[data-v-13e03f97] {\n  background-color: #202428;\n}\n#containerHome .restaurant .white[data-v-13e03f97] {\n  color: white;\n}\n#containerHome .max-width[data-v-13e03f97] {\n  -o-object-fit: cover;\n     object-fit: cover;\n  max-width: 100%;\n  height: 200px;\n}\n#containerHome #partner #cardPartner img[data-v-13e03f97] {\n  border-radius: 50%;\n  width: 200px;\n  height: 3 0px;\n}\n#containerHome #container-title[data-v-13e03f97] {\n  line-height: 1.4;\n  text-align: center;\n  padding: 44px;\n  color: #333;\n}\n#containerHome #container-title .highlight-container[data-v-13e03f97] {\n  position: relative;\n  display: inline-block;\n}\n#containerHome #container-title .highlight-container[data-v-13e03f97]:before {\n  content: \" \";\n  display: block;\n  height: 90%;\n  width: 100%;\n  margin-left: -3px;\n  margin-right: -3px;\n  position: absolute;\n  background: #ffd500;\n  transform: rotate(2deg);\n  top: -1px;\n  left: -1px;\n  border-radius: 20% 25% 20% 24%;\n  padding: 10px 3px 3px 10px;\n}\n#containerHome #container-title .highlight-container .highlight[data-v-13e03f97] {\n  position: relative;\n}", ""]);
+exports.push([module.i, "#containerHome[data-v-13e03f97] {\n  position: relative;\n}\n#containerHome #jumbotron[data-v-13e03f97] {\n  background-color: #00ccbc;\n  max-width: 100%;\n  margin-top: 120px;\n  color: #99eeb4;\n  text-align: center;\n}\n#containerHome #jumbotron span[data-v-13e03f97] {\n  position: relative;\n  font-family: \"Avenir Next\", sans-serif;\n  font-weight: 900;\n  font-size: 64px;\n  text-transform: uppercase;\n  font-style: italic;\n  letter-spacing: 0.05em;\n  display: inline-block;\n}\n#containerHome #jumbotron #chef[data-v-13e03f97] {\n  max-width: 90%;\n}\n#containerHome #cartImage[data-v-13e03f97] {\n  width: 60px;\n  height: 50px;\n  position: fixed;\n  top: 30px;\n  right: 100px;\n  z-index: 600;\n}\n#containerHome #cartImage[data-v-13e03f97]:hover {\n  cursor: pointer;\n}\n#containerHome #cartImage img[data-v-13e03f97] {\n  width: 100%;\n  height: 100%;\n  border-radius: 20px;\n  border: 2px solid #027e74;\n}\n#containerHome #cartImage #numCarrello[data-v-13e03f97] {\n  position: absolute;\n  top: -5px;\n  right: 20px;\n  z-index: 700;\n  color: #00ccbc;\n  font-weight: bolder;\n}\n#containerHome .back-selection[data-v-13e03f97] {\n  background-color: #ffeae4;\n}\n#containerHome .categories .button[data-v-13e03f97] {\n  text-align: center;\n  --offset: 10px;\n  --border-size: 2px;\n  margin-bottom: 40px;\n  display: block;\n  position: relative;\n  padding: 1.5em 3em;\n  -webkit-appearance: none;\n     -moz-appearance: none;\n          appearance: none;\n  border: 0;\n  background: transparent;\n  color: #00ccbc;\n  text-transform: uppercase;\n  letter-spacing: 0.25em;\n  outline: none;\n  cursor: pointer;\n  font-weight: bold;\n  border-radius: 0;\n  box-shadow: inset 0 0 0 var(--border-size) currentcolor;\n  transition: background 0.8s ease;\n}\n#containerHome .categories .button[data-v-13e03f97]:hover {\n  background: rgba(100, 0, 0, 0.03);\n}\n#containerHome .categories .button .button__horizontal[data-v-13e03f97],\n#containerHome .categories .button .button__vertical[data-v-13e03f97] {\n  position: absolute;\n  top: var(--horizontal-offset, 0);\n  right: var(--vertical-offset, 0);\n  bottom: var(--horizontal-offset, 0);\n  left: var(--vertical-offset, 0);\n  transition: transform 0.8s ease;\n  will-change: transform;\n}\n#containerHome .categories .button .button__horizontal[data-v-13e03f97]::before,\n#containerHome .categories .button .button__vertical[data-v-13e03f97]::before {\n  content: \"\";\n  position: absolute;\n  border: inherit;\n}\n#containerHome .categories .button .button__horizontal[data-v-13e03f97] {\n  --vertical-offset: calc(var(--offset) * -1);\n  border-top: var(--border-size) solid currentcolor;\n  border-bottom: var(--border-size) solid currentcolor;\n}\n#containerHome .categories .button .button__horizontal[data-v-13e03f97]::before {\n  top: calc(var(--vertical-offset) - var(--border-size));\n  bottom: calc(var(--vertical-offset) - var(--border-size));\n  left: calc(var(--vertical-offset) * -1);\n  right: calc(var(--vertical-offset) * -1);\n}\n#containerHome .categories .button:hover .button__horizontal[data-v-13e03f97] {\n  transform: scaleX(0);\n}\n#containerHome .categories .button .button__vertical[data-v-13e03f97] {\n  --horizontal-offset: calc(var(--offset) * -1);\n  border-left: var(--border-size) solid currentcolor;\n  border-right: var(--border-size) solid currentcolor;\n}\n#containerHome .categories .button .button__vertical[data-v-13e03f97]::before {\n  top: calc(var(--horizontal-offset) * -1);\n  bottom: calc(var(--horizontal-offset) * -1);\n  left: calc(var(--horizontal-offset) - var(--border-size));\n  right: calc(var(--horizontal-offset) - var(--border-size));\n}\n#containerHome .categories .button:hover .button__vertical[data-v-13e03f97] {\n  transform: scaleY(0);\n}\n#containerHome .categories .big-label[data-v-13e03f97] {\n  font-size: 20px;\n}\n#containerHome .categories .bt-annulla[data-v-13e03f97] {\n  color: #7acc00;\n}\n#containerHome #pizza[data-v-13e03f97] {\n  background-image: url(" + escape(__webpack_require__(/*! ../img/pizza.jpg */ "./resources/js/img/pizza.jpg")) + ");\n  background-size: cover;\n  max-width: 100%;\n}\n#containerHome #pizza h1[data-v-13e03f97] {\n  padding: 100px;\n  color: black;\n}\n#containerHome #mc[data-v-13e03f97] {\n  background-image: url(" + escape(__webpack_require__(/*! ../img/mcdonald.jpg */ "./resources/js/img/mcdonald.jpg")) + ");\n  background-size: cover;\n  width: 100%;\n}\n#containerHome #mc h1[data-v-13e03f97] {\n  padding: 100px;\n  color: black;\n}\n#containerHome .restaurant[data-v-13e03f97] {\n  background-color: #202428;\n}\n#containerHome .restaurant .white[data-v-13e03f97] {\n  color: white;\n}\n#containerHome .max-width[data-v-13e03f97] {\n  -o-object-fit: cover;\n     object-fit: cover;\n  max-width: 100%;\n  height: 200px;\n}\n#containerHome #partner #cardPartner img[data-v-13e03f97] {\n  border-radius: 50%;\n  width: 200px;\n  height: 3 0px;\n}\n#containerHome #container-title[data-v-13e03f97] {\n  line-height: 1.4;\n  text-align: center;\n  padding: 44px;\n  color: #333;\n}\n#containerHome #container-title .highlight-container[data-v-13e03f97] {\n  position: relative;\n  display: inline-block;\n}\n#containerHome #container-title .highlight-container[data-v-13e03f97]:before {\n  content: \" \";\n  display: block;\n  height: 90%;\n  width: 100%;\n  margin-left: -3px;\n  margin-right: -3px;\n  position: absolute;\n  background: #ffd500;\n  transform: rotate(2deg);\n  top: -1px;\n  left: -1px;\n  border-radius: 20% 25% 20% 24%;\n  padding: 10px 3px 3px 10px;\n}\n#containerHome #container-title .highlight-container .highlight[data-v-13e03f97] {\n  position: relative;\n}", ""]);
 
 // exports
 

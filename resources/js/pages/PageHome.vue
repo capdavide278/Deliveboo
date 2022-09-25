@@ -3,11 +3,13 @@
         <div id="jumbotron" class="container-fluid">
             <div class="container">
                 <div class="row align-items-center justify-content-between">
-                    <div class="col-5">
-                        <h1 class="deliveboo-color mb-5">I piatti che ami a domicilio</h1>
-                        <h2 class="deliveboo-color">Sei un ristoratore? <a href="/register">Registrati</a> per vendere i tuoi prodotti</h2>
+                    <div class="col-12 col-md-5">
+                        <filter id="motion-blur-filter" filterUnits="userSpaceOnUse">
+                            <feGaussianBlur stdDeviation="100 0"></feGaussianBlur>
+                        </filter>
+                        <span filter-content="S">I piatti che ami a domicilio</span>
                     </div>
-                    <div class="col-5">
+                    <div class="col-5 d-none d-md-block ">
                         <img id="chef" src="../img/chef-jumbo.png" alt="">
                     </div>
                 </div>
@@ -269,11 +271,21 @@
             background-color: #00ccbc;;
             max-width: 100%;
             margin-top: 120px;
-            .deliveboo-color {
-                color: #440063;
+            color: #99eeb4;
+            text-align: center;
+
+            span {
+            position: relative;
+            font-family: "Avenir Next", sans-serif;
+            font-weight: 900;
+            font-size: 64px;
+            text-transform: uppercase;
+            font-style: italic;
+            letter-spacing: 0.05em;
+            display: inline-block;
             }
             #chef{
-                max-width: 100%;
+                max-width: 90%;
             }
         }
         //immaginina carrello
