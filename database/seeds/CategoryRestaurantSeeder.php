@@ -21,7 +21,7 @@ class CategoryRestaurantSeeder extends Seeder
         $nCategory = count($category);
 
         foreach ($restaurants as $restaurant) {
-            $restaurantCategory = $faker->randomElements($category, rand(0, $nCategory));
+            $restaurantCategory = $faker->randomElements($category, rand(1, $nCategory));
             foreach ($restaurantCategory as $catId) {
                 $restaurant->category()->attach($catId);
             }
