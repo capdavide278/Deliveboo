@@ -1,9 +1,13 @@
 <template>
     <div id="showDish">
-                <!-- TODO: sistemare con immagine carrello e numerino -->
-
-        <router-link :to="{name: 'cart'}" class="nav-link active">
-            <button type="" class="btn btn-primary" id="shoppingCart">Shopping Cart: {{sum}}</button>
+                <!-- immagine carrello e numerino -->
+        <router-link :to="{name: 'cart'}">
+            <div id="cartImage">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSX1QmFrtn2_2bB_fzXXqjvnmOoaLUnCI_tkQ&usqp=CAU" alt="cart">
+                <div id="numCarrello">
+                    <span id="shoppingCart">{{sum}}</span>
+                </div>
+            </div>
         </router-link>
 
         <Page404 v-if='is404'/>
@@ -154,14 +158,36 @@ methods : {
 <style lang="scss" scoped>
 #showDish{
     margin-top: 120px;
-position: relative;
-    #shoppingCart{
-        position: absolute;
-        top:-80px;
-        right:20px;
-        color: white;
-        z-index:600;
-    }
+    position: relative;
+
+    //immaginina carrello
+    #cartImage{
+            width: 60px;
+            height: 50px;
+            position: fixed;
+            top:30px;
+            right:100px;
+            z-index:600;
+
+            &:hover{
+                cursor: pointer;
+            }
+
+           img{
+            width: 100%;
+            height: 100%;
+            border-radius: 20px;
+            border: 2px solid #027e74;
+           }
+            #numCarrello{
+            position: absolute;
+            top:-5px;
+            right:20px;
+            z-index:700;
+            color: #00ccbc;
+            font-weight: bolder;
+            }
+        }
     .none {
       display: none;
     }

@@ -5189,7 +5189,7 @@ __webpack_require__.r(__webpack_exports__);
         label: 'Home',
         routeName: 'home'
       }, {
-        label: 'Cart',
+        label: 'Carrello',
         routeName: 'cart'
       }]
     };
@@ -6001,9 +6001,14 @@ var render = function render() {
       id: "nav-color"
     }
   }, [_c("nav", {
-    staticClass: "container navbar navbar-expand-lg"
+    staticClass: "navbar navbar-expand-lg",
+    attrs: {
+      id: "nav-color"
+    }
+  }, [_c("div", {
+    staticClass: "container-fluid"
   }, [_c("router-link", {
-    staticClass: "nav-link active",
+    staticClass: "nav-link active mx-3",
     attrs: {
       to: {
         name: "home"
@@ -6015,13 +6020,13 @@ var render = function render() {
       src: __webpack_require__(/*! ../img/logo_deliveboo.png */ "./resources/js/img/logo_deliveboo.png"),
       alt: ""
     }
-  })]), _vm._v(" "), _c("div", {}, [_vm._m(0), _vm._v(" "), _c("div", {
+  })]), _vm._v(" "), _vm._m(0), _vm._v(" "), _c("div", {
     staticClass: "collapse navbar-collapse",
     attrs: {
-      id: "navbarNav"
+      id: "navbarSupportedContent"
     }
   }, [_c("ul", {
-    staticClass: "navbar-nav"
+    staticClass: "navbar-nav me-auto mb-2 mb-lg-0"
   }, [_vm._l(_vm.navItems, function (navItem, index) {
     return _c("li", {
       key: index,
@@ -6033,10 +6038,12 @@ var render = function render() {
           name: navItem.routeName
         }
       }
-    }, [_c("button", {
-      staticClass: "btn btn-light"
-    }, [_vm._v(_vm._s(navItem.label))])])], 1);
-  }), _vm._v(" "), _vm._m(1)], 2)])])], 1)]);
+    }, [_c("div", {
+      staticClass: "divNavbello"
+    }, [_c("h1", [_c("span", {
+      staticClass: "spanNavBello nav-link"
+    }, [_vm._v(_vm._s(navItem.label))])])])])], 1);
+  }), _vm._v(" "), _vm._m(1)], 2)])], 1)])]);
 };
 
 var staticRenderFns = [function () {
@@ -6048,8 +6055,8 @@ var staticRenderFns = [function () {
     attrs: {
       type: "button",
       "data-bs-toggle": "collapse",
-      "data-bs-target": "#navbarNav",
-      "aria-controls": "navbarNav",
+      "data-bs-target": "#navbarSupportedContent",
+      "aria-controls": "navbarSupportedContent",
       "aria-expanded": "false",
       "aria-label": "Toggle navigation"
     }
@@ -6062,14 +6069,14 @@ var staticRenderFns = [function () {
 
   return _c("li", {
     staticClass: "nav-item"
-  }, [_c("a", {
-    staticClass: "nav-link active",
+  }, [_c("div", {
+    staticClass: "divNavbello"
+  }, [_c("h1", [_c("span", {
+    staticClass: "spanNavBello nav-link",
     attrs: {
       href: "/login"
     }
-  }, [_c("button", {
-    staticClass: "btn btn-light"
-  }, [_vm._v("Login")])])]);
+  }, [_vm._v("Login Ristoratore")])])])]);
 }];
 render._withStripped = true;
 
@@ -6526,19 +6533,29 @@ var render = function render() {
       id: "containerHome"
     }
   }, [_vm._m(0), _vm._v(" "), _c("router-link", {
-    staticClass: "nav-link active",
     attrs: {
       to: {
         name: "cart"
       }
     }
-  }, [_c("button", {
-    staticClass: "btn btn-primary",
+  }, [_c("div", {
     attrs: {
-      type: "",
+      id: "cartImage"
+    }
+  }, [_c("img", {
+    attrs: {
+      src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSX1QmFrtn2_2bB_fzXXqjvnmOoaLUnCI_tkQ&usqp=CAU",
+      alt: "cart"
+    }
+  }), _vm._v(" "), _c("div", {
+    attrs: {
+      id: "numCarrello"
+    }
+  }, [_c("span", {
+    attrs: {
       id: "shoppingCart"
     }
-  }, [_vm._v("Shopping Cart: " + _vm._s(_vm.sum))])]), _vm._v(" "), _c("div", {
+  }, [_vm._v(_vm._s(_vm.sum))])])])]), _vm._v(" "), _c("div", {
     staticClass: "container-fluid back-restaurant pt-4"
   }, [_c("section", {
     staticClass: "container"
@@ -6813,19 +6830,29 @@ var render = function render() {
       id: "showDish"
     }
   }, [_c("router-link", {
-    staticClass: "nav-link active",
     attrs: {
       to: {
         name: "cart"
       }
     }
-  }, [_c("button", {
-    staticClass: "btn btn-primary",
+  }, [_c("div", {
     attrs: {
-      type: "",
+      id: "cartImage"
+    }
+  }, [_c("img", {
+    attrs: {
+      src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSX1QmFrtn2_2bB_fzXXqjvnmOoaLUnCI_tkQ&usqp=CAU",
+      alt: "cart"
+    }
+  }), _vm._v(" "), _c("div", {
+    attrs: {
+      id: "numCarrello"
+    }
+  }, [_c("span", {
+    attrs: {
       id: "shoppingCart"
     }
-  }, [_vm._v("Shopping Cart: " + _vm._s(_vm.sum))])]), _vm._v(" "), _vm.is404 ? _c("Page404") : _vm.restaurant ? _c("section", [_c("h1", [_vm._v(_vm._s(_vm.restaurant.name_restaurant))]), _vm._v(" "), _vm._l(_vm.restaurant.dish, function (dish) {
+  }, [_vm._v(_vm._s(_vm.sum))])])])]), _vm._v(" "), _vm.is404 ? _c("Page404") : _vm.restaurant ? _c("section", [_c("h1", [_vm._v(_vm._s(_vm.restaurant.name_restaurant))]), _vm._v(" "), _vm._l(_vm.restaurant.dish, function (dish) {
     return _c("div", {
       key: dish.id,
       staticClass: "card mb-3",
@@ -37069,7 +37096,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "#nav-color[data-v-5dd24bca] {\n  background-color: #00ccbc;\n  height: 120px;\n  width: 100%;\n  position: fixed;\n  top: 0;\n  left: 0;\n  z-index: 500;\n}\n#nav-color .logo_size[data-v-5dd24bca] {\n  width: 100px;\n  height: 100px;\n}", ""]);
+exports.push([module.i, "#nav-color[data-v-5dd24bca] {\n  background-color: #00ccbc;\n  height: 120px;\n  width: 100%;\n  position: fixed;\n  top: 0;\n  left: 0;\n  z-index: 500;\n}\n#nav-color .logo_size[data-v-5dd24bca] {\n  width: 80px;\n  height: 80px;\n}\n#nav-color #navbarSupportedContent[data-v-5dd24bca] {\n  background-color: #00ccbc;\n}\n#nav-color .divNavbello[data-v-5dd24bca] {\n  background-color: #00ccbc;\n  height: 100%;\n  display: flex;\n  align-items: center;\n  height: 100%;\n  color: rgb(252, 255, 243);\n  font-family: \"Righteous\", cursive;\n  font-size: 18px;\n}\n#nav-color .divNavbello .spanNavBello[data-v-5dd24bca] {\n  font-size: 25px;\n  font-weight: bolder;\n  width: 100%;\n  background-image: linear-gradient(to bottom, rgba(189, 202, 154, 0) 50%, rgb(252, 250, 243) 50%, rgb(255, 255, 255) 60%, rgba(189, 202, 154, 0) 60%);\n  background-size: 0 100%;\n  background-repeat: no-repeat;\n  transition: 250ms linear;\n  transform: rotate(-5deg);\n}\n#nav-color .divNavbello .spanNavBello[data-v-5dd24bca]:hover {\n  background-size: 100% 100%;\n}", ""]);
 
 // exports
 
@@ -37165,7 +37192,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "#containerHome[data-v-13e03f97] {\n  position: relative;\n}\n#containerHome #jumbotron[data-v-13e03f97] {\n  background-color: #00ccbc;\n  max-width: 100%;\n  margin-top: 120px;\n}\n#containerHome #jumbotron .deliveboo-color[data-v-13e03f97] {\n  color: #440063;\n}\n#containerHome #jumbotron #chef[data-v-13e03f97] {\n  max-width: 100%;\n}\n#containerHome #shoppingCart[data-v-13e03f97] {\n  position: absolute;\n  top: 50px;\n  right: 20px;\n  color: white;\n  z-index: 600;\n}\n#containerHome .back-selection[data-v-13e03f97] {\n  background-color: #ffeae4;\n}\n#containerHome .categories .button[data-v-13e03f97] {\n  text-align: center;\n  --offset: 10px;\n  --border-size: 2px;\n  margin-bottom: 40px;\n  display: block;\n  position: relative;\n  padding: 1.5em 3em;\n  -webkit-appearance: none;\n     -moz-appearance: none;\n          appearance: none;\n  border: 0;\n  background: transparent;\n  color: #00ccbc;\n  text-transform: uppercase;\n  letter-spacing: 0.25em;\n  outline: none;\n  cursor: pointer;\n  font-weight: bold;\n  border-radius: 0;\n  box-shadow: inset 0 0 0 var(--border-size) currentcolor;\n  transition: background 0.8s ease;\n}\n#containerHome .categories .button[data-v-13e03f97]:hover {\n  background: rgba(100, 0, 0, 0.03);\n}\n#containerHome .categories .button .button__horizontal[data-v-13e03f97],\n#containerHome .categories .button .button__vertical[data-v-13e03f97] {\n  position: absolute;\n  top: var(--horizontal-offset, 0);\n  right: var(--vertical-offset, 0);\n  bottom: var(--horizontal-offset, 0);\n  left: var(--vertical-offset, 0);\n  transition: transform 0.8s ease;\n  will-change: transform;\n}\n#containerHome .categories .button .button__horizontal[data-v-13e03f97]::before,\n#containerHome .categories .button .button__vertical[data-v-13e03f97]::before {\n  content: \"\";\n  position: absolute;\n  border: inherit;\n}\n#containerHome .categories .button .button__horizontal[data-v-13e03f97] {\n  --vertical-offset: calc(var(--offset) * -1);\n  border-top: var(--border-size) solid currentcolor;\n  border-bottom: var(--border-size) solid currentcolor;\n}\n#containerHome .categories .button .button__horizontal[data-v-13e03f97]::before {\n  top: calc(var(--vertical-offset) - var(--border-size));\n  bottom: calc(var(--vertical-offset) - var(--border-size));\n  left: calc(var(--vertical-offset) * -1);\n  right: calc(var(--vertical-offset) * -1);\n}\n#containerHome .categories .button:hover .button__horizontal[data-v-13e03f97] {\n  transform: scaleX(0);\n}\n#containerHome .categories .button .button__vertical[data-v-13e03f97] {\n  --horizontal-offset: calc(var(--offset) * -1);\n  border-left: var(--border-size) solid currentcolor;\n  border-right: var(--border-size) solid currentcolor;\n}\n#containerHome .categories .button .button__vertical[data-v-13e03f97]::before {\n  top: calc(var(--horizontal-offset) * -1);\n  bottom: calc(var(--horizontal-offset) * -1);\n  left: calc(var(--horizontal-offset) - var(--border-size));\n  right: calc(var(--horizontal-offset) - var(--border-size));\n}\n#containerHome .categories .button:hover .button__vertical[data-v-13e03f97] {\n  transform: scaleY(0);\n}\n#containerHome .categories .big-label[data-v-13e03f97] {\n  font-size: 20px;\n}\n#containerHome .categories .bt-annulla[data-v-13e03f97] {\n  color: #7acc00;\n}\n#containerHome #pizza[data-v-13e03f97] {\n  background-image: url(" + escape(__webpack_require__(/*! ../img/pizza.jpg */ "./resources/js/img/pizza.jpg")) + ");\n  background-size: cover;\n  max-width: 100%;\n}\n#containerHome #pizza h1[data-v-13e03f97] {\n  padding: 100px;\n  color: black;\n}\n#containerHome #mc[data-v-13e03f97] {\n  background-image: url(" + escape(__webpack_require__(/*! ../img/mcdonald.jpg */ "./resources/js/img/mcdonald.jpg")) + ");\n  background-size: cover;\n  width: 100%;\n}\n#containerHome #mc h1[data-v-13e03f97] {\n  padding: 100px;\n  color: black;\n}\n#containerHome .restaurant[data-v-13e03f97] {\n  background-color: #202428;\n}\n#containerHome .restaurant .white[data-v-13e03f97] {\n  color: white;\n}\n#containerHome .max-width[data-v-13e03f97] {\n  -o-object-fit: cover;\n     object-fit: cover;\n  max-width: 100%;\n  height: 200px;\n}\n#containerHome #partner #cardPartner img[data-v-13e03f97] {\n  border-radius: 50%;\n  width: 200px;\n  height: 3 0px;\n}\n#containerHome #container-title[data-v-13e03f97] {\n  line-height: 1.4;\n  text-align: center;\n  padding: 44px;\n  color: #333;\n}\n#containerHome #container-title .highlight-container[data-v-13e03f97] {\n  position: relative;\n  display: inline-block;\n}\n#containerHome #container-title .highlight-container[data-v-13e03f97]:before {\n  content: \" \";\n  display: block;\n  height: 90%;\n  width: 100%;\n  margin-left: -3px;\n  margin-right: -3px;\n  position: absolute;\n  background: #ffd500;\n  transform: rotate(2deg);\n  top: -1px;\n  left: -1px;\n  border-radius: 20% 25% 20% 24%;\n  padding: 10px 3px 3px 10px;\n}\n#containerHome #container-title .highlight-container .highlight[data-v-13e03f97] {\n  position: relative;\n}", ""]);
+exports.push([module.i, "#containerHome[data-v-13e03f97] {\n  position: relative;\n}\n#containerHome #jumbotron[data-v-13e03f97] {\n  background-color: #00ccbc;\n  max-width: 100%;\n  margin-top: 120px;\n}\n#containerHome #jumbotron .deliveboo-color[data-v-13e03f97] {\n  color: #440063;\n}\n#containerHome #jumbotron #chef[data-v-13e03f97] {\n  max-width: 100%;\n}\n#containerHome #cartImage[data-v-13e03f97] {\n  width: 60px;\n  height: 50px;\n  position: fixed;\n  top: 30px;\n  right: 100px;\n  z-index: 600;\n}\n#containerHome #cartImage[data-v-13e03f97]:hover {\n  cursor: pointer;\n}\n#containerHome #cartImage img[data-v-13e03f97] {\n  width: 100%;\n  height: 100%;\n  border-radius: 20px;\n  border: 2px solid #027e74;\n}\n#containerHome #cartImage #numCarrello[data-v-13e03f97] {\n  position: absolute;\n  top: -5px;\n  right: 20px;\n  z-index: 700;\n  color: #00ccbc;\n  font-weight: bolder;\n}\n#containerHome .back-selection[data-v-13e03f97] {\n  background-color: #ffeae4;\n}\n#containerHome .categories .button[data-v-13e03f97] {\n  text-align: center;\n  --offset: 10px;\n  --border-size: 2px;\n  margin-bottom: 40px;\n  display: block;\n  position: relative;\n  padding: 1.5em 3em;\n  -webkit-appearance: none;\n     -moz-appearance: none;\n          appearance: none;\n  border: 0;\n  background: transparent;\n  color: #00ccbc;\n  text-transform: uppercase;\n  letter-spacing: 0.25em;\n  outline: none;\n  cursor: pointer;\n  font-weight: bold;\n  border-radius: 0;\n  box-shadow: inset 0 0 0 var(--border-size) currentcolor;\n  transition: background 0.8s ease;\n}\n#containerHome .categories .button[data-v-13e03f97]:hover {\n  background: rgba(100, 0, 0, 0.03);\n}\n#containerHome .categories .button .button__horizontal[data-v-13e03f97],\n#containerHome .categories .button .button__vertical[data-v-13e03f97] {\n  position: absolute;\n  top: var(--horizontal-offset, 0);\n  right: var(--vertical-offset, 0);\n  bottom: var(--horizontal-offset, 0);\n  left: var(--vertical-offset, 0);\n  transition: transform 0.8s ease;\n  will-change: transform;\n}\n#containerHome .categories .button .button__horizontal[data-v-13e03f97]::before,\n#containerHome .categories .button .button__vertical[data-v-13e03f97]::before {\n  content: \"\";\n  position: absolute;\n  border: inherit;\n}\n#containerHome .categories .button .button__horizontal[data-v-13e03f97] {\n  --vertical-offset: calc(var(--offset) * -1);\n  border-top: var(--border-size) solid currentcolor;\n  border-bottom: var(--border-size) solid currentcolor;\n}\n#containerHome .categories .button .button__horizontal[data-v-13e03f97]::before {\n  top: calc(var(--vertical-offset) - var(--border-size));\n  bottom: calc(var(--vertical-offset) - var(--border-size));\n  left: calc(var(--vertical-offset) * -1);\n  right: calc(var(--vertical-offset) * -1);\n}\n#containerHome .categories .button:hover .button__horizontal[data-v-13e03f97] {\n  transform: scaleX(0);\n}\n#containerHome .categories .button .button__vertical[data-v-13e03f97] {\n  --horizontal-offset: calc(var(--offset) * -1);\n  border-left: var(--border-size) solid currentcolor;\n  border-right: var(--border-size) solid currentcolor;\n}\n#containerHome .categories .button .button__vertical[data-v-13e03f97]::before {\n  top: calc(var(--horizontal-offset) * -1);\n  bottom: calc(var(--horizontal-offset) * -1);\n  left: calc(var(--horizontal-offset) - var(--border-size));\n  right: calc(var(--horizontal-offset) - var(--border-size));\n}\n#containerHome .categories .button:hover .button__vertical[data-v-13e03f97] {\n  transform: scaleY(0);\n}\n#containerHome .categories .big-label[data-v-13e03f97] {\n  font-size: 20px;\n}\n#containerHome .categories .bt-annulla[data-v-13e03f97] {\n  color: #7acc00;\n}\n#containerHome #pizza[data-v-13e03f97] {\n  background-image: url(" + escape(__webpack_require__(/*! ../img/pizza.jpg */ "./resources/js/img/pizza.jpg")) + ");\n  background-size: cover;\n  max-width: 100%;\n}\n#containerHome #pizza h1[data-v-13e03f97] {\n  padding: 100px;\n  color: black;\n}\n#containerHome #mc[data-v-13e03f97] {\n  background-image: url(" + escape(__webpack_require__(/*! ../img/mcdonald.jpg */ "./resources/js/img/mcdonald.jpg")) + ");\n  background-size: cover;\n  width: 100%;\n}\n#containerHome #mc h1[data-v-13e03f97] {\n  padding: 100px;\n  color: black;\n}\n#containerHome .restaurant[data-v-13e03f97] {\n  background-color: #202428;\n}\n#containerHome .restaurant .white[data-v-13e03f97] {\n  color: white;\n}\n#containerHome .max-width[data-v-13e03f97] {\n  -o-object-fit: cover;\n     object-fit: cover;\n  max-width: 100%;\n  height: 200px;\n}\n#containerHome #partner #cardPartner img[data-v-13e03f97] {\n  border-radius: 50%;\n  width: 200px;\n  height: 3 0px;\n}\n#containerHome #container-title[data-v-13e03f97] {\n  line-height: 1.4;\n  text-align: center;\n  padding: 44px;\n  color: #333;\n}\n#containerHome #container-title .highlight-container[data-v-13e03f97] {\n  position: relative;\n  display: inline-block;\n}\n#containerHome #container-title .highlight-container[data-v-13e03f97]:before {\n  content: \" \";\n  display: block;\n  height: 90%;\n  width: 100%;\n  margin-left: -3px;\n  margin-right: -3px;\n  position: absolute;\n  background: #ffd500;\n  transform: rotate(2deg);\n  top: -1px;\n  left: -1px;\n  border-radius: 20% 25% 20% 24%;\n  padding: 10px 3px 3px 10px;\n}\n#containerHome #container-title .highlight-container .highlight[data-v-13e03f97] {\n  position: relative;\n}", ""]);
 
 // exports
 
@@ -37184,7 +37211,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "#showDish[data-v-763ca4ef] {\n  margin-top: 120px;\n  position: relative;\n}\n#showDish #shoppingCart[data-v-763ca4ef] {\n  position: absolute;\n  top: -80px;\n  right: 20px;\n  color: white;\n  z-index: 600;\n}\n#showDish .none[data-v-763ca4ef] {\n  display: none;\n}\n#showDish .block[data-v-763ca4ef] {\n  display: block;\n}\n#showDish .blue[data-v-763ca4ef] {\n  color: #0d6efd;\n}\n#showDish img[data-v-763ca4ef] {\n  width: 200px;\n}", ""]);
+exports.push([module.i, "#showDish[data-v-763ca4ef] {\n  margin-top: 120px;\n  position: relative;\n}\n#showDish #cartImage[data-v-763ca4ef] {\n  width: 60px;\n  height: 50px;\n  position: fixed;\n  top: 30px;\n  right: 100px;\n  z-index: 600;\n}\n#showDish #cartImage[data-v-763ca4ef]:hover {\n  cursor: pointer;\n}\n#showDish #cartImage img[data-v-763ca4ef] {\n  width: 100%;\n  height: 100%;\n  border-radius: 20px;\n  border: 2px solid #027e74;\n}\n#showDish #cartImage #numCarrello[data-v-763ca4ef] {\n  position: absolute;\n  top: -5px;\n  right: 20px;\n  z-index: 700;\n  color: #00ccbc;\n  font-weight: bolder;\n}\n#showDish .none[data-v-763ca4ef] {\n  display: none;\n}\n#showDish .block[data-v-763ca4ef] {\n  display: block;\n}\n#showDish .blue[data-v-763ca4ef] {\n  color: #0d6efd;\n}\n#showDish img[data-v-763ca4ef] {\n  width: 200px;\n}", ""]);
 
 // exports
 
