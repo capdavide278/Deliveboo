@@ -5849,138 +5849,136 @@ var staticRenderFns = [function () {
       id: "footer"
     }
   }, [_c("div", {
-    staticClass: "container"
+    staticClass: "container mt-5"
   }, [_c("div", {
     staticClass: "row"
   }, [_c("div", {
     staticClass: "col-3 py-5"
   }, [_c("div", {
     staticClass: "card bg-dark"
-  }, [_c("h1", {
+  }, [_c("h3", {
     staticClass: "white-footer card-header"
-  }, [_vm._v("Scopri chi siamo")]), _vm._v(" "), _c("div", {
+  }, [_vm._v("Domande frequenti")]), _vm._v(" "), _c("div", {
     staticClass: "card-body"
   }, [_c("ul", [_c("li", [_c("a", {
     attrs: {
       href: "#"
     }
-  }, [_vm._v("Chi siamo")])]), _vm._v(" "), _c("li", [_c("a", {
+  }, [_vm._v("Cos'è deliveboo?")])]), _vm._v(" "), _c("li", [_c("a", {
     attrs: {
       href: "#"
     }
-  }, [_vm._v("Chi siamo")])]), _vm._v(" "), _c("li", [_c("a", {
+  }, [_vm._v("Privacy")])]), _vm._v(" "), _c("li", [_c("a", {
     attrs: {
       href: "#"
     }
-  }, [_vm._v("Chi siamo")])]), _vm._v(" "), _c("li", [_c("a", {
+  }, [_vm._v("Lavora con noi")])]), _vm._v(" "), _c("li", [_c("a", {
     attrs: {
       href: "#"
     }
-  }, [_vm._v("Chi siamo")])]), _vm._v(" "), _c("li", [_c("a", {
+  }, [_vm._v("Metodi di pagamento")])]), _vm._v(" "), _c("li", [_c("a", {
     attrs: {
       href: "#"
     }
-  }, [_vm._v("Chi siamo")])]), _vm._v(" "), _c("li", [_c("a", {
-    attrs: {
-      href: "#"
-    }
-  }, [_vm._v("Chi siamo")])])])])])]), _vm._v(" "), _c("div", {
+  }, [_vm._v("Modifica informazioni account")])])])])])]), _vm._v(" "), _c("div", {
     staticClass: "col-3 py-5"
   }, [_c("div", {
     staticClass: "card bg-dark"
-  }, [_c("h1", {
+  }, [_c("h3", {
     staticClass: "white-footer card-header"
-  }, [_vm._v("Scopri chi siamo")]), _vm._v(" "), _c("div", {
+  }, [_vm._v("Buoni pasto")]), _vm._v(" "), _c("div", {
     staticClass: "card-body"
   }, [_c("ul", [_c("li", [_c("a", {
     attrs: {
       href: "#"
     }
-  }, [_vm._v("Chi siamo")])]), _vm._v(" "), _c("li", [_c("a", {
+  }, [_vm._v("Acquista un buono pasto")])]), _vm._v(" "), _c("li", [_c("a", {
     attrs: {
       href: "#"
     }
-  }, [_vm._v("Chi siamo")])]), _vm._v(" "), _c("li", [_c("a", {
+  }, [_vm._v("Codice acquisto buonipasto")])]), _vm._v(" "), _c("li", [_c("a", {
     attrs: {
       href: "#"
     }
-  }, [_vm._v("Chi siamo")])]), _vm._v(" "), _c("li", [_c("a", {
+  }, [_vm._v("Sconto clienti")])]), _vm._v(" "), _c("li", [_c("a", {
     attrs: {
       href: "#"
     }
-  }, [_vm._v("Chi siamo")])]), _vm._v(" "), _c("li", [_c("a", {
+  }, [_vm._v("Regala un pasto")])]), _vm._v(" "), _c("li", [_c("a", {
     attrs: {
       href: "#"
     }
-  }, [_vm._v("Chi siamo")])]), _vm._v(" "), _c("li", [_c("a", {
-    attrs: {
-      href: "#"
-    }
-  }, [_vm._v("Chi siamo")])])])])])]), _vm._v(" "), _c("div", {
+  }, [_vm._v("Punti vendita")])])])])])]), _vm._v(" "), _c("div", {
     staticClass: "col-3 py-5"
   }, [_c("div", {
     staticClass: "card bg-dark"
-  }, [_c("h1", {
+  }, [_c("h3", {
     staticClass: "white-footer card-header"
-  }, [_vm._v("Scopri chi siamo")]), _vm._v(" "), _c("div", {
-    staticClass: "card-body"
-  }, [_c("ul", [_c("li", [_c("a", {
+  }, [_vm._v("Siamo anche su")]), _vm._v(" "), _c("div", {
+    staticClass: "card-body altezza"
+  }, [_c("span", {
+    attrs: {
+      id: "loghi"
+    }
+  }, [_c("a", {
     attrs: {
       href: "#"
     }
-  }, [_vm._v("Chi siamo")])]), _vm._v(" "), _c("li", [_c("a", {
+  }, [_c("img", {
+    attrs: {
+      src: __webpack_require__(/*! ../img/fb.png */ "./resources/js/img/fb.png"),
+      alt: "logo facebook"
+    }
+  })]), _vm._v(" "), _c("a", {
     attrs: {
       href: "#"
     }
-  }, [_vm._v("Chi siamo")])]), _vm._v(" "), _c("li", [_c("a", {
+  }, [_c("img", {
     attrs: {
-      href: "#"
+      src: __webpack_require__(/*! ../img/twitter-icon.svg */ "./resources/js/img/twitter-icon.svg"),
+      alt: "logo facebook"
     }
-  }, [_vm._v("Chi siamo")])]), _vm._v(" "), _c("li", [_c("a", {
+  })]), _vm._v(" "), _c("a", {
     attrs: {
-      href: "#"
+      href: "https://cdnlogo.com/logo/instagram_475.html"
     }
-  }, [_vm._v("Chi siamo")])]), _vm._v(" "), _c("li", [_c("a", {
+  }, [_c("img", {
     attrs: {
-      href: "#"
+      src: "https://cdn.cdnlogo.com/logos/i/92/instagram.svg"
     }
-  }, [_vm._v("Chi siamo")])]), _vm._v(" "), _c("li", [_c("a", {
+  })]), _vm._v(" "), _c("a", {
     attrs: {
-      href: "#"
+      href: "https://cdnlogo.com/logo/tiktok-app-icon_542.html"
     }
-  }, [_vm._v("Chi siamo")])])])])])]), _vm._v(" "), _c("div", {
+  }, [_c("img", {
+    attrs: {
+      src: "https://cdn.cdnlogo.com/logos/t/6/tiktok-app-icon.svg"
+    }
+  })])])])])]), _vm._v(" "), _c("div", {
     staticClass: "col-3 py-5"
   }, [_c("div", {
     staticClass: "card bg-dark"
-  }, [_c("h1", {
+  }, [_c("h3", {
     staticClass: "white-footer card-header"
-  }, [_vm._v("Scopri chi siamo")]), _vm._v(" "), _c("div", {
-    staticClass: "card-body"
+  }, [_vm._v("Ceo and Founder")]), _vm._v(" "), _c("div", {
+    staticClass: "card-body altezza"
   }, [_c("ul", [_c("li", [_c("a", {
     attrs: {
       href: "#"
     }
-  }, [_vm._v("Chi siamo")])]), _vm._v(" "), _c("li", [_c("a", {
+  }, [_vm._v("Gloria Gherardi")])]), _vm._v(" "), _c("li", [_c("a", {
     attrs: {
       href: "#"
     }
-  }, [_vm._v("Chi siamo")])]), _vm._v(" "), _c("li", [_c("a", {
+  }, [_vm._v("Giuseppe Acito")])]), _vm._v(" "), _c("li", [_c("a", {
     attrs: {
       href: "#"
     }
-  }, [_vm._v("Chi siamo")])]), _vm._v(" "), _c("li", [_c("a", {
+  }, [_vm._v("Davide Franco")])]), _vm._v(" "), _c("li", [_c("a", {
     attrs: {
       href: "#"
     }
-  }, [_vm._v("Chi siamo")])]), _vm._v(" "), _c("li", [_c("a", {
-    attrs: {
-      href: "#"
-    }
-  }, [_vm._v("Chi siamo")])]), _vm._v(" "), _c("li", [_c("a", {
-    attrs: {
-      href: "#"
-    }
-  }, [_vm._v("Chi siamo")])])])])])])])])]);
+  }, [_vm._v("Andrea Scacchi")])])])])])])])])]);
 }];
 render._withStripped = true;
 
@@ -37116,7 +37114,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "#footer[data-v-3264b626] {\n  margin-top: 120px;\n  background-color: #2e3333;\n}\n#footer .white-footer[data-v-3264b626] {\n  color: white;\n}", ""]);
+exports.push([module.i, "#footer[data-v-3264b626] {\n  margin-top: 120px;\n  background-color: #ffeae4;\n}\n#footer .white-footer[data-v-3264b626] {\n  color: white;\n}\n.altezza[data-v-3264b626] {\n  height: 168px;\n  width: 100%;\n}\nimg[data-v-3264b626] {\n  height: 50px;\n  margin: 2%;\n  margin-top: 12%;\n}\na[data-v-3264b626] {\n  color: white;\n  text-decoration: none;\n}\na[data-v-3264b626]:hover {\n  color: rgb(0, 255, 213);\n}\nli[data-v-3264b626] {\n  list-style: none;\n}", ""]);
 
 // exports
 
@@ -71791,6 +71789,17 @@ module.exports = "/images/chef-jumbo.png?b558d3acaca9f85d2bf2327953a55b4b";
 
 /***/ }),
 
+/***/ "./resources/js/img/fb.png":
+/*!*********************************!*\
+  !*** ./resources/js/img/fb.png ***!
+  \*********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/fb.png?95cca53e2c25b55e7f1d7145b85a1176";
+
+/***/ }),
+
 /***/ "./resources/js/img/logo_deliveboo.png":
 /*!*********************************************!*\
   !*** ./resources/js/img/logo_deliveboo.png ***!
@@ -71821,6 +71830,17 @@ module.exports = "/images/mcdonald.jpg?9dc6ec4e851465a71e6ffd163e3ec4db";
 /***/ (function(module, exports) {
 
 module.exports = "/images/pizza.jpg?a323da0cdb34aad07ac820f71d069026";
+
+/***/ }),
+
+/***/ "./resources/js/img/twitter-icon.svg":
+/*!*******************************************!*\
+  !*** ./resources/js/img/twitter-icon.svg ***!
+  \*******************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/twitter-icon.svg?2881f962e9910b39966753a6c98b804b";
 
 /***/ }),
 
