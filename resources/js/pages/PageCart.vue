@@ -2,10 +2,10 @@
     <section>
 
         <div v-if="disabilita & this.cart != ''">
-            <h1>Il tuo carrello:</h1>
+            <h1 class="text-center mt-5 mb-5">Il tuo carrello:</h1>
             <div v-if="cart !=''">
                 <div>
-                    <div class="card mb-3" v-for="dish in cart" :key="dish.id">
+                    <div class="card mb-5 col-12 col-md-8 " v-for="dish in cart" :key="dish.id">
                         <div class="card-body">
                             <h2 class="card-title text-uppercase">{{dish.name}}</h2>
                             <div >Prezzo: {{dish.price}} €</div>
@@ -23,13 +23,13 @@
                     </div>
                 </div>
             </div>
-            <div v-if="!totalItem == 0">
+            <div class="text-center" v-if="!totalItem == 0">
                 <h3>
                 <b>Totale carrello:  €{{ totalItem }}</b>
                 </h3>
             </div>
 
-            <div v-if="loading">
+            <div id="pay" class="col-8" v-if="loading">
                     <Payment
                     ref="paymentRef"
                     :authorization="tokenApi"
@@ -42,7 +42,7 @@
             <h3 class="message">{{message}}</h3>
         </div>
         <div v-if="this.card == null">
-            <h1 class="message">Il carrello ora è vuoto!!</h1>
+            <h1 class="message"></h1>
         </div>
     </section>
 </template>
@@ -206,10 +206,17 @@ export default {
 
 section{
     margin-top: 120px;
+    .card{
+        margin: 0 auto;
+        border: none;
+    }
     .none{
         display: none;
     }
 
+    #pay{
+        margin: 0 auto;
+    }
     .message{
         text-align: center;
         margin: 50px auto;

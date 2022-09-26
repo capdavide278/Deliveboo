@@ -12,22 +12,21 @@
 
         <Page404 v-if='is404'/>
         <section v-else-if="restaurant">
-
-          <h1>{{restaurant.name_restaurant}}</h1>
-            <div id="card" class="card mb-3" v-for="dish in restaurant.dish" :key="dish.id">
-                <img :src="`/storage/${dish.image}`"  :alt="dish.name">
-                <div class="card-body">
-                    <h2 class="card-title text-uppercase">{{dish.name}}</h2>
-                    <p class="card-text">{{dish.description}}</p>
-                    <div class="text-end">Prezzo: {{dish.price}} €</div>
-
+          <h3 id="addDish" class="none ms-5" style="color:red">Il piatto è stato aggiunto al carrello!</h3>
+          <h1 class="text-center text-uppercase mb-3" style="color:blue">{{restaurant.name_restaurant}}</h1>
+            <div id="card" class="card col-12 col-md-8 mb-4 mt-3 d-flex flex-row" v-for="dish in restaurant.dish" :key="dish.id">
+                <div class="d-none d-md-block col-md-4 text-center">
+                    <img v-if="dish.image.includes('http')" class="card-image-top max-width" :src="dish.image " :alt=" dish.name">
+                    <img v-else class="card-image-top max-width" :src="`/storage/${dish.image}` " :alt=" dish.name">
                 </div>
-
-
-                <button v-if="dish.is_visible" @click="added(dish)" onclick="alert('piatto aggiunto')" id="cart_button" type="button" class="btn btn-primary col-3">Aggiungi al carrello</button>
-                <h5 v-else> Il piatto non è al momento disponibile</h5>
-                <div id="alert_msg" class="alert none alert-success" role="alert">
-                    <h2 class="blue">{{alert}}</h2>
+                <div class="col-12 col-md-6 text-center text-md-end">
+                    <div class="card-body">
+                        <h2 class="card-title text-uppercase">{{dish.name}}</h2>
+                        <p class="card-text">{{dish.description}}</p>
+                        <div class="">Prezzo: {{dish.price}} €</div>
+                    </div>
+                    <button v-if="dish.is_visible" @click="added(dish)"  id="cart_button" type="button" class="btn btn-primary">Aggiungi al carrello</button>
+                    <h5 v-else> Il piatto non è al momento disponibile</h5>
                 </div>
             </div>
 
@@ -123,6 +122,13 @@ methods : {
       localStorage.setItem("cart", parsed);
       this.iconShopping();
       this.viewCart(); // by this function we can see all products are save in web
+        document.getElementById('addDish').classList.remove('none');
+        setTimeout(myFunctionTimeAlert, 3000);
+
+        function myFunctionTimeAlert(){
+        document.getElementById('addDish').classList.add('none');
+
+        }
     },
 
     remove(id) {
@@ -149,7 +155,8 @@ methods : {
         cart.forEach(element => {
             this.sum += element.qty;
         });
-    }
+    },
+
 
 }
 }
@@ -160,6 +167,9 @@ methods : {
     margin-top: 120px;
     position: relative;
 
+    .none{
+        display:none;
+    }
     //immaginina carrello
     #cartImage{
             width: 60px;
@@ -188,18 +198,25 @@ methods : {
             font-weight: bolder;
             }
         }
-    .none {
-      display: none;
-    }
-    .block {
-      display: block;
-    }
-    .blue {
-      color: #0d6efd;
-    }
-    img{
-      width: 200px;
-    }
+
+        #card{
+        margin: 0 auto;
+        align-content: center;
+        border: none;
+
+            .none {
+              display: none;
+            }
+            .block {
+              display: block;
+            }
+            .blue {
+              color: #0d6efd;
+            }
+            img{
+              width: 200px;
+            }
+        }
 }
 
 
