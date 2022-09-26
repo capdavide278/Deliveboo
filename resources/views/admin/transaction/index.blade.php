@@ -26,7 +26,7 @@
                         <td>{{ $element->address }}</td>
                         <td>{{ $element->phonenumber }}</td>
                         <td>{{ $element->total }}</td>
-                        <td>{{ $element->created_at }}</td>
+                        <td>{{ $element->date }}</td>
 
 
                     </tr>

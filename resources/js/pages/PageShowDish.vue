@@ -204,6 +204,11 @@ methods : {
         align-content: center;
         border: none;
 
+        .card-image-top{
+            width: 300px;
+            height: 200px;
+            object-fit: contain;
+        }
             .none {
               display: none;
             }

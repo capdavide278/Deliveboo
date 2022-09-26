@@ -470,7 +470,7 @@
                -webkit-text-stroke-width: 3px;
                -webkit-text-stroke-color: white;
                text-shadow:
-               8px 8px yellow,
+               8px 8px rgb(149, 2, 98),
                20px 20px #000000;
            }
 

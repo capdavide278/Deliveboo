@@ -21,7 +21,7 @@ class TransactionController extends Controller
         $rest_id =  Restaurant::all()->where('user_id', '=', $user_id )->pluck('id')->toArray();
 
 
-            $transaction = Transaction::all()->where('restaurant_id', '=', $rest_id[0]);
+            $transaction = Transaction::where('restaurant_id', '=', $rest_id[0])->orderBy('date', 'desc')->get();
         //$rest_id[0] indica il primo elemento del toArray dalla collection di Transaction
 
         return view('admin.transaction.index', compact('transaction'));
