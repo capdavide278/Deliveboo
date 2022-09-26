@@ -1,5 +1,5 @@
-@extends('admin.layout.app')
-@section('content')
+{{-- @extends('admin.layout.app')
+@section('content') --}}
     {{-- <table class="table table-striped">
         <thead>
             <th>
@@ -13,28 +13,36 @@
             </th>
         </thead>
         <tbody> --}}
-            @foreach($restaurants as $restaurant)
+            {{-- @foreach($restaurants as $restaurant)
                 <div class="container">
-                    <h1>{{ $restaurant->name_restaurant }}</h1>
-                    {{-- <img src="{{asset('storage/' . $restaurant->image)}}" alt=""> --}}
-                    <h3>Telefono: {{ $restaurant->rest_phonenumber}}</h3>
-                    <img src="{{asset('storage/' . $restaurant->image)}}" class="max-width" alt="{{$restaurant->name_restaurant}}">
-                    <h3>Email: {{$restaurant->rest_email}}</h3>
-                    <h3>Indirizzo: {{ $restaurant->address}}</h3>
-                    <h3>Categorie: @foreach($restaurant->category as $cat)
-                                        {{$cat->name}}
-                                    @endforeach</h3>
+                    <div class="row align-items-center justify-content-center">
+                        <div class="col-7">
+                            <img src="{{asset('storage/' . $restaurant->image)}}" class="max-width" alt="{{$restaurant->name_restaurant}}">
+                        </div>
+                        <div class="col-5">
+                            <h1>{{ $restaurant->name_restaurant }}</h1>
+                            {{-- <img src="{{asset('storage/' . $restaurant->image)}}" alt=""> 
+                            <h3>Telefono: {{ $restaurant->rest_phonenumber}}</h3>
+                            
+                            <h3>Email: {{$restaurant->rest_email}}</h3>
+                            <h3>Indirizzo: {{ $restaurant->address}}</h3>
+                            <h3>Categorie: @foreach($restaurant->category as $cat)
+                                                {{$cat->name}}
+                                            @endforeach</h3>
 
-                    <a href="{{route('admin.dish.create')}}">
-                        <button class="btn btn-success"  type="submit">Add Dish</button>
-                    </a>
+                            <a href="{{route('admin.dish.create')}}">
+                                <button class="btn btn-success"  type="submit">Add Dish</button>
+                            </a>
+                        </div>
+                    </div> 
+                    
 
                     {{-- @if(Auth::id() == $restaurant->user_id)
                         <a href="{{ route('admin.restaurant.edit', ['restaurant' => $restaurant]) }}" class="btn btn-warning">Edit</a>
-                    @endif --}}
+                    @endif 
 
                 </div>
-            @endforeach
+            @endforeach --}}
 
 
 
@@ -69,4 +77,4 @@
 
         {{-- </tbody>
     </table> --}}
-@endsection
+{{-- @endsection --}}

@@ -6071,12 +6071,14 @@ var staticRenderFns = [function () {
     staticClass: "nav-item"
   }, [_c("div", {
     staticClass: "divNavbello"
-  }, [_c("h1", [_c("span", {
-    staticClass: "spanNavBello nav-link",
+  }, [_c("a", {
+    staticClass: "nav-link active",
     attrs: {
       href: "/login"
     }
-  }, [_vm._v("Login Ristoratore")])])])]);
+  }, [_c("h1", [_c("span", {
+    staticClass: "spanNavBello nav-link"
+  }, [_vm._v("Login Ristoratore")])])])])]);
 }];
 render._withStripped = true;
 
@@ -72420,8 +72422,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\glogh\Music\php\laravel\Deliveboo\resources\js\front.js */"./resources/js/front.js");
-module.exports = __webpack_require__(/*! C:\Users\glogh\Music\php\laravel\Deliveboo\resources\sass\back.scss */"./resources/sass/back.scss");
+__webpack_require__(/*! C:\xampp\htdocs\php_esercizi\laravel\Deliveboo\resources\js\front.js */"./resources/js/front.js");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\php_esercizi\laravel\Deliveboo\resources\sass\back.scss */"./resources/sass/back.scss");
 
 
 /***/ })

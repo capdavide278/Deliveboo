@@ -15,9 +15,9 @@
 
         <div class="row justify-content-around">
             @foreach ($dishes as $dish)
-                <div class="card col-3 mb-4 me-1"> {{-- TODO remove INLINE STYLE --}}
+                <div class="card border-backg col-md-5 col-sm-12 mb-4">
                     <div class="card-body"  data-id="{{ $dish->id }}">
-                        <img class="card-img-top" src="{{asset('storage/' . $dish->image)}}" alt="">
+                        <img class="card-img-top img-height" src="{{asset('storage/' . $dish->image)}}" alt="">
                         <h3 class="card-title text-uppercase">{{ $dish->name }}</h5>
                         <p class="card-text">{{$dish->description}}</p>
                         <p class="card-text">Prezzo: {{$dish->price}} €</p>
