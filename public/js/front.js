@@ -6071,12 +6071,14 @@ var staticRenderFns = [function () {
     staticClass: "nav-item"
   }, [_c("div", {
     staticClass: "divNavbello"
-  }, [_c("h1", [_c("span", {
-    staticClass: "spanNavBello nav-link",
+  }, [_c("a", {
+    staticClass: "nav-link active",
     attrs: {
       href: "/login"
     }
-  }, [_vm._v("Login Ristoratore")])])])]);
+  }, [_c("h1", [_c("span", {
+    staticClass: "spanNavBello nav-link"
+  }, [_vm._v("Login Ristoratore")])])])])]);
 }];
 render._withStripped = true;
 
@@ -6532,7 +6534,31 @@ var render = function render() {
     attrs: {
       id: "containerHome"
     }
-  }, [_vm._m(0), _vm._v(" "), _c("router-link", {
+  }, [_c("div", {
+    staticClass: "container-fluid",
+    attrs: {
+      id: "jumbotron"
+    }
+  }, [_c("div", {
+    staticClass: "container"
+  }, [_c("div", {
+    staticClass: "row align-items-center justify-content-between"
+  }, [_c("div", {
+    staticClass: "col-12 col-md-5"
+  }, [_c("filter", {
+    attrs: {
+      id: "motion-blur-filter",
+      filterUnits: "userSpaceOnUse"
+    }
+  }, [_c("feGaussianBlur", {
+    attrs: {
+      stdDeviation: "100 0"
+    }
+  })], 1), _vm._v(" "), _c("span", {
+    attrs: {
+      "filter-content": "S"
+    }
+  }, [_vm._v("I piatti che ami a domicilio")])]), _vm._v(" "), _vm._m(0)])])]), _vm._v(" "), _c("router-link", {
     attrs: {
       to: {
         name: "cart"
@@ -6556,7 +6582,7 @@ var render = function render() {
       id: "shoppingCart"
     }
   }, [_vm._v(_vm._s(_vm.sum))])])])]), _vm._v(" "), _c("div", {
-    staticClass: "container-fluid back-restaurant pt-4"
+    staticClass: "container-fluid back-restaurant"
   }, [_c("section", {
     staticClass: "container mb-5"
   }, [_c("div", {
@@ -6655,33 +6681,14 @@ var staticRenderFns = [function () {
       _c = _vm._self._c;
 
   return _c("div", {
-    staticClass: "container-fluid",
-    attrs: {
-      id: "jumbotron"
-    }
-  }, [_c("div", {
-    staticClass: "container"
-  }, [_c("div", {
-    staticClass: "row align-items-center justify-content-between"
-  }, [_c("div", {
-    staticClass: "col-5"
-  }, [_c("h1", {
-    staticClass: "deliveboo-color mb-5"
-  }, [_vm._v("I piatti che ami a domicilio")]), _vm._v(" "), _c("h2", {
-    staticClass: "deliveboo-color"
-  }, [_vm._v("Sei un ristoratore? "), _c("a", {
-    attrs: {
-      href: "/register"
-    }
-  }, [_vm._v("Registrati")]), _vm._v(" per vendere i tuoi prodotti")])]), _vm._v(" "), _c("div", {
-    staticClass: "col-5"
+    staticClass: "col-5 d-none d-md-block"
   }, [_c("img", {
     attrs: {
       id: "chef",
       src: __webpack_require__(/*! ../img/chef-jumbo.png */ "./resources/js/img/chef-jumbo.png"),
       alt: ""
     }
-  })])])])]);
+  })]);
 }, function () {
   var _vm = this,
       _c = _vm._self._c;
@@ -37196,6 +37203,7 @@ exports.push([module.i, "#containerHome[data-v-13e03f97] {\n  position: relative
 
 // exports
 
+throw new Error("Module build failed (from ./node_modules/sass-loader/dist/cjs.js):\nSassError: expected \"}\".\n    ╷\n243 │     }\n    │      ^\n    ╵\n  C:\\Users\\Davide\\Desktop\\Deliveboo\\resources\\js\\pages\\PageHome.vue 243:6  root stylesheet");
 
 /***/ }),
 
@@ -37319,33 +37327,6 @@ function toComment(sourceMap) {
 	var data = 'sourceMappingURL=data:application/json;charset=utf-8;base64,' + base64;
 
 	return '/*# ' + data + ' */';
-}
-
-
-/***/ }),
-
-/***/ "./node_modules/css-loader/lib/url/escape.js":
-/*!***************************************************!*\
-  !*** ./node_modules/css-loader/lib/url/escape.js ***!
-  \***************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = function escape(url) {
-    if (typeof url !== 'string') {
-        return url
-    }
-    // If url is already wrapped in quotes, remove them
-    if (/^['"].*['"]$/.test(url)) {
-        url = url.slice(1, -1);
-    }
-    // Should url be wrapped?
-    // See https://drafts.csswg.org/css-values-3/#urls
-    if (/["'() \t\n]/.test(url)) {
-        return '"' + url.replace(/"/g, '\\"').replace(/\n/g, '\\n') + '"'
-    }
-
-    return url
 }
 
 
@@ -71760,28 +71741,6 @@ module.exports = "/images/chef-jumbo.png?b558d3acaca9f85d2bf2327953a55b4b";
 /***/ (function(module, exports) {
 
 module.exports = "/images/logo_deliveboo.png?888f0360f5752f4fed1d434635bc7273";
-
-/***/ }),
-
-/***/ "./resources/js/img/mcdonald.jpg":
-/*!***************************************!*\
-  !*** ./resources/js/img/mcdonald.jpg ***!
-  \***************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/mcdonald.jpg?9dc6ec4e851465a71e6ffd163e3ec4db";
-
-/***/ }),
-
-/***/ "./resources/js/img/pizza.jpg":
-/*!************************************!*\
-  !*** ./resources/js/img/pizza.jpg ***!
-  \************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/pizza.jpg?a323da0cdb34aad07ac820f71d069026";
 
 /***/ }),
 

@@ -3,11 +3,13 @@
         <div id="jumbotron" class="container-fluid">
             <div class="container">
                 <div class="row align-items-center justify-content-between">
-                    <div class="col-5">
-                        <h1 class="deliveboo-color mb-5">I piatti che ami a domicilio</h1>
-                        <h2 class="deliveboo-color">Sei un ristoratore? <a href="/register">Registrati</a> per vendere i tuoi prodotti</h2>
+                    <div class="col-12 col-md-5">
+                        <filter id="motion-blur-filter" filterUnits="userSpaceOnUse">
+                            <feGaussianBlur stdDeviation="100 0"></feGaussianBlur>
+                        </filter>
+                        <span filter-content="S">I piatti che ami a domicilio</span>
                     </div>
-                    <div class="col-5">
+                    <div class="col-5 d-none d-md-block ">
                         <img id="chef" src="../img/chef-jumbo.png" alt="">
                     </div>
                 </div>
@@ -25,7 +27,7 @@
         </router-link>
 
         <!-- categorie -->
-        <div class="container-fluid back-restaurant pt-4">
+        <div class="container-fluid back-restaurant">
             <section class="container mb-5">
                 <div class="row">
                     <div class="col-2">
@@ -74,6 +76,7 @@
                                 </router-link>
                             </div>
                         </div>
+
 
                     </div>
                 </div>
@@ -269,11 +272,21 @@
             background-color: #00ccbc;;
             max-width: 100%;
             margin-top: 120px;
-            .deliveboo-color {
-                color: #440063;
+            color: #99eeb4;
+            text-align: center;
+
+            span {
+            position: relative;
+            font-family: "Avenir Next", sans-serif;
+            font-weight: 900;
+            font-size: 64px;
+            text-transform: uppercase;
+            font-style: italic;
+            letter-spacing: 0.05em;
+            display: inline-block;
             }
             #chef{
-                max-width: 100%;
+                max-width: 90%;
             }
         }
         //immaginina carrello
@@ -418,17 +431,29 @@
                 color: black;
             }
         }
+<<<<<<< HEAD
         .restaurant {
             background-color: #525c66;
+=======
+
+#ristoContainer{
+    .restaurant {
+            background-color: #202428;
+            border-radius: 20px;
+            width: 340px;
+            margin-bottom: 20px;
+>>>>>>> e8baa705ff1b432e65a98cd2c6969cf18f9a71ed
             .white{
                 color : white;
             }
+            .max-width {
+                object-fit: cover;
+                max-width: 100%;
+                height: 200px;
+            }
         }
-        .max-width {
-            object-fit: cover;
-            max-width: 100%;
-            height: 200px;
-        }
+}
+
 
         #partner {
 

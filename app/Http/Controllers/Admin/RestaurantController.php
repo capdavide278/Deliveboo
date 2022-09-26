@@ -86,9 +86,9 @@ class RestaurantController extends Controller
 
 
             // ti mando alla pagina
-            return redirect()->route('admin.restaurant.index', [
+            return redirect()->route('admin.home', [
                 'restaurant'    => $restaurant,
-            ]);
+            ])->with('create', "Il ristorante  {$restaurant->name} è stato creato");
 
 
 

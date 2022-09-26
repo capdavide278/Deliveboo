@@ -21,9 +21,11 @@
                       </li>
                       <li class="nav-item">
                         <div class="divNavbello">
+                            <a class="nav-link active" href="/login">
                                 <h1>
-                                    <span class="spanNavBello nav-link" href="/login">Login Ristoratore</span>
+                                    <span class="spanNavBello nav-link">Login Ristoratore</span>
                                 </h1>
+                            </a>    
                         </div>
                     </li>
                   </ul>
