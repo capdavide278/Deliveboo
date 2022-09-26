@@ -30,24 +30,33 @@
         <div class="container-fluid back-restaurant">
             <section class="container">
                 <div class="row">
-                    <div class="col-2">
+                    <div class="col-12 col-md-4 col-lg-2">
                         <div class="row justify-content-center categories">
 
-                                <button class="button" v-for="(element, i) in categorie" :key="i" @click="IdCategoria(i+1)">
+                                <button class="button  d-none d-md-block " v-for="(element, i) in categorie" :key="i" @click="IdCategoria(i+1)">
                                     {{element}}
-                                    <div class="button__horizontal"></div>
-	                                <div class="button__vertical"></div>
+                                    <div class="button__horizontal d-none d-md-block"></div>
+	                                <div class="button__vertical d-none d-md-block"></div>
                                 </button>
-                                <button class="button bt-annulla" @click="resetCategory()">
+                                <button class="button bt-annulla d-none d-md-block" @click="resetCategory()">
                                     ANNULLA
-                                    <div class="button__horizontal"></div>
-	                                <div class="button__vertical"></div>
+                                    <div class="button__horizontal d-none d-md-block"></div>
+	                                <div class="button__vertical d-none d-md-block"></div>
                                 </button>
+               <!-- bottoni responsive piccolo -->
+                                <div id="smallBt">
 
+                                    <div class=" bt-small d-md-none " v-for="(element, i) in categorie" :key="i" @click="IdCategoria(i+1)">
+                                        {{element}}
+                                    </div>
+                                    <div class="bt-small bt-annulla d-md-none" @click="resetCategory()">
+                                        ANNULLA
+                                    </div>
+                                </div>
                         </div>
                     </div>
         <!-- ristoranti -->
-                    <div id="ristoContainer" class="col-10">
+                    <div id="ristoContainer" class="col-12 col-md-8 col-lg-10">
                         <div class="row justify-content-center">
                             <div id="container-title">
                               <div class="highlight-container">
@@ -90,29 +99,29 @@
                     <div id="container-title" class="mb-3">
                         <div class="highlight-container">
                             <h2 class="highlight">
-                                La selezione di deliveboo scelta apposta per voi
+                                La selezione di DeliveBoo scelta apposta per voi
                             </h2>
                         </div>
                     </div>
                     <div class="col-12 mt-4">
                         <div class="row justify-content-between align-items-center">
 
-                            <div id="pizza" class="col-6">
-                                <h1>Il grande classico italiano</h1>
+                            <div id="pizza" class=" col-12 col-md-6">
+                                <h1 class="titoletto">Il grande classico italiano</h1>
                             </div>
-                            <div class="col-5">
-                                <h2>Il cibo italiano il migliore al mondo</h2>
+                            <div class="col-5  d-none d-md-block">
+                                <h2 class="titoletto">Il cibo italiano il migliore al mondo</h2>
                             </div>
                         </div>
                     </div>
                     <div class="col-12 mt-4">
                         <div class="row justify-content-between align-items-center">
-                            <div class="col-5">
-                                <h2>McDonald's i panini gustosi per te</h2>
+                            <div class="col-5 d-none d-md-block">
+                                <h2 class="titoletto">McDonald's i panini gustosi per te</h2>
                             </div>
-                            <div class="col-6">
+                            <div class=" col-12 col-md-6">
                                 <div id="mc" class="col-6">
-                                    <h1>McDonalds</h1>
+                                    <h1  class="titoletto">McDonalds</h1>
                                 </div>
                             </div>
                         </div>
@@ -135,21 +144,21 @@
                     <div class="container">
                         <div class="row d-flex column text-center">
                         <div id="cardPartner" class="row d-flex justify-content-evenly">
-                            <div class="col-3">
+                            <div class="col-10 col-md-3">
                                  <img src="https://images.pexels.com/photos/9461776/pexels-photo-9461776.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="rider">
                                  <p class="mb-3 mt-3 fst-italic fw-bold">Diventa un Rider</p>
                                  <button class="btn btn-dark text-center mb-3">
                                     Unisciti a noi
                                  </button>
                            </div>
-                           <div class="col-3">
+                           <div class="col-10 col-md-3">
                                  <img src="https://images.pexels.com/photos/2102934/pexels-photo-2102934.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="chef">
                                  <p class="mb-3 mt-3 fst-italic fw-bold">Diventa Partner</p>
                                  <button  class="btn btn-dark text-center mb-3">
                                     Unisciti a noi
                                  </button>
                            </div>
-                           <div  class="col-3">
+                           <div  class="col-10 col-md-3">
                                  <img src="https://images.pexels.com/photos/3184287/pexels-photo-3184287.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="job">
                                  <p class="mb-3 mt-3 fst-italic fw-bold">Lavora con noi</p>
                                  <button  class="btn btn-dark text-center mb-3">
@@ -318,12 +327,21 @@
             font-weight: bolder;
             }
         }
-        .back-selection {
-           background-color: #ffeae4;
-        }
+
 
         .categories{
-
+            margin-top: 20px;
+            //bottoni piccoli
+            width: 100%;
+            .bt-small{
+                color: #00ccbc;
+                text-transform: uppercase;
+                font-weight: bolder;
+                cursor: pointer;
+                display: inline-block;
+                margin: 10px 15px;
+            }
+            //bottoni grandi
             .button {
             text-align: center;
             --offset: 10px;
@@ -344,6 +362,7 @@
             border-radius: 0;
             box-shadow: inset 0 0 0 var(--border-size) currentcolor;
             transition: background .8s ease;
+            min-width: 220px;
 
             &:hover {
                 background: rgba(100, 0, 0, .03);
@@ -400,7 +419,6 @@
                 transform: scaleY(0);
             }
 
-
         }
         // qua finisce il button
             .big-label {
@@ -412,28 +430,60 @@
             }
         }
         // sezione deliveboo
-        #pizza {
-            background-image: url('../img/pizza.jpg');
-            background-size: cover;
-            max-width: 100%;
+        .back-selection {
+           background-color: #da9786c9;
+           margin: 30px 0;
+           padding-bottom: 30px;
 
-            h1{
-                padding: 100px;
-                color: black;
-            }
+           #pizza {
+               background-image: url('https://images.pexels.com/photos/1653877/pexels-photo-1653877.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+               background-size: cover;
+               background-position: center;
+               max-width: 100%;
+               border-radius: 20px;
+               cursor: pointer;
+
+               .titoletto{
+                   padding: 70px;
+                   font-size: 40px;
+                   color: white;
+                   transform: rotate(-20deg);
+                   text-transform: uppercase;
+               }
+           }
+
+           #mc {
+               background-image: url('https://images.pexels.com/photos/4021944/pexels-photo-4021944.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+               background-size: cover;
+               width: 100%;
+               border-radius: 20px;
+               cursor: pointer;
+               max-height: 260px;
+
+               .titoletto{
+                   padding: 100px 60px;
+                   transform: rotate(-20deg);
+                   text-transform: uppercase;
+                   font-size: 40px;
+
+               }
+
+           }
+          .titoletto{
+               @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@900&display=swap');
+               font-family: 'Raleway', sans-serif;
+               font-size:50px;
+               letter-spacing:0.1em;
+               -webkit-text-fill-color: transparent;
+               -webkit-text-stroke-width: 3px;
+               -webkit-text-stroke-color: white;
+               text-shadow:
+               8px 8px yellow,
+               20px 20px #000000;
+           }
+
         }
 
-        #mc {
-            background-image: url('../img/mcdonald.jpg');
-            background-size: cover;
-            width: 100%;
-
-            h1{
-                padding: 100px;
-                color: black;
-            }
-        }
-        
 #ristoContainer{
     .restaurant {
             background-color: #202428;

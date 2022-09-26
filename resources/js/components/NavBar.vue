@@ -3,7 +3,8 @@
       <nav class="navbar navbar-expand-lg" id="nav-color">
         <div class="container-fluid">
             <router-link :to="{name: 'home'}" class="nav-link active mx-3">
-                <img class="logo_size" src="../img/logo_deliveboo.png" alt="">
+                <img class="logo_size" src="https://i.ibb.co/j8d28rY/logoo.png" alt="">
+
             </router-link>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                  <span class="navbar-toggler-icon"></span>
@@ -25,7 +26,7 @@
                                 <h1>
                                     <span class="spanNavBello nav-link">Login Ristoratore</span>
                                 </h1>
-                            </a>    
+                            </a>
                         </div>
                     </li>
                   </ul>
