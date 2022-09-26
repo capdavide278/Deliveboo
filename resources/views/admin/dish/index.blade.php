@@ -17,7 +17,10 @@
             @foreach ($dishes as $dish)
                 <div class="card border-backg col-md-5 col-sm-12 mb-4">
                     <div class="card-body"  data-id="{{ $dish->id }}">
-                        <img class="card-img-top img-height" src="{{asset('storage/' . $dish->image)}}" alt="">
+                        @if ($dish->image)
+                            <img src="{{$dish->image}}" class="max-width" alt="">
+                        @endif
+                            <img src="{{asset('storage/' . $dish->image)}}" class="max-width" alt="">    
                         <h3 class="card-title text-uppercase">{{ $dish->name }}</h5>
                         <p class="card-text">{{$dish->description}}</p>
                         <p class="card-text">Prezzo: {{$dish->price}} €</p>

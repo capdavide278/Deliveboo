@@ -25,7 +25,11 @@
                             <div class="container">
                               <div class="row justify-content-center align-items-center">
                                 <div class="col-sm-12 col-md-6 text-center">
-                                  <img src="{{asset('storage/' . $restaurant->image)}}" class="max-width" alt="{{$restaurant->name_restaurant}}">
+                                    @if ($restaurant->image)
+                                        <img src="{{$restaurant->image}}" class="max-width" alt="">
+                                    @endif
+                                    <img src="{{asset('storage/' . $restaurant->image)}}" class="max-width" alt="">
+                                  
                                 </div>
                                 <div class="col-sm-12 col-md-6 text-center">
                                   <h1 class="text-uppercase">{{ $restaurant->name_restaurant }}</h1>

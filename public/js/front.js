@@ -5574,8 +5574,6 @@ __webpack_require__.r(__webpack_exports__);
       // ristoranti filtrati in base alla categoria
       catIds: [],
       // id categoria che si trova nella funzione di ogni categoria per la chiamata api
-      // isActive : false,
-      // YesButton : false,
       cart: '',
       cart2: '',
       sum: 0
@@ -5592,8 +5590,6 @@ __webpack_require__.r(__webpack_exports__);
       axios.get('/api/restaurants').then(function (res) {
         _this.restaurants = res.data.response.data;
       });
-    },
-    warningPauroso: function warningPauroso() {// this.isActive = true;
     },
     yesButton: function yesButton() {
       this.YesButton = true;
@@ -72439,8 +72435,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\Davide\Desktop\Deliveboo\resources\js\front.js */"./resources/js/front.js");
-module.exports = __webpack_require__(/*! C:\Users\Davide\Desktop\Deliveboo\resources\sass\back.scss */"./resources/sass/back.scss");
+__webpack_require__(/*! C:\xampp\htdocs\php_esercizi\laravel\Deliveboo\resources\js\front.js */"./resources/js/front.js");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\php_esercizi\laravel\Deliveboo\resources\sass\back.scss */"./resources/sass/back.scss");
 
 
 /***/ })

@@ -22,7 +22,10 @@
             <div class="card border-backg col-sm-12 col-12"> {{-- TODO remove INLINE STYLE --}}
                 <div class="row align-items-center">
                     <div class="col-md-6 col-sm-12">
-                        <img class="max-width" src="{{asset('storage/' . $dish->image)}}" alt="">
+                        @if ($dish->image)
+                            <img src="{{$dish->image}}" class="max-width" alt="">
+                        @endif
+                            <img src="{{asset('storage/' . $dish->image)}}" class="max-width" alt="">  
                     </div>
                 
                   <div class="col-md-6 col-sm-12">
