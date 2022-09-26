@@ -10,7 +10,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
             @endif
-            <div class="col-sm-6 col-md-12">
+            <div class="col-sm-12 col-md-12">
                 <div id="restaurant-card" class="card">
                     <div class="celeste card-header">{{ __('Il tuo Ristorante') }}</div>
 

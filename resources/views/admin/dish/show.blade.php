@@ -21,11 +21,11 @@
         <div class="row vh-height justify-content-center align-items-center">
             <div class="card border-backg col-sm-12 col-12"> {{-- TODO remove INLINE STYLE --}}
                 <div class="row align-items-center">
-                    <div class="col-6">
+                    <div class="col-md-6 col-sm-12">
                         <img class="max-width" src="{{asset('storage/' . $dish->image)}}" alt="">
                     </div>
                 
-                  <div class="col-6">
+                  <div class="col-md-6 col-sm-12">
                     <h3>{{ $dish->name }}</h3>
                     <p>{{$dish->description}}</p>
                     <p>Prezzo: {{$dish->price}} €</p>
