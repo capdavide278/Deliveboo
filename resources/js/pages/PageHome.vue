@@ -431,10 +431,9 @@
                 color: black;
             }
         }
-<<<<<<< HEAD
+
         .restaurant {
             background-color: #525c66;
-=======
 
 #ristoContainer{
     .restaurant {
@@ -442,7 +441,7 @@
             border-radius: 20px;
             width: 340px;
             margin-bottom: 20px;
->>>>>>> e8baa705ff1b432e65a98cd2c6969cf18f9a71ed
+
             .white{
                 color : white;
             }
