@@ -37199,11 +37199,10 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "#containerHome[data-v-13e03f97] {\n  position: relative;\n}\n#containerHome #jumbotron[data-v-13e03f97] {\n  background-color: #00ccbc;\n  max-width: 100%;\n  margin-top: 120px;\n}\n#containerHome #jumbotron .deliveboo-color[data-v-13e03f97] {\n  color: #440063;\n}\n#containerHome #jumbotron #chef[data-v-13e03f97] {\n  max-width: 100%;\n}\n#containerHome #cartImage[data-v-13e03f97] {\n  width: 60px;\n  height: 50px;\n  position: fixed;\n  top: 30px;\n  right: 100px;\n  z-index: 600;\n}\n#containerHome #cartImage[data-v-13e03f97]:hover {\n  cursor: pointer;\n}\n#containerHome #cartImage img[data-v-13e03f97] {\n  width: 100%;\n  height: 100%;\n  border-radius: 20px;\n  border: 2px solid #027e74;\n}\n#containerHome #cartImage #numCarrello[data-v-13e03f97] {\n  position: absolute;\n  top: -5px;\n  right: 20px;\n  z-index: 700;\n  color: #00ccbc;\n  font-weight: bolder;\n}\n#containerHome .back-selection[data-v-13e03f97] {\n  background-color: #ffeae4;\n}\n#containerHome .categories .button[data-v-13e03f97] {\n  text-align: center;\n  --offset: 10px;\n  --border-size: 2px;\n  margin-bottom: 40px;\n  display: block;\n  position: relative;\n  padding: 1.5em 3em;\n  -webkit-appearance: none;\n     -moz-appearance: none;\n          appearance: none;\n  border: 0;\n  background: transparent;\n  color: #00ccbc;\n  text-transform: uppercase;\n  letter-spacing: 0.25em;\n  outline: none;\n  cursor: pointer;\n  font-weight: bold;\n  border-radius: 0;\n  box-shadow: inset 0 0 0 var(--border-size) currentcolor;\n  transition: background 0.8s ease;\n}\n#containerHome .categories .button[data-v-13e03f97]:hover {\n  background: rgba(100, 0, 0, 0.03);\n}\n#containerHome .categories .button .button__horizontal[data-v-13e03f97],\n#containerHome .categories .button .button__vertical[data-v-13e03f97] {\n  position: absolute;\n  top: var(--horizontal-offset, 0);\n  right: var(--vertical-offset, 0);\n  bottom: var(--horizontal-offset, 0);\n  left: var(--vertical-offset, 0);\n  transition: transform 0.8s ease;\n  will-change: transform;\n}\n#containerHome .categories .button .button__horizontal[data-v-13e03f97]::before,\n#containerHome .categories .button .button__vertical[data-v-13e03f97]::before {\n  content: \"\";\n  position: absolute;\n  border: inherit;\n}\n#containerHome .categories .button .button__horizontal[data-v-13e03f97] {\n  --vertical-offset: calc(var(--offset) * -1);\n  border-top: var(--border-size) solid currentcolor;\n  border-bottom: var(--border-size) solid currentcolor;\n}\n#containerHome .categories .button .button__horizontal[data-v-13e03f97]::before {\n  top: calc(var(--vertical-offset) - var(--border-size));\n  bottom: calc(var(--vertical-offset) - var(--border-size));\n  left: calc(var(--vertical-offset) * -1);\n  right: calc(var(--vertical-offset) * -1);\n}\n#containerHome .categories .button:hover .button__horizontal[data-v-13e03f97] {\n  transform: scaleX(0);\n}\n#containerHome .categories .button .button__vertical[data-v-13e03f97] {\n  --horizontal-offset: calc(var(--offset) * -1);\n  border-left: var(--border-size) solid currentcolor;\n  border-right: var(--border-size) solid currentcolor;\n}\n#containerHome .categories .button .button__vertical[data-v-13e03f97]::before {\n  top: calc(var(--horizontal-offset) * -1);\n  bottom: calc(var(--horizontal-offset) * -1);\n  left: calc(var(--horizontal-offset) - var(--border-size));\n  right: calc(var(--horizontal-offset) - var(--border-size));\n}\n#containerHome .categories .button:hover .button__vertical[data-v-13e03f97] {\n  transform: scaleY(0);\n}\n#containerHome .categories .big-label[data-v-13e03f97] {\n  font-size: 20px;\n}\n#containerHome .categories .bt-annulla[data-v-13e03f97] {\n  color: #7acc00;\n}\n#containerHome #pizza[data-v-13e03f97] {\n  background-image: url(" + escape(__webpack_require__(/*! ../img/pizza.jpg */ "./resources/js/img/pizza.jpg")) + ");\n  background-size: cover;\n  max-width: 100%;\n}\n#containerHome #pizza h1[data-v-13e03f97] {\n  padding: 100px;\n  color: black;\n}\n#containerHome #mc[data-v-13e03f97] {\n  background-image: url(" + escape(__webpack_require__(/*! ../img/mcdonald.jpg */ "./resources/js/img/mcdonald.jpg")) + ");\n  background-size: cover;\n  width: 100%;\n}\n#containerHome #mc h1[data-v-13e03f97] {\n  padding: 100px;\n  color: black;\n}\n#containerHome .restaurant[data-v-13e03f97] {\n  background-color: #525c66;\n}\n#containerHome .restaurant .white[data-v-13e03f97] {\n  color: white;\n}\n#containerHome .max-width[data-v-13e03f97] {\n  -o-object-fit: cover;\n     object-fit: cover;\n  max-width: 100%;\n  height: 200px;\n}\n#containerHome #partner #cardPartner img[data-v-13e03f97] {\n  border-radius: 50%;\n  width: 200px;\n  height: 300px;\n}\n#containerHome #container-title[data-v-13e03f97] {\n  line-height: 1.4;\n  text-align: center;\n  padding: 44px;\n  color: #333;\n}\n#containerHome #container-title .highlight-container[data-v-13e03f97] {\n  position: relative;\n  display: inline-block;\n}\n#containerHome #container-title .highlight-container[data-v-13e03f97]:before {\n  content: \" \";\n  display: block;\n  height: 90%;\n  width: 100%;\n  margin-left: -3px;\n  margin-right: -3px;\n  position: absolute;\n  background: #ffd500;\n  transform: rotate(2deg);\n  top: -1px;\n  left: -1px;\n  border-radius: 20% 25% 20% 24%;\n  padding: 10px 3px 3px 10px;\n}\n#containerHome #container-title .highlight-container .highlight[data-v-13e03f97] {\n  position: relative;\n}\n.card[data-v-13e03f97] {\n  padding-top: 15px;\n}\n.ordina[data-v-13e03f97] {\n  background-color: rgb(42, 180, 235);\n}", ""]);
+exports.push([module.i, "#containerHome[data-v-13e03f97] {\n  position: relative;\n}\n#containerHome #jumbotron[data-v-13e03f97] {\n  background-color: #00ccbc;\n  max-width: 100%;\n  margin-top: 120px;\n  color: #99eeb4;\n  text-align: center;\n}\n#containerHome #jumbotron span[data-v-13e03f97] {\n  position: relative;\n  font-family: \"Avenir Next\", sans-serif;\n  font-weight: 900;\n  font-size: 64px;\n  text-transform: uppercase;\n  font-style: italic;\n  letter-spacing: 0.05em;\n  display: inline-block;\n}\n#containerHome #jumbotron #chef[data-v-13e03f97] {\n  max-width: 90%;\n}\n#containerHome #cartImage[data-v-13e03f97] {\n  width: 60px;\n  height: 50px;\n  position: fixed;\n  top: 30px;\n  right: 100px;\n  z-index: 600;\n}\n#containerHome #cartImage[data-v-13e03f97]:hover {\n  cursor: pointer;\n}\n#containerHome #cartImage img[data-v-13e03f97] {\n  width: 100%;\n  height: 100%;\n  border-radius: 20px;\n  border: 2px solid #027e74;\n}\n#containerHome #cartImage #numCarrello[data-v-13e03f97] {\n  position: absolute;\n  top: -5px;\n  right: 20px;\n  z-index: 700;\n  color: #00ccbc;\n  font-weight: bolder;\n}\n#containerHome .back-selection[data-v-13e03f97] {\n  background-color: #ffeae4;\n}\n#containerHome .categories .button[data-v-13e03f97] {\n  text-align: center;\n  --offset: 10px;\n  --border-size: 2px;\n  margin-bottom: 40px;\n  display: block;\n  position: relative;\n  padding: 1.5em 3em;\n  -webkit-appearance: none;\n     -moz-appearance: none;\n          appearance: none;\n  border: 0;\n  background: transparent;\n  color: #00ccbc;\n  text-transform: uppercase;\n  letter-spacing: 0.25em;\n  outline: none;\n  cursor: pointer;\n  font-weight: bold;\n  border-radius: 0;\n  box-shadow: inset 0 0 0 var(--border-size) currentcolor;\n  transition: background 0.8s ease;\n}\n#containerHome .categories .button[data-v-13e03f97]:hover {\n  background: rgba(100, 0, 0, 0.03);\n}\n#containerHome .categories .button .button__horizontal[data-v-13e03f97],\n#containerHome .categories .button .button__vertical[data-v-13e03f97] {\n  position: absolute;\n  top: var(--horizontal-offset, 0);\n  right: var(--vertical-offset, 0);\n  bottom: var(--horizontal-offset, 0);\n  left: var(--vertical-offset, 0);\n  transition: transform 0.8s ease;\n  will-change: transform;\n}\n#containerHome .categories .button .button__horizontal[data-v-13e03f97]::before,\n#containerHome .categories .button .button__vertical[data-v-13e03f97]::before {\n  content: \"\";\n  position: absolute;\n  border: inherit;\n}\n#containerHome .categories .button .button__horizontal[data-v-13e03f97] {\n  --vertical-offset: calc(var(--offset) * -1);\n  border-top: var(--border-size) solid currentcolor;\n  border-bottom: var(--border-size) solid currentcolor;\n}\n#containerHome .categories .button .button__horizontal[data-v-13e03f97]::before {\n  top: calc(var(--vertical-offset) - var(--border-size));\n  bottom: calc(var(--vertical-offset) - var(--border-size));\n  left: calc(var(--vertical-offset) * -1);\n  right: calc(var(--vertical-offset) * -1);\n}\n#containerHome .categories .button:hover .button__horizontal[data-v-13e03f97] {\n  transform: scaleX(0);\n}\n#containerHome .categories .button .button__vertical[data-v-13e03f97] {\n  --horizontal-offset: calc(var(--offset) * -1);\n  border-left: var(--border-size) solid currentcolor;\n  border-right: var(--border-size) solid currentcolor;\n}\n#containerHome .categories .button .button__vertical[data-v-13e03f97]::before {\n  top: calc(var(--horizontal-offset) * -1);\n  bottom: calc(var(--horizontal-offset) * -1);\n  left: calc(var(--horizontal-offset) - var(--border-size));\n  right: calc(var(--horizontal-offset) - var(--border-size));\n}\n#containerHome .categories .button:hover .button__vertical[data-v-13e03f97] {\n  transform: scaleY(0);\n}\n#containerHome .categories .big-label[data-v-13e03f97] {\n  font-size: 20px;\n}\n#containerHome .categories .bt-annulla[data-v-13e03f97] {\n  color: #7acc00;\n}\n#containerHome #pizza[data-v-13e03f97] {\n  background-image: url(" + escape(__webpack_require__(/*! ../img/pizza.jpg */ "./resources/js/img/pizza.jpg")) + ");\n  background-size: cover;\n  max-width: 100%;\n}\n#containerHome #pizza h1[data-v-13e03f97] {\n  padding: 100px;\n  color: black;\n}\n#containerHome #mc[data-v-13e03f97] {\n  background-image: url(" + escape(__webpack_require__(/*! ../img/mcdonald.jpg */ "./resources/js/img/mcdonald.jpg")) + ");\n  background-size: cover;\n  width: 100%;\n}\n#containerHome #mc h1[data-v-13e03f97] {\n  padding: 100px;\n  color: black;\n}\n#containerHome .restaurant[data-v-13e03f97] {\n  background-color: #525c66;\n}\n#containerHome .restaurant #ristoContainer .restaurant[data-v-13e03f97] {\n  background-color: #202428;\n  border-radius: 20px;\n  width: 340px;\n  margin-bottom: 20px;\n}\n#containerHome .restaurant #ristoContainer .restaurant .white[data-v-13e03f97] {\n  color: white;\n}\n#containerHome .restaurant #ristoContainer .restaurant .max-width[data-v-13e03f97] {\n  -o-object-fit: cover;\n     object-fit: cover;\n  max-width: 100%;\n  height: 200px;\n}\n#containerHome .restaurant #partner #cardPartner img[data-v-13e03f97] {\n  border-radius: 50%;\n  width: 200px;\n  height: 300px;\n}\n#containerHome .restaurant #container-title[data-v-13e03f97] {\n  line-height: 1.4;\n  text-align: center;\n  padding: 44px;\n  color: #333;\n}\n#containerHome .restaurant #container-title .highlight-container[data-v-13e03f97] {\n  position: relative;\n  display: inline-block;\n}\n#containerHome .restaurant #container-title .highlight-container[data-v-13e03f97]:before {\n  content: \" \";\n  display: block;\n  height: 90%;\n  width: 100%;\n  margin-left: -3px;\n  margin-right: -3px;\n  position: absolute;\n  background: #ffd500;\n  transform: rotate(2deg);\n  top: -1px;\n  left: -1px;\n  border-radius: 20% 25% 20% 24%;\n  padding: 10px 3px 3px 10px;\n}\n#containerHome .restaurant #container-title .highlight-container .highlight[data-v-13e03f97] {\n  position: relative;\n}\n#containerHome .card[data-v-13e03f97] {\n  padding-top: 15px;\n}\n#containerHome .ordina[data-v-13e03f97] {\n  background-color: rgb(42, 180, 235);\n}", ""]);
 
 // exports
 
-throw new Error("Module build failed (from ./node_modules/sass-loader/dist/cjs.js):\nSassError: expected \"}\".\n    ╷\n243 │     }\n    │      ^\n    ╵\n  C:\\Users\\Davide\\Desktop\\Deliveboo\\resources\\js\\pages\\PageHome.vue 243:6  root stylesheet");
 
 /***/ }),
 
@@ -37327,6 +37326,33 @@ function toComment(sourceMap) {
 	var data = 'sourceMappingURL=data:application/json;charset=utf-8;base64,' + base64;
 
 	return '/*# ' + data + ' */';
+}
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/lib/url/escape.js":
+/*!***************************************************!*\
+  !*** ./node_modules/css-loader/lib/url/escape.js ***!
+  \***************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = function escape(url) {
+    if (typeof url !== 'string') {
+        return url
+    }
+    // If url is already wrapped in quotes, remove them
+    if (/^['"].*['"]$/.test(url)) {
+        url = url.slice(1, -1);
+    }
+    // Should url be wrapped?
+    // See https://drafts.csswg.org/css-values-3/#urls
+    if (/["'() \t\n]/.test(url)) {
+        return '"' + url.replace(/"/g, '\\"').replace(/\n/g, '\\n') + '"'
+    }
+
+    return url
 }
 
 
@@ -71741,6 +71767,28 @@ module.exports = "/images/chef-jumbo.png?b558d3acaca9f85d2bf2327953a55b4b";
 /***/ (function(module, exports) {
 
 module.exports = "/images/logo_deliveboo.png?888f0360f5752f4fed1d434635bc7273";
+
+/***/ }),
+
+/***/ "./resources/js/img/mcdonald.jpg":
+/*!***************************************!*\
+  !*** ./resources/js/img/mcdonald.jpg ***!
+  \***************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/mcdonald.jpg?9dc6ec4e851465a71e6ffd163e3ec4db";
+
+/***/ }),
+
+/***/ "./resources/js/img/pizza.jpg":
+/*!************************************!*\
+  !*** ./resources/js/img/pizza.jpg ***!
+  \************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/pizza.jpg?a323da0cdb34aad07ac820f71d069026";
 
 /***/ }),
 

@@ -505,5 +505,5 @@
     .ordina{
         background-color: rgb(42, 180, 235);
     }
-
+}
 </style>
