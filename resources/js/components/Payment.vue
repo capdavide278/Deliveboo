@@ -1,9 +1,9 @@
 <template>
     <section>
-        <div v-if="!allDone" class="container-payment">
+        <div  v-if="!allDone" class="container-payment">
 
          <!-- Form dati ordine -->
-        <form @submit.prevent="sendForm">
+        <form  @submit.prevent="sendForm">
             <div class="card mt-4 p-4 container-payment-data">
                 <h3 class="card-title p-3 title-payment-data">
                     <strong>Inserisci i tuoi dati per concludere l'ordine</strong >

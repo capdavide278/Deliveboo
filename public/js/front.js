@@ -5750,6 +5750,13 @@ __webpack_require__.r(__webpack_exports__);
       localStorage.setItem("cart", parsed);
       this.iconShopping();
       this.viewCart(); // by this function we can see all products are save in web
+
+      document.getElementById('addDish').classList.remove('none');
+      setTimeout(myFunctionTimeAlert, 3000);
+
+      function myFunctionTimeAlert() {
+        document.getElementById('addDish').classList.add('none');
+      }
     },
     remove: function remove(id) {
       // this function remove buy, one by one according id in cart & main page
@@ -6415,10 +6422,12 @@ var render = function render() {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _c("section", [_vm.disabilita & this.cart != "" ? _c("div", [_c("h1", [_vm._v("Il tuo carrello:")]), _vm._v(" "), _vm.cart != "" ? _c("div", [_c("div", _vm._l(_vm.cart, function (dish) {
+  return _c("section", [_vm.disabilita & this.cart != "" ? _c("div", [_c("h1", {
+    staticClass: "text-center mt-5 mb-5"
+  }, [_vm._v("Il tuo carrello:")]), _vm._v(" "), _vm.cart != "" ? _c("div", [_c("div", _vm._l(_vm.cart, function (dish) {
     return _c("div", {
       key: dish.id,
-      staticClass: "card mb-3"
+      staticClass: "card mb-5 col-12 col-md-8"
     }, [_c("div", {
       staticClass: "card-body"
     }, [_c("h2", {
@@ -6461,7 +6470,14 @@ var render = function render() {
         }
       }
     }, [_vm._v("Elimina")])])]);
-  }), 0)]) : _vm._e(), _vm._v(" "), !_vm.totalItem == 0 ? _c("div", [_c("h3", [_c("b", [_vm._v("Totale carrello:  €" + _vm._s(_vm.totalItem))])])]) : _vm._e(), _vm._v(" "), _vm.loading ? _c("div", [_c("Payment", {
+  }), 0)]) : _vm._e(), _vm._v(" "), !_vm.totalItem == 0 ? _c("div", {
+    staticClass: "text-center"
+  }, [_c("h3", [_c("b", [_vm._v("Totale carrello:  €" + _vm._s(_vm.totalItem))])])]) : _vm._e(), _vm._v(" "), _vm.loading ? _c("div", {
+    staticClass: "col-8",
+    attrs: {
+      id: "pay"
+    }
+  }, [_c("Payment", {
     ref: "paymentRef",
     attrs: {
       authorization: _vm.tokenApi
@@ -6473,7 +6489,7 @@ var render = function render() {
     staticClass: "message"
   }, [_vm._v(_vm._s(_vm.message))])]), _vm._v(" "), this.card == null ? _c("div", [_c("h1", {
     staticClass: "message"
-  }, [_vm._v("Il carrello ora è vuoto!!")])]) : _vm._e()]);
+  })]) : _vm._e()]);
 };
 
 var staticRenderFns = [];
@@ -6859,30 +6875,51 @@ var render = function render() {
     attrs: {
       id: "shoppingCart"
     }
-  }, [_vm._v(_vm._s(_vm.sum))])])])]), _vm._v(" "), _vm.is404 ? _c("Page404") : _vm.restaurant ? _c("section", [_c("h1", [_vm._v(_vm._s(_vm.restaurant.name_restaurant))]), _vm._v(" "), _vm._l(_vm.restaurant.dish, function (dish) {
+  }, [_vm._v(_vm._s(_vm.sum))])])])]), _vm._v(" "), _vm.is404 ? _c("Page404") : _vm.restaurant ? _c("section", [_c("h3", {
+    staticClass: "none ms-5",
+    staticStyle: {
+      color: "red"
+    },
+    attrs: {
+      id: "addDish"
+    }
+  }, [_vm._v("Il piatto è stato aggiunto al carrello!")]), _vm._v(" "), _c("h1", {
+    staticClass: "text-center text-uppercase mb-3",
+    staticStyle: {
+      color: "blue"
+    }
+  }, [_vm._v(_vm._s(_vm.restaurant.name_restaurant))]), _vm._v(" "), _vm._l(_vm.restaurant.dish, function (dish) {
     return _c("div", {
       key: dish.id,
-      staticClass: "card mb-3",
+      staticClass: "card col-12 col-md-8 mb-4 mt-3 d-flex flex-row",
       attrs: {
         id: "card"
       }
-    }, [_c("img", {
+    }, [_c("div", {
+      staticClass: "d-none d-md-block col-md-4 text-center"
+    }, [dish.image.includes("http") ? _c("img", {
+      staticClass: "card-image-top max-width",
+      attrs: {
+        src: dish.image,
+        alt: dish.name
+      }
+    }) : _c("img", {
+      staticClass: "card-image-top max-width",
       attrs: {
         src: "/storage/".concat(dish.image),
         alt: dish.name
       }
-    }), _vm._v(" "), _c("div", {
+    })]), _vm._v(" "), _c("div", {
+      staticClass: "col-12 col-md-6 text-center text-md-end"
+    }, [_c("div", {
       staticClass: "card-body"
     }, [_c("h2", {
       staticClass: "card-title text-uppercase"
     }, [_vm._v(_vm._s(dish.name))]), _vm._v(" "), _c("p", {
       staticClass: "card-text"
-    }, [_vm._v(_vm._s(dish.description))]), _vm._v(" "), _c("div", {
-      staticClass: "text-end"
-    }, [_vm._v("Prezzo: " + _vm._s(dish.price) + " €")])]), _vm._v(" "), dish.is_visible ? _c("button", {
-      staticClass: "btn btn-primary col-3",
+    }, [_vm._v(_vm._s(dish.description))]), _vm._v(" "), _c("div", {}, [_vm._v("Prezzo: " + _vm._s(dish.price) + " €")])]), _vm._v(" "), dish.is_visible ? _c("button", {
+      staticClass: "btn btn-primary",
       attrs: {
-        onclick: "alert('piatto aggiunto')",
         id: "cart_button",
         type: "button"
       },
@@ -6891,15 +6928,7 @@ var render = function render() {
           return _vm.added(dish);
         }
       }
-    }, [_vm._v("Aggiungi al carrello")]) : _c("h5", [_vm._v(" Il piatto non è al momento disponibile")]), _vm._v(" "), _c("div", {
-      staticClass: "alert none alert-success",
-      attrs: {
-        id: "alert_msg",
-        role: "alert"
-      }
-    }, [_c("h2", {
-      staticClass: "blue"
-    }, [_vm._v(_vm._s(_vm.alert))])])]);
+    }, [_vm._v("Aggiungi al carrello")]) : _c("h5", [_vm._v(" Il piatto non è al momento disponibile")])])]);
   })], 2) : _vm._e()], 1);
 };
 
@@ -37160,7 +37189,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "section[data-v-313ebd58] {\n  margin-top: 120px;\n}\nsection .none[data-v-313ebd58] {\n  display: none;\n}\nsection .message[data-v-313ebd58] {\n  text-align: center;\n  margin: 50px auto;\n  max-width: 400px;\n}", ""]);
+exports.push([module.i, "section[data-v-313ebd58] {\n  margin-top: 120px;\n}\nsection .card[data-v-313ebd58] {\n  margin: 0 auto;\n  border: none;\n}\nsection .none[data-v-313ebd58] {\n  display: none;\n}\nsection #pay[data-v-313ebd58] {\n  margin: 0 auto;\n}\nsection .message[data-v-313ebd58] {\n  text-align: center;\n  margin: 50px auto;\n  max-width: 400px;\n}", ""]);
 
 // exports
 
@@ -37218,7 +37247,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "#showDish[data-v-763ca4ef] {\n  margin-top: 120px;\n  position: relative;\n}\n#showDish #cartImage[data-v-763ca4ef] {\n  width: 60px;\n  height: 50px;\n  position: fixed;\n  top: 30px;\n  right: 100px;\n  z-index: 600;\n}\n#showDish #cartImage[data-v-763ca4ef]:hover {\n  cursor: pointer;\n}\n#showDish #cartImage img[data-v-763ca4ef] {\n  width: 100%;\n  height: 100%;\n  border-radius: 20px;\n  border: 2px solid #027e74;\n}\n#showDish #cartImage #numCarrello[data-v-763ca4ef] {\n  position: absolute;\n  top: -5px;\n  right: 20px;\n  z-index: 700;\n  color: #00ccbc;\n  font-weight: bolder;\n}\n#showDish .none[data-v-763ca4ef] {\n  display: none;\n}\n#showDish .block[data-v-763ca4ef] {\n  display: block;\n}\n#showDish .blue[data-v-763ca4ef] {\n  color: #0d6efd;\n}\n#showDish img[data-v-763ca4ef] {\n  width: 200px;\n}", ""]);
+exports.push([module.i, "#showDish[data-v-763ca4ef] {\n  margin-top: 120px;\n  position: relative;\n}\n#showDish .none[data-v-763ca4ef] {\n  display: none;\n}\n#showDish #cartImage[data-v-763ca4ef] {\n  width: 60px;\n  height: 50px;\n  position: fixed;\n  top: 30px;\n  right: 100px;\n  z-index: 600;\n}\n#showDish #cartImage[data-v-763ca4ef]:hover {\n  cursor: pointer;\n}\n#showDish #cartImage img[data-v-763ca4ef] {\n  width: 100%;\n  height: 100%;\n  border-radius: 20px;\n  border: 2px solid #027e74;\n}\n#showDish #cartImage #numCarrello[data-v-763ca4ef] {\n  position: absolute;\n  top: -5px;\n  right: 20px;\n  z-index: 700;\n  color: #00ccbc;\n  font-weight: bolder;\n}\n#showDish #card[data-v-763ca4ef] {\n  margin: 0 auto;\n  align-content: center;\n  border: none;\n}\n#showDish #card .none[data-v-763ca4ef] {\n  display: none;\n}\n#showDish #card .block[data-v-763ca4ef] {\n  display: block;\n}\n#showDish #card .blue[data-v-763ca4ef] {\n  color: #0d6efd;\n}\n#showDish #card img[data-v-763ca4ef] {\n  width: 200px;\n}", ""]);
 
 // exports
 
