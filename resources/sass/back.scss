@@ -12,6 +12,7 @@
     position: fixed;
     inset: 0;
     background-color: rgba($color: #000000, $alpha: 0.4);
+    z-index: 10000;
 
     .popup {
         margin: auto;
@@ -36,7 +37,7 @@
 
 #nav-deliveboo {
     background-color: #00ccbc;
-    
+
 }
 
 .img-height {
