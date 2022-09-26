@@ -12632,6 +12632,7 @@ fieldset:disabled .btn {
   position: fixed;
   inset: 0;
   background-color: rgba(0, 0, 0, 0.4);
+  z-index: 10000;
 }
 
 .overlay .popup {
@@ -12659,13 +12660,6 @@ fieldset:disabled .btn {
 
 #nav-deliveboo {
   background-color: #00ccbc;
-}
-
-.img-height {
-  -o-object-fit: cover;
-     object-fit: cover;
-  width: 100%;
-  height: 315px;
 }
 
 #restaurant-card {

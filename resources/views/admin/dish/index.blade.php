@@ -18,7 +18,7 @@
                 <div class="card border-backg col-md-5 col-sm-12 mb-4">
                     <div class="card-body"  data-id="{{ $dish->id }}">
                         @if ($dish->image)
-                            <img src="{{$dish->image}}" class="max-width img-height" alt="">
+                          <img src="{{$dish->image}}" class="max-width" alt="">
                         @endif
                             <img src="{{asset('storage/' . $dish->image)}}" class="max-width" alt="">    
                         <h3 class="card-title text-uppercase">{{ $dish->name }}</h5>
