@@ -12662,6 +12662,9 @@ fieldset:disabled .btn {
 }
 
 .img-height {
+  -o-object-fit: cover;
+     object-fit: cover;
+  width: 100%;
   height: 315px;
 }
 
