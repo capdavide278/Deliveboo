@@ -2,7 +2,7 @@
     <footer id="footer">
         <div class="container mt-5">
             <div class="row">
-                <div class="col-3 py-5">
+                <div class="col-10 col-sm-5 col-xl-3 py-5">
                     <div class="card bg-dark">
                         <h3 class="white-footer card-header">Domande frequenti</h3>
                         <div class="card-body">
@@ -16,7 +16,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-3 py-5">
+                <div class="col-10 col-sm-5 col-xl-3 py-5">
                     <div class="card bg-dark">
                         <h3 class="white-footer card-header">Buoni pasto</h3>
                         <div class="card-body">
@@ -26,12 +26,12 @@
                                 <li><a href="#">Sconto clienti</a></li>
                                 <li><a href="#">Regala un pasto</a></li>
                                 <li><a href="#">Punti vendita</a></li>
-                                <!-- <li><a href="#">Chi siamo</a></li> -->
+                                <!-- <li><a href="#">Informazioni attività</a></li> -->
                             </ul>
                         </div>
                     </div>
                 </div>
-                <div class="col-3 py-5">
+                <div class="col-10 col-sm-5 col-md-6 col-xl-3 py-5">
                     <div class="card bg-dark">
                         <h3 class="white-footer card-header">Siamo anche su</h3>
                         <div class="card-body altezza">
@@ -45,7 +45,7 @@
                     </div>
                 </div>
 
-                <div class="col-3 py-5">
+                <div class="col-10 col-sm-5 col-xl-3 py-5">
                     <div class="card bg-dark">
                         <h3 class="white-footer card-header">Ceo and Founder</h3>
                         <div class="card-body altezza">

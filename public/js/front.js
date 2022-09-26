@@ -5853,7 +5853,7 @@ var staticRenderFns = [function () {
   }, [_c("div", {
     staticClass: "row"
   }, [_c("div", {
-    staticClass: "col-3 py-5"
+    staticClass: "col-10 col-sm-5 col-xl-3 py-5"
   }, [_c("div", {
     staticClass: "card bg-dark"
   }, [_c("h3", {
@@ -5881,7 +5881,7 @@ var staticRenderFns = [function () {
       href: "#"
     }
   }, [_vm._v("Modifica informazioni account")])])])])])]), _vm._v(" "), _c("div", {
-    staticClass: "col-3 py-5"
+    staticClass: "col-10 col-sm-5 col-xl-3 py-5"
   }, [_c("div", {
     staticClass: "card bg-dark"
   }, [_c("h3", {
@@ -5909,7 +5909,7 @@ var staticRenderFns = [function () {
       href: "#"
     }
   }, [_vm._v("Punti vendita")])])])])])]), _vm._v(" "), _c("div", {
-    staticClass: "col-3 py-5"
+    staticClass: "col-10 col-sm-5 col-md-6 col-xl-3 py-5"
   }, [_c("div", {
     staticClass: "card bg-dark"
   }, [_c("h3", {
@@ -5955,7 +5955,7 @@ var staticRenderFns = [function () {
       src: "https://cdn.cdnlogo.com/logos/t/6/tiktok-app-icon.svg"
     }
   })])])])])]), _vm._v(" "), _c("div", {
-    staticClass: "col-3 py-5"
+    staticClass: "col-10 col-sm-5 col-xl-3 py-5"
   }, [_c("div", {
     staticClass: "card bg-dark"
   }, [_c("h3", {
@@ -6079,11 +6079,11 @@ var staticRenderFns = [function () {
   }, [_c("a", {
     staticClass: "nav-link active",
     attrs: {
-      href: "/login"
+      href: "/register"
     }
   }, [_c("h1", [_c("span", {
     staticClass: "spanNavBello nav-link"
-  }, [_vm._v("Login Ristoratore")])])])])]);
+  }, [_vm._v("Register Ristoratore")])])])])]);
 }];
 render._withStripped = true;
 
@@ -71798,39 +71798,6 @@ module.exports = "/images/chef-jumbo.png?b558d3acaca9f85d2bf2327953a55b4b";
 /***/ (function(module, exports) {
 
 module.exports = "/images/fb.png?95cca53e2c25b55e7f1d7145b85a1176";
-
-/***/ }),
-
-/***/ "./resources/js/img/logo_deliveboo.png":
-/*!*********************************************!*\
-  !*** ./resources/js/img/logo_deliveboo.png ***!
-  \*********************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/logo_deliveboo.png?888f0360f5752f4fed1d434635bc7273";
-
-/***/ }),
-
-/***/ "./resources/js/img/mcdonald.jpg":
-/*!***************************************!*\
-  !*** ./resources/js/img/mcdonald.jpg ***!
-  \***************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/mcdonald.jpg?9dc6ec4e851465a71e6ffd163e3ec4db";
-
-/***/ }),
-
-/***/ "./resources/js/img/pizza.jpg":
-/*!************************************!*\
-  !*** ./resources/js/img/pizza.jpg ***!
-  \************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/pizza.jpg?a323da0cdb34aad07ac820f71d069026";
 
 /***/ }),
 

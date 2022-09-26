@@ -22,9 +22,9 @@
                       </li>
                       <li class="nav-item">
                         <div class="divNavbello">
-                            <a class="nav-link active" href="/login">
+                            <a class="nav-link active" href="/register">
                                 <h1>
-                                    <span class="spanNavBello nav-link">Login Ristoratore</span>
+                                    <span class="spanNavBello nav-link">Register Ristoratore</span>
                                 </h1>
                             </a>
                         </div>
