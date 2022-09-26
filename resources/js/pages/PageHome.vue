@@ -192,12 +192,9 @@
             categories: [], // categorie da mostrare
             arrRestaurants: [], // ristoranti filtrati in base alla categoria
             catIds: [], // id categoria che si trova nella funzione di ogni categoria per la chiamata api
-            // isActive : false,
-            // YesButton : false,
             cart : '',
             cart2 : '',
             sum: 0,
-
             }
         },
     created(){
@@ -210,11 +207,6 @@
             .then(res => {
             this.restaurants = res.data.response.data;
             });
-        },
-
-        warningPauroso() {
-            // this.isActive = true;
-
         },
         yesButton() {
             this.YesButton=true;
