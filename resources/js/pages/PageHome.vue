@@ -26,7 +26,7 @@
 
         <!-- categorie -->
         <div class="container-fluid back-restaurant pt-4">
-            <section class="container">
+            <section class="container mb-5">
                 <div class="row">
                     <div class="col-2">
                         <div class="row justify-content-center categories">
@@ -44,7 +44,7 @@
 
                         </div>
                     </div>
-        <!-- ristoranti -->
+                    <!-- ristoranti -->
                     <div class="col-9">
                         <div class="row justify-content-center">
                             <div id="container-title">
@@ -70,7 +70,7 @@
                                     </div>
                                 </div>
                                 <router-link :to="{name:'PageShowDish', params: {idRest: restaurant.id}}" class="mt-4">
-                                    <button class="btn btn-primary" @click="removeall(restaurant.id)">ORDINA</button>
+                                    <button class="ordina btn btn-primary" @click="removeall(restaurant.id)">ORDINA</button>
                                 </router-link>
                             </div>
                         </div>
@@ -419,7 +419,7 @@
             }
         }
         .restaurant {
-            background-color: #202428;
+            background-color: #525c66;
             .white{
                 color : white;
             }
@@ -436,8 +436,7 @@
                 img{
                     border-radius: 50%;
                     width: 200px;
-                    height: 3
-                    00px;
+                    height: 300px;
                 }
             }
         }
@@ -475,5 +474,12 @@
             }
     }
 
+    .card{
+        padding-top: 15px;
+    }
+
+    .ordina{
+        background-color: rgb(42, 180, 235);
+    }
 
 </style>
