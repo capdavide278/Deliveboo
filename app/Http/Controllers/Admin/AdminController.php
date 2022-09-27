@@ -33,9 +33,11 @@ class AdminController extends Controller
                 $user_id =  Auth::id();
                 $rest_id =  Restaurant::all()->where('user_id', '=', $user_id )->pluck('id')->toArray();
 
+                if($rest_id[0] =! null){
+                    $transaction = Transaction::where('restaurant_id', '=', $rest_id[0])->whereBetween('date', [$dateFrom, $dateTo])->get();
+                    $transactions[$i] = count($transaction);
 
-                $transaction = Transaction::where('restaurant_id', '=', $rest_id[0])->whereBetween('date', [$dateFrom, $dateTo])->get();
-                $transactions[$i] = count($transaction);
+                }
 
             }
 
