@@ -7,17 +7,17 @@
                 <div>
                     <div class="card mb-5 col-12 col-md-8 " v-for="dish in cart" :key="dish.id">
                         <div class="card-body">
-                            <h2 class="card-title text-uppercase">{{dish.name}}</h2>
+                            <h2 class="card-title text-uppercase" style="color: green">{{dish.name}}</h2>
                             <div >Prezzo: {{dish.price}} €</div>
                             <div>{{dish.qty}} porzioni</div>
                             <!-- input per passare id ristorante  -->
                             <input class="inputRestID none" :value="dish.Restid">
                         </div>
-                        <div class="d-flex justify-content-around">
+                        <div class="d-flex ">
 
-                            <button @click="added(dish)" type="button" class="btn btn-primary col-3 me-3">Aggiungi</button>
-                            <button @click="remove(dish.id)" type="button" class="btn btn-success col-3 me-3">Elimina porzione</button>
-                            <button @click="removeall(dish.id)" type="button" class="btn btn-danger col-3">Elimina</button>
+                            <div @click="added(dish)" class="btn-add ms-3 me-3"> +1</div>
+                            <div @click="remove(dish.id)" class="btn-add me-3"> -1</div>
+                            <button @click="removeall(dish.id)" type="button" class="btn btn-danger ms-3 col-3 col-md-2">Elimina</button>
                         </div>
 
                     </div>
@@ -206,9 +206,29 @@ export default {
 
 section{
     margin-top: 120px;
+    h1{
+            color: #027e74;
+            font-weight: bolder;
+        }
     .card{
         margin: 0 auto;
         border: none;
+
+        .btn-add{
+            background-color: #00ccbc;
+            width: 50px;
+            height: 50px;
+            border-radius: 10%;
+            color: white;
+            font-size: 30px;
+            padding-left: 8px;
+            border: 1px solid #03d7c5;
+
+            &:hover{
+                background-color: #02aa9c;
+
+            }
+        }
     }
     .none{
         display: none;

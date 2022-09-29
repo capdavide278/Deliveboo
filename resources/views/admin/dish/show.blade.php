@@ -21,13 +21,13 @@
         <div class="row vh-height justify-content-center align-items-center">
             <div class="card border-backg col-sm-12 col-12"> {{-- TODO remove INLINE STYLE --}}
                 <div class="row align-items-center">
-                    <div class="col-md-6 col-sm-12">
+                    <div class="col-md-6 col-sm-12 mt-3">
                         @if ($dish->image)
-                            <img src="{{$dish->image}}" class="max-width" alt="">
+                            <img src="{{$dish->image}}" class="max-width img-dish" alt="">
                         @endif
-                            <img src="{{asset('storage/' . $dish->image)}}" class="max-width" alt="">  
+                            <img src="{{asset('storage/' . $dish->image)}}" class="max-width img-dish" alt="">
                     </div>
-                
+
                   <div class="col-md-6 col-sm-12">
                     <h3>{{ $dish->name }}</h3>
                     <p>{{$dish->description}}</p>
@@ -40,12 +40,12 @@
                     <a href="{{route('admin.dish.index')}}" class="btn btn-success me-3">Dish List</a>
                     <a href="{{route('admin.home')}}" class="btn btn-primary">Dashboard</a>
                   </div>
-                </div>  
-    
+                </div>
+
                 </div>
             </div>
         </div>
-        
+
     </div>
 
 

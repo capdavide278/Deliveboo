@@ -12,8 +12,8 @@
 
         <Page404 v-if='is404'/>
         <section v-else-if="restaurant">
-          <h3 id="addDish" class="none ms-5" style="color:red">Il piatto è stato aggiunto al carrello!</h3>
-          <h1 class="text-center text-uppercase mb-3" style="color:blue">{{restaurant.name_restaurant}}</h1>
+            <h1 class="text-center text-uppercase mb-5">{{restaurant.name_restaurant}}</h1>
+            <h3 id="addDish" class="none text-center mb-3" style="color:green">Il piatto è stato aggiunto al carrello!</h3>
             <div id="card" class="card col-12 col-md-8 mb-4 mt-3 d-flex flex-row" v-for="dish in restaurant.dish" :key="dish.id">
                 <div class="d-none d-md-block col-md-4 text-center">
                     <img v-if="dish.image.includes('http')" class="card-image-top max-width" :src="dish.image " :alt=" dish.name">
@@ -163,10 +163,22 @@ methods : {
 </script>
 
 <style lang="scss" scoped>
-#showDish{
-    margin-top: 120px;
-    position: relative;
+    #showDish{
+        margin-top: 120px;
+        position: relative;
 
+        .btn{
+        background-color: #027e74;
+        border: #027e74;
+
+            &:hover{
+            background-color: #039a8d;
+            }
+        }
+        h1{
+            color: #027e74;
+            font-weight: bolder;
+        }
     .none{
         display:none;
     }
@@ -207,7 +219,13 @@ methods : {
         .card-image-top{
             width: 300px;
             height: 200px;
-            object-fit: contain;
+            object-fit: cover;
+            border-radius: 20px;
+
+            &:hover{
+                width: 320px;
+            height: 220px;
+            }
         }
             .none {
               display: none;
@@ -219,7 +237,7 @@ methods : {
               color: #0d6efd;
             }
             img{
-              width: 200px;
+
             }
         }
 }

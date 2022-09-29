@@ -325,6 +325,11 @@
             margin-top: 20px;
             //bottoni piccoli
             width: 100%;
+
+            .here{
+                color:#058076;
+
+            }
             .bt-small{
                 color: #00ccbc;
                 text-transform: uppercase;
@@ -490,6 +495,15 @@
                 max-width: 100%;
                 height: 200px;
             }
+
+            .btn{
+                background-color: #027e74;
+                border: #027e74;
+
+                &:hover{
+                background-color: #039a8d;
+            }
+        }
         }
 }
 

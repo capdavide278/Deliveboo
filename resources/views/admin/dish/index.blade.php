@@ -15,12 +15,12 @@
 
         <div class="row justify-content-around">
             @foreach ($dishes as $dish)
-                <div class="card border-backg col-md-5 col-sm-12 mb-4">
+                <div class="card border-backg col-md-5 col-sm-12 mb-4 d-flex flex-column align-items-center">
                     <div class="card-body"  data-id="{{ $dish->id }}">
                         @if ($dish->image)
-                          <img src="{{$dish->image}}" class="max-width" alt="">
+                          <img src="{{$dish->image}}" class="img-dish max-width" alt="">
                         @endif
-                            <img src="{{asset('storage/' . $dish->image)}}" class="max-width" alt="">    
+                            <img src="{{asset('storage/' . $dish->image)}}" class="img-dish max-width" alt="">
                         <h3 class="card-title text-uppercase">{{ $dish->name }}</h5>
                         <p class="card-text">{{$dish->description}}</p>
                         <p class="card-text">Prezzo: {{$dish->price}} €</p>
@@ -32,10 +32,10 @@
                         <div class="row">
                             <div class="col-12">
                                 <div class="row justify-content-center">
-                                    <a href="{{ route('admin.dish.show', ['dish' => $dish]) }}" class="btn btn-primary col-3 me-2">View</a>
-                                    <a href="{{ route('admin.dish.edit', ['dish' => $dish]) }}" class="btn btn-warning col-3 me-2">Edit</a>
+                                    <a href="{{ route('admin.dish.show', ['dish' => $dish]) }}" class="btn btn-primary bt-size col-8 col-md-3 me-2">View</a>
+                                    <a href="{{ route('admin.dish.edit', ['dish' => $dish]) }}" class="btn btn-warning bt-size col-8 col-md-3 me-2">Edit</a>
                                     {{-- delete button --}}
-                                    <button class="btn col-4 btn-danger js-delete">Delete
+                                    <button class="btn col-6 col-md-3 btn-danger bt-size  js-delete">Delete
                                     </button>
                                     <section class="overlay d-none">
                                         <form class="col-3 popup" action="{{ route('admin.dish.destroy', ['dish' => $dish->id]) }}" method="POST">
