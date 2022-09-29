@@ -82,7 +82,7 @@
                                 </div>
                             </div>
                             <router-link :to="{name:'PageShowDish', params: {idRest: restaurant.id}}" class="mt-4">
-                                <button class="btn btn-primary" @click="removeall(restaurant.id)">ORDINA</button>
+                                <button class="btn btn-primary">ORDINA</button>
                             </router-link>
                         </div>
                     </div>
@@ -211,16 +211,6 @@
         yesButton() {
             this.YesButton=true;
         },
-        removeall(element){
-            this.cart2 = localStorage.getItem('cart');
-            this.cart = JSON.parse(this.cart2);
-            this.cart.forEach(elemento => {
-                if (element != elemento.Restid) {
-                    localStorage.clear()
-                }
-            });
-        },
-
         trovaRistorante(){
             if(this.catIds[0] != undefined){
                 axios.get('/api/category/restaurants' + '?category=' +this.catIds).then(response => {

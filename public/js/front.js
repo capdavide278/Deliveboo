@@ -5594,15 +5594,6 @@ __webpack_require__.r(__webpack_exports__);
     yesButton: function yesButton() {
       this.YesButton = true;
     },
-    removeall: function removeall(element) {
-      this.cart2 = localStorage.getItem('cart');
-      this.cart = JSON.parse(this.cart2);
-      this.cart.forEach(function (elemento) {
-        if (element != elemento.Restid) {
-          localStorage.clear();
-        }
-      });
-    },
     trovaRistorante: function trovaRistorante() {
       var _this2 = this;
 
@@ -5683,7 +5674,8 @@ __webpack_require__.r(__webpack_exports__);
         image: ""
       },
       alert: '',
-      sum: 0
+      sum: 0,
+      carrelloVuoto: true
     };
   },
   created: function created() {
@@ -5701,6 +5693,7 @@ __webpack_require__.r(__webpack_exports__);
     });
     this.viewCart();
     this.iconShopping();
+    this.controlCart();
   },
   methods: {
     findById: function findById(arr, id) {
@@ -5776,12 +5769,58 @@ __webpack_require__.r(__webpack_exports__);
       this.sum = 0;
       var cartLOcalStorage = '';
       cartLOcalStorage = localStorage.getItem('cart');
+
+      if (cartLOcalStorage != null) {
+        var cart = JSON.parse(cartLOcalStorage);
+        cart.forEach(function (element) {
+          _this2.sum += element.qty;
+        });
+      }
+    },
+    controlCart: function controlCart() {
+      var _this3 = this;
+
+      var cartLOcalStorage = '';
+      cartLOcalStorage = localStorage.getItem('cart');
       cart = '';
       var cart = JSON.parse(cartLOcalStorage);
-      var qtyTot = [];
-      cart.forEach(function (element) {
-        _this2.sum += element.qty;
-      });
+
+      if (cartLOcalStorage != null) {
+        cart.forEach(function (element) {
+          if (_this3.idRest != element.Restid) {
+            // per pulsante carrello in sovraimpressione
+            _this3.carrelloVuoto = false;
+          } else if (_this3.idRest = element.Restid) {
+            _this3.carrelloVuoto = true;
+          }
+        });
+      }
+    },
+    removeall: function removeall(dish) {
+      if (this.carrelloVuoto = true) {
+        var eleOverlay = document.querySelector('.overlay');
+        var deleteButtons = document.querySelectorAll('.js-delete');
+        deleteButtons.forEach(function (button) {
+          button.addEventListener('click', function () {
+            eleOverlay.classList.remove('d-none');
+          });
+        });
+        document.querySelector('.js-yes').addEventListener('click', function () {
+          localStorage.clear();
+          eleOverlay.classList.add('d-none');
+          document.getElementById('shoppingCart').innerText = 0;
+          this.carrelloVuoto = true;
+          console.log(this.carrelloVuoto);
+        });
+        document.querySelector('.js-no').addEventListener('click', function () {
+          eleOverlay.classList.add('d-none');
+          this.carrelloVuoto = false;
+        });
+      } // else if (this.carrelloVuoto = true) {
+      //     console.log('ma perchè?')
+      //     this.added(dish);
+      // }
+
     }
   }
 });
@@ -6700,12 +6739,7 @@ var render = function render() {
         }
       }
     }, [_c("button", {
-      staticClass: "btn btn-primary",
-      on: {
-        click: function click($event) {
-          return _vm.removeall(restaurant.id);
-        }
-      }
+      staticClass: "btn btn-primary"
     }, [_vm._v("ORDINA")])])], 1);
   })], 2)])])])]), _vm._v(" "), _vm._m(2), _vm._v(" "), _vm._m(3)], 1);
 };
@@ -6943,7 +6977,18 @@ var render = function render() {
       staticClass: "card-title text-uppercase"
     }, [_vm._v(_vm._s(dish.name))]), _vm._v(" "), _c("p", {
       staticClass: "card-text"
-    }, [_vm._v(_vm._s(dish.description))]), _vm._v(" "), _c("div", {}, [_vm._v("Prezzo: " + _vm._s(dish.price) + " €")])]), _vm._v(" "), dish.is_visible ? _c("button", {
+    }, [_vm._v(_vm._s(dish.description))]), _vm._v(" "), _c("div", {}, [_vm._v("Prezzo: " + _vm._s(dish.price) + " €")])]), _vm._v(" "), dish.is_visible ? _c("div", [_c("div", [_vm.carrelloVuoto == false ? _c("button", {
+      staticClass: "btn js-delete btn-primary",
+      attrs: {
+        id: "cart_button",
+        type: "button"
+      },
+      on: {
+        click: function click($event) {
+          return _vm.removeall(dish);
+        }
+      }
+    }, [_vm._v("Aggiungi al carrello")]) : _vm.carrelloVuoto == true ? _c("button", {
       staticClass: "btn btn-primary",
       attrs: {
         id: "cart_button",
@@ -6954,8 +6999,25 @@ var render = function render() {
           return _vm.added(dish);
         }
       }
-    }, [_vm._v("Aggiungi al carrello")]) : _c("h5", [_vm._v(" Il piatto non è al momento disponibile")])])]);
-  })], 2) : _vm._e()], 1);
+    }, [_vm._v("Aggiungi al carrello")]) : _vm._e()])]) : _c("h5", [_vm._v(" Il piatto non è al momento disponibile")])])]);
+  }), _vm._v(" "), _c("section", {
+    staticClass: "overlay d-none"
+  }, [_c("div", {
+    staticClass: "col-3 popup",
+    attrs: {
+      action: ""
+    }
+  }, [_c("h3", [_vm._v("Per effettuare un'ordine da questo ristorante devi prima svuotare il carrello precedente. Vuoi procedere?")]), _vm._v(" "), _c("button", {
+    staticClass: "btn btn-warning js-yes mb-3",
+    attrs: {
+      type: "submit"
+    }
+  }, [_vm._v("Si, cancella l'ordine precedente")]), _vm._v(" "), _c("button", {
+    staticClass: "btn btn-danger js-no",
+    attrs: {
+      type: "button"
+    }
+  }, [_vm._v("No, mantieni l'ordine")])])])], 2) : _vm._e()], 1);
 };
 
 var staticRenderFns = [];
@@ -37253,7 +37315,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 exports.push([module.i, "@import url(https://fonts.googleapis.com/css2?family=Raleway:wght@900&display=swap);", ""]);
 
 // module
-exports.push([module.i, "#containerHome[data-v-13e03f97] {\n  position: relative;\n}\n#containerHome #jumbotron[data-v-13e03f97] {\n  background-color: #00ccbc;\n  max-width: 100%;\n  margin-top: 120px;\n  color: #99eeb4;\n  text-align: center;\n}\n#containerHome #jumbotron span[data-v-13e03f97] {\n  position: relative;\n  font-family: \"Avenir Next\", sans-serif;\n  font-weight: 900;\n  font-size: 64px;\n  text-transform: uppercase;\n  font-style: italic;\n  letter-spacing: 0.05em;\n  display: inline-block;\n}\n#containerHome #jumbotron #chef[data-v-13e03f97] {\n  max-width: 90%;\n}\n#containerHome #cartImage[data-v-13e03f97] {\n  width: 60px;\n  height: 50px;\n  position: fixed;\n  top: 30px;\n  right: 100px;\n  z-index: 600;\n}\n#containerHome #cartImage[data-v-13e03f97]:hover {\n  cursor: pointer;\n}\n#containerHome #cartImage img[data-v-13e03f97] {\n  width: 100%;\n  height: 100%;\n  border-radius: 20px;\n  border: 2px solid #027e74;\n}\n#containerHome #cartImage #numCarrello[data-v-13e03f97] {\n  position: absolute;\n  top: -5px;\n  right: 20px;\n  z-index: 700;\n  color: #00ccbc;\n  font-weight: bolder;\n}\n#containerHome .categories[data-v-13e03f97] {\n  margin-top: 20px;\n  width: 100%;\n}\n#containerHome .categories .bt-small[data-v-13e03f97] {\n  color: #00ccbc;\n  text-transform: uppercase;\n  font-weight: bolder;\n  cursor: pointer;\n  display: inline-block;\n  margin: 10px 15px;\n}\n#containerHome .categories .button[data-v-13e03f97] {\n  text-align: center;\n  --offset: 10px;\n  --border-size: 2px;\n  margin-bottom: 40px;\n  display: block;\n  position: relative;\n  padding: 1.5em 3em;\n  -webkit-appearance: none;\n     -moz-appearance: none;\n          appearance: none;\n  border: 0;\n  background: transparent;\n  color: #00ccbc;\n  text-transform: uppercase;\n  letter-spacing: 0.25em;\n  outline: none;\n  cursor: pointer;\n  font-weight: bold;\n  border-radius: 0;\n  box-shadow: inset 0 0 0 var(--border-size) currentcolor;\n  transition: background 0.8s ease;\n  min-width: 220px;\n}\n#containerHome .categories .button[data-v-13e03f97]:hover {\n  background: rgba(100, 0, 0, 0.03);\n}\n#containerHome .categories .button .button__horizontal[data-v-13e03f97],\n#containerHome .categories .button .button__vertical[data-v-13e03f97] {\n  position: absolute;\n  top: var(--horizontal-offset, 0);\n  right: var(--vertical-offset, 0);\n  bottom: var(--horizontal-offset, 0);\n  left: var(--vertical-offset, 0);\n  transition: transform 0.8s ease;\n  will-change: transform;\n}\n#containerHome .categories .button .button__horizontal[data-v-13e03f97]::before,\n#containerHome .categories .button .button__vertical[data-v-13e03f97]::before {\n  content: \"\";\n  position: absolute;\n  border: inherit;\n}\n#containerHome .categories .button .button__horizontal[data-v-13e03f97] {\n  --vertical-offset: calc(var(--offset) * -1);\n  border-top: var(--border-size) solid currentcolor;\n  border-bottom: var(--border-size) solid currentcolor;\n}\n#containerHome .categories .button .button__horizontal[data-v-13e03f97]::before {\n  top: calc(var(--vertical-offset) - var(--border-size));\n  bottom: calc(var(--vertical-offset) - var(--border-size));\n  left: calc(var(--vertical-offset) * -1);\n  right: calc(var(--vertical-offset) * -1);\n}\n#containerHome .categories .button:hover .button__horizontal[data-v-13e03f97] {\n  transform: scaleX(0);\n}\n#containerHome .categories .button .button__vertical[data-v-13e03f97] {\n  --horizontal-offset: calc(var(--offset) * -1);\n  border-left: var(--border-size) solid currentcolor;\n  border-right: var(--border-size) solid currentcolor;\n}\n#containerHome .categories .button .button__vertical[data-v-13e03f97]::before {\n  top: calc(var(--horizontal-offset) * -1);\n  bottom: calc(var(--horizontal-offset) * -1);\n  left: calc(var(--horizontal-offset) - var(--border-size));\n  right: calc(var(--horizontal-offset) - var(--border-size));\n}\n#containerHome .categories .button:hover .button__vertical[data-v-13e03f97] {\n  transform: scaleY(0);\n}\n#containerHome .categories .big-label[data-v-13e03f97] {\n  font-size: 20px;\n}\n#containerHome .categories .bt-annulla[data-v-13e03f97] {\n  color: #7acc00;\n}\n#containerHome .back-selection[data-v-13e03f97] {\n  background-color: rgba(218, 151, 134, 0.7882352941);\n  margin: 30px 0;\n  padding-bottom: 30px;\n}\n#containerHome .back-selection #pizza[data-v-13e03f97] {\n  background-image: url(\"https://images.pexels.com/photos/1653877/pexels-photo-1653877.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1\");\n  background-size: cover;\n  background-position: center;\n  max-width: 100%;\n  border-radius: 20px;\n  cursor: pointer;\n}\n#containerHome .back-selection #pizza .titoletto[data-v-13e03f97] {\n  padding: 70px;\n  font-size: 40px;\n  color: white;\n  transform: rotate(-20deg);\n  text-transform: uppercase;\n}\n#containerHome .back-selection #mc[data-v-13e03f97] {\n  background-image: url(\"https://images.pexels.com/photos/4021944/pexels-photo-4021944.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1\");\n  background-size: cover;\n  width: 100%;\n  border-radius: 20px;\n  cursor: pointer;\n  max-height: 260px;\n}\n#containerHome .back-selection #mc .titoletto[data-v-13e03f97] {\n  padding: 100px 60px;\n  transform: rotate(-20deg);\n  text-transform: uppercase;\n  font-size: 40px;\n}\n#containerHome .back-selection .titoletto[data-v-13e03f97] {\n  font-family: \"Raleway\", sans-serif;\n  font-size: 50px;\n  letter-spacing: 0.1em;\n  -webkit-text-fill-color: transparent;\n  -webkit-text-stroke-width: 3px;\n  -webkit-text-stroke-color: white;\n  text-shadow: 8px 8px yellow, 20px 20px #000000;\n}\n#containerHome #ristoContainer .restaurant[data-v-13e03f97] {\n  background-color: #202428;\n  border-radius: 20px;\n  width: 340px;\n  margin-bottom: 20px;\n}\n#containerHome #ristoContainer .restaurant .white[data-v-13e03f97] {\n  color: white;\n}\n#containerHome #ristoContainer .restaurant .max-width[data-v-13e03f97] {\n  -o-object-fit: cover;\n     object-fit: cover;\n  max-width: 100%;\n  height: 200px;\n}\n#containerHome #partner #cardPartner img[data-v-13e03f97] {\n  border-radius: 50%;\n  width: 200px;\n  height: 3 0px;\n}\n#containerHome #container-title[data-v-13e03f97] {\n  line-height: 1.4;\n  text-align: center;\n  padding: 44px;\n  color: #333;\n}\n#containerHome #container-title .highlight-container[data-v-13e03f97] {\n  position: relative;\n  display: inline-block;\n}\n#containerHome #container-title .highlight-container[data-v-13e03f97]:before {\n  content: \" \";\n  display: block;\n  height: 90%;\n  width: 100%;\n  margin-left: -3px;\n  margin-right: -3px;\n  position: absolute;\n  background: #ffd500;\n  transform: rotate(2deg);\n  top: -1px;\n  left: -1px;\n  border-radius: 20% 25% 20% 24%;\n  padding: 10px 3px 3px 10px;\n}\n#containerHome #container-title .highlight-container .highlight[data-v-13e03f97] {\n  position: relative;\n}", ""]);
+exports.push([module.i, "#containerHome[data-v-13e03f97] {\n  position: relative;\n}\n#containerHome #jumbotron[data-v-13e03f97] {\n  background-color: #00ccbc;\n  max-width: 100%;\n  margin-top: 120px;\n  color: #99eeb4;\n  text-align: center;\n}\n#containerHome #jumbotron span[data-v-13e03f97] {\n  position: relative;\n  font-family: \"Avenir Next\", sans-serif;\n  font-weight: 900;\n  font-size: 64px;\n  text-transform: uppercase;\n  font-style: italic;\n  letter-spacing: 0.05em;\n  display: inline-block;\n}\n#containerHome #jumbotron #chef[data-v-13e03f97] {\n  max-width: 90%;\n}\n#containerHome #cartImage[data-v-13e03f97] {\n  width: 60px;\n  height: 50px;\n  position: fixed;\n  top: 30px;\n  right: 100px;\n  z-index: 600;\n}\n#containerHome #cartImage[data-v-13e03f97]:hover {\n  cursor: pointer;\n}\n#containerHome #cartImage img[data-v-13e03f97] {\n  width: 100%;\n  height: 100%;\n  border-radius: 20px;\n  border: 2px solid #027e74;\n}\n#containerHome #cartImage #numCarrello[data-v-13e03f97] {\n  position: absolute;\n  top: -5px;\n  right: 20px;\n  z-index: 700;\n  color: #00ccbc;\n  font-weight: bolder;\n}\n#containerHome .categories[data-v-13e03f97] {\n  margin-top: 20px;\n  width: 100%;\n}\n#containerHome .categories .bt-small[data-v-13e03f97] {\n  color: #00ccbc;\n  text-transform: uppercase;\n  font-weight: bolder;\n  cursor: pointer;\n  display: inline-block;\n  margin: 10px 15px;\n}\n#containerHome .categories .button[data-v-13e03f97] {\n  text-align: center;\n  --offset: 10px;\n  --border-size: 2px;\n  margin-bottom: 40px;\n  display: block;\n  position: relative;\n  padding: 1.5em 3em;\n  -webkit-appearance: none;\n     -moz-appearance: none;\n          appearance: none;\n  border: 0;\n  background: transparent;\n  color: #00ccbc;\n  text-transform: uppercase;\n  letter-spacing: 0.25em;\n  outline: none;\n  cursor: pointer;\n  font-weight: bold;\n  border-radius: 0;\n  box-shadow: inset 0 0 0 var(--border-size) currentcolor;\n  transition: background 0.8s ease;\n  min-width: 220px;\n}\n#containerHome .categories .button[data-v-13e03f97]:hover {\n  background: rgba(100, 0, 0, 0.03);\n}\n#containerHome .categories .button .button__horizontal[data-v-13e03f97],\n#containerHome .categories .button .button__vertical[data-v-13e03f97] {\n  position: absolute;\n  top: var(--horizontal-offset, 0);\n  right: var(--vertical-offset, 0);\n  bottom: var(--horizontal-offset, 0);\n  left: var(--vertical-offset, 0);\n  transition: transform 0.8s ease;\n  will-change: transform;\n}\n#containerHome .categories .button .button__horizontal[data-v-13e03f97]::before,\n#containerHome .categories .button .button__vertical[data-v-13e03f97]::before {\n  content: \"\";\n  position: absolute;\n  border: inherit;\n}\n#containerHome .categories .button .button__horizontal[data-v-13e03f97] {\n  --vertical-offset: calc(var(--offset) * -1);\n  border-top: var(--border-size) solid currentcolor;\n  border-bottom: var(--border-size) solid currentcolor;\n}\n#containerHome .categories .button .button__horizontal[data-v-13e03f97]::before {\n  top: calc(var(--vertical-offset) - var(--border-size));\n  bottom: calc(var(--vertical-offset) - var(--border-size));\n  left: calc(var(--vertical-offset) * -1);\n  right: calc(var(--vertical-offset) * -1);\n}\n#containerHome .categories .button:hover .button__horizontal[data-v-13e03f97] {\n  transform: scaleX(0);\n}\n#containerHome .categories .button .button__vertical[data-v-13e03f97] {\n  --horizontal-offset: calc(var(--offset) * -1);\n  border-left: var(--border-size) solid currentcolor;\n  border-right: var(--border-size) solid currentcolor;\n}\n#containerHome .categories .button .button__vertical[data-v-13e03f97]::before {\n  top: calc(var(--horizontal-offset) * -1);\n  bottom: calc(var(--horizontal-offset) * -1);\n  left: calc(var(--horizontal-offset) - var(--border-size));\n  right: calc(var(--horizontal-offset) - var(--border-size));\n}\n#containerHome .categories .button:hover .button__vertical[data-v-13e03f97] {\n  transform: scaleY(0);\n}\n#containerHome .categories .big-label[data-v-13e03f97] {\n  font-size: 20px;\n}\n#containerHome .categories .bt-annulla[data-v-13e03f97] {\n  color: #7acc00;\n}\n#containerHome .back-selection[data-v-13e03f97] {\n  background-color: rgba(218, 151, 134, 0.7882352941);\n  margin: 30px 0;\n  padding-bottom: 30px;\n}\n#containerHome .back-selection #pizza[data-v-13e03f97] {\n  background-image: url(\"https://images.pexels.com/photos/1653877/pexels-photo-1653877.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1\");\n  background-size: cover;\n  background-position: center;\n  max-width: 100%;\n  border-radius: 20px;\n  cursor: pointer;\n}\n#containerHome .back-selection #pizza .titoletto[data-v-13e03f97] {\n  padding: 70px;\n  font-size: 40px;\n  color: white;\n  transform: rotate(-20deg);\n  text-transform: uppercase;\n}\n#containerHome .back-selection #mc[data-v-13e03f97] {\n  background-image: url(\"https://images.pexels.com/photos/4021944/pexels-photo-4021944.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1\");\n  background-size: cover;\n  width: 100%;\n  border-radius: 20px;\n  cursor: pointer;\n  max-height: 260px;\n}\n#containerHome .back-selection #mc .titoletto[data-v-13e03f97] {\n  padding: 100px 60px;\n  transform: rotate(-20deg);\n  text-transform: uppercase;\n  font-size: 40px;\n}\n#containerHome .back-selection .titoletto[data-v-13e03f97] {\n  font-family: \"Raleway\", sans-serif;\n  font-size: 50px;\n  letter-spacing: 0.1em;\n  -webkit-text-fill-color: transparent;\n  -webkit-text-stroke-width: 3px;\n  -webkit-text-stroke-color: white;\n  text-shadow: 8px 8px rgb(149, 2, 98), 20px 20px #000000;\n}\n#containerHome #ristoContainer .restaurant[data-v-13e03f97] {\n  background-color: #202428;\n  border-radius: 20px;\n  width: 340px;\n  margin-bottom: 20px;\n}\n#containerHome #ristoContainer .restaurant .white[data-v-13e03f97] {\n  color: white;\n}\n#containerHome #ristoContainer .restaurant .max-width[data-v-13e03f97] {\n  -o-object-fit: cover;\n     object-fit: cover;\n  max-width: 100%;\n  height: 200px;\n}\n#containerHome #partner #cardPartner img[data-v-13e03f97] {\n  border-radius: 50%;\n  width: 200px;\n  height: 3 0px;\n}\n#containerHome #container-title[data-v-13e03f97] {\n  line-height: 1.4;\n  text-align: center;\n  padding: 44px;\n  color: #333;\n}\n#containerHome #container-title .highlight-container[data-v-13e03f97] {\n  position: relative;\n  display: inline-block;\n}\n#containerHome #container-title .highlight-container[data-v-13e03f97]:before {\n  content: \" \";\n  display: block;\n  height: 90%;\n  width: 100%;\n  margin-left: -3px;\n  margin-right: -3px;\n  position: absolute;\n  background: #ffd500;\n  transform: rotate(2deg);\n  top: -1px;\n  left: -1px;\n  border-radius: 20% 25% 20% 24%;\n  padding: 10px 3px 3px 10px;\n}\n#containerHome #container-title .highlight-container .highlight[data-v-13e03f97] {\n  position: relative;\n}", ""]);
 
 // exports
 
@@ -37272,7 +37334,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "#showDish[data-v-763ca4ef] {\n  margin-top: 120px;\n  position: relative;\n}\n#showDish .none[data-v-763ca4ef] {\n  display: none;\n}\n#showDish #cartImage[data-v-763ca4ef] {\n  width: 60px;\n  height: 50px;\n  position: fixed;\n  top: 30px;\n  right: 100px;\n  z-index: 600;\n}\n#showDish #cartImage[data-v-763ca4ef]:hover {\n  cursor: pointer;\n}\n#showDish #cartImage img[data-v-763ca4ef] {\n  width: 100%;\n  height: 100%;\n  border-radius: 20px;\n  border: 2px solid #027e74;\n}\n#showDish #cartImage #numCarrello[data-v-763ca4ef] {\n  position: absolute;\n  top: -5px;\n  right: 20px;\n  z-index: 700;\n  color: #00ccbc;\n  font-weight: bolder;\n}\n#showDish #card[data-v-763ca4ef] {\n  margin: 0 auto;\n  align-content: center;\n  border: none;\n}\n#showDish #card .none[data-v-763ca4ef] {\n  display: none;\n}\n#showDish #card .block[data-v-763ca4ef] {\n  display: block;\n}\n#showDish #card .blue[data-v-763ca4ef] {\n  color: #0d6efd;\n}\n#showDish #card img[data-v-763ca4ef] {\n  width: 200px;\n}", ""]);
+exports.push([module.i, "#showDish[data-v-763ca4ef] {\n  margin-top: 120px;\n  position: relative;\n}\n#showDish .none[data-v-763ca4ef] {\n  display: none;\n}\n#showDish #cartImage[data-v-763ca4ef] {\n  width: 60px;\n  height: 50px;\n  position: fixed;\n  top: 30px;\n  right: 100px;\n  z-index: 600;\n}\n#showDish #cartImage[data-v-763ca4ef]:hover {\n  cursor: pointer;\n}\n#showDish #cartImage img[data-v-763ca4ef] {\n  width: 100%;\n  height: 100%;\n  border-radius: 20px;\n  border: 2px solid #027e74;\n}\n#showDish #cartImage #numCarrello[data-v-763ca4ef] {\n  position: absolute;\n  top: -5px;\n  right: 20px;\n  z-index: 700;\n  color: #00ccbc;\n  font-weight: bolder;\n}\n#showDish #card[data-v-763ca4ef] {\n  margin: 0 auto;\n  align-content: center;\n  border: none;\n}\n#showDish #card .card-image-top[data-v-763ca4ef] {\n  width: 300px;\n  height: 200px;\n  -o-object-fit: contain;\n     object-fit: contain;\n}\n#showDish #card .none[data-v-763ca4ef] {\n  display: none;\n}\n#showDish #card .block[data-v-763ca4ef] {\n  display: block;\n}\n#showDish #card .blue[data-v-763ca4ef] {\n  color: #0d6efd;\n}\n#showDish #card img[data-v-763ca4ef] {\n  width: 200px;\n}\n#showDish .overlay[data-v-763ca4ef] {\n  display: flex;\n  position: fixed;\n  inset: 0;\n  background-color: rgba(0, 0, 0, 0.4);\n  z-index: 10000;\n}\n#showDish .overlay .popup[data-v-763ca4ef] {\n  margin: auto;\n  padding: 2rem;\n  background-color: #FFFFFF;\n  border-radius: 1rem;\n  width: 400px;\n}", ""]);
 
 // exports
 
@@ -72435,8 +72497,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\xampp\htdocs\php_esercizi\laravel\Deliveboo\resources\js\front.js */"./resources/js/front.js");
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\php_esercizi\laravel\Deliveboo\resources\sass\back.scss */"./resources/sass/back.scss");
+__webpack_require__(/*! C:\Users\glogh\Music\php\laravel\Deliveboo\resources\js\front.js */"./resources/js/front.js");
+module.exports = __webpack_require__(/*! C:\Users\glogh\Music\php\laravel\Deliveboo\resources\sass\back.scss */"./resources/sass/back.scss");
 
 
 /***/ })

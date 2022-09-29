@@ -81,14 +81,6 @@ class DishSeeder extends Seeder
                 'is_visible' => '1',
             ],
             [
-                'restaurant_id' => 2,
-                'name' => 'Patatine Fritte',
-                'image' => 'https://images.pexels.com/photos/2741461/pexels-photo-2741461.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-                'description' => 'Super',
-                'price' => 5,
-                'is_visible' => '1',
-            ],
-            [
                 'restaurant_id' => 3,
                 'name' => 'Patatine Fritte',
                 'image' => 'https://images.pexels.com/photos/2741461/pexels-photo-2741461.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
@@ -98,6 +90,22 @@ class DishSeeder extends Seeder
             ],
             [
                 'restaurant_id' => 3,
+                'name' => 'Nachos',
+                'image' => 'https://images.pexels.com/photos/1108775/pexels-photo-1108775.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+                'description' => 'Super buoni',
+                'price' => 12,
+                'is_visible' => '0',
+            ],
+            [
+                'restaurant_id' => 4,
+                'name' => 'Patatine Fritte',
+                'image' => 'https://images.pexels.com/photos/2741461/pexels-photo-2741461.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+                'description' => 'Super',
+                'price' => 5,
+                'is_visible' => '1',
+            ],
+            [
+                'restaurant_id' => 4,
                 'name' => 'Hot-dog',
                 'image' => 'https://images.pexels.com/photos/3023479/pexels-photo-3023479.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
                 'description' => 'Fantastico',
@@ -105,7 +113,7 @@ class DishSeeder extends Seeder
                 'is_visible' => '1',
             ],
             [
-                'restaurant_id' => 3,
+                'restaurant_id' => 4,
                 'name' => 'Nachos',
                 'image' => 'https://images.pexels.com/photos/1108775/pexels-photo-1108775.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
                 'description' => 'Super buoni',

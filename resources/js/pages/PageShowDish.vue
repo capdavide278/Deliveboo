@@ -25,11 +25,22 @@
                         <p class="card-text">{{dish.description}}</p>
                         <div class="">Prezzo: {{dish.price}} €</div>
                     </div>
-                    <button v-if="dish.is_visible" @click="added(dish)"  id="cart_button" type="button" class="btn btn-primary">Aggiungi al carrello</button>
+                    <div v-if="dish.is_visible">
+                        <div>
+                            <button v-if="carrelloVuoto == false" @click="removeall(dish)"  id="cart_button" type="button" class="btn js-delete btn-primary">Aggiungi al carrello</button>
+                            <button v-else-if="carrelloVuoto == true" @click="added(dish)"  id="cart_button" type="button" class="btn btn-primary">Aggiungi al carrello</button>
+                        </div>
+                    </div>
                     <h5 v-else> Il piatto non è al momento disponibile</h5>
                 </div>
             </div>
-
+            <section class="overlay d-none">
+            <div class="col-3 popup" action="" >
+                <h3>Per effettuare un'ordine da questo ristorante devi prima svuotare il carrello precedente. Vuoi procedere?</h3>
+                <button type="submit" class="btn btn-warning js-yes mb-3">Si, cancella l'ordine precedente</button>
+                <button type="button" class="btn btn-danger js-no">No, mantieni l'ordine</button>
+            </div>
+        </section>
         </section>
     </div>
 </template>
@@ -58,6 +69,8 @@ export default {
         },
         alert: '',
         sum: 0,
+        carrelloVuoto: true,
+
     }
 
     },
@@ -78,7 +91,7 @@ export default {
 
     this.viewCart();
     this.iconShopping();
-
+    this.controlCart();
 },
 methods : {
    findById(arr, id) {
@@ -149,15 +162,70 @@ methods : {
         this.sum = 0;
         let cartLOcalStorage = '';
         cartLOcalStorage = localStorage.getItem('cart');
+        if(cartLOcalStorage != null){
+            let cart = JSON.parse(cartLOcalStorage);
+            cart.forEach(element => {
+                this.sum += element.qty;
+            });
+        }
+    },
+    controlCart(){
+        let cartLOcalStorage = '';
+        cartLOcalStorage = localStorage.getItem('cart');
         cart = '';
         let cart = JSON.parse(cartLOcalStorage);
-        let qtyTot= [];
+        if(cartLOcalStorage != null){
+
         cart.forEach(element => {
-            this.sum += element.qty;
-        });
-    },
+            if (this.idRest != element.Restid ) {
+                // per pulsante carrello in sovraimpressione
+                 this.carrelloVuoto = false;
 
 
+                    } else if(this.idRest = element.Restid){
+                        this.carrelloVuoto = true;
+
+
+                    }
+                  });}
+        },
+    removeall( dish){
+        if(this.carrelloVuoto = true){
+
+            const eleOverlay = document.querySelector('.overlay');
+            const deleteButtons = document.querySelectorAll('.js-delete');
+
+            deleteButtons.forEach(button => {
+                button.addEventListener('click', function () {
+
+                    eleOverlay.classList.remove('d-none');
+                })
+            });
+
+            document.querySelector('.js-yes').addEventListener('click', function() {
+
+                    localStorage.clear();
+                    eleOverlay.classList.add('d-none');
+                    document.getElementById('shoppingCart').innerText= 0;
+                    this.carrelloVuoto = true;
+                    console.log(this.carrelloVuoto)
+                });
+
+
+                document.querySelector('.js-no').addEventListener('click', function() {
+                    eleOverlay.classList.add('d-none');
+                    this.carrelloVuoto = false;
+
+            });
+
+        }
+        // else if (this.carrelloVuoto = true) {
+        //     console.log('ma perchè?')
+        //     this.added(dish);
+
+        // }
+
+}
 }
 }
 </script>
@@ -222,6 +290,21 @@ methods : {
               width: 200px;
             }
         }
+    .overlay {
+            display: flex;
+            position: fixed;
+            inset: 0;
+            background-color: rgba($color: #000000, $alpha: 0.4);
+            z-index: 10000;
+
+        .popup {
+                margin: auto;
+                padding: 2rem;
+                background-color: #FFFFFF;
+                border-radius: 1rem;
+                width:400px
+        }
+    }
 }
 
 
