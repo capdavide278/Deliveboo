@@ -33,7 +33,7 @@
                     <div class="col-12 col-md-4 col-lg-2">
                         <div class="row justify-content-center categories">
 
-                                <button class="button  d-none d-md-block " v-for="(element, i) in categorie" :key="i" @click="IdCategoria(i+1)">
+                                <button :id="i+1" class="button d-none d-md-block " v-for="(element, i) in categorie" :key="i" @click="IdCategoria(i+1)">
                                     {{element}}
                                     <div class="button__horizontal d-none d-md-block"></div>
 	                                <div class="button__vertical d-none d-md-block"></div>
@@ -46,7 +46,7 @@
                <!-- bottoni responsive piccolo -->
                                 <div id="smallBt">
 
-                                    <div class=" bt-small d-md-none " v-for="(element, i) in categorie" :key="i" @click="IdCategoria(i+1)">
+                                    <div :id="i+1+'small'" class=" bt-small d-md-none " v-for="(element, i) in categorie" :key="i" @click="IdCategoria(i+1)">
                                         {{element}}
                                     </div>
                                     <div class="bt-small bt-annulla d-md-none" @click="resetCategory()">
@@ -237,9 +237,15 @@
             if (this.catIds.includes(cat)) {
                 let posizione = this.catIds.indexOf(cat)
                 this.catIds.splice(posizione, 1)
+                document.getElementById(cat).classList.remove('here')
+                document.getElementById(cat+'small').classList.remove('here')
+
             } else {
                 this.catIds.push(cat);
                 console.log(this.catIds)
+                document.getElementById(cat).classList.add('here')
+                document.getElementById(cat+'small').classList.add('here')
+
             }
 
             this.trovaRistorante();
@@ -247,6 +253,18 @@
         resetCategory(){
             this.arrRestaurants = [];
             this.search();
+            // here categorie grandi
+            const buttonHere = document.querySelectorAll(".button");
+            buttonHere.forEach((button) =>{
+                button.classList.remove('here')
+            });
+
+            //piccole
+            const buttonSmallHere = document.querySelectorAll(".bt-small");
+            buttonSmallHere.forEach((button) =>{
+                button.classList.remove('here')
+            });
+
         },
         iconShopping(){
         this.sum = 0;
@@ -327,7 +345,7 @@
             width: 100%;
 
             .here{
-                color:#058076;
+                 background-color:#90f9f0;
 
             }
             .bt-small{
@@ -349,7 +367,6 @@
             padding: 1.5em 3em;
             appearance: none;
             border: 0;
-            background: transparent;
             color:#00ccbc;
             text-transform: uppercase;
             letter-spacing: .25em;
